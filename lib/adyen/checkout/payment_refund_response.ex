@@ -1,0 +1,57 @@
+defmodule Adyen.Checkout.PaymentRefundResponse do
+  @moduledoc """
+  Provides struct and type for a PaymentRefundResponse
+  """
+
+  alias Adyen.Checkout.Amount
+  alias Adyen.Checkout.LineItem
+  alias Adyen.Checkout.Split
+
+  @type t :: %__MODULE__{
+          amount: Amount.t(),
+          capturePspReference: String.t() | nil,
+          lineItems: [LineItem.t()] | nil,
+          merchantAccount: String.t(),
+          merchantRefundReason: String.t() | nil,
+          paymentPspReference: String.t(),
+          pspReference: String.t(),
+          reference: String.t() | nil,
+          splits: [Split.t()] | nil,
+          status: String.t(),
+          store: String.t() | nil
+        }
+
+  defstruct [
+    :amount,
+    :capturePspReference,
+    :lineItems,
+    :merchantAccount,
+    :merchantRefundReason,
+    :paymentPspReference,
+    :pspReference,
+    :reference,
+    :splits,
+    :status,
+    :store
+  ]
+
+  @doc false
+  @spec __fields__(atom) :: keyword
+  def __fields__(type \\ :t)
+
+  def __fields__(:t) do
+    [
+      amount: {Amount, :t},
+      capturePspReference: :string,
+      lineItems: [{LineItem, :t}],
+      merchantAccount: :string,
+      merchantRefundReason: {:enum, ["FRAUD", "CUSTOMER REQUEST", "RETURN", "DUPLICATE", "OTHER"]},
+      paymentPspReference: :string,
+      pspReference: :string,
+      reference: :string,
+      splits: [{Split, :t}],
+      status: {:const, "received"},
+      store: :string
+    ]
+  end
+end
