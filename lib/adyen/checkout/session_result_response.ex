@@ -1,0 +1,31 @@
+defmodule Adyen.Checkout.SessionResultResponse do
+  @moduledoc """
+  Provides struct and type for a SessionResultResponse
+  """
+
+  alias Adyen.Checkout.Payment
+
+  @type t :: %__MODULE__{
+          additionalData: map | nil,
+          id: String.t() | nil,
+          payments: [Payment.t()] | nil,
+          reference: String.t() | nil,
+          status: String.t() | nil
+        }
+
+  defstruct [:additionalData, :id, :payments, :reference, :status]
+
+  @doc false
+  @spec __fields__(atom) :: keyword
+  def __fields__(type \\ :t)
+
+  def __fields__(:t) do
+    [
+      additionalData: :map,
+      id: :string,
+      payments: [{Payment, :t}],
+      reference: :string,
+      status: {:enum, ["active", "canceled", "completed", "expired", "paymentPending", "refused"]}
+    ]
+  end
+end
