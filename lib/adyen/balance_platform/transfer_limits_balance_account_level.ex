@@ -3,13 +3,6 @@ defmodule Adyen.BalancePlatform.TransferLimitsBalanceAccountLevel do
   Provides API endpoints related to transfer limits balance account level
   """
 
-  alias Adyen.BalancePlatform.ApproveTransferLimitRequest
-  alias Adyen.BalancePlatform.CreateTransferLimitRequest
-  alias Adyen.BalancePlatform.DefaultErrorResponseEntity
-  alias Adyen.BalancePlatform.TransferLimit
-  alias Adyen.BalancePlatform.TransferLimitListResponse
-  alias Adyen.BalancePlatform.TransferLimitsBalanceAccountLevel
-
   @default_client Adyen.Client
 
   @doc """
@@ -22,19 +15,25 @@ defmodule Adyen.BalancePlatform.TransferLimitsBalanceAccountLevel do
           id :: String.t(),
           transferLimitId :: String.t(),
           opts :: keyword
-        ) :: :ok | {:error, DefaultErrorResponseEntity.t()}
-  def delete_balance_account_transfer_limitransfer_limit(id, transferLimitId, opts \\ []) do
+        ) :: :ok | {:error, Adyen.BalancePlatform.DefaultErrorResponseEntity.t()}
+  def delete_balance_account_transfer_limitransfer_limit(
+        id,
+        transferLimitId,
+        opts \\ []
+      ) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [id: id, transferLimitId: transferLimitId],
-      call: {TransferLimitsBalanceAccountLevel, :delete_balance_account_transfer_limitransfer_limit},
+      call:
+        {Adyen.BalancePlatform.TransferLimitsBalanceAccountLevel,
+         :delete_balance_account_transfer_limitransfer_limit},
       url: "/balanceAccounts/#{id}/transferLimits/#{transferLimitId}",
       method: :delete,
       response: [
         {204, :null},
-        {404, {DefaultErrorResponseEntity, :t}},
-        {422, {DefaultErrorResponseEntity, :t}}
+        {404, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {422, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}}
       ],
       opts: opts
     })
@@ -61,22 +60,24 @@ defmodule Adyen.BalancePlatform.TransferLimitsBalanceAccountLevel do
 
   """
   @spec get_balance_account_transfer_limits(id :: String.t(), opts :: keyword) ::
-          {:ok, TransferLimitListResponse.t()}
-          | {:error, DefaultErrorResponseEntity.t()}
+          {:ok, Adyen.BalancePlatform.TransferLimitListResponse.t()}
+          | {:error, Adyen.BalancePlatform.DefaultErrorResponseEntity.t()}
   def get_balance_account_transfer_limits(id, opts \\ []) do
     client = opts[:client] || @default_client
     query = Keyword.take(opts, [:scope, :status, :transferType])
 
     client.request(%{
       args: [id: id],
-      call: {TransferLimitsBalanceAccountLevel, :get_balance_account_transfer_limits},
+      call:
+        {Adyen.BalancePlatform.TransferLimitsBalanceAccountLevel,
+         :get_balance_account_transfer_limits},
       url: "/balanceAccounts/#{id}/transferLimits",
       method: :get,
       query: query,
       response: [
-        {200, {TransferLimitListResponse, :t}},
-        {404, {DefaultErrorResponseEntity, :t}},
-        {422, {DefaultErrorResponseEntity, :t}}
+        {200, {Adyen.BalancePlatform.TransferLimitListResponse, :t}},
+        {404, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {422, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}}
       ],
       opts: opts
     })
@@ -98,22 +99,24 @@ defmodule Adyen.BalancePlatform.TransferLimitsBalanceAccountLevel do
 
   """
   @spec get_balance_account_transfer_limits_current(id :: String.t(), opts :: keyword) ::
-          {:ok, TransferLimitListResponse.t()}
-          | {:error, DefaultErrorResponseEntity.t()}
+          {:ok, Adyen.BalancePlatform.TransferLimitListResponse.t()}
+          | {:error, Adyen.BalancePlatform.DefaultErrorResponseEntity.t()}
   def get_balance_account_transfer_limits_current(id, opts \\ []) do
     client = opts[:client] || @default_client
     query = Keyword.take(opts, [:scope, :transferType])
 
     client.request(%{
       args: [id: id],
-      call: {TransferLimitsBalanceAccountLevel, :get_balance_account_transfer_limits_current},
+      call:
+        {Adyen.BalancePlatform.TransferLimitsBalanceAccountLevel,
+         :get_balance_account_transfer_limits_current},
       url: "/balanceAccounts/#{id}/transferLimits/current",
       method: :get,
       query: query,
       response: [
-        {200, {TransferLimitListResponse, :t}},
-        {404, {DefaultErrorResponseEntity, :t}},
-        {422, {DefaultErrorResponseEntity, :t}}
+        {200, {Adyen.BalancePlatform.TransferLimitListResponse, :t}},
+        {404, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {422, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}}
       ],
       opts: opts
     })
@@ -130,20 +133,22 @@ defmodule Adyen.BalancePlatform.TransferLimitsBalanceAccountLevel do
           transferLimitId :: String.t(),
           opts :: keyword
         ) ::
-          {:ok, TransferLimit.t()}
-          | {:error, DefaultErrorResponseEntity.t()}
+          {:ok, Adyen.BalancePlatform.TransferLimit.t()}
+          | {:error, Adyen.BalancePlatform.DefaultErrorResponseEntity.t()}
   def get_balance_account_transfer_limitransfer_limit(id, transferLimitId, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [id: id, transferLimitId: transferLimitId],
-      call: {TransferLimitsBalanceAccountLevel, :get_balance_account_transfer_limitransfer_limit},
+      call:
+        {Adyen.BalancePlatform.TransferLimitsBalanceAccountLevel,
+         :get_balance_account_transfer_limitransfer_limit},
       url: "/balanceAccounts/#{id}/transferLimits/#{transferLimitId}",
       method: :get,
       response: [
-        {200, {TransferLimit, :t}},
-        {404, {DefaultErrorResponseEntity, :t}},
-        {422, {DefaultErrorResponseEntity, :t}}
+        {200, {Adyen.BalancePlatform.TransferLimit, :t}},
+        {404, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {422, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}}
       ],
       opts: opts
     })
@@ -160,26 +165,28 @@ defmodule Adyen.BalancePlatform.TransferLimitsBalanceAccountLevel do
   """
   @spec create_balance_account_transfer_limits(
           id :: String.t(),
-          body :: CreateTransferLimitRequest.t(),
+          body :: Adyen.BalancePlatform.CreateTransferLimitRequest.t(),
           opts :: keyword
         ) ::
-          {:ok, TransferLimit.t()}
-          | {:error, DefaultErrorResponseEntity.t()}
+          {:ok, Adyen.BalancePlatform.TransferLimit.t()}
+          | {:error, Adyen.BalancePlatform.DefaultErrorResponseEntity.t()}
   def create_balance_account_transfer_limits(id, body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [id: id, body: body],
-      call: {TransferLimitsBalanceAccountLevel, :create_balance_account_transfer_limits},
+      call:
+        {Adyen.BalancePlatform.TransferLimitsBalanceAccountLevel,
+         :create_balance_account_transfer_limits},
       url: "/balanceAccounts/#{id}/transferLimits",
       body: body,
       method: :post,
-      request: [{"application/json", {CreateTransferLimitRequest, :t}}],
+      request: [{"application/json", {Adyen.BalancePlatform.CreateTransferLimitRequest, :t}}],
       response: [
-        {200, {TransferLimit, :t}},
-        {400, {DefaultErrorResponseEntity, :t}},
-        {401, {DefaultErrorResponseEntity, :t}},
-        {422, {DefaultErrorResponseEntity, :t}}
+        {200, {Adyen.BalancePlatform.TransferLimit, :t}},
+        {400, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {401, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {422, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}}
       ],
       opts: opts
     })
@@ -196,24 +203,26 @@ defmodule Adyen.BalancePlatform.TransferLimitsBalanceAccountLevel do
   """
   @spec create_balance_account_transfer_limits_approve(
           id :: String.t(),
-          body :: ApproveTransferLimitRequest.t(),
+          body :: Adyen.BalancePlatform.ApproveTransferLimitRequest.t(),
           opts :: keyword
-        ) :: :ok | {:error, DefaultErrorResponseEntity.t()}
+        ) :: :ok | {:error, Adyen.BalancePlatform.DefaultErrorResponseEntity.t()}
   def create_balance_account_transfer_limits_approve(id, body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [id: id, body: body],
-      call: {TransferLimitsBalanceAccountLevel, :create_balance_account_transfer_limits_approve},
+      call:
+        {Adyen.BalancePlatform.TransferLimitsBalanceAccountLevel,
+         :create_balance_account_transfer_limits_approve},
       url: "/balanceAccounts/#{id}/transferLimits/approve",
       body: body,
       method: :post,
-      request: [{"application/json", {ApproveTransferLimitRequest, :t}}],
+      request: [{"application/json", {Adyen.BalancePlatform.ApproveTransferLimitRequest, :t}}],
       response: [
         {204, :null},
-        {401, {DefaultErrorResponseEntity, :t}},
-        {404, {DefaultErrorResponseEntity, :t}},
-        {422, {DefaultErrorResponseEntity, :t}}
+        {401, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {404, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {422, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}}
       ],
       opts: opts
     })

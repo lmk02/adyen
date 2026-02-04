@@ -17,6 +17,7 @@ config :adyen,
 # Run: mix api.gen adyen_balance_platform priv/specs/BalancePlatformService-v2.json
 config :oapi_generator,
   adyen_balance_platform: [
+    renderer: Adyen.Renderer,
     output: [
       base_module: Adyen.BalancePlatform,
       location: "lib/adyen/balance_platform",
@@ -28,6 +29,7 @@ config :oapi_generator,
 # Run: mix api.gen adyen_checkout priv/specs/CheckoutService-v71.json
 config :oapi_generator,
   adyen_checkout: [
+    renderer: Adyen.Renderer,
     output: [
       base_module: Adyen.Checkout,
       location: "lib/adyen/checkout",
@@ -39,6 +41,7 @@ config :oapi_generator,
 # Run: mix api.gen adyen_transfers priv/specs/TransferService-v4.json
 config :oapi_generator,
   adyen_transfers: [
+    renderer: Adyen.Renderer,
     output: [
       base_module: Adyen.Transfers,
       location: "lib/adyen/transfers",

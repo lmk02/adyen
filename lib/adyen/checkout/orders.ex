@@ -3,15 +3,6 @@ defmodule Adyen.Checkout.Orders do
   Provides API endpoints related to orders
   """
 
-  alias Adyen.Checkout.BalanceCheckRequest
-  alias Adyen.Checkout.BalanceCheckResponse
-  alias Adyen.Checkout.CancelOrderRequest
-  alias Adyen.Checkout.CancelOrderResponse
-  alias Adyen.Checkout.CreateOrderRequest
-  alias Adyen.Checkout.CreateOrderResponse
-  alias Adyen.Checkout.Orders
-  alias Adyen.Checkout.ServiceError
-
   @default_client Adyen.Client
 
   @doc """
@@ -23,26 +14,26 @@ defmodule Adyen.Checkout.Orders do
 
   **Content Types**: `application/json`
   """
-  @spec create_order(body :: CreateOrderRequest.t(), opts :: keyword) ::
-          {:ok, CreateOrderResponse.t()}
-          | {:error, ServiceError.t()}
+  @spec create_order(body :: Adyen.Checkout.CreateOrderRequest.t(), opts :: keyword) ::
+          {:ok, Adyen.Checkout.CreateOrderResponse.t()}
+          | {:error, Adyen.Checkout.ServiceError.t()}
   def create_order(body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [body: body],
-      call: {Orders, :create_order},
+      call: {Adyen.Checkout.Orders, :create_order},
       url: "/orders",
       body: body,
       method: :post,
-      request: [{"application/json", {CreateOrderRequest, :t}}],
+      request: [{"application/json", {Adyen.Checkout.CreateOrderRequest, :t}}],
       response: [
-        {200, {CreateOrderResponse, :t}},
-        {400, {ServiceError, :t}},
-        {401, {ServiceError, :t}},
-        {403, {ServiceError, :t}},
-        {422, {ServiceError, :t}},
-        {500, {ServiceError, :t}}
+        {200, {Adyen.Checkout.CreateOrderResponse, :t}},
+        {400, {Adyen.Checkout.ServiceError, :t}},
+        {401, {Adyen.Checkout.ServiceError, :t}},
+        {403, {Adyen.Checkout.ServiceError, :t}},
+        {422, {Adyen.Checkout.ServiceError, :t}},
+        {500, {Adyen.Checkout.ServiceError, :t}}
       ],
       opts: opts
     })
@@ -57,26 +48,26 @@ defmodule Adyen.Checkout.Orders do
 
   **Content Types**: `application/json`
   """
-  @spec create_orders_cancel(body :: CancelOrderRequest.t(), opts :: keyword) ::
-          {:ok, CancelOrderResponse.t()}
-          | {:error, ServiceError.t()}
+  @spec create_orders_cancel(body :: Adyen.Checkout.CancelOrderRequest.t(), opts :: keyword) ::
+          {:ok, Adyen.Checkout.CancelOrderResponse.t()}
+          | {:error, Adyen.Checkout.ServiceError.t()}
   def create_orders_cancel(body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [body: body],
-      call: {Orders, :create_orders_cancel},
+      call: {Adyen.Checkout.Orders, :create_orders_cancel},
       url: "/orders/cancel",
       body: body,
       method: :post,
-      request: [{"application/json", {CancelOrderRequest, :t}}],
+      request: [{"application/json", {Adyen.Checkout.CancelOrderRequest, :t}}],
       response: [
-        {200, {CancelOrderResponse, :t}},
-        {400, {ServiceError, :t}},
-        {401, {ServiceError, :t}},
-        {403, {ServiceError, :t}},
-        {422, {ServiceError, :t}},
-        {500, {ServiceError, :t}}
+        {200, {Adyen.Checkout.CancelOrderResponse, :t}},
+        {400, {Adyen.Checkout.ServiceError, :t}},
+        {401, {Adyen.Checkout.ServiceError, :t}},
+        {403, {Adyen.Checkout.ServiceError, :t}},
+        {422, {Adyen.Checkout.ServiceError, :t}},
+        {500, {Adyen.Checkout.ServiceError, :t}}
       ],
       opts: opts
     })
@@ -92,28 +83,28 @@ defmodule Adyen.Checkout.Orders do
   **Content Types**: `application/json`
   """
   @spec create_payment_methods_balance(
-          body :: BalanceCheckRequest.t(),
+          body :: Adyen.Checkout.BalanceCheckRequest.t(),
           opts :: keyword
         ) ::
-          {:ok, BalanceCheckResponse.t()}
-          | {:error, ServiceError.t()}
+          {:ok, Adyen.Checkout.BalanceCheckResponse.t()}
+          | {:error, Adyen.Checkout.ServiceError.t()}
   def create_payment_methods_balance(body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [body: body],
-      call: {Orders, :create_payment_methods_balance},
+      call: {Adyen.Checkout.Orders, :create_payment_methods_balance},
       url: "/paymentMethods/balance",
       body: body,
       method: :post,
-      request: [{"application/json", {BalanceCheckRequest, :t}}],
+      request: [{"application/json", {Adyen.Checkout.BalanceCheckRequest, :t}}],
       response: [
-        {200, {BalanceCheckResponse, :t}},
-        {400, {ServiceError, :t}},
-        {401, {ServiceError, :t}},
-        {403, {ServiceError, :t}},
-        {422, {ServiceError, :t}},
-        {500, {ServiceError, :t}}
+        {200, {Adyen.Checkout.BalanceCheckResponse, :t}},
+        {400, {Adyen.Checkout.ServiceError, :t}},
+        {401, {Adyen.Checkout.ServiceError, :t}},
+        {403, {Adyen.Checkout.ServiceError, :t}},
+        {422, {Adyen.Checkout.ServiceError, :t}},
+        {500, {Adyen.Checkout.ServiceError, :t}}
       ],
       opts: opts
     })

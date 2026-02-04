@@ -3,10 +3,6 @@ defmodule Adyen.BalancePlatform.TransferRoutes do
   Provides API endpoint related to transfer routes
   """
 
-  alias Adyen.BalancePlatform.RestServiceError
-  alias Adyen.BalancePlatform.TransferRouteRequest
-  alias Adyen.BalancePlatform.TransferRouteResponse
-
   @default_client Adyen.Client
 
   @doc """
@@ -19,11 +15,11 @@ defmodule Adyen.BalancePlatform.TransferRoutes do
   **Content Types**: `application/json`
   """
   @spec create_transfer_routes_calculate(
-          body :: TransferRouteRequest.t(),
+          body :: Adyen.BalancePlatform.TransferRouteRequest.t(),
           opts :: keyword
         ) ::
-          {:ok, TransferRouteResponse.t()}
-          | {:error, RestServiceError.t()}
+          {:ok, Adyen.BalancePlatform.TransferRouteResponse.t()}
+          | {:error, Adyen.BalancePlatform.RestServiceError.t()}
   def create_transfer_routes_calculate(body, opts \\ []) do
     client = opts[:client] || @default_client
 
@@ -33,13 +29,13 @@ defmodule Adyen.BalancePlatform.TransferRoutes do
       url: "/transferRoutes/calculate",
       body: body,
       method: :post,
-      request: [{"application/json", {TransferRouteRequest, :t}}],
+      request: [{"application/json", {Adyen.BalancePlatform.TransferRouteRequest, :t}}],
       response: [
-        {200, {TransferRouteResponse, :t}},
-        {401, {RestServiceError, :t}},
-        {403, {RestServiceError, :t}},
-        {422, {RestServiceError, :t}},
-        {500, {RestServiceError, :t}}
+        {200, {Adyen.BalancePlatform.TransferRouteResponse, :t}},
+        {401, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.RestServiceError, :t}}
       ],
       opts: opts
     })

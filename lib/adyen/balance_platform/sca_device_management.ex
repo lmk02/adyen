@@ -3,15 +3,6 @@ defmodule Adyen.BalancePlatform.SCADeviceManagement do
   Provides API endpoints related to sca device management
   """
 
-  alias Adyen.BalancePlatform.BeginScaDeviceRegistrationRequest
-  alias Adyen.BalancePlatform.BeginScaDeviceRegistrationResponse
-  alias Adyen.BalancePlatform.DefaultErrorResponseEntity
-  alias Adyen.BalancePlatform.FinishScaDeviceRegistrationRequest
-  alias Adyen.BalancePlatform.FinishScaDeviceRegistrationResponse
-  alias Adyen.BalancePlatform.SCADeviceManagement
-  alias Adyen.BalancePlatform.SubmitScaAssociationRequest
-  alias Adyen.BalancePlatform.SubmitScaAssociationResponse
-
   @default_client Adyen.Client
 
   @doc """
@@ -25,31 +16,31 @@ defmodule Adyen.BalancePlatform.SCADeviceManagement do
   """
   @spec update_sca_device(
           deviceId :: String.t(),
-          body :: FinishScaDeviceRegistrationRequest.t(),
+          body :: Adyen.BalancePlatform.FinishScaDeviceRegistrationRequest.t(),
           opts :: keyword
         ) ::
-          {:ok, FinishScaDeviceRegistrationResponse.t()}
-          | {:error, DefaultErrorResponseEntity.t()}
+          {:ok, Adyen.BalancePlatform.FinishScaDeviceRegistrationResponse.t()}
+          | {:error, Adyen.BalancePlatform.DefaultErrorResponseEntity.t()}
   def update_sca_device(deviceId, body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [deviceId: deviceId, body: body],
-      call: {SCADeviceManagement, :update_sca_device},
+      call: {Adyen.BalancePlatform.SCADeviceManagement, :update_sca_device},
       url: "/scaDevices/#{deviceId}",
       body: body,
       method: :patch,
       request: [
-        {"application/json", {FinishScaDeviceRegistrationRequest, :t}}
+        {"application/json", {Adyen.BalancePlatform.FinishScaDeviceRegistrationRequest, :t}}
       ],
       response: [
-        {200, {FinishScaDeviceRegistrationResponse, :t}},
-        {400, {DefaultErrorResponseEntity, :t}},
-        {401, {DefaultErrorResponseEntity, :t}},
-        {403, {DefaultErrorResponseEntity, :t}},
-        {404, {DefaultErrorResponseEntity, :t}},
-        {422, {DefaultErrorResponseEntity, :t}},
-        {500, {DefaultErrorResponseEntity, :t}}
+        {200, {Adyen.BalancePlatform.FinishScaDeviceRegistrationResponse, :t}},
+        {400, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {401, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {403, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {404, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {422, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {500, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}}
       ],
       opts: opts
     })
@@ -65,30 +56,30 @@ defmodule Adyen.BalancePlatform.SCADeviceManagement do
   **Content Types**: `application/json`
   """
   @spec create_sca_devices(
-          body :: BeginScaDeviceRegistrationRequest.t(),
+          body :: Adyen.BalancePlatform.BeginScaDeviceRegistrationRequest.t(),
           opts :: keyword
         ) ::
-          {:ok, BeginScaDeviceRegistrationResponse.t()}
-          | {:error, DefaultErrorResponseEntity.t()}
+          {:ok, Adyen.BalancePlatform.BeginScaDeviceRegistrationResponse.t()}
+          | {:error, Adyen.BalancePlatform.DefaultErrorResponseEntity.t()}
   def create_sca_devices(body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [body: body],
-      call: {SCADeviceManagement, :create_sca_devices},
+      call: {Adyen.BalancePlatform.SCADeviceManagement, :create_sca_devices},
       url: "/scaDevices",
       body: body,
       method: :post,
       request: [
-        {"application/json", {BeginScaDeviceRegistrationRequest, :t}}
+        {"application/json", {Adyen.BalancePlatform.BeginScaDeviceRegistrationRequest, :t}}
       ],
       response: [
-        {201, {BeginScaDeviceRegistrationResponse, :t}},
-        {400, {DefaultErrorResponseEntity, :t}},
-        {401, {DefaultErrorResponseEntity, :t}},
-        {403, {DefaultErrorResponseEntity, :t}},
-        {422, {DefaultErrorResponseEntity, :t}},
-        {500, {DefaultErrorResponseEntity, :t}}
+        {201, {Adyen.BalancePlatform.BeginScaDeviceRegistrationResponse, :t}},
+        {400, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {401, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {403, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {422, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {500, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}}
       ],
       opts: opts
     })
@@ -105,29 +96,30 @@ defmodule Adyen.BalancePlatform.SCADeviceManagement do
   """
   @spec create_sca_device_id_sca_associations(
           deviceId :: String.t(),
-          body :: SubmitScaAssociationRequest.t(),
+          body :: Adyen.BalancePlatform.SubmitScaAssociationRequest.t(),
           opts :: keyword
         ) ::
-          {:ok, SubmitScaAssociationResponse.t()}
-          | {:error, DefaultErrorResponseEntity.t()}
+          {:ok, Adyen.BalancePlatform.SubmitScaAssociationResponse.t()}
+          | {:error, Adyen.BalancePlatform.DefaultErrorResponseEntity.t()}
   def create_sca_device_id_sca_associations(deviceId, body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [deviceId: deviceId, body: body],
-      call: {SCADeviceManagement, :create_sca_device_id_sca_associations},
+      call:
+        {Adyen.BalancePlatform.SCADeviceManagement, :create_sca_device_id_sca_associations},
       url: "/scaDevices/#{deviceId}/scaAssociations",
       body: body,
       method: :post,
-      request: [{"application/json", {SubmitScaAssociationRequest, :t}}],
+      request: [{"application/json", {Adyen.BalancePlatform.SubmitScaAssociationRequest, :t}}],
       response: [
-        {201, {SubmitScaAssociationResponse, :t}},
-        {400, {DefaultErrorResponseEntity, :t}},
-        {401, {DefaultErrorResponseEntity, :t}},
-        {403, {DefaultErrorResponseEntity, :t}},
-        {404, {DefaultErrorResponseEntity, :t}},
-        {422, {DefaultErrorResponseEntity, :t}},
-        {500, {DefaultErrorResponseEntity, :t}}
+        {201, {Adyen.BalancePlatform.SubmitScaAssociationResponse, :t}},
+        {400, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {401, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {403, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {404, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {422, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {500, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}}
       ],
       opts: opts
     })

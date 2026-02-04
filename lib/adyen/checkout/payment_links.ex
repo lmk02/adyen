@@ -3,12 +3,6 @@ defmodule Adyen.Checkout.PaymentLinks do
   Provides API endpoints related to payment links
   """
 
-  alias Adyen.Checkout.PaymentLinkRequest
-  alias Adyen.Checkout.PaymentLinkResponse
-  alias Adyen.Checkout.PaymentLinks
-  alias Adyen.Checkout.ServiceError
-  alias Adyen.Checkout.UpdatePaymentLinkRequest
-
   @default_client Adyen.Client
 
   @doc """
@@ -17,23 +11,23 @@ defmodule Adyen.Checkout.PaymentLinks do
   Retrieves the payment link details using the payment link `id`.
   """
   @spec get_payment_link(linkId :: String.t(), opts :: keyword) ::
-          {:ok, PaymentLinkResponse.t()}
-          | {:error, ServiceError.t()}
+          {:ok, Adyen.Checkout.PaymentLinkResponse.t()}
+          | {:error, Adyen.Checkout.ServiceError.t()}
   def get_payment_link(linkId, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [linkId: linkId],
-      call: {PaymentLinks, :get_payment_link},
+      call: {Adyen.Checkout.PaymentLinks, :get_payment_link},
       url: "/paymentLinks/#{linkId}",
       method: :get,
       response: [
-        {200, {PaymentLinkResponse, :t}},
-        {400, {ServiceError, :t}},
-        {401, {ServiceError, :t}},
-        {403, {ServiceError, :t}},
-        {422, {ServiceError, :t}},
-        {500, {ServiceError, :t}}
+        {200, {Adyen.Checkout.PaymentLinkResponse, :t}},
+        {400, {Adyen.Checkout.ServiceError, :t}},
+        {401, {Adyen.Checkout.ServiceError, :t}},
+        {403, {Adyen.Checkout.ServiceError, :t}},
+        {422, {Adyen.Checkout.ServiceError, :t}},
+        {500, {Adyen.Checkout.ServiceError, :t}}
       ],
       opts: opts
     })
@@ -50,28 +44,28 @@ defmodule Adyen.Checkout.PaymentLinks do
   """
   @spec update_payment_link(
           linkId :: String.t(),
-          body :: UpdatePaymentLinkRequest.t(),
+          body :: Adyen.Checkout.UpdatePaymentLinkRequest.t(),
           opts :: keyword
         ) ::
-          {:ok, PaymentLinkResponse.t()}
-          | {:error, ServiceError.t()}
+          {:ok, Adyen.Checkout.PaymentLinkResponse.t()}
+          | {:error, Adyen.Checkout.ServiceError.t()}
   def update_payment_link(linkId, body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [linkId: linkId, body: body],
-      call: {PaymentLinks, :update_payment_link},
+      call: {Adyen.Checkout.PaymentLinks, :update_payment_link},
       url: "/paymentLinks/#{linkId}",
       body: body,
       method: :patch,
-      request: [{"application/json", {UpdatePaymentLinkRequest, :t}}],
+      request: [{"application/json", {Adyen.Checkout.UpdatePaymentLinkRequest, :t}}],
       response: [
-        {200, {PaymentLinkResponse, :t}},
-        {400, {ServiceError, :t}},
-        {401, {ServiceError, :t}},
-        {403, {ServiceError, :t}},
-        {422, {ServiceError, :t}},
-        {500, {ServiceError, :t}}
+        {200, {Adyen.Checkout.PaymentLinkResponse, :t}},
+        {400, {Adyen.Checkout.ServiceError, :t}},
+        {401, {Adyen.Checkout.ServiceError, :t}},
+        {403, {Adyen.Checkout.ServiceError, :t}},
+        {422, {Adyen.Checkout.ServiceError, :t}},
+        {500, {Adyen.Checkout.ServiceError, :t}}
       ],
       opts: opts
     })
@@ -88,26 +82,26 @@ defmodule Adyen.Checkout.PaymentLinks do
 
   **Content Types**: `application/json`
   """
-  @spec create_payment_link(body :: PaymentLinkRequest.t(), opts :: keyword) ::
-          {:ok, PaymentLinkResponse.t()}
-          | {:error, ServiceError.t()}
+  @spec create_payment_link(body :: Adyen.Checkout.PaymentLinkRequest.t(), opts :: keyword) ::
+          {:ok, Adyen.Checkout.PaymentLinkResponse.t()}
+          | {:error, Adyen.Checkout.ServiceError.t()}
   def create_payment_link(body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [body: body],
-      call: {PaymentLinks, :create_payment_link},
+      call: {Adyen.Checkout.PaymentLinks, :create_payment_link},
       url: "/paymentLinks",
       body: body,
       method: :post,
-      request: [{"application/json", {PaymentLinkRequest, :t}}],
+      request: [{"application/json", {Adyen.Checkout.PaymentLinkRequest, :t}}],
       response: [
-        {201, {PaymentLinkResponse, :t}},
-        {400, {ServiceError, :t}},
-        {401, {ServiceError, :t}},
-        {403, {ServiceError, :t}},
-        {422, {ServiceError, :t}},
-        {500, {ServiceError, :t}}
+        {201, {Adyen.Checkout.PaymentLinkResponse, :t}},
+        {400, {Adyen.Checkout.ServiceError, :t}},
+        {401, {Adyen.Checkout.ServiceError, :t}},
+        {403, {Adyen.Checkout.ServiceError, :t}},
+        {422, {Adyen.Checkout.ServiceError, :t}},
+        {500, {Adyen.Checkout.ServiceError, :t}}
       ],
       opts: opts
     })

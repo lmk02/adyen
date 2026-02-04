@@ -3,14 +3,6 @@ defmodule Adyen.BalancePlatform.ManageCardPIN do
   Provides API endpoints related to manage card pin
   """
 
-  alias Adyen.BalancePlatform.ManageCardPIN
-  alias Adyen.BalancePlatform.PinChangeRequest
-  alias Adyen.BalancePlatform.PinChangeResponse
-  alias Adyen.BalancePlatform.PublicKeyResponse
-  alias Adyen.BalancePlatform.RestServiceError
-  alias Adyen.BalancePlatform.RevealPinRequest
-  alias Adyen.BalancePlatform.RevealPinResponse
-
   @default_client Adyen.Client
 
   @doc """
@@ -38,24 +30,24 @@ defmodule Adyen.BalancePlatform.ManageCardPIN do
 
   """
   @spec get_public_key(opts :: keyword) ::
-          {:ok, PublicKeyResponse.t()}
-          | {:error, RestServiceError.t()}
+          {:ok, Adyen.BalancePlatform.PublicKeyResponse.t()}
+          | {:error, Adyen.BalancePlatform.RestServiceError.t()}
   def get_public_key(opts \\ []) do
     client = opts[:client] || @default_client
     query = Keyword.take(opts, [:format, :purpose])
 
     client.request(%{
       args: [],
-      call: {ManageCardPIN, :get_public_key},
+      call: {Adyen.BalancePlatform.ManageCardPIN, :get_public_key},
       url: "/publicKey",
       method: :get,
       query: query,
       response: [
-        {200, {PublicKeyResponse, :t}},
-        {401, {RestServiceError, :t}},
-        {403, {RestServiceError, :t}},
-        {422, {RestServiceError, :t}},
-        {500, {RestServiceError, :t}}
+        {200, {Adyen.BalancePlatform.PublicKeyResponse, :t}},
+        {401, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.RestServiceError, :t}}
       ],
       opts: opts
     })
@@ -73,25 +65,25 @@ defmodule Adyen.BalancePlatform.ManageCardPIN do
 
   **Content Types**: `application/json`
   """
-  @spec create_pins_change(body :: PinChangeRequest.t(), opts :: keyword) ::
-          {:ok, PinChangeResponse.t()}
-          | {:error, RestServiceError.t()}
+  @spec create_pins_change(body :: Adyen.BalancePlatform.PinChangeRequest.t(), opts :: keyword) ::
+          {:ok, Adyen.BalancePlatform.PinChangeResponse.t()}
+          | {:error, Adyen.BalancePlatform.RestServiceError.t()}
   def create_pins_change(body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [body: body],
-      call: {ManageCardPIN, :create_pins_change},
+      call: {Adyen.BalancePlatform.ManageCardPIN, :create_pins_change},
       url: "/pins/change",
       body: body,
       method: :post,
-      request: [{"application/json", {PinChangeRequest, :t}}],
+      request: [{"application/json", {Adyen.BalancePlatform.PinChangeRequest, :t}}],
       response: [
-        {200, {PinChangeResponse, :t}},
-        {401, {RestServiceError, :t}},
-        {403, {RestServiceError, :t}},
-        {422, {RestServiceError, :t}},
-        {500, {RestServiceError, :t}}
+        {200, {Adyen.BalancePlatform.PinChangeResponse, :t}},
+        {401, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.RestServiceError, :t}}
       ],
       opts: opts
     })
@@ -109,25 +101,25 @@ defmodule Adyen.BalancePlatform.ManageCardPIN do
 
   **Content Types**: `application/json`
   """
-  @spec create_pins_reveal(body :: RevealPinRequest.t(), opts :: keyword) ::
-          {:ok, RevealPinResponse.t()}
-          | {:error, RestServiceError.t()}
+  @spec create_pins_reveal(body :: Adyen.BalancePlatform.RevealPinRequest.t(), opts :: keyword) ::
+          {:ok, Adyen.BalancePlatform.RevealPinResponse.t()}
+          | {:error, Adyen.BalancePlatform.RestServiceError.t()}
   def create_pins_reveal(body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [body: body],
-      call: {ManageCardPIN, :create_pins_reveal},
+      call: {Adyen.BalancePlatform.ManageCardPIN, :create_pins_reveal},
       url: "/pins/reveal",
       body: body,
       method: :post,
-      request: [{"application/json", {RevealPinRequest, :t}}],
+      request: [{"application/json", {Adyen.BalancePlatform.RevealPinRequest, :t}}],
       response: [
-        {200, {RevealPinResponse, :t}},
-        {401, {RestServiceError, :t}},
-        {403, {RestServiceError, :t}},
-        {422, {RestServiceError, :t}},
-        {500, {RestServiceError, :t}}
+        {200, {Adyen.BalancePlatform.RevealPinResponse, :t}},
+        {401, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.RestServiceError, :t}}
       ],
       opts: opts
     })
