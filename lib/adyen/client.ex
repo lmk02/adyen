@@ -2,12 +2,12 @@ defmodule Adyen.Client do
   @moduledoc """
   HTTP client for Adyen API requests using Req.
 
-  This module implements the `request/1` callback expected by oapi_generator.
-  All generated API operations call this module to execute HTTP requests.
+  This module implements the `request/1` callback expected by `oapi_generator`.
+  All generated API operations call this module to execute HTTP requests through `Req`.
 
   ## Configuration
 
-  Configure your API key in `config/config.exs`:
+  Configure your API key and environment in your application configuration:
 
       config :adyen,
         api_key: "your_api_key",
@@ -15,9 +15,19 @@ defmodule Adyen.Client do
 
   ## Per-request Options
 
-  You can override configuration on a per-request basis by passing options:
+  You can override configuration on a per-request basis by passing options to any API function.
+  These options are passed down to the `request/1` function:
 
-      Adyen.Checkout.Payments.post_sessions(request, api_key: "other_key", environment: :live)
+      Adyen.Checkout.Payments.create_session(request,
+        api_key: "other_key",
+        environment: :live
+      )
+
+  Supported options:
+  - `:api_key` - Overrides the API key
+  - `:environment` - Overrides the environment (:test or :live)
+  - `:live_url_prefix` - Required for live Checkout API requests
+  - `:client` - Use a custom client module (defaults to `Adyen.Client`)
 
   """
 

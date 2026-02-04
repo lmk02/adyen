@@ -42,24 +42,24 @@ config :adyen,
 **Create a Checkout Session:**
 
 ```elixir
-request = %{
+request = %Adyen.Checkout.CreateCheckoutSessionRequest{
   merchantAccount: "YOUR_MERCHANT_ACCOUNT",
-  amount: %{value: 1000, currency: "EUR"},
+  amount: %Adyen.Checkout.Amount{value: 1000, currency: "EUR"},
   reference: "order-123",
   returnUrl: "https://your-site.com/checkout/return"
 }
 
 {:ok, session} = Adyen.Checkout.Payments.create_session(request)
-# => %{"id" => "CS...", "sessionData" => "..."}
+# => %Adyen.Checkout.CreateCheckoutSessionResponse{id: "CS...", ...}
 ```
 
 **Get Payment Methods:**
 
 ```elixir
-request = %{
+request = %Adyen.Checkout.PaymentMethodsRequest{
   merchantAccount: "YOUR_MERCHANT_ACCOUNT",
   countryCode: "NL",
-  amount: %{value: 1000, currency: "EUR"}
+  amount: %Adyen.Checkout.Amount{value: 1000, currency: "EUR"}
 }
 
 {:ok, methods} = Adyen.Checkout.Payments.create_payment_methods(request)
@@ -70,10 +70,10 @@ request = %{
 **Make a Transfer:**
 
 ```elixir
-request = %{
-  amount: %{value: 1000, currency: "EUR"},
+request = %Adyen.Transfers.TransferInfo{
+  amount: %Adyen.Transfers.Amount{value: 1000, currency: "EUR"},
   balanceAccountId: "BA...",
-  counterparty: %{balanceAccountId: "BA..."},
+  counterparty: %Adyen.Transfers.CounterpartyInfoV3{balanceAccountId: "BA..."},
   description: "Payment to seller"
 }
 
@@ -101,7 +101,7 @@ The library is organized by service:
 Override configuration for individual requests:
 
 ```elixir
-Adyen.Checkout.Payments.post_sessions(request,
+Adyen.Checkout.Payments.create_session(request,
   api_key: "different_api_key",
   environment: :live,
   live_url_prefix: "company-prefix"
@@ -113,9 +113,9 @@ Adyen.Checkout.Payments.post_sessions(request,
 All API functions return `{:ok, result}` or `{:error, %Adyen.Error{}}`:
 
 ```elixir
-case Adyen.Checkout.Payments.post_payments(request) do
+case Adyen.Checkout.Payments.create_payment(request) do
   {:ok, response} ->
-    IO.puts("Payment successful: #{response["pspReference"]}")
+    IO.puts("Payment successful: #{response.pspReference}")
 
   {:error, %Adyen.Error{error_code: "validation"} = error} ->
     IO.puts("Validation error: #{error.message}")
@@ -130,11 +130,14 @@ end
 The library is generated from Adyen's OpenAPI specs. To regenerate:
 
 ```bash
-# Download latest specs
-curl -LO https://raw.githubusercontent.com/Adyen/adyen-openapi/main/json/CheckoutService-v71.json -o priv/specs/
-
-# Generate code
+# Checkout API
 mix api.gen adyen_checkout priv/specs/CheckoutService-v71.json
+
+# Transfers API
+mix api.gen adyen_transfers priv/specs/TransferService-v4.json
+
+# Balance Platform API
+mix api.gen adyen_balance_platform priv/specs/BalancePlatformService-v2.json
 ```
 
 ## License

@@ -2,13 +2,19 @@ defmodule Adyen.Error do
   @moduledoc """
   Error struct for Adyen API errors.
 
+  This struct normalizes error responses from across different Adyen APIs (Checkout,
+  Transfers, Balance Platform) into a consistent format.
+
   ## Fields
 
-  - `:status` - HTTP status code
-  - `:error_code` - Adyen error code
-  - `:message` - Human-readable error message
-  - `:psp_reference` - Payment service provider reference
-  - `:error_type` - Type of error
+  - `:status` - HTTP status code (e.g., 400, 401, 422, 500)
+  - `:error_code` - Adyen's specific error code (e.g., "14_012")
+  - `:message` - Human-readable error message. This is derived from `message`, `title`,
+    `detail`, or `invalidFields` depending on the API.
+  - `:psp_reference` - Unique reference for the request (or `requestId` for some APIs)
+  - `:error_type` - Type of error (e.g., "internal", "validation")
+  - `:invalid_fields` - List of validation errors for specific fields, if applicable
+  - `:original_error` - The raw error response map from the API
   """
 
   @type t :: %__MODULE__{
