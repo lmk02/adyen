@@ -2,18 +2,29 @@ defmodule Adyen.Config do
   @moduledoc """
   Configuration handling for the Adyen library.
 
-  Configuration can be set in your application config:
+  ## Configuration Precedence
 
-      config :adyen,
-        api_key: "your_api_key",
-        environment: :test  # or :live
+  Configuration is resolved in the following order of priority:
+  1.  **Options** passed directly to API functions (e.g., `Adyen.Checkout.Payments.create_session(req, api_key: "...")`)
+  2.  **Application configuration** (e.g., `config :adyen, api_key: "..."`)
+  3.  **Environment variables** (e.g., `ADYEN_API_KEY=...`)
 
-  Or via environment variables:
-  - `ADYEN_API_KEY` - Your Adyen API key
-  - `ADYEN_ENVIRONMENT` - "test" or "live"
+  ## Service-Specific Configuration
 
-  All configuration can be overridden on a per-request basis by passing options
-  to API functions.
+  You can configure API keys globally or per-service. Per-service keys take precedence
+  over the global `:api_key`.
+
+  | Service | Config Key | Environment Variable |
+  |---------|------------|----------------------|
+  | Global | `:api_key` | `ADYEN_API_KEY` |
+  | Checkout | `:checkout_api_key` | `ADYEN_CHECKOUT_API_KEY` |
+  | Transfers | `:transfers_api_key` | `ADYEN_TRANSFERS_API_KEY` |
+  | Balance Platform | `:balance_platform_api_key` | `ADYEN_BALANCE_PLATFORM_API_KEY` |
+
+  ## Environment
+
+  The environment can be set to `:test` (default) or `:live`. For live Checkout API
+  requests, you must also provide a `:live_url_prefix`.
   """
 
   @type environment :: :test | :live

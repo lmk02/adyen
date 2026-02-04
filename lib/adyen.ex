@@ -24,10 +24,12 @@ defmodule Adyen do
   All API operations are organized into namespaces matching the service:
 
       # Checkout Service
-      {:ok, session} = Adyen.Checkout.Payments.create_session(session_request)
+      request = %Adyen.Checkout.CreateCheckoutSessionRequest{...}
+      {:ok, session} = Adyen.Checkout.Payments.create_session(request)
 
       # Transfers Service
-      {:ok, transfer} = Adyen.Transfers.Transfers.create_transfer(transfer_request)
+      request = %Adyen.Transfers.TransferInfo{...}
+      {:ok, transfer} = Adyen.Transfers.Transfers.create_transfer(request)
 
       # Balance Platform Service
       {:ok, account} = Adyen.BalancePlatform.BalanceAccounts.get_balance_account(id)
@@ -49,10 +51,11 @@ defmodule Adyen do
       case Adyen.Checkout.Payments.create_session(request) do
         {:ok, session} ->
           # Handle success
-          session["id"]
+          session.id
 
         {:error, %Adyen.Error{error_code: "validation"} = error} ->
           # Handle validation errors
+          IO.puts(error.message)
 
         {:error, %Adyen.Error{status: 401}} ->
           # Handle authentication errors
