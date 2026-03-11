@@ -1,0 +1,97 @@
+name: Update Adyen Specs
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Daily at midnight
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  update-specs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Set up Elixir
+        uses: erlef/setup-beam@v1
+        with:
+          elixir-version: '1.17'
+          otp-version: '26'
+
+      - name: Install Dependencies
+        run: mix deps.get
+
+      - name: Update Submodule
+        run: |
+          git submodule update --remote --merge priv/specs
+          
+      - name: Check for changes in specs
+        id: check_specs
+        run: |
+          if git diff --quiet HEAD -- priv/specs; then
+            echo "changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Regenerate APIs
+        if: steps.check_specs.outputs.changes == 'true'
+        run: mix adyen.gen --all
+
+      - name: Configure Git
+        if: steps.check_specs.outputs.changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit Spec Updates
+        if: steps.check_specs.outputs.changes == 'true'
+        run: |
+          git add priv/specs generated_lib
+          git commit -m "feat(api): update adyen specs and regenerate code"
+
+      - name: Install git-cliff
+        if: steps.check_specs.outputs.changes == 'true'
+        uses: kenji-miyake/setup-git-cliff@v1
+
+      - name: Bump version
+        if: steps.check_specs.outputs.changes == 'true'
+        id: bump
+        run: |
+          # Use git-cliff to calculate the next version
+          NEW_VERSION=$(git-cliff --bump --unreleased | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
+          if [ -z "$NEW_VERSION" ]; then
+            # Fallback if no tags exist or bump fails
+            NEW_VERSION=$(elixir scripts/bump_version.exs)
+          else
+            elixir scripts/bump_version.exs "$NEW_VERSION"
+          fi
+          echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Commit Release
+        if: steps.check_specs.outputs.changes == 'true'
+        run: |
+          git add mix.exs
+          git commit -m "chore(release): bump version to ${{ steps.bump.outputs.version }}"
+
+      - name: Create Pull Request
+        if: steps.check_specs.outputs.changes == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: "Update Adyen Specs"
+          body: |
+            This is an automated PR to update Adyen OpenAPI specifications.
+            
+            Changes:
+            - Updated `priv/specs` submodule to the latest commit.
+            - Regenerated all API clients in `generated_lib/` via `mix adyen.gen --all`.
+            - Bumped version in `mix.exs` using `git-cliff`.
+          branch: "automation/update-adyen-specs"
+          base: "main"
+          delete-branch: true
