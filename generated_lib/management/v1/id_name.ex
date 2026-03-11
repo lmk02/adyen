@@ -1,0 +1,17 @@
+defmodule Adyen.Management.V1.IdName do
+  @moduledoc """
+  Provides struct and type for a IdName
+  """
+
+  @type t :: %__MODULE__{id: String.t() | nil, name: String.t() | nil}
+
+  defstruct [:id, :name]
+
+  @doc false
+  @spec __fields__(atom) :: keyword
+  def __fields__(type \\ :t)
+
+  def __fields__(:t) do
+    [id: :string, name: :string]
+  end
+end

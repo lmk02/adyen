@@ -1,0 +1,122 @@
+defmodule Adyen.Checkout.V41.PaymentLinkResponse do
+  @moduledoc """
+  Provides struct and type for a PaymentLinkResponse
+  """
+
+  @type t :: %__MODULE__{
+          allowedPaymentMethods: [String.t()] | nil,
+          amount: Adyen.Checkout.V41.Amount.t(),
+          applicationInfo: Adyen.Checkout.V41.ApplicationInfo.t() | nil,
+          billingAddress: Adyen.Checkout.V41.Address.t() | nil,
+          blockedPaymentMethods: [String.t()] | nil,
+          countryCode: String.t() | nil,
+          deliverAt: DateTime.t() | nil,
+          deliveryAddress: Adyen.Checkout.V41.Address.t() | nil,
+          description: String.t() | nil,
+          expiresAt: String.t() | nil,
+          fundOrigin: Adyen.Checkout.V41.FundOrigin.t() | nil,
+          fundRecipient: Adyen.Checkout.V41.FundRecipient.t() | nil,
+          installmentOptions: map | nil,
+          lineItems: [Adyen.Checkout.V41.LineItem.t()] | nil,
+          manualCapture: boolean | nil,
+          merchantAccount: String.t(),
+          merchantOrderReference: String.t() | nil,
+          metadata: map | nil,
+          platformChargebackLogic: Adyen.Checkout.V41.PlatformChargebackLogic.t() | nil,
+          recurringProcessingModel: String.t() | nil,
+          reference: String.t(),
+          returnUrl: String.t() | nil,
+          reusable: boolean | nil,
+          shopperEmail: String.t() | nil,
+          shopperLocale: String.t() | nil,
+          shopperName: Adyen.Checkout.V41.Name.t() | nil,
+          shopperReference: String.t() | nil,
+          showRemovePaymentMethodButton: boolean | nil,
+          splits: [Adyen.Checkout.V41.Split.t()] | nil,
+          status: String.t(),
+          store: String.t() | nil,
+          threeDS2RequestData: Adyen.Checkout.V41.CheckoutSessionThreeDs2RequestData.t() | nil,
+          updatedAt: DateTime.t() | nil,
+          url: String.t()
+        }
+
+  defstruct [
+    :allowedPaymentMethods,
+    :amount,
+    :applicationInfo,
+    :billingAddress,
+    :blockedPaymentMethods,
+    :countryCode,
+    :deliverAt,
+    :deliveryAddress,
+    :description,
+    :expiresAt,
+    :fundOrigin,
+    :fundRecipient,
+    :installmentOptions,
+    :lineItems,
+    :manualCapture,
+    :merchantAccount,
+    :merchantOrderReference,
+    :metadata,
+    :platformChargebackLogic,
+    :recurringProcessingModel,
+    :reference,
+    :returnUrl,
+    :reusable,
+    :shopperEmail,
+    :shopperLocale,
+    :shopperName,
+    :shopperReference,
+    :showRemovePaymentMethodButton,
+    :splits,
+    :status,
+    :store,
+    :threeDS2RequestData,
+    :updatedAt,
+    :url
+  ]
+
+  @doc false
+  @spec __fields__(atom) :: keyword
+  def __fields__(type \\ :t)
+
+  def __fields__(:t) do
+    [
+      allowedPaymentMethods: [:string],
+      amount: {Adyen.Checkout.V41.Amount, :t},
+      applicationInfo: {Adyen.Checkout.V41.ApplicationInfo, :t},
+      billingAddress: {Adyen.Checkout.V41.Address, :t},
+      blockedPaymentMethods: [:string],
+      countryCode: :string,
+      deliverAt: {:string, "date-time"},
+      deliveryAddress: {Adyen.Checkout.V41.Address, :t},
+      description: :string,
+      expiresAt: :string,
+      fundOrigin: {Adyen.Checkout.V41.FundOrigin, :t},
+      fundRecipient: {Adyen.Checkout.V41.FundRecipient, :t},
+      installmentOptions: :map,
+      lineItems: [{Adyen.Checkout.V41.LineItem, :t}],
+      manualCapture: :boolean,
+      merchantAccount: :string,
+      merchantOrderReference: :string,
+      metadata: :map,
+      platformChargebackLogic: {Adyen.Checkout.V41.PlatformChargebackLogic, :t},
+      recurringProcessingModel: {:enum, ["CardOnFile", "Subscription", "UnscheduledCardOnFile"]},
+      reference: :string,
+      returnUrl: :string,
+      reusable: :boolean,
+      shopperEmail: :string,
+      shopperLocale: :string,
+      shopperName: {Adyen.Checkout.V41.Name, :t},
+      shopperReference: :string,
+      showRemovePaymentMethodButton: :boolean,
+      splits: [{Adyen.Checkout.V41.Split, :t}],
+      status: {:enum, ["active", "completed", "expired", "paid", "paymentPending"]},
+      store: :string,
+      threeDS2RequestData: {Adyen.Checkout.V41.CheckoutSessionThreeDs2RequestData, :t},
+      updatedAt: {:string, "date-time"},
+      url: :string
+    ]
+  end
+end

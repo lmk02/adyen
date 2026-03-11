@@ -1,0 +1,29 @@
+defmodule Adyen.TerminalAPI.V1.StoredValueResponse do
+  @moduledoc """
+  Provides struct and type for a StoredValueResponse
+  """
+
+  @type t :: %__MODULE__{
+          POIData: Adyen.TerminalAPI.V1.POIData.t(),
+          PaymentReceipt: [Adyen.TerminalAPI.V1.PaymentReceipt.t()] | nil,
+          Response: Adyen.TerminalAPI.V1.Response.t(),
+          SaleData: Adyen.TerminalAPI.V1.SaleData.t(),
+          StoredValueResult: [Adyen.TerminalAPI.V1.StoredValueResult.t()] | nil
+        }
+
+  defstruct [:POIData, :PaymentReceipt, :Response, :SaleData, :StoredValueResult]
+
+  @doc false
+  @spec __fields__(atom) :: keyword
+  def __fields__(type \\ :t)
+
+  def __fields__(:t) do
+    [
+      POIData: {Adyen.TerminalAPI.V1.POIData, :t},
+      PaymentReceipt: [{Adyen.TerminalAPI.V1.PaymentReceipt, :t}],
+      Response: {Adyen.TerminalAPI.V1.Response, :t},
+      SaleData: {Adyen.TerminalAPI.V1.SaleData, :t},
+      StoredValueResult: [{Adyen.TerminalAPI.V1.StoredValueResult, :t}]
+    ]
+  end
+end

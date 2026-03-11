@@ -40,7 +40,7 @@ defmodule Adyen.ConfigTest do
   end
 
   test "fetches latest version properly" do
-    assert Config.latest_version("CheckoutService") != nil
+    assert Config.latest_version("CheckoutService")
   end
 
   test "replaces test with live in base URL for live environment" do
