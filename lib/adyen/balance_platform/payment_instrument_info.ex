@@ -3,13 +3,10 @@ defmodule Adyen.BalancePlatform.PaymentInstrumentInfo do
   Provides struct and type for a PaymentInstrumentInfo
   """
 
-  alias Adyen.BalancePlatform.BankAccountModel
-  alias Adyen.BalancePlatform.CardInfo
-
   @type t :: %__MODULE__{
           balanceAccountId: String.t(),
-          bankAccount: BankAccountModel.t() | nil,
-          card: CardInfo.t() | nil,
+          bankAccount: Adyen.BalancePlatform.BankAccountModel.t() | nil,
+          card: Adyen.BalancePlatform.CardInfo.t() | nil,
           description: String.t() | nil,
           issuingCountryCode: String.t(),
           paymentInstrumentGroupId: String.t() | nil,
@@ -41,8 +38,8 @@ defmodule Adyen.BalancePlatform.PaymentInstrumentInfo do
   def __fields__(:t) do
     [
       balanceAccountId: :string,
-      bankAccount: {BankAccountModel, :t},
-      card: {CardInfo, :t},
+      bankAccount: {Adyen.BalancePlatform.BankAccountModel, :t},
+      card: {Adyen.BalancePlatform.CardInfo, :t},
       description: :string,
       issuingCountryCode: :string,
       paymentInstrumentGroupId: :string,

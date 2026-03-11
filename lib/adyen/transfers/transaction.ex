@@ -3,24 +3,19 @@ defmodule Adyen.Transfers.Transaction do
   Provides struct and type for a Transaction
   """
 
-  alias Adyen.Transfers.Amount
-  alias Adyen.Transfers.PaymentInstrument
-  alias Adyen.Transfers.ResourceReference
-  alias Adyen.Transfers.TransferView
-
   @type t :: %__MODULE__{
-          accountHolder: ResourceReference.t(),
-          amount: Amount.t(),
-          balanceAccount: ResourceReference.t(),
+          accountHolder: Adyen.Transfers.ResourceReference.t(),
+          amount: Adyen.Transfers.Amount.t(),
+          balanceAccount: Adyen.Transfers.ResourceReference.t(),
           balancePlatform: String.t(),
           bookingDate: DateTime.t(),
           creationDate: DateTime.t() | nil,
           description: String.t() | nil,
           id: String.t(),
-          paymentInstrument: PaymentInstrument.t() | nil,
+          paymentInstrument: Adyen.Transfers.PaymentInstrument.t() | nil,
           referenceForBeneficiary: String.t() | nil,
           status: String.t(),
-          transfer: TransferView.t() | nil,
+          transfer: Adyen.Transfers.TransferView.t() | nil,
           valueDate: DateTime.t()
         }
 
@@ -46,18 +41,18 @@ defmodule Adyen.Transfers.Transaction do
 
   def __fields__(:t) do
     [
-      accountHolder: {ResourceReference, :t},
-      amount: {Amount, :t},
-      balanceAccount: {ResourceReference, :t},
+      accountHolder: {Adyen.Transfers.ResourceReference, :t},
+      amount: {Adyen.Transfers.Amount, :t},
+      balanceAccount: {Adyen.Transfers.ResourceReference, :t},
       balancePlatform: :string,
       bookingDate: {:string, "date-time"},
       creationDate: {:string, "date-time"},
       description: :string,
       id: :string,
-      paymentInstrument: {PaymentInstrument, :t},
+      paymentInstrument: {Adyen.Transfers.PaymentInstrument, :t},
       referenceForBeneficiary: :string,
       status: {:enum, ["booked", "pending"]},
-      transfer: {TransferView, :t},
+      transfer: {Adyen.Transfers.TransferView, :t},
       valueDate: {:string, "date-time"}
     ]
   end

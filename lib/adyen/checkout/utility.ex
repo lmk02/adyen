@@ -3,18 +3,6 @@ defmodule Adyen.Checkout.Utility do
   Provides API endpoints related to utility
   """
 
-  alias Adyen.Checkout.ApplePaySessionRequest
-  alias Adyen.Checkout.ApplePaySessionResponse
-  alias Adyen.Checkout.DefaultErrorResponseEntity
-  alias Adyen.Checkout.PaypalUpdateOrderRequest
-  alias Adyen.Checkout.PaypalUpdateOrderResponse
-  alias Adyen.Checkout.ServiceError
-  alias Adyen.Checkout.Utility
-  alias Adyen.Checkout.UtilityRequest
-  alias Adyen.Checkout.UtilityResponse
-  alias Adyen.Checkout.ValidateShopperIdRequest
-  alias Adyen.Checkout.ValidateShopperIdResponse
-
   @default_client Adyen.Client
 
   @doc """
@@ -28,21 +16,21 @@ defmodule Adyen.Checkout.Utility do
 
   **Content Types**: `application/json`
   """
-  @spec create_apple_pay_session(
-          body :: ApplePaySessionRequest.t(),
+  @spec post_apple_pay_sessions(
+          body :: Adyen.Checkout.ApplePaySessionRequest.t(),
           opts :: keyword
-        ) :: {:ok, ApplePaySessionResponse.t()} | :error
-  def create_apple_pay_session(body, opts \\ []) do
+        ) :: {:ok, Adyen.Checkout.ApplePaySessionResponse.t()} | :error
+  def post_apple_pay_sessions(body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [body: body],
-      call: {Utility, :create_apple_pay_session},
+      call: {Adyen.Checkout.Utility, :post_apple_pay_sessions},
       url: "/applePay/sessions",
       body: body,
       method: :post,
-      request: [{"application/json", {ApplePaySessionRequest, :t}}],
-      response: [{200, {ApplePaySessionResponse, :t}}],
+      request: [{"application/json", {Adyen.Checkout.ApplePaySessionRequest, :t}}],
+      response: [{200, {Adyen.Checkout.ApplePaySessionResponse, :t}}],
       opts: opts
     })
   end
@@ -57,25 +45,25 @@ defmodule Adyen.Checkout.Utility do
 
   **Content Types**: `application/json`
   """
-  @spec create_origin_keys(body :: UtilityRequest.t(), opts :: keyword) ::
-          {:ok, UtilityResponse.t()} | {:error, ServiceError.t()}
-  def create_origin_keys(body, opts \\ []) do
+  @spec post_origin_keys(body :: Adyen.Checkout.UtilityRequest.t(), opts :: keyword) ::
+          {:ok, Adyen.Checkout.UtilityResponse.t()} | {:error, Adyen.Checkout.ServiceError.t()}
+  def post_origin_keys(body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [body: body],
-      call: {Utility, :create_origin_keys},
+      call: {Adyen.Checkout.Utility, :post_origin_keys},
       url: "/originKeys",
       body: body,
       method: :post,
-      request: [{"application/json", {UtilityRequest, :t}}],
+      request: [{"application/json", {Adyen.Checkout.UtilityRequest, :t}}],
       response: [
-        {200, {UtilityResponse, :t}},
-        {400, {ServiceError, :t}},
-        {401, {ServiceError, :t}},
-        {403, {ServiceError, :t}},
-        {422, {ServiceError, :t}},
-        {500, {ServiceError, :t}}
+        {200, {Adyen.Checkout.UtilityResponse, :t}},
+        {400, {Adyen.Checkout.ServiceError, :t}},
+        {401, {Adyen.Checkout.ServiceError, :t}},
+        {403, {Adyen.Checkout.ServiceError, :t}},
+        {422, {Adyen.Checkout.ServiceError, :t}},
+        {500, {Adyen.Checkout.ServiceError, :t}}
       ],
       opts: opts
     })
@@ -90,29 +78,29 @@ defmodule Adyen.Checkout.Utility do
 
   **Content Types**: `application/json`
   """
-  @spec create_paypal_update_order(
-          body :: PaypalUpdateOrderRequest.t(),
+  @spec post_paypal_update_order(
+          body :: Adyen.Checkout.PaypalUpdateOrderRequest.t(),
           opts :: keyword
         ) ::
-          {:ok, PaypalUpdateOrderResponse.t()}
-          | {:error, ServiceError.t()}
-  def create_paypal_update_order(body, opts \\ []) do
+          {:ok, Adyen.Checkout.PaypalUpdateOrderResponse.t()}
+          | {:error, Adyen.Checkout.ServiceError.t()}
+  def post_paypal_update_order(body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [body: body],
-      call: {Utility, :create_paypal_update_order},
+      call: {Adyen.Checkout.Utility, :post_paypal_update_order},
       url: "/paypal/updateOrder",
       body: body,
       method: :post,
-      request: [{"application/json", {PaypalUpdateOrderRequest, :t}}],
+      request: [{"application/json", {Adyen.Checkout.PaypalUpdateOrderRequest, :t}}],
       response: [
-        {200, {PaypalUpdateOrderResponse, :t}},
-        {400, {ServiceError, :t}},
-        {401, {ServiceError, :t}},
-        {403, {ServiceError, :t}},
-        {422, {ServiceError, :t}},
-        {500, {ServiceError, :t}}
+        {200, {Adyen.Checkout.PaypalUpdateOrderResponse, :t}},
+        {400, {Adyen.Checkout.ServiceError, :t}},
+        {401, {Adyen.Checkout.ServiceError, :t}},
+        {403, {Adyen.Checkout.ServiceError, :t}},
+        {422, {Adyen.Checkout.ServiceError, :t}},
+        {500, {Adyen.Checkout.ServiceError, :t}}
       ],
       opts: opts
     })
@@ -127,29 +115,29 @@ defmodule Adyen.Checkout.Utility do
 
   **Content Types**: `application/json`
   """
-  @spec create_validate_shopper(
-          body :: ValidateShopperIdRequest.t(),
+  @spec post_validate_shopper_id(
+          body :: Adyen.Checkout.ValidateShopperIdRequest.t(),
           opts :: keyword
         ) ::
-          {:ok, ValidateShopperIdResponse.t()}
-          | {:error, DefaultErrorResponseEntity.t()}
-  def create_validate_shopper(body, opts \\ []) do
+          {:ok, Adyen.Checkout.ValidateShopperIdResponse.t()}
+          | {:error, Adyen.Checkout.DefaultErrorResponseEntity.t()}
+  def post_validate_shopper_id(body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [body: body],
-      call: {Utility, :create_validate_shopper},
+      call: {Adyen.Checkout.Utility, :post_validate_shopper_id},
       url: "/validateShopperId",
       body: body,
       method: :post,
-      request: [{"application/json", {ValidateShopperIdRequest, :t}}],
+      request: [{"application/json", {Adyen.Checkout.ValidateShopperIdRequest, :t}}],
       response: [
-        {200, {ValidateShopperIdResponse, :t}},
-        {400, {DefaultErrorResponseEntity, :t}},
-        {401, {DefaultErrorResponseEntity, :t}},
-        {403, {DefaultErrorResponseEntity, :t}},
-        {422, {DefaultErrorResponseEntity, :t}},
-        {500, {DefaultErrorResponseEntity, :t}}
+        {200, {Adyen.Checkout.ValidateShopperIdResponse, :t}},
+        {400, {Adyen.Checkout.DefaultErrorResponseEntity, :t}},
+        {401, {Adyen.Checkout.DefaultErrorResponseEntity, :t}},
+        {403, {Adyen.Checkout.DefaultErrorResponseEntity, :t}},
+        {422, {Adyen.Checkout.DefaultErrorResponseEntity, :t}},
+        {500, {Adyen.Checkout.DefaultErrorResponseEntity, :t}}
       ],
       opts: opts
     })

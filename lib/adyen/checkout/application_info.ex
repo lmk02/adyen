@@ -3,18 +3,13 @@ defmodule Adyen.Checkout.ApplicationInfo do
   Provides struct and type for a ApplicationInfo
   """
 
-  alias Adyen.Checkout.CommonField
-  alias Adyen.Checkout.ExternalPlatform
-  alias Adyen.Checkout.MerchantDevice
-  alias Adyen.Checkout.ShopperInteractionDevice
-
   @type t :: %__MODULE__{
-          adyenLibrary: CommonField.t() | nil,
-          adyenPaymentSource: CommonField.t() | nil,
-          externalPlatform: ExternalPlatform.t() | nil,
-          merchantApplication: CommonField.t() | nil,
-          merchantDevice: MerchantDevice.t() | nil,
-          shopperInteractionDevice: ShopperInteractionDevice.t() | nil
+          adyenLibrary: Adyen.Checkout.CommonField.t() | nil,
+          adyenPaymentSource: Adyen.Checkout.CommonField.t() | nil,
+          externalPlatform: Adyen.Checkout.ExternalPlatform.t() | nil,
+          merchantApplication: Adyen.Checkout.CommonField.t() | nil,
+          merchantDevice: Adyen.Checkout.MerchantDevice.t() | nil,
+          shopperInteractionDevice: Adyen.Checkout.ShopperInteractionDevice.t() | nil
         }
 
   defstruct [
@@ -32,12 +27,12 @@ defmodule Adyen.Checkout.ApplicationInfo do
 
   def __fields__(:t) do
     [
-      adyenLibrary: {CommonField, :t},
-      adyenPaymentSource: {CommonField, :t},
-      externalPlatform: {ExternalPlatform, :t},
-      merchantApplication: {CommonField, :t},
-      merchantDevice: {MerchantDevice, :t},
-      shopperInteractionDevice: {ShopperInteractionDevice, :t}
+      adyenLibrary: {Adyen.Checkout.CommonField, :t},
+      adyenPaymentSource: {Adyen.Checkout.CommonField, :t},
+      externalPlatform: {Adyen.Checkout.ExternalPlatform, :t},
+      merchantApplication: {Adyen.Checkout.CommonField, :t},
+      merchantDevice: {Adyen.Checkout.MerchantDevice, :t},
+      shopperInteractionDevice: {Adyen.Checkout.ShopperInteractionDevice, :t}
     ]
   end
 end

@@ -3,12 +3,10 @@ defmodule Adyen.BalancePlatform.PaginatedPaymentInstrumentsResponse do
   Provides struct and type for a PaginatedPaymentInstrumentsResponse
   """
 
-  alias Adyen.BalancePlatform.PaymentInstrument
-
   @type t :: %__MODULE__{
           hasNext: boolean,
           hasPrevious: boolean,
-          paymentInstruments: [PaymentInstrument.t()]
+          paymentInstruments: [Adyen.BalancePlatform.PaymentInstrument.t()]
         }
 
   defstruct [:hasNext, :hasPrevious, :paymentInstruments]
@@ -21,7 +19,7 @@ defmodule Adyen.BalancePlatform.PaginatedPaymentInstrumentsResponse do
     [
       hasNext: :boolean,
       hasPrevious: :boolean,
-      paymentInstruments: [{PaymentInstrument, :t}]
+      paymentInstruments: [{Adyen.BalancePlatform.PaymentInstrument, :t}]
     ]
   end
 end

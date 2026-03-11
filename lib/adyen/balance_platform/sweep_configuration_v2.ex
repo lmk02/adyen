@@ -3,13 +3,9 @@ defmodule Adyen.BalancePlatform.SweepConfigurationV2 do
   Provides struct and type for a SweepConfigurationV2
   """
 
-  alias Adyen.BalancePlatform.Amount
-  alias Adyen.BalancePlatform.SweepCounterparty
-  alias Adyen.BalancePlatform.SweepSchedule
-
   @type t :: %__MODULE__{
           category: String.t() | nil,
-          counterparty: SweepCounterparty.t(),
+          counterparty: Adyen.BalancePlatform.SweepCounterparty.t(),
           currency: String.t(),
           description: String.t() | nil,
           id: String.t(),
@@ -18,11 +14,11 @@ defmodule Adyen.BalancePlatform.SweepConfigurationV2 do
           reasonDetail: String.t() | nil,
           reference: String.t() | nil,
           referenceForBeneficiary: String.t() | nil,
-          schedule: SweepSchedule.t(),
+          schedule: Adyen.BalancePlatform.SweepSchedule.t(),
           status: String.t() | nil,
-          sweepAmount: Amount.t() | nil,
-          targetAmount: Amount.t() | nil,
-          triggerAmount: Amount.t() | nil,
+          sweepAmount: Adyen.BalancePlatform.Amount.t() | nil,
+          targetAmount: Adyen.BalancePlatform.Amount.t() | nil,
+          triggerAmount: Adyen.BalancePlatform.Amount.t() | nil,
           type: String.t() | nil
         }
 
@@ -52,7 +48,7 @@ defmodule Adyen.BalancePlatform.SweepConfigurationV2 do
   def __fields__(:t) do
     [
       category: {:enum, ["bank", "internal", "platformPayment"]},
-      counterparty: {SweepCounterparty, :t},
+      counterparty: {Adyen.BalancePlatform.SweepCounterparty, :t},
       currency: :string,
       description: :string,
       id: :string,
@@ -80,11 +76,11 @@ defmodule Adyen.BalancePlatform.SweepConfigurationV2 do
       reasonDetail: :string,
       reference: :string,
       referenceForBeneficiary: :string,
-      schedule: {SweepSchedule, :t},
+      schedule: {Adyen.BalancePlatform.SweepSchedule, :t},
       status: {:enum, ["active", "inactive"]},
-      sweepAmount: {Amount, :t},
-      targetAmount: {Amount, :t},
-      triggerAmount: {Amount, :t},
+      sweepAmount: {Adyen.BalancePlatform.Amount, :t},
+      targetAmount: {Adyen.BalancePlatform.Amount, :t},
+      triggerAmount: {Adyen.BalancePlatform.Amount, :t},
       type: {:enum, ["pull", "push"]}
     ]
   end

@@ -3,17 +3,13 @@ defmodule Adyen.BalancePlatform.CardInfo do
   Provides struct and type for a CardInfo
   """
 
-  alias Adyen.BalancePlatform.Authentication
-  alias Adyen.BalancePlatform.CardConfiguration
-  alias Adyen.BalancePlatform.DeliveryContact
-
   @type t :: %__MODULE__{
-          authentication: Authentication.t() | nil,
+          authentication: Adyen.BalancePlatform.Authentication.t() | nil,
           brand: String.t(),
           brandVariant: String.t(),
           cardholderName: String.t(),
-          configuration: CardConfiguration.t() | nil,
-          deliveryContact: DeliveryContact.t() | nil,
+          configuration: Adyen.BalancePlatform.CardConfiguration.t() | nil,
+          deliveryContact: Adyen.BalancePlatform.DeliveryContact.t() | nil,
           formFactor: String.t(),
           threeDSecure: String.t() | nil,
           usage: String.t() | nil
@@ -37,12 +33,12 @@ defmodule Adyen.BalancePlatform.CardInfo do
 
   def __fields__(:t) do
     [
-      authentication: {Authentication, :t},
+      authentication: {Adyen.BalancePlatform.Authentication, :t},
       brand: :string,
       brandVariant: :string,
       cardholderName: :string,
-      configuration: {CardConfiguration, :t},
-      deliveryContact: {DeliveryContact, :t},
+      configuration: {Adyen.BalancePlatform.CardConfiguration, :t},
+      deliveryContact: {Adyen.BalancePlatform.DeliveryContact, :t},
       formFactor: {:enum, ["physical", "unknown", "virtual"]},
       threeDSecure: :string,
       usage: :string

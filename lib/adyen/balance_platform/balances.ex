@@ -3,13 +3,6 @@ defmodule Adyen.BalancePlatform.Balances do
   Provides API endpoints related to balances
   """
 
-  alias Adyen.BalancePlatform.Balances
-  alias Adyen.BalancePlatform.BalanceWebhookSettingInfo
-  alias Adyen.BalancePlatform.BalanceWebhookSettingInfoUpdate
-  alias Adyen.BalancePlatform.DefaultErrorResponseEntity
-  alias Adyen.BalancePlatform.WebhookSetting
-  alias Adyen.BalancePlatform.WebhookSettings
-
   @default_client Adyen.Client
 
   @doc """
@@ -17,28 +10,35 @@ defmodule Adyen.BalancePlatform.Balances do
 
   Deletes a balance webhook setting that contains the conditions for triggering [balance webhooks](https://docs.adyen.com/api-explorer/balance-webhooks/latest/post/balanceAccount.balance.updated).
   """
-  @spec delete_balance_platforms_balance_platform_id_webhook_id_setting(
+  @spec delete_balance_platforms_balance_platform_id_webhooks_webhook_id_settings_setting_id(
           balancePlatformId :: String.t(),
           webhookId :: String.t(),
           settingId :: String.t(),
           opts :: keyword
-        ) :: {:ok, any} | {:error, DefaultErrorResponseEntity.t()}
-  def delete_balance_platforms_balance_platform_id_webhook_id_setting(balancePlatformId, webhookId, settingId, opts \\ []) do
+        ) :: {:ok, any} | {:error, Adyen.BalancePlatform.DefaultErrorResponseEntity.t()}
+  def delete_balance_platforms_balance_platform_id_webhooks_webhook_id_settings_setting_id(
+        balancePlatformId,
+        webhookId,
+        settingId,
+        opts \\ []
+      ) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [balancePlatformId: balancePlatformId, webhookId: webhookId, settingId: settingId],
-      call: {Balances, :delete_balance_platforms_balance_platform_id_webhook_id_setting},
+      call:
+        {Adyen.BalancePlatform.Balances,
+         :delete_balance_platforms_balance_platform_id_webhooks_webhook_id_settings_setting_id},
       url: "/balancePlatforms/#{balancePlatformId}/webhooks/#{webhookId}/settings/#{settingId}",
       method: :delete,
       response: [
         {204, :unknown},
-        {400, {DefaultErrorResponseEntity, :t}},
-        {401, {DefaultErrorResponseEntity, :t}},
-        {403, {DefaultErrorResponseEntity, :t}},
-        {404, {DefaultErrorResponseEntity, :t}},
-        {422, {DefaultErrorResponseEntity, :t}},
-        {500, {DefaultErrorResponseEntity, :t}}
+        {400, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {401, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {403, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {404, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {422, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {500, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}}
       ],
       opts: opts
     })
@@ -49,29 +49,35 @@ defmodule Adyen.BalancePlatform.Balances do
 
   Returns all balance webhook settings configured for triggering [balance webhooks](https://docs.adyen.com/api-explorer/balance-webhooks/latest/post/balanceAccount.balance.updated).
   """
-  @spec get_balance_platforms_balance_platform_id_webhook_id_settings(
+  @spec get_balance_platforms_balance_platform_id_webhooks_webhook_id_settings(
           balancePlatformId :: String.t(),
           webhookId :: String.t(),
           opts :: keyword
         ) ::
-          {:ok, WebhookSettings.t()}
-          | {:error, DefaultErrorResponseEntity.t()}
-  def get_balance_platforms_balance_platform_id_webhook_id_settings(balancePlatformId, webhookId, opts \\ []) do
+          {:ok, Adyen.BalancePlatform.WebhookSettings.t()}
+          | {:error, Adyen.BalancePlatform.DefaultErrorResponseEntity.t()}
+  def get_balance_platforms_balance_platform_id_webhooks_webhook_id_settings(
+        balancePlatformId,
+        webhookId,
+        opts \\ []
+      ) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [balancePlatformId: balancePlatformId, webhookId: webhookId],
-      call: {Balances, :get_balance_platforms_balance_platform_id_webhook_id_settings},
+      call:
+        {Adyen.BalancePlatform.Balances,
+         :get_balance_platforms_balance_platform_id_webhooks_webhook_id_settings},
       url: "/balancePlatforms/#{balancePlatformId}/webhooks/#{webhookId}/settings",
       method: :get,
       response: [
-        {200, {WebhookSettings, :t}},
-        {400, {DefaultErrorResponseEntity, :t}},
-        {401, {DefaultErrorResponseEntity, :t}},
-        {403, {DefaultErrorResponseEntity, :t}},
-        {404, {DefaultErrorResponseEntity, :t}},
-        {422, {DefaultErrorResponseEntity, :t}},
-        {500, {DefaultErrorResponseEntity, :t}}
+        {200, {Adyen.BalancePlatform.WebhookSettings, :t}},
+        {400, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {401, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {403, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {404, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {422, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {500, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}}
       ],
       opts: opts
     })
@@ -82,30 +88,37 @@ defmodule Adyen.BalancePlatform.Balances do
 
   Returns the details of a specific balance webhook setting configured for triggering [balance webhooks](https://docs.adyen.com/api-explorer/balance-webhooks/latest/post/balanceAccount.balance.updated).
   """
-  @spec get_balance_platforms_balance_platform_id_webhook_id_setting(
+  @spec get_balance_platforms_balance_platform_id_webhooks_webhook_id_settings_setting_id(
           balancePlatformId :: String.t(),
           webhookId :: String.t(),
           settingId :: String.t(),
           opts :: keyword
         ) ::
-          {:ok, WebhookSetting.t()}
-          | {:error, DefaultErrorResponseEntity.t()}
-  def get_balance_platforms_balance_platform_id_webhook_id_setting(balancePlatformId, webhookId, settingId, opts \\ []) do
+          {:ok, Adyen.BalancePlatform.WebhookSetting.t()}
+          | {:error, Adyen.BalancePlatform.DefaultErrorResponseEntity.t()}
+  def get_balance_platforms_balance_platform_id_webhooks_webhook_id_settings_setting_id(
+        balancePlatformId,
+        webhookId,
+        settingId,
+        opts \\ []
+      ) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [balancePlatformId: balancePlatformId, webhookId: webhookId, settingId: settingId],
-      call: {Balances, :get_balance_platforms_balance_platform_id_webhook_id_setting},
+      call:
+        {Adyen.BalancePlatform.Balances,
+         :get_balance_platforms_balance_platform_id_webhooks_webhook_id_settings_setting_id},
       url: "/balancePlatforms/#{balancePlatformId}/webhooks/#{webhookId}/settings/#{settingId}",
       method: :get,
       response: [
-        {200, {WebhookSetting, :t}},
-        {400, {DefaultErrorResponseEntity, :t}},
-        {401, {DefaultErrorResponseEntity, :t}},
-        {403, {DefaultErrorResponseEntity, :t}},
-        {404, {DefaultErrorResponseEntity, :t}},
-        {422, {DefaultErrorResponseEntity, :t}},
-        {500, {DefaultErrorResponseEntity, :t}}
+        {200, {Adyen.BalancePlatform.WebhookSetting, :t}},
+        {400, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {401, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {403, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {404, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {422, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {500, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}}
       ],
       opts: opts
     })
@@ -120,16 +133,16 @@ defmodule Adyen.BalancePlatform.Balances do
 
   **Content Types**: `application/json`
   """
-  @spec update_balance_platforms_balance_platform_id_webhook_id_setting(
+  @spec patch_balance_platforms_balance_platform_id_webhooks_webhook_id_settings_setting_id(
           balancePlatformId :: String.t(),
           webhookId :: String.t(),
           settingId :: String.t(),
-          body :: BalanceWebhookSettingInfoUpdate.t(),
+          body :: Adyen.BalancePlatform.BalanceWebhookSettingInfoUpdate.t(),
           opts :: keyword
         ) ::
-          {:ok, WebhookSetting.t()}
-          | {:error, DefaultErrorResponseEntity.t()}
-  def update_balance_platforms_balance_platform_id_webhook_id_setting(
+          {:ok, Adyen.BalancePlatform.WebhookSetting.t()}
+          | {:error, Adyen.BalancePlatform.DefaultErrorResponseEntity.t()}
+  def patch_balance_platforms_balance_platform_id_webhooks_webhook_id_settings_setting_id(
         balancePlatformId,
         webhookId,
         settingId,
@@ -145,19 +158,21 @@ defmodule Adyen.BalancePlatform.Balances do
         settingId: settingId,
         body: body
       ],
-      call: {Balances, :update_balance_platforms_balance_platform_id_webhook_id_setting},
+      call:
+        {Adyen.BalancePlatform.Balances,
+         :patch_balance_platforms_balance_platform_id_webhooks_webhook_id_settings_setting_id},
       url: "/balancePlatforms/#{balancePlatformId}/webhooks/#{webhookId}/settings/#{settingId}",
       body: body,
       method: :patch,
-      request: [{"application/json", {BalanceWebhookSettingInfoUpdate, :t}}],
+      request: [{"application/json", {Adyen.BalancePlatform.BalanceWebhookSettingInfoUpdate, :t}}],
       response: [
-        {200, {WebhookSetting, :t}},
-        {400, {DefaultErrorResponseEntity, :t}},
-        {401, {DefaultErrorResponseEntity, :t}},
-        {403, {DefaultErrorResponseEntity, :t}},
-        {404, {DefaultErrorResponseEntity, :t}},
-        {422, {DefaultErrorResponseEntity, :t}},
-        {500, {DefaultErrorResponseEntity, :t}}
+        {200, {Adyen.BalancePlatform.WebhookSetting, :t}},
+        {400, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {401, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {403, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {404, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {422, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {500, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}}
       ],
       opts: opts
     })
@@ -180,32 +195,39 @@ defmodule Adyen.BalancePlatform.Balances do
 
   **Content Types**: `application/json`
   """
-  @spec create_balance_platforms_balance_platform_id_webhook_id_settings(
+  @spec post_balance_platforms_balance_platform_id_webhooks_webhook_id_settings(
           balancePlatformId :: String.t(),
           webhookId :: String.t(),
-          body :: BalanceWebhookSettingInfo.t(),
+          body :: Adyen.BalancePlatform.BalanceWebhookSettingInfo.t(),
           opts :: keyword
         ) ::
-          {:ok, WebhookSetting.t()}
-          | {:error, DefaultErrorResponseEntity.t()}
-  def create_balance_platforms_balance_platform_id_webhook_id_settings(balancePlatformId, webhookId, body, opts \\ []) do
+          {:ok, Adyen.BalancePlatform.WebhookSetting.t()}
+          | {:error, Adyen.BalancePlatform.DefaultErrorResponseEntity.t()}
+  def post_balance_platforms_balance_platform_id_webhooks_webhook_id_settings(
+        balancePlatformId,
+        webhookId,
+        body,
+        opts \\ []
+      ) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [balancePlatformId: balancePlatformId, webhookId: webhookId, body: body],
-      call: {Balances, :create_balance_platforms_balance_platform_id_webhook_id_settings},
+      call:
+        {Adyen.BalancePlatform.Balances,
+         :post_balance_platforms_balance_platform_id_webhooks_webhook_id_settings},
       url: "/balancePlatforms/#{balancePlatformId}/webhooks/#{webhookId}/settings",
       body: body,
       method: :post,
-      request: [{"application/json", {BalanceWebhookSettingInfo, :t}}],
+      request: [{"application/json", {Adyen.BalancePlatform.BalanceWebhookSettingInfo, :t}}],
       response: [
-        {200, {WebhookSetting, :t}},
-        {400, {DefaultErrorResponseEntity, :t}},
-        {401, {DefaultErrorResponseEntity, :t}},
-        {403, {DefaultErrorResponseEntity, :t}},
-        {404, {DefaultErrorResponseEntity, :t}},
-        {422, {DefaultErrorResponseEntity, :t}},
-        {500, {DefaultErrorResponseEntity, :t}}
+        {200, {Adyen.BalancePlatform.WebhookSetting, :t}},
+        {400, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {401, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {403, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {404, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {422, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {500, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}}
       ],
       opts: opts
     })

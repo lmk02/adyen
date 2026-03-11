@@ -3,13 +3,6 @@ defmodule Adyen.BalancePlatform.SCAAssociationManagement do
   Provides API endpoints related to sca association management
   """
 
-  alias Adyen.BalancePlatform.ApproveAssociationRequest
-  alias Adyen.BalancePlatform.ApproveAssociationResponse
-  alias Adyen.BalancePlatform.DefaultErrorResponseEntity
-  alias Adyen.BalancePlatform.ListAssociationsResponse
-  alias Adyen.BalancePlatform.RemoveAssociationRequest
-  alias Adyen.BalancePlatform.SCAAssociationManagement
-
   @default_client Adyen.Client
 
   @doc """
@@ -22,24 +15,24 @@ defmodule Adyen.BalancePlatform.SCAAssociationManagement do
   **Content Types**: `application/json`
   """
   @spec delete_sca_associations(
-          body :: RemoveAssociationRequest.t(),
+          body :: Adyen.BalancePlatform.RemoveAssociationRequest.t(),
           opts :: keyword
-        ) :: :ok | {:error, DefaultErrorResponseEntity.t()}
+        ) :: :ok | {:error, Adyen.BalancePlatform.DefaultErrorResponseEntity.t()}
   def delete_sca_associations(body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [body: body],
-      call: {SCAAssociationManagement, :delete_sca_associations},
+      call: {Adyen.BalancePlatform.SCAAssociationManagement, :delete_sca_associations},
       url: "/scaAssociations",
       body: body,
       method: :delete,
-      request: [{"application/json", {RemoveAssociationRequest, :t}}],
+      request: [{"application/json", {Adyen.BalancePlatform.RemoveAssociationRequest, :t}}],
       response: [
         {204, :null},
-        {401, {DefaultErrorResponseEntity, :t}},
-        {403, {DefaultErrorResponseEntity, :t}},
-        {500, {DefaultErrorResponseEntity, :t}}
+        {401, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {403, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {500, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}}
       ],
       opts: opts
     })
@@ -65,24 +58,24 @@ defmodule Adyen.BalancePlatform.SCAAssociationManagement do
 
   """
   @spec get_sca_associations(opts :: keyword) ::
-          {:ok, ListAssociationsResponse.t()}
-          | {:error, DefaultErrorResponseEntity.t()}
+          {:ok, Adyen.BalancePlatform.ListAssociationsResponse.t()}
+          | {:error, Adyen.BalancePlatform.DefaultErrorResponseEntity.t()}
   def get_sca_associations(opts \\ []) do
     client = opts[:client] || @default_client
     query = Keyword.take(opts, [:entityId, :entityType, :pageNumber, :pageSize])
 
     client.request(%{
       args: [],
-      call: {SCAAssociationManagement, :get_sca_associations},
+      call: {Adyen.BalancePlatform.SCAAssociationManagement, :get_sca_associations},
       url: "/scaAssociations",
       method: :get,
       query: query,
       response: [
-        {200, {ListAssociationsResponse, :t}},
-        {400, {DefaultErrorResponseEntity, :t}},
-        {401, {DefaultErrorResponseEntity, :t}},
-        {403, {DefaultErrorResponseEntity, :t}},
-        {500, {DefaultErrorResponseEntity, :t}}
+        {200, {Adyen.BalancePlatform.ListAssociationsResponse, :t}},
+        {400, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {401, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {403, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {500, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}}
       ],
       opts: opts
     })
@@ -97,27 +90,27 @@ defmodule Adyen.BalancePlatform.SCAAssociationManagement do
 
   **Content Types**: `application/json`
   """
-  @spec update_sca_associations(
-          body :: ApproveAssociationRequest.t(),
+  @spec patch_sca_associations(
+          body :: Adyen.BalancePlatform.ApproveAssociationRequest.t(),
           opts :: keyword
         ) ::
-          {:ok, ApproveAssociationResponse.t()}
-          | {:error, DefaultErrorResponseEntity.t()}
-  def update_sca_associations(body, opts \\ []) do
+          {:ok, Adyen.BalancePlatform.ApproveAssociationResponse.t()}
+          | {:error, Adyen.BalancePlatform.DefaultErrorResponseEntity.t()}
+  def patch_sca_associations(body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [body: body],
-      call: {SCAAssociationManagement, :update_sca_associations},
+      call: {Adyen.BalancePlatform.SCAAssociationManagement, :patch_sca_associations},
       url: "/scaAssociations",
       body: body,
       method: :patch,
-      request: [{"application/json", {ApproveAssociationRequest, :t}}],
+      request: [{"application/json", {Adyen.BalancePlatform.ApproveAssociationRequest, :t}}],
       response: [
-        {200, {ApproveAssociationResponse, :t}},
-        {401, {DefaultErrorResponseEntity, :t}},
-        {403, {DefaultErrorResponseEntity, :t}},
-        {500, {DefaultErrorResponseEntity, :t}}
+        {200, {Adyen.BalancePlatform.ApproveAssociationResponse, :t}},
+        {401, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {403, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}},
+        {500, {Adyen.BalancePlatform.DefaultErrorResponseEntity, :t}}
       ],
       opts: opts
     })

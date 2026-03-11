@@ -3,12 +3,10 @@ defmodule Adyen.Checkout.AuthenticationData do
   Provides struct and type for a AuthenticationData
   """
 
-  alias Adyen.Checkout.ThreeDSRequestData
-
   @type t :: %__MODULE__{
           attemptAuthentication: String.t() | nil,
           authenticationOnly: boolean | nil,
-          threeDSRequestData: ThreeDSRequestData.t() | nil
+          threeDSRequestData: Adyen.Checkout.ThreeDSRequestData.t() | nil
         }
 
   defstruct [:attemptAuthentication, :authenticationOnly, :threeDSRequestData]
@@ -21,7 +19,7 @@ defmodule Adyen.Checkout.AuthenticationData do
     [
       attemptAuthentication: {:enum, ["always", "never"]},
       authenticationOnly: :boolean,
-      threeDSRequestData: {ThreeDSRequestData, :t}
+      threeDSRequestData: {Adyen.Checkout.ThreeDSRequestData, :t}
     ]
   end
 end

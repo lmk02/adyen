@@ -3,10 +3,8 @@ defmodule Adyen.Transfers.AmountAdjustment do
   Provides struct and type for a AmountAdjustment
   """
 
-  alias Adyen.Transfers.Amount
-
   @type t :: %__MODULE__{
-          amount: Amount.t() | nil,
+          amount: Adyen.Transfers.Amount.t() | nil,
           amountAdjustmentType: String.t() | nil,
           basepoints: integer | nil
         }
@@ -19,7 +17,7 @@ defmodule Adyen.Transfers.AmountAdjustment do
 
   def __fields__(:t) do
     [
-      amount: {Amount, :t},
+      amount: {Adyen.Transfers.Amount, :t},
       amountAdjustmentType: {:enum, ["atmMarkup", "authHoldReserve", "exchange", "forexMarkup"]},
       basepoints: {:integer, "int32"}
     ]

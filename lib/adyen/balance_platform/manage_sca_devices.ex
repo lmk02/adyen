@@ -3,17 +3,6 @@ defmodule Adyen.BalancePlatform.ManageSCADevices do
   Provides API endpoints related to manage sca devices
   """
 
-  alias Adyen.BalancePlatform.AssociationFinaliseRequest
-  alias Adyen.BalancePlatform.AssociationFinaliseResponse
-  alias Adyen.BalancePlatform.AssociationInitiateRequest
-  alias Adyen.BalancePlatform.AssociationInitiateResponse
-  alias Adyen.BalancePlatform.ManageSCADevices
-  alias Adyen.BalancePlatform.RegisterSCAFinalResponse
-  alias Adyen.BalancePlatform.RegisterSCARequest
-  alias Adyen.BalancePlatform.RegisterSCAResponse
-  alias Adyen.BalancePlatform.RestServiceError
-  alias Adyen.BalancePlatform.SearchRegisteredDevicesResponse
-
   @default_client Adyen.Client
 
   @doc """
@@ -26,25 +15,25 @@ defmodule Adyen.BalancePlatform.ManageSCADevices do
     * `paymentInstrumentId`: The unique identifier of the payment instrument linked to the SCA device.
 
   """
-  @spec delete_registered_device(id :: String.t(), opts :: keyword) ::
-          :ok | {:error, RestServiceError.t()}
-  def delete_registered_device(id, opts \\ []) do
+  @spec delete_registered_devices_id(id :: String.t(), opts :: keyword) ::
+          :ok | {:error, Adyen.BalancePlatform.RestServiceError.t()}
+  def delete_registered_devices_id(id, opts \\ []) do
     client = opts[:client] || @default_client
     query = Keyword.take(opts, [:paymentInstrumentId])
 
     client.request(%{
       args: [id: id],
-      call: {ManageSCADevices, :delete_registered_device},
+      call: {Adyen.BalancePlatform.ManageSCADevices, :delete_registered_devices_id},
       url: "/registeredDevices/#{id}",
       method: :delete,
       query: query,
       response: [
         {204, :null},
-        {400, {RestServiceError, :t}},
-        {401, {RestServiceError, :t}},
-        {403, {RestServiceError, :t}},
-        {422, {RestServiceError, :t}},
-        {500, {RestServiceError, :t}}
+        {400, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {401, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.RestServiceError, :t}}
       ],
       opts: opts
     })
@@ -67,25 +56,25 @@ defmodule Adyen.BalancePlatform.ManageSCADevices do
 
   """
   @spec get_registered_devices(opts :: keyword) ::
-          {:ok, SearchRegisteredDevicesResponse.t()}
-          | {:error, RestServiceError.t()}
+          {:ok, Adyen.BalancePlatform.SearchRegisteredDevicesResponse.t()}
+          | {:error, Adyen.BalancePlatform.RestServiceError.t()}
   def get_registered_devices(opts \\ []) do
     client = opts[:client] || @default_client
     query = Keyword.take(opts, [:pageNumber, :pageSize, :paymentInstrumentId])
 
     client.request(%{
       args: [],
-      call: {ManageSCADevices, :get_registered_devices},
+      call: {Adyen.BalancePlatform.ManageSCADevices, :get_registered_devices},
       url: "/registeredDevices",
       method: :get,
       query: query,
       response: [
-        {200, {SearchRegisteredDevicesResponse, :t}},
-        {400, {RestServiceError, :t}},
-        {401, {RestServiceError, :t}},
-        {403, {RestServiceError, :t}},
-        {422, {RestServiceError, :t}},
-        {500, {RestServiceError, :t}}
+        {200, {Adyen.BalancePlatform.SearchRegisteredDevicesResponse, :t}},
+        {400, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {401, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.RestServiceError, :t}}
       ],
       opts: opts
     })
@@ -102,30 +91,31 @@ defmodule Adyen.BalancePlatform.ManageSCADevices do
 
   **Content Types**: `application/json`
   """
-  @spec update_registered_device_id_associations(
+  @spec patch_registered_devices_device_id_associations(
           deviceId :: String.t(),
-          body :: AssociationFinaliseRequest.t(),
+          body :: Adyen.BalancePlatform.AssociationFinaliseRequest.t(),
           opts :: keyword
         ) ::
-          {:ok, AssociationFinaliseResponse.t()}
-          | {:error, RestServiceError.t()}
-  def update_registered_device_id_associations(deviceId, body, opts \\ []) do
+          {:ok, Adyen.BalancePlatform.AssociationFinaliseResponse.t()}
+          | {:error, Adyen.BalancePlatform.RestServiceError.t()}
+  def patch_registered_devices_device_id_associations(deviceId, body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [deviceId: deviceId, body: body],
-      call: {ManageSCADevices, :update_registered_device_id_associations},
+      call:
+        {Adyen.BalancePlatform.ManageSCADevices, :patch_registered_devices_device_id_associations},
       url: "/registeredDevices/#{deviceId}/associations",
       body: body,
       method: :patch,
-      request: [{"application/json", {AssociationFinaliseRequest, :t}}],
+      request: [{"application/json", {Adyen.BalancePlatform.AssociationFinaliseRequest, :t}}],
       response: [
-        {200, {AssociationFinaliseResponse, :t}},
-        {400, {RestServiceError, :t}},
-        {401, {RestServiceError, :t}},
-        {403, {RestServiceError, :t}},
-        {422, {RestServiceError, :t}},
-        {500, {RestServiceError, :t}}
+        {200, {Adyen.BalancePlatform.AssociationFinaliseResponse, :t}},
+        {400, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {401, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.RestServiceError, :t}}
       ],
       opts: opts
     })
@@ -141,30 +131,30 @@ defmodule Adyen.BalancePlatform.ManageSCADevices do
 
   **Content Types**: `application/json`
   """
-  @spec update_registered_device(
+  @spec patch_registered_devices_id(
           id :: String.t(),
-          body :: RegisterSCARequest.t(),
+          body :: Adyen.BalancePlatform.RegisterSCARequest.t(),
           opts :: keyword
         ) ::
-          {:ok, RegisterSCAFinalResponse.t()}
-          | {:error, RestServiceError.t()}
-  def update_registered_device(id, body, opts \\ []) do
+          {:ok, Adyen.BalancePlatform.RegisterSCAFinalResponse.t()}
+          | {:error, Adyen.BalancePlatform.RestServiceError.t()}
+  def patch_registered_devices_id(id, body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [id: id, body: body],
-      call: {ManageSCADevices, :update_registered_device},
+      call: {Adyen.BalancePlatform.ManageSCADevices, :patch_registered_devices_id},
       url: "/registeredDevices/#{id}",
       body: body,
       method: :patch,
-      request: [{"application/json", {RegisterSCARequest, :t}}],
+      request: [{"application/json", {Adyen.BalancePlatform.RegisterSCARequest, :t}}],
       response: [
-        {200, {RegisterSCAFinalResponse, :t}},
-        {400, {RestServiceError, :t}},
-        {401, {RestServiceError, :t}},
-        {403, {RestServiceError, :t}},
-        {422, {RestServiceError, :t}},
-        {500, {RestServiceError, :t}}
+        {200, {Adyen.BalancePlatform.RegisterSCAFinalResponse, :t}},
+        {400, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {401, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.RestServiceError, :t}}
       ],
       opts: opts
     })
@@ -181,29 +171,29 @@ defmodule Adyen.BalancePlatform.ManageSCADevices do
 
   **Content Types**: `application/json`
   """
-  @spec create_registered_devices(
-          body :: RegisterSCARequest.t(),
+  @spec post_registered_devices(
+          body :: Adyen.BalancePlatform.RegisterSCARequest.t(),
           opts :: keyword
         ) ::
-          {:ok, RegisterSCAResponse.t()}
-          | {:error, RestServiceError.t()}
-  def create_registered_devices(body, opts \\ []) do
+          {:ok, Adyen.BalancePlatform.RegisterSCAResponse.t()}
+          | {:error, Adyen.BalancePlatform.RestServiceError.t()}
+  def post_registered_devices(body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [body: body],
-      call: {ManageSCADevices, :create_registered_devices},
+      call: {Adyen.BalancePlatform.ManageSCADevices, :post_registered_devices},
       url: "/registeredDevices",
       body: body,
       method: :post,
-      request: [{"application/json", {RegisterSCARequest, :t}}],
+      request: [{"application/json", {Adyen.BalancePlatform.RegisterSCARequest, :t}}],
       response: [
-        {200, {RegisterSCAResponse, :t}},
-        {400, {RestServiceError, :t}},
-        {401, {RestServiceError, :t}},
-        {403, {RestServiceError, :t}},
-        {422, {RestServiceError, :t}},
-        {500, {RestServiceError, :t}}
+        {200, {Adyen.BalancePlatform.RegisterSCAResponse, :t}},
+        {400, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {401, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.RestServiceError, :t}}
       ],
       opts: opts
     })
@@ -218,30 +208,31 @@ defmodule Adyen.BalancePlatform.ManageSCADevices do
 
   **Content Types**: `application/json`
   """
-  @spec create_registered_device_id_associations(
+  @spec post_registered_devices_device_id_associations(
           deviceId :: String.t(),
-          body :: AssociationInitiateRequest.t(),
+          body :: Adyen.BalancePlatform.AssociationInitiateRequest.t(),
           opts :: keyword
         ) ::
-          {:ok, AssociationInitiateResponse.t()}
-          | {:error, RestServiceError.t()}
-  def create_registered_device_id_associations(deviceId, body, opts \\ []) do
+          {:ok, Adyen.BalancePlatform.AssociationInitiateResponse.t()}
+          | {:error, Adyen.BalancePlatform.RestServiceError.t()}
+  def post_registered_devices_device_id_associations(deviceId, body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [deviceId: deviceId, body: body],
-      call: {ManageSCADevices, :create_registered_device_id_associations},
+      call:
+        {Adyen.BalancePlatform.ManageSCADevices, :post_registered_devices_device_id_associations},
       url: "/registeredDevices/#{deviceId}/associations",
       body: body,
       method: :post,
-      request: [{"application/json", {AssociationInitiateRequest, :t}}],
+      request: [{"application/json", {Adyen.BalancePlatform.AssociationInitiateRequest, :t}}],
       response: [
-        {200, {AssociationInitiateResponse, :t}},
-        {400, {RestServiceError, :t}},
-        {401, {RestServiceError, :t}},
-        {403, {RestServiceError, :t}},
-        {422, {RestServiceError, :t}},
-        {500, {RestServiceError, :t}}
+        {200, {Adyen.BalancePlatform.AssociationInitiateResponse, :t}},
+        {400, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {401, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.RestServiceError, :t}}
       ],
       opts: opts
     })

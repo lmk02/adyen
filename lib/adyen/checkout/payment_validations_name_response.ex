@@ -3,12 +3,9 @@ defmodule Adyen.Checkout.PaymentValidationsNameResponse do
   Provides struct and type for a PaymentValidationsNameResponse
   """
 
-  alias Adyen.Checkout.PaymentValidationsNameResultRawResponse
-  alias Adyen.Checkout.PaymentValidationsNameResultResponse
-
   @type t :: %__MODULE__{
-          rawResponse: PaymentValidationsNameResultRawResponse.t() | nil,
-          result: PaymentValidationsNameResultResponse.t() | nil,
+          rawResponse: Adyen.Checkout.PaymentValidationsNameResultRawResponse.t() | nil,
+          result: Adyen.Checkout.PaymentValidationsNameResultResponse.t() | nil,
           status: String.t() | nil
         }
 
@@ -20,8 +17,8 @@ defmodule Adyen.Checkout.PaymentValidationsNameResponse do
 
   def __fields__(:t) do
     [
-      rawResponse: {PaymentValidationsNameResultRawResponse, :t},
-      result: {PaymentValidationsNameResultResponse, :t},
+      rawResponse: {Adyen.Checkout.PaymentValidationsNameResultRawResponse, :t},
+      result: {Adyen.Checkout.PaymentValidationsNameResultResponse, :t},
       status: {:enum, ["notPerformed", "notSupported", "performed"]}
     ]
   end

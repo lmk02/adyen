@@ -3,56 +3,38 @@ defmodule Adyen.Checkout.DonationPaymentRequest do
   Provides struct and type for a DonationPaymentRequest
   """
 
-  alias Adyen.Checkout.AccountInfo
-  alias Adyen.Checkout.Amount
-  alias Adyen.Checkout.ApplePayDonations
-  alias Adyen.Checkout.ApplicationInfo
-  alias Adyen.Checkout.AuthenticationData
-  alias Adyen.Checkout.BillingAddress
-  alias Adyen.Checkout.BrowserInfo
-  alias Adyen.Checkout.CardDonations
-  alias Adyen.Checkout.DeliveryAddress
-  alias Adyen.Checkout.GooglePayDonations
-  alias Adyen.Checkout.IdealDonations
-  alias Adyen.Checkout.LineItem
-  alias Adyen.Checkout.MerchantRiskIndicator
-  alias Adyen.Checkout.PayWithGoogleDonations
-  alias Adyen.Checkout.ShopperName
-  alias Adyen.Checkout.ThreeDs2RequestFields
-  alias Adyen.Checkout.ThreeDSecureData
-
   @type t :: %__MODULE__{
-          accountInfo: AccountInfo.t() | nil,
+          accountInfo: Adyen.Checkout.AccountInfo.t() | nil,
           additionalData: map | nil,
-          amount: Amount.t(),
-          applicationInfo: ApplicationInfo.t() | nil,
-          authenticationData: AuthenticationData.t() | nil,
-          billingAddress: BillingAddress.t() | nil,
-          browserInfo: BrowserInfo.t() | nil,
+          amount: Adyen.Checkout.Amount.t(),
+          applicationInfo: Adyen.Checkout.ApplicationInfo.t() | nil,
+          authenticationData: Adyen.Checkout.AuthenticationData.t() | nil,
+          billingAddress: Adyen.Checkout.BillingAddress.t() | nil,
+          browserInfo: Adyen.Checkout.BrowserInfo.t() | nil,
           channel: String.t() | nil,
           checkoutAttemptId: String.t() | nil,
           conversionId: String.t() | nil,
           countryCode: String.t() | nil,
           dateOfBirth: DateTime.t() | nil,
           deliverAt: DateTime.t() | nil,
-          deliveryAddress: DeliveryAddress.t() | nil,
+          deliveryAddress: Adyen.Checkout.DeliveryAddress.t() | nil,
           deviceFingerprint: String.t() | nil,
           donationAccount: String.t() | nil,
           donationCampaignId: String.t() | nil,
           donationOriginalPspReference: String.t() | nil,
           donationToken: String.t() | nil,
-          lineItems: [LineItem.t()] | nil,
+          lineItems: [Adyen.Checkout.LineItem.t()] | nil,
           merchantAccount: String.t(),
-          merchantRiskIndicator: MerchantRiskIndicator.t() | nil,
+          merchantRiskIndicator: Adyen.Checkout.MerchantRiskIndicator.t() | nil,
           metadata: map | nil,
-          mpiData: ThreeDSecureData.t() | nil,
+          mpiData: Adyen.Checkout.ThreeDSecureData.t() | nil,
           origin: String.t() | nil,
           paymentMethod:
-            ApplePayDonations.t()
-            | CardDonations.t()
-            | GooglePayDonations.t()
-            | IdealDonations.t()
-            | PayWithGoogleDonations.t()
+            Adyen.Checkout.ApplePayDonations.t()
+            | Adyen.Checkout.CardDonations.t()
+            | Adyen.Checkout.GooglePayDonations.t()
+            | Adyen.Checkout.IdealDonations.t()
+            | Adyen.Checkout.PayWithGoogleDonations.t()
             | nil,
           recurringProcessingModel: String.t() | nil,
           redirectFromIssuerMethod: String.t() | nil,
@@ -64,11 +46,11 @@ defmodule Adyen.Checkout.DonationPaymentRequest do
           shopperIP: String.t() | nil,
           shopperInteraction: String.t() | nil,
           shopperLocale: String.t() | nil,
-          shopperName: ShopperName.t() | nil,
+          shopperName: Adyen.Checkout.ShopperName.t() | nil,
           shopperReference: String.t() | nil,
           socialSecurityNumber: String.t() | nil,
           telephoneNumber: String.t() | nil,
-          threeDS2RequestData: ThreeDs2RequestFields.t() | nil,
+          threeDS2RequestData: Adyen.Checkout.ThreeDs2RequestFields.t() | nil,
           threeDSAuthenticationOnly: boolean | nil
         }
 
@@ -123,39 +105,39 @@ defmodule Adyen.Checkout.DonationPaymentRequest do
 
   def __fields__(:t) do
     [
-      accountInfo: {AccountInfo, :t},
+      accountInfo: {Adyen.Checkout.AccountInfo, :t},
       additionalData: :map,
-      amount: {Amount, :t},
-      applicationInfo: {ApplicationInfo, :t},
-      authenticationData: {AuthenticationData, :t},
-      billingAddress: {BillingAddress, :t},
-      browserInfo: {BrowserInfo, :t},
+      amount: {Adyen.Checkout.Amount, :t},
+      applicationInfo: {Adyen.Checkout.ApplicationInfo, :t},
+      authenticationData: {Adyen.Checkout.AuthenticationData, :t},
+      billingAddress: {Adyen.Checkout.BillingAddress, :t},
+      browserInfo: {Adyen.Checkout.BrowserInfo, :t},
       channel: {:enum, ["iOS", "Android", "Web"]},
       checkoutAttemptId: :string,
       conversionId: :string,
       countryCode: :string,
       dateOfBirth: {:string, "date-time"},
       deliverAt: {:string, "date-time"},
-      deliveryAddress: {DeliveryAddress, :t},
+      deliveryAddress: {Adyen.Checkout.DeliveryAddress, :t},
       deviceFingerprint: :string,
       donationAccount: :string,
       donationCampaignId: :string,
       donationOriginalPspReference: :string,
       donationToken: :string,
-      lineItems: [{LineItem, :t}],
+      lineItems: [{Adyen.Checkout.LineItem, :t}],
       merchantAccount: :string,
-      merchantRiskIndicator: {MerchantRiskIndicator, :t},
+      merchantRiskIndicator: {Adyen.Checkout.MerchantRiskIndicator, :t},
       metadata: :map,
-      mpiData: {ThreeDSecureData, :t},
+      mpiData: {Adyen.Checkout.ThreeDSecureData, :t},
       origin: :string,
       paymentMethod:
         {:union,
          [
-           {ApplePayDonations, :t},
-           {CardDonations, :t},
-           {GooglePayDonations, :t},
-           {IdealDonations, :t},
-           {PayWithGoogleDonations, :t}
+           {Adyen.Checkout.ApplePayDonations, :t},
+           {Adyen.Checkout.CardDonations, :t},
+           {Adyen.Checkout.GooglePayDonations, :t},
+           {Adyen.Checkout.IdealDonations, :t},
+           {Adyen.Checkout.PayWithGoogleDonations, :t}
          ]},
       recurringProcessingModel: {:enum, ["CardOnFile", "Subscription", "UnscheduledCardOnFile"]},
       redirectFromIssuerMethod: :string,
@@ -167,11 +149,11 @@ defmodule Adyen.Checkout.DonationPaymentRequest do
       shopperIP: :string,
       shopperInteraction: {:enum, ["Ecommerce", "ContAuth", "Moto", "POS"]},
       shopperLocale: :string,
-      shopperName: {ShopperName, :t},
+      shopperName: {Adyen.Checkout.ShopperName, :t},
       shopperReference: :string,
       socialSecurityNumber: :string,
       telephoneNumber: :string,
-      threeDS2RequestData: {ThreeDs2RequestFields, :t},
+      threeDS2RequestData: {Adyen.Checkout.ThreeDs2RequestFields, :t},
       threeDSAuthenticationOnly: :boolean
     ]
   end

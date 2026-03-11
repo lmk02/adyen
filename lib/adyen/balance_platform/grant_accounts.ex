@@ -3,9 +3,6 @@ defmodule Adyen.BalancePlatform.GrantAccounts do
   Provides API endpoint related to grant accounts
   """
 
-  alias Adyen.BalancePlatform.CapitalGrantAccount
-  alias Adyen.BalancePlatform.RestServiceError
-
   @default_client Adyen.Client
 
   @doc """
@@ -13,24 +10,24 @@ defmodule Adyen.BalancePlatform.GrantAccounts do
 
   Returns the details of the [grant account](https://docs.adyen.com/platforms/capital#grant-account).
   """
-  @spec get_grant_account(id :: String.t(), opts :: keyword) ::
-          {:ok, CapitalGrantAccount.t()}
-          | {:error, RestServiceError.t()}
-  def get_grant_account(id, opts \\ []) do
+  @spec get_grant_accounts_id(id :: String.t(), opts :: keyword) ::
+          {:ok, Adyen.BalancePlatform.CapitalGrantAccount.t()}
+          | {:error, Adyen.BalancePlatform.RestServiceError.t()}
+  def get_grant_accounts_id(id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [id: id],
-      call: {Adyen.BalancePlatform.GrantAccounts, :get_grant_account},
+      call: {Adyen.BalancePlatform.GrantAccounts, :get_grant_accounts_id},
       url: "/grantAccounts/#{id}",
       method: :get,
       response: [
-        {200, {CapitalGrantAccount, :t}},
-        {400, {RestServiceError, :t}},
-        {401, {RestServiceError, :t}},
-        {403, {RestServiceError, :t}},
-        {422, {RestServiceError, :t}},
-        {500, {RestServiceError, :t}}
+        {200, {Adyen.BalancePlatform.CapitalGrantAccount, :t}},
+        {400, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {401, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.RestServiceError, :t}}
       ],
       opts: opts
     })

@@ -3,13 +3,11 @@ defmodule Adyen.BalancePlatform.WebhookSetting do
   Provides struct and type for a WebhookSetting
   """
 
-  alias Adyen.BalancePlatform.Target
-
   @type t :: %__MODULE__{
           currency: String.t(),
           id: String.t(),
           status: String.t(),
-          target: Target.t(),
+          target: Adyen.BalancePlatform.Target.t(),
           type: String.t()
         }
 
@@ -24,7 +22,7 @@ defmodule Adyen.BalancePlatform.WebhookSetting do
       currency: :string,
       id: :string,
       status: :string,
-      target: {Target, :t},
+      target: {Adyen.BalancePlatform.Target, :t},
       type: {:const, "balance"}
     ]
   end

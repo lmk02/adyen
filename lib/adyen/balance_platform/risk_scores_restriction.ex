@@ -3,9 +3,7 @@ defmodule Adyen.BalancePlatform.RiskScoresRestriction do
   Provides struct and type for a RiskScoresRestriction
   """
 
-  alias Adyen.BalancePlatform.RiskScores
-
-  @type t :: %__MODULE__{operation: String.t(), value: RiskScores.t() | nil}
+  @type t :: %__MODULE__{operation: String.t(), value: Adyen.BalancePlatform.RiskScores.t() | nil}
 
   defstruct [:operation, :value]
 
@@ -14,6 +12,6 @@ defmodule Adyen.BalancePlatform.RiskScoresRestriction do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [operation: :string, value: {RiskScores, :t}]
+    [operation: :string, value: {Adyen.BalancePlatform.RiskScores, :t}]
   end
 end

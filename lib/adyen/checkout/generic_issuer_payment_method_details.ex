@@ -32,7 +32,9 @@ defmodule Adyen.Checkout.GenericIssuerPaymentMethodDetails do
       recurringDetailReference: :string,
       sdkData: :string,
       storedPaymentMethodId: :string,
-      type: {:enum, ["onlineBanking_PL", "eps", "onlineBanking_SK", "onlineBanking_CZ", "onlinebanking_IN"]}
+      type:
+        {:enum,
+         ["onlineBanking_PL", "eps", "onlineBanking_SK", "onlineBanking_CZ", "onlinebanking_IN"]}
     ]
   end
 end

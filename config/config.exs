@@ -10,38 +10,6 @@ config :adyen,
   # Environment: :test or :live
   environment: :test
 
-# oapi_generator configuration profiles
-# Each profile generates into a separate namespace
-
-# Balance Platform API profile
-# Run: mix api.gen adyen_balance_platform priv/specs/BalancePlatformService-v2.json
-config :oapi_generator,
-  adyen_balance_platform: [
-    output: [
-      base_module: Adyen.BalancePlatform,
-      location: "lib/adyen/balance_platform",
-      default_client: Adyen.Client
-    ]
-  ]
-
-# Checkout API profile
-# Run: mix api.gen adyen_checkout priv/specs/CheckoutService-v71.json
-config :oapi_generator,
-  adyen_checkout: [
-    output: [
-      base_module: Adyen.Checkout,
-      location: "lib/adyen/checkout",
-      default_client: Adyen.Client
-    ]
-  ]
-
-# Transfers API profile
-# Run: mix api.gen adyen_transfers priv/specs/TransferService-v4.json
-config :oapi_generator,
-  adyen_transfers: [
-    output: [
-      base_module: Adyen.Transfers,
-      location: "lib/adyen/transfers",
-      default_client: Adyen.Client
-    ]
-  ]
+if File.exists?("config/oapi_generator_profiles.exs") do
+  import_config "oapi_generator_profiles.exs"
+end

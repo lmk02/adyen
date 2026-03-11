@@ -3,12 +3,9 @@ defmodule Adyen.Transfers.FindTransfersResponse do
   Provides struct and type for a FindTransfersResponse
   """
 
-  alias Adyen.Transfers.Links
-  alias Adyen.Transfers.TransferData
-
   @type t :: %__MODULE__{
-          _links: Links.t() | nil,
-          data: [TransferData.t()] | nil
+          _links: Adyen.Transfers.Links.t() | nil,
+          data: [Adyen.Transfers.TransferData.t()] | nil
         }
 
   defstruct [:_links, :data]
@@ -18,6 +15,6 @@ defmodule Adyen.Transfers.FindTransfersResponse do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [_links: {Links, :t}, data: [{TransferData, :t}]]
+    [_links: {Adyen.Transfers.Links, :t}, data: [{Adyen.Transfers.TransferData, :t}]]
   end
 end

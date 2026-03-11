@@ -3,15 +3,11 @@ defmodule Adyen.Transfers.TransferNotificationCounterParty do
   Provides struct and type for a TransferNotificationCounterParty
   """
 
-  alias Adyen.Transfers.BankAccountV3
-  alias Adyen.Transfers.Card
-  alias Adyen.Transfers.TransferNotificationMerchantData
-
   @type t :: %__MODULE__{
           balanceAccountId: String.t() | nil,
-          bankAccount: BankAccountV3.t() | nil,
-          card: Card.t() | nil,
-          merchant: TransferNotificationMerchantData.t() | nil,
+          bankAccount: Adyen.Transfers.BankAccountV3.t() | nil,
+          card: Adyen.Transfers.Card.t() | nil,
+          merchant: Adyen.Transfers.TransferNotificationMerchantData.t() | nil,
           transferInstrumentId: String.t() | nil
         }
 
@@ -24,9 +20,9 @@ defmodule Adyen.Transfers.TransferNotificationCounterParty do
   def __fields__(:t) do
     [
       balanceAccountId: :string,
-      bankAccount: {BankAccountV3, :t},
-      card: {Card, :t},
-      merchant: {TransferNotificationMerchantData, :t},
+      bankAccount: {Adyen.Transfers.BankAccountV3, :t},
+      card: {Adyen.Transfers.Card, :t},
+      merchant: {Adyen.Transfers.TransferNotificationMerchantData, :t},
       transferInstrumentId: :string
     ]
   end

@@ -3,9 +3,7 @@ defmodule Adyen.Checkout.PaymentValidationsResponse do
   Provides struct and type for a PaymentValidationsResponse
   """
 
-  alias Adyen.Checkout.PaymentValidationsNameResponse
-
-  @type t :: %__MODULE__{name: PaymentValidationsNameResponse.t() | nil}
+  @type t :: %__MODULE__{name: Adyen.Checkout.PaymentValidationsNameResponse.t() | nil}
 
   defstruct [:name]
 
@@ -14,6 +12,6 @@ defmodule Adyen.Checkout.PaymentValidationsResponse do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [name: {PaymentValidationsNameResponse, :t}]
+    [name: {Adyen.Checkout.PaymentValidationsNameResponse, :t}]
   end
 end

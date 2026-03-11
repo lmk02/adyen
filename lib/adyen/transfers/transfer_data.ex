@@ -3,62 +3,43 @@ defmodule Adyen.Transfers.TransferData do
   Provides struct and type for a TransferData
   """
 
-  alias Adyen.Transfers.Amount
-  alias Adyen.Transfers.BalanceMutation
-  alias Adyen.Transfers.BankCategoryData
-  alias Adyen.Transfers.ConfirmationTrackingData
-  alias Adyen.Transfers.DirectDebitInformation
-  alias Adyen.Transfers.EstimationTrackingData
-  alias Adyen.Transfers.ExecutionDate
-  alias Adyen.Transfers.ExternalReason
-  alias Adyen.Transfers.InternalCategoryData
-  alias Adyen.Transfers.InternalReviewTrackingData
-  alias Adyen.Transfers.IssuedCard
-  alias Adyen.Transfers.PaymentInstrument
-  alias Adyen.Transfers.PlatformPayment
-  alias Adyen.Transfers.ResourceReference
-  alias Adyen.Transfers.TransactionRulesResult
-  alias Adyen.Transfers.TransferEvent
-  alias Adyen.Transfers.TransferNotificationCounterParty
-  alias Adyen.Transfers.TransferReview
-
   @type t :: %__MODULE__{
-          accountHolder: ResourceReference.t() | nil,
-          amount: Amount.t(),
-          balanceAccount: ResourceReference.t() | nil,
+          accountHolder: Adyen.Transfers.ResourceReference.t() | nil,
+          amount: Adyen.Transfers.Amount.t(),
+          balanceAccount: Adyen.Transfers.ResourceReference.t() | nil,
           balancePlatform: String.t() | nil,
-          balances: [BalanceMutation.t()] | nil,
+          balances: [Adyen.Transfers.BalanceMutation.t()] | nil,
           category: String.t(),
           categoryData:
-            BankCategoryData.t()
-            | InternalCategoryData.t()
-            | IssuedCard.t()
-            | PlatformPayment.t()
+            Adyen.Transfers.BankCategoryData.t()
+            | Adyen.Transfers.InternalCategoryData.t()
+            | Adyen.Transfers.IssuedCard.t()
+            | Adyen.Transfers.PlatformPayment.t()
             | nil,
-          counterparty: TransferNotificationCounterParty.t() | nil,
+          counterparty: Adyen.Transfers.TransferNotificationCounterParty.t() | nil,
           createdAt: DateTime.t() | nil,
           creationDate: DateTime.t() | nil,
           description: String.t() | nil,
-          directDebitInformation: DirectDebitInformation.t() | nil,
+          directDebitInformation: Adyen.Transfers.DirectDebitInformation.t() | nil,
           direction: String.t() | nil,
           eventId: String.t() | nil,
-          events: [TransferEvent.t()] | nil,
-          executionDate: ExecutionDate.t() | nil,
-          externalReason: ExternalReason.t() | nil,
+          events: [Adyen.Transfers.TransferEvent.t()] | nil,
+          executionDate: Adyen.Transfers.ExecutionDate.t() | nil,
+          externalReason: Adyen.Transfers.ExternalReason.t() | nil,
           id: String.t() | nil,
-          paymentInstrument: PaymentInstrument.t() | nil,
+          paymentInstrument: Adyen.Transfers.PaymentInstrument.t() | nil,
           reason: String.t() | nil,
           reference: String.t() | nil,
           referenceForBeneficiary: String.t() | nil,
-          review: TransferReview.t() | nil,
+          review: Adyen.Transfers.TransferReview.t() | nil,
           sequenceNumber: integer | nil,
           status: String.t(),
           tracking:
-            ConfirmationTrackingData.t()
-            | EstimationTrackingData.t()
-            | InternalReviewTrackingData.t()
+            Adyen.Transfers.ConfirmationTrackingData.t()
+            | Adyen.Transfers.EstimationTrackingData.t()
+            | Adyen.Transfers.InternalReviewTrackingData.t()
             | nil,
-          transactionRulesResult: TransactionRulesResult.t() | nil,
+          transactionRulesResult: Adyen.Transfers.TransactionRulesResult.t() | nil,
           type: String.t() | nil,
           updatedAt: DateTime.t() | nil
         }
@@ -101,32 +82,32 @@ defmodule Adyen.Transfers.TransferData do
 
   def __fields__(:t) do
     [
-      accountHolder: {ResourceReference, :t},
-      amount: {Amount, :t},
-      balanceAccount: {ResourceReference, :t},
+      accountHolder: {Adyen.Transfers.ResourceReference, :t},
+      amount: {Adyen.Transfers.Amount, :t},
+      balanceAccount: {Adyen.Transfers.ResourceReference, :t},
       balancePlatform: :string,
-      balances: [{BalanceMutation, :t}],
+      balances: [{Adyen.Transfers.BalanceMutation, :t}],
       category: {:enum, ["bank", "card", "internal", "issuedCard", "platformPayment", "topUp"]},
       categoryData:
         {:union,
          [
-           {BankCategoryData, :t},
-           {InternalCategoryData, :t},
-           {IssuedCard, :t},
-           {PlatformPayment, :t}
+           {Adyen.Transfers.BankCategoryData, :t},
+           {Adyen.Transfers.InternalCategoryData, :t},
+           {Adyen.Transfers.IssuedCard, :t},
+           {Adyen.Transfers.PlatformPayment, :t}
          ]},
-      counterparty: {TransferNotificationCounterParty, :t},
+      counterparty: {Adyen.Transfers.TransferNotificationCounterParty, :t},
       createdAt: {:string, "date-time"},
       creationDate: {:string, "date-time"},
       description: :string,
-      directDebitInformation: {DirectDebitInformation, :t},
+      directDebitInformation: {Adyen.Transfers.DirectDebitInformation, :t},
       direction: {:enum, ["incoming", "outgoing"]},
       eventId: :string,
-      events: [{TransferEvent, :t}],
-      executionDate: {ExecutionDate, :t},
-      externalReason: {ExternalReason, :t},
+      events: [{Adyen.Transfers.TransferEvent, :t}],
+      executionDate: {Adyen.Transfers.ExecutionDate, :t},
+      externalReason: {Adyen.Transfers.ExternalReason, :t},
       id: :string,
-      paymentInstrument: {PaymentInstrument, :t},
+      paymentInstrument: {Adyen.Transfers.PaymentInstrument, :t},
       reason:
         {:enum,
          [
@@ -218,7 +199,7 @@ defmodule Adyen.Transfers.TransferData do
          ]},
       reference: :string,
       referenceForBeneficiary: :string,
-      review: {TransferReview, :t},
+      review: {Adyen.Transfers.TransferReview, :t},
       sequenceNumber: {:integer, "int32"},
       status:
         {:enum,
@@ -258,6 +239,7 @@ defmodule Adyen.Transfers.TransferData do
            "failed",
            "fee",
            "feePending",
+           "interchangeAdjusted",
            "internalTransfer",
            "internalTransferPending",
            "invoiceDeduction",
@@ -294,11 +276,11 @@ defmodule Adyen.Transfers.TransferData do
       tracking:
         {:union,
          [
-           {ConfirmationTrackingData, :t},
-           {EstimationTrackingData, :t},
-           {InternalReviewTrackingData, :t}
+           {Adyen.Transfers.ConfirmationTrackingData, :t},
+           {Adyen.Transfers.EstimationTrackingData, :t},
+           {Adyen.Transfers.InternalReviewTrackingData, :t}
          ]},
-      transactionRulesResult: {TransactionRulesResult, :t},
+      transactionRulesResult: {Adyen.Transfers.TransactionRulesResult, :t},
       type:
         {:enum,
          [

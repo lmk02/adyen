@@ -3,20 +3,15 @@ defmodule Adyen.Checkout.PaymentMethod do
   Provides struct and type for a PaymentMethod
   """
 
-  alias Adyen.Checkout.InputDetail
-  alias Adyen.Checkout.PaymentMethodGroup
-  alias Adyen.Checkout.PaymentMethodIssuer
-  alias Adyen.Checkout.PaymentMethodUPIApps
-
   @type t :: %__MODULE__{
-          apps: [PaymentMethodUPIApps.t()] | nil,
+          apps: [Adyen.Checkout.PaymentMethodUPIApps.t()] | nil,
           brand: String.t() | nil,
           brands: [String.t()] | nil,
           configuration: map | nil,
           fundingSource: String.t() | nil,
-          group: PaymentMethodGroup.t() | nil,
-          inputDetails: [InputDetail.t()] | nil,
-          issuers: [PaymentMethodIssuer.t()] | nil,
+          group: Adyen.Checkout.PaymentMethodGroup.t() | nil,
+          inputDetails: [Adyen.Checkout.InputDetail.t()] | nil,
+          issuers: [Adyen.Checkout.PaymentMethodIssuer.t()] | nil,
           name: String.t() | nil,
           promoted: boolean | nil,
           type: String.t() | nil
@@ -42,14 +37,14 @@ defmodule Adyen.Checkout.PaymentMethod do
 
   def __fields__(:t) do
     [
-      apps: [{PaymentMethodUPIApps, :t}],
+      apps: [{Adyen.Checkout.PaymentMethodUPIApps, :t}],
       brand: :string,
       brands: [:string],
       configuration: :map,
       fundingSource: {:enum, ["credit", "debit", "prepaid"]},
-      group: {PaymentMethodGroup, :t},
-      inputDetails: [{InputDetail, :t}],
-      issuers: [{PaymentMethodIssuer, :t}],
+      group: {Adyen.Checkout.PaymentMethodGroup, :t},
+      inputDetails: [{Adyen.Checkout.InputDetail, :t}],
+      issuers: [{Adyen.Checkout.PaymentMethodIssuer, :t}],
       name: :string,
       promoted: :boolean,
       type: :string

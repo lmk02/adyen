@@ -3,24 +3,16 @@ defmodule Adyen.Checkout.PaymentCaptureRequest do
   Provides struct and type for a PaymentCaptureRequest
   """
 
-  alias Adyen.Checkout.Amount
-  alias Adyen.Checkout.ApplicationInfo
-  alias Adyen.Checkout.EnhancedSchemeData
-  alias Adyen.Checkout.LineItem
-  alias Adyen.Checkout.PlatformChargebackLogic
-  alias Adyen.Checkout.Split
-  alias Adyen.Checkout.SubMerchantInfo
-
   @type t :: %__MODULE__{
-          amount: Amount.t(),
-          applicationInfo: ApplicationInfo.t() | nil,
-          enhancedSchemeData: EnhancedSchemeData.t() | nil,
-          lineItems: [LineItem.t()] | nil,
+          amount: Adyen.Checkout.Amount.t(),
+          applicationInfo: Adyen.Checkout.ApplicationInfo.t() | nil,
+          enhancedSchemeData: Adyen.Checkout.EnhancedSchemeData.t() | nil,
+          lineItems: [Adyen.Checkout.LineItem.t()] | nil,
           merchantAccount: String.t(),
-          platformChargebackLogic: PlatformChargebackLogic.t() | nil,
+          platformChargebackLogic: Adyen.Checkout.PlatformChargebackLogic.t() | nil,
           reference: String.t() | nil,
-          splits: [Split.t()] | nil,
-          subMerchants: [SubMerchantInfo.t()] | nil
+          splits: [Adyen.Checkout.Split.t()] | nil,
+          subMerchants: [Adyen.Checkout.SubMerchantInfo.t()] | nil
         }
 
   defstruct [
@@ -41,15 +33,15 @@ defmodule Adyen.Checkout.PaymentCaptureRequest do
 
   def __fields__(:t) do
     [
-      amount: {Amount, :t},
-      applicationInfo: {ApplicationInfo, :t},
-      enhancedSchemeData: {EnhancedSchemeData, :t},
-      lineItems: [{LineItem, :t}],
+      amount: {Adyen.Checkout.Amount, :t},
+      applicationInfo: {Adyen.Checkout.ApplicationInfo, :t},
+      enhancedSchemeData: {Adyen.Checkout.EnhancedSchemeData, :t},
+      lineItems: [{Adyen.Checkout.LineItem, :t}],
       merchantAccount: :string,
-      platformChargebackLogic: {PlatformChargebackLogic, :t},
+      platformChargebackLogic: {Adyen.Checkout.PlatformChargebackLogic, :t},
       reference: :string,
-      splits: [{Split, :t}],
-      subMerchants: [{SubMerchantInfo, :t}]
+      splits: [{Adyen.Checkout.Split, :t}],
+      subMerchants: [{Adyen.Checkout.SubMerchantInfo, :t}]
     ]
   end
 end

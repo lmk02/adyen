@@ -3,20 +3,16 @@ defmodule Adyen.Transfers.IssuedCard do
   Provides struct and type for a IssuedCard
   """
 
-  alias Adyen.Transfers.RelayedAuthorisationData
-  alias Adyen.Transfers.ThreeDSecure
-  alias Adyen.Transfers.TransferNotificationValidationFact
-
   @type t :: %__MODULE__{
           authorisationType: String.t() | nil,
           panEntryMode: String.t() | nil,
           processingType: String.t() | nil,
-          relayedAuthorisationData: RelayedAuthorisationData.t() | nil,
+          relayedAuthorisationData: Adyen.Transfers.RelayedAuthorisationData.t() | nil,
           schemeTraceId: String.t() | nil,
           schemeUniqueTransactionId: String.t() | nil,
-          threeDSecure: ThreeDSecure.t() | nil,
+          threeDSecure: Adyen.Transfers.ThreeDSecure.t() | nil,
           type: String.t() | nil,
-          validationFacts: [TransferNotificationValidationFact.t()] | nil
+          validationFacts: [Adyen.Transfers.TransferNotificationValidationFact.t()] | nil
         }
 
   defstruct [
@@ -38,7 +34,8 @@ defmodule Adyen.Transfers.IssuedCard do
   def __fields__(:t) do
     [
       authorisationType: :string,
-      panEntryMode: {:enum, ["chip", "cof", "contactless", "ecommerce", "magstripe", "manual", "token"]},
+      panEntryMode:
+        {:enum, ["chip", "cof", "contactless", "ecommerce", "magstripe", "manual", "token"]},
       processingType:
         {:enum,
          [
@@ -51,12 +48,12 @@ defmodule Adyen.Transfers.IssuedCard do
            "recurring",
            "token"
          ]},
-      relayedAuthorisationData: {RelayedAuthorisationData, :t},
+      relayedAuthorisationData: {Adyen.Transfers.RelayedAuthorisationData, :t},
       schemeTraceId: :string,
       schemeUniqueTransactionId: :string,
-      threeDSecure: {ThreeDSecure, :t},
+      threeDSecure: {Adyen.Transfers.ThreeDSecure, :t},
       type: {:const, "issuedCard"},
-      validationFacts: [{TransferNotificationValidationFact, :t}]
+      validationFacts: [{Adyen.Transfers.TransferNotificationValidationFact, :t}]
     ]
   end
 end

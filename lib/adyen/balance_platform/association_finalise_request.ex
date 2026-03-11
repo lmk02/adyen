@@ -3,11 +3,10 @@ defmodule Adyen.BalancePlatform.AssociationFinaliseRequest do
   Provides struct and type for a AssociationFinaliseRequest
   """
 
-  alias Adyen.BalancePlatform.AssociationDelegatedAuthenticationData
-
   @type t :: %__MODULE__{
           ids: [String.t()],
-          strongCustomerAuthentication: AssociationDelegatedAuthenticationData.t(),
+          strongCustomerAuthentication:
+            Adyen.BalancePlatform.AssociationDelegatedAuthenticationData.t(),
           type: String.t()
         }
 
@@ -20,7 +19,8 @@ defmodule Adyen.BalancePlatform.AssociationFinaliseRequest do
   def __fields__(:t) do
     [
       ids: [:string],
-      strongCustomerAuthentication: {AssociationDelegatedAuthenticationData, :t},
+      strongCustomerAuthentication:
+        {Adyen.BalancePlatform.AssociationDelegatedAuthenticationData, :t},
       type: {:const, "PaymentInstrument"}
     ]
   end

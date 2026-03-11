@@ -3,9 +3,7 @@ defmodule Adyen.BalancePlatform.WebhookSettings do
   Provides struct and type for a WebhookSettings
   """
 
-  alias Adyen.BalancePlatform.WebhookSetting
-
-  @type t :: %__MODULE__{webhookSettings: [WebhookSetting.t()] | nil}
+  @type t :: %__MODULE__{webhookSettings: [Adyen.BalancePlatform.WebhookSetting.t()] | nil}
 
   defstruct [:webhookSettings]
 
@@ -14,6 +12,6 @@ defmodule Adyen.BalancePlatform.WebhookSettings do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [webhookSettings: [{WebhookSetting, :t}]]
+    [webhookSettings: [{Adyen.BalancePlatform.WebhookSetting, :t}]]
   end
 end

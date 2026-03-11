@@ -3,9 +3,7 @@ defmodule Adyen.Transfers.ReturnTransferRequest do
   Provides struct and type for a ReturnTransferRequest
   """
 
-  alias Adyen.Transfers.Amount
-
-  @type t :: %__MODULE__{amount: Amount.t(), reference: String.t() | nil}
+  @type t :: %__MODULE__{amount: Adyen.Transfers.Amount.t(), reference: String.t() | nil}
 
   defstruct [:amount, :reference]
 
@@ -14,6 +12,6 @@ defmodule Adyen.Transfers.ReturnTransferRequest do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [amount: {Amount, :t}, reference: :string]
+    [amount: {Adyen.Transfers.Amount, :t}, reference: :string]
   end
 end

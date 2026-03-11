@@ -3,15 +3,13 @@ defmodule Adyen.Checkout.CheckoutOrderResponse do
   Provides struct and type for a CheckoutOrderResponse
   """
 
-  alias Adyen.Checkout.Amount
-
   @type t :: %__MODULE__{
-          amount: Amount.t() | nil,
+          amount: Adyen.Checkout.Amount.t() | nil,
           expiresAt: String.t() | nil,
           orderData: String.t() | nil,
           pspReference: String.t(),
           reference: String.t() | nil,
-          remainingAmount: Amount.t() | nil
+          remainingAmount: Adyen.Checkout.Amount.t() | nil
         }
 
   defstruct [:amount, :expiresAt, :orderData, :pspReference, :reference, :remainingAmount]
@@ -22,12 +20,12 @@ defmodule Adyen.Checkout.CheckoutOrderResponse do
 
   def __fields__(:t) do
     [
-      amount: {Amount, :t},
+      amount: {Adyen.Checkout.Amount, :t},
       expiresAt: :string,
       orderData: :string,
       pspReference: :string,
       reference: :string,
-      remainingAmount: {Amount, :t}
+      remainingAmount: {Adyen.Checkout.Amount, :t}
     ]
   end
 end

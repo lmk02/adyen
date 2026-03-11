@@ -3,17 +3,12 @@ defmodule Adyen.Transfers.TransferView do
   Provides struct and type for a TransferView
   """
 
-  alias Adyen.Transfers.BankCategoryData
-  alias Adyen.Transfers.InternalCategoryData
-  alias Adyen.Transfers.IssuedCard
-  alias Adyen.Transfers.PlatformPayment
-
   @type t :: %__MODULE__{
           categoryData:
-            BankCategoryData.t()
-            | InternalCategoryData.t()
-            | IssuedCard.t()
-            | PlatformPayment.t()
+            Adyen.Transfers.BankCategoryData.t()
+            | Adyen.Transfers.InternalCategoryData.t()
+            | Adyen.Transfers.IssuedCard.t()
+            | Adyen.Transfers.PlatformPayment.t()
             | nil,
           id: String.t() | nil,
           reference: String.t()
@@ -30,10 +25,10 @@ defmodule Adyen.Transfers.TransferView do
       categoryData:
         {:union,
          [
-           {BankCategoryData, :t},
-           {InternalCategoryData, :t},
-           {IssuedCard, :t},
-           {PlatformPayment, :t}
+           {Adyen.Transfers.BankCategoryData, :t},
+           {Adyen.Transfers.InternalCategoryData, :t},
+           {Adyen.Transfers.IssuedCard, :t},
+           {Adyen.Transfers.PlatformPayment, :t}
          ]},
       id: :string,
       reference: :string

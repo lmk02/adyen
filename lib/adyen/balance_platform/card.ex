@@ -3,21 +3,16 @@ defmodule Adyen.BalancePlatform.Card do
   Provides struct and type for a Card
   """
 
-  alias Adyen.BalancePlatform.Authentication
-  alias Adyen.BalancePlatform.CardConfiguration
-  alias Adyen.BalancePlatform.DeliveryContact
-  alias Adyen.BalancePlatform.Expiry
-
   @type t :: %__MODULE__{
-          authentication: Authentication.t() | nil,
+          authentication: Adyen.BalancePlatform.Authentication.t() | nil,
           bin: String.t() | nil,
           brand: String.t(),
           brandVariant: String.t(),
           cardholderName: String.t(),
-          configuration: CardConfiguration.t() | nil,
+          configuration: Adyen.BalancePlatform.CardConfiguration.t() | nil,
           cvc: String.t() | nil,
-          deliveryContact: DeliveryContact.t() | nil,
-          expiration: Expiry.t() | nil,
+          deliveryContact: Adyen.BalancePlatform.DeliveryContact.t() | nil,
+          expiration: Adyen.BalancePlatform.Expiry.t() | nil,
           formFactor: String.t(),
           lastFour: String.t() | nil,
           number: String.t() | nil,
@@ -48,15 +43,15 @@ defmodule Adyen.BalancePlatform.Card do
 
   def __fields__(:t) do
     [
-      authentication: {Authentication, :t},
+      authentication: {Adyen.BalancePlatform.Authentication, :t},
       bin: :string,
       brand: :string,
       brandVariant: :string,
       cardholderName: :string,
-      configuration: {CardConfiguration, :t},
+      configuration: {Adyen.BalancePlatform.CardConfiguration, :t},
       cvc: :string,
-      deliveryContact: {DeliveryContact, :t},
-      expiration: {Expiry, :t},
+      deliveryContact: {Adyen.BalancePlatform.DeliveryContact, :t},
+      expiration: {Adyen.BalancePlatform.Expiry, :t},
       formFactor: {:enum, ["physical", "unknown", "virtual"]},
       lastFour: :string,
       number: :string,

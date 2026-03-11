@@ -13,7 +13,9 @@ defmodule Adyen.BalancePlatform.CreateScaInformation do
 
   def __fields__(:t) do
     [
-      exemption: {:enum, ["setByPlatform", "initialLimit", "lowerLimit", "notRegulated", "alreadyPerformed"]},
+      exemption:
+        {:enum,
+         ["setByPlatform", "initialLimit", "lowerLimit", "notRegulated", "alreadyPerformed"]},
       scaOnApproval: :boolean
     ]
   end

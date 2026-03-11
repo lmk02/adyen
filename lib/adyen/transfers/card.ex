@@ -3,12 +3,9 @@ defmodule Adyen.Transfers.Card do
   Provides struct and type for a Card
   """
 
-  alias Adyen.Transfers.CardIdentification
-  alias Adyen.Transfers.PartyIdentification
-
   @type t :: %__MODULE__{
-          cardHolder: PartyIdentification.t(),
-          cardIdentification: CardIdentification.t()
+          cardHolder: Adyen.Transfers.PartyIdentification.t(),
+          cardIdentification: Adyen.Transfers.CardIdentification.t()
         }
 
   defstruct [:cardHolder, :cardIdentification]
@@ -19,8 +16,8 @@ defmodule Adyen.Transfers.Card do
 
   def __fields__(:t) do
     [
-      cardHolder: {PartyIdentification, :t},
-      cardIdentification: {CardIdentification, :t}
+      cardHolder: {Adyen.Transfers.PartyIdentification, :t},
+      cardIdentification: {Adyen.Transfers.CardIdentification, :t}
     ]
   end
 end

@@ -3,41 +3,24 @@ defmodule Adyen.BalancePlatform.BankAccount do
   Provides struct and type for a BankAccount
   """
 
-  alias Adyen.BalancePlatform.AULocalAccountIdentification
-  alias Adyen.BalancePlatform.BRLocalAccountIdentification
-  alias Adyen.BalancePlatform.CALocalAccountIdentification
-  alias Adyen.BalancePlatform.CZLocalAccountIdentification
-  alias Adyen.BalancePlatform.DKLocalAccountIdentification
-  alias Adyen.BalancePlatform.HKLocalAccountIdentification
-  alias Adyen.BalancePlatform.HULocalAccountIdentification
-  alias Adyen.BalancePlatform.IbanAccountIdentification
-  alias Adyen.BalancePlatform.NOLocalAccountIdentification
-  alias Adyen.BalancePlatform.NumberAndBicAccountIdentification
-  alias Adyen.BalancePlatform.NZLocalAccountIdentification
-  alias Adyen.BalancePlatform.PLLocalAccountIdentification
-  alias Adyen.BalancePlatform.SELocalAccountIdentification
-  alias Adyen.BalancePlatform.SGLocalAccountIdentification
-  alias Adyen.BalancePlatform.UKLocalAccountIdentification
-  alias Adyen.BalancePlatform.USLocalAccountIdentification
-
   @type t :: %__MODULE__{
           accountIdentification:
-            AULocalAccountIdentification.t()
-            | BRLocalAccountIdentification.t()
-            | CALocalAccountIdentification.t()
-            | CZLocalAccountIdentification.t()
-            | DKLocalAccountIdentification.t()
-            | HKLocalAccountIdentification.t()
-            | HULocalAccountIdentification.t()
-            | IbanAccountIdentification.t()
-            | NOLocalAccountIdentification.t()
-            | NZLocalAccountIdentification.t()
-            | NumberAndBicAccountIdentification.t()
-            | PLLocalAccountIdentification.t()
-            | SELocalAccountIdentification.t()
-            | SGLocalAccountIdentification.t()
-            | UKLocalAccountIdentification.t()
-            | USLocalAccountIdentification.t()
+            Adyen.BalancePlatform.AULocalAccountIdentification.t()
+            | Adyen.BalancePlatform.BRLocalAccountIdentification.t()
+            | Adyen.BalancePlatform.CALocalAccountIdentification.t()
+            | Adyen.BalancePlatform.CZLocalAccountIdentification.t()
+            | Adyen.BalancePlatform.DKLocalAccountIdentification.t()
+            | Adyen.BalancePlatform.HKLocalAccountIdentification.t()
+            | Adyen.BalancePlatform.HULocalAccountIdentification.t()
+            | Adyen.BalancePlatform.IbanAccountIdentification.t()
+            | Adyen.BalancePlatform.NOLocalAccountIdentification.t()
+            | Adyen.BalancePlatform.NZLocalAccountIdentification.t()
+            | Adyen.BalancePlatform.NumberAndBicAccountIdentification.t()
+            | Adyen.BalancePlatform.PLLocalAccountIdentification.t()
+            | Adyen.BalancePlatform.SELocalAccountIdentification.t()
+            | Adyen.BalancePlatform.SGLocalAccountIdentification.t()
+            | Adyen.BalancePlatform.UKLocalAccountIdentification.t()
+            | Adyen.BalancePlatform.USLocalAccountIdentification.t()
         }
 
   defstruct [:accountIdentification]
@@ -51,22 +34,22 @@ defmodule Adyen.BalancePlatform.BankAccount do
       accountIdentification:
         {:union,
          [
-           {AULocalAccountIdentification, :t},
-           {BRLocalAccountIdentification, :t},
-           {CALocalAccountIdentification, :t},
-           {CZLocalAccountIdentification, :t},
-           {DKLocalAccountIdentification, :t},
-           {HKLocalAccountIdentification, :t},
-           {HULocalAccountIdentification, :t},
-           {IbanAccountIdentification, :t},
-           {NOLocalAccountIdentification, :t},
-           {NZLocalAccountIdentification, :t},
-           {NumberAndBicAccountIdentification, :t},
-           {PLLocalAccountIdentification, :t},
-           {SELocalAccountIdentification, :t},
-           {SGLocalAccountIdentification, :t},
-           {UKLocalAccountIdentification, :t},
-           {USLocalAccountIdentification, :t}
+           {Adyen.BalancePlatform.AULocalAccountIdentification, :t},
+           {Adyen.BalancePlatform.BRLocalAccountIdentification, :t},
+           {Adyen.BalancePlatform.CALocalAccountIdentification, :t},
+           {Adyen.BalancePlatform.CZLocalAccountIdentification, :t},
+           {Adyen.BalancePlatform.DKLocalAccountIdentification, :t},
+           {Adyen.BalancePlatform.HKLocalAccountIdentification, :t},
+           {Adyen.BalancePlatform.HULocalAccountIdentification, :t},
+           {Adyen.BalancePlatform.IbanAccountIdentification, :t},
+           {Adyen.BalancePlatform.NOLocalAccountIdentification, :t},
+           {Adyen.BalancePlatform.NZLocalAccountIdentification, :t},
+           {Adyen.BalancePlatform.NumberAndBicAccountIdentification, :t},
+           {Adyen.BalancePlatform.PLLocalAccountIdentification, :t},
+           {Adyen.BalancePlatform.SELocalAccountIdentification, :t},
+           {Adyen.BalancePlatform.SGLocalAccountIdentification, :t},
+           {Adyen.BalancePlatform.UKLocalAccountIdentification, :t},
+           {Adyen.BalancePlatform.USLocalAccountIdentification, :t}
          ]}
     ]
   end

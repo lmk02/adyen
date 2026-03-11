@@ -3,14 +3,11 @@ defmodule Adyen.BalancePlatform.CapitalGrantAccount do
   Provides struct and type for a CapitalGrantAccount
   """
 
-  alias Adyen.BalancePlatform.CapitalBalance
-  alias Adyen.BalancePlatform.GrantLimit
-
   @type t :: %__MODULE__{
-          balances: [CapitalBalance.t()] | nil,
+          balances: [Adyen.BalancePlatform.CapitalBalance.t()] | nil,
           fundingBalanceAccountId: String.t() | nil,
           id: String.t() | nil,
-          limits: [GrantLimit.t()] | nil
+          limits: [Adyen.BalancePlatform.GrantLimit.t()] | nil
         }
 
   defstruct [:balances, :fundingBalanceAccountId, :id, :limits]
@@ -21,10 +18,10 @@ defmodule Adyen.BalancePlatform.CapitalGrantAccount do
 
   def __fields__(:t) do
     [
-      balances: [{CapitalBalance, :t}],
+      balances: [{Adyen.BalancePlatform.CapitalBalance, :t}],
       fundingBalanceAccountId: :string,
       id: :string,
-      limits: [{GrantLimit, :t}]
+      limits: [{Adyen.BalancePlatform.GrantLimit, :t}]
     ]
   end
 end

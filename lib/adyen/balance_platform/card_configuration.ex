@@ -3,12 +3,10 @@ defmodule Adyen.BalancePlatform.CardConfiguration do
   Provides struct and type for a CardConfiguration
   """
 
-  alias Adyen.BalancePlatform.BulkAddress
-
   @type t :: %__MODULE__{
           activation: String.t() | nil,
           activationUrl: String.t() | nil,
-          bulkAddress: BulkAddress.t() | nil,
+          bulkAddress: Adyen.BalancePlatform.BulkAddress.t() | nil,
           cardImageId: String.t() | nil,
           carrier: String.t() | nil,
           carrierImageId: String.t() | nil,
@@ -47,7 +45,7 @@ defmodule Adyen.BalancePlatform.CardConfiguration do
     [
       activation: :string,
       activationUrl: :string,
-      bulkAddress: {BulkAddress, :t},
+      bulkAddress: {Adyen.BalancePlatform.BulkAddress, :t},
       cardImageId: :string,
       carrier: :string,
       carrierImageId: :string,

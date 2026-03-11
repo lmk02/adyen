@@ -3,12 +3,9 @@ defmodule Adyen.BalancePlatform.ListAssociationsResponse do
   Provides struct and type for a ListAssociationsResponse
   """
 
-  alias Adyen.BalancePlatform.AssociationListing
-  alias Adyen.BalancePlatform.Link
-
   @type t :: %__MODULE__{
-          _links: Link.t(),
-          data: [AssociationListing.t()],
+          _links: Adyen.BalancePlatform.Link.t(),
+          data: [Adyen.BalancePlatform.AssociationListing.t()],
           itemsTotal: integer,
           pagesTotal: integer
         }
@@ -21,8 +18,8 @@ defmodule Adyen.BalancePlatform.ListAssociationsResponse do
 
   def __fields__(:t) do
     [
-      _links: {Link, :t},
-      data: [{AssociationListing, :t}],
+      _links: {Adyen.BalancePlatform.Link, :t},
+      data: [{Adyen.BalancePlatform.AssociationListing, :t}],
       itemsTotal: {:integer, "int32"},
       pagesTotal: {:integer, "int32"}
     ]

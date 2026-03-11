@@ -3,20 +3,15 @@ defmodule Adyen.Checkout.FundRecipient do
   Provides struct and type for a FundRecipient
   """
 
-  alias Adyen.Checkout.Address
-  alias Adyen.Checkout.CardDetails
-  alias Adyen.Checkout.Name
-  alias Adyen.Checkout.SubMerchant
-
   @type t :: %__MODULE__{
           IBAN: String.t() | nil,
-          billingAddress: Address.t() | nil,
-          paymentMethod: CardDetails.t() | nil,
+          billingAddress: Adyen.Checkout.Address.t() | nil,
+          paymentMethod: Adyen.Checkout.CardDetails.t() | nil,
           shopperEmail: String.t() | nil,
-          shopperName: Name.t() | nil,
+          shopperName: Adyen.Checkout.Name.t() | nil,
           shopperReference: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
-          subMerchant: SubMerchant.t() | nil,
+          subMerchant: Adyen.Checkout.SubMerchant.t() | nil,
           telephoneNumber: String.t() | nil,
           walletIdentifier: String.t() | nil,
           walletOwnerTaxId: String.t() | nil,
@@ -45,13 +40,13 @@ defmodule Adyen.Checkout.FundRecipient do
   def __fields__(:t) do
     [
       IBAN: :string,
-      billingAddress: {Address, :t},
-      paymentMethod: {CardDetails, :t},
+      billingAddress: {Adyen.Checkout.Address, :t},
+      paymentMethod: {Adyen.Checkout.CardDetails, :t},
       shopperEmail: :string,
-      shopperName: {Name, :t},
+      shopperName: {Adyen.Checkout.Name, :t},
       shopperReference: :string,
       storedPaymentMethodId: :string,
-      subMerchant: {SubMerchant, :t},
+      subMerchant: {Adyen.Checkout.SubMerchant, :t},
       telephoneNumber: :string,
       walletIdentifier: :string,
       walletOwnerTaxId: :string,

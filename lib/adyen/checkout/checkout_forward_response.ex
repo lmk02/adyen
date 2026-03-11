@@ -3,12 +3,10 @@ defmodule Adyen.Checkout.CheckoutForwardResponse do
   Provides struct and type for a CheckoutForwardResponse
   """
 
-  alias Adyen.Checkout.CheckoutForwardResponseFromUrl
-
   @type t :: %__MODULE__{
           merchantReference: String.t() | nil,
           pspReference: String.t() | nil,
-          response: CheckoutForwardResponseFromUrl.t(),
+          response: Adyen.Checkout.CheckoutForwardResponseFromUrl.t(),
           storedPaymentMethodId: String.t() | nil
         }
 
@@ -22,7 +20,7 @@ defmodule Adyen.Checkout.CheckoutForwardResponse do
     [
       merchantReference: :string,
       pspReference: :string,
-      response: {CheckoutForwardResponseFromUrl, :t},
+      response: {Adyen.Checkout.CheckoutForwardResponseFromUrl, :t},
       storedPaymentMethodId: :string
     ]
   end

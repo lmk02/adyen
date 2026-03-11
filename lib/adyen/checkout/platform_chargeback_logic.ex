@@ -17,7 +17,9 @@ defmodule Adyen.Checkout.PlatformChargebackLogic do
 
   def __fields__(:t) do
     [
-      behavior: {:enum, ["deductAccordingToSplitRatio", "deductFromLiableAccount", "deductFromOneBalanceAccount"]},
+      behavior:
+        {:enum,
+         ["deductAccordingToSplitRatio", "deductFromLiableAccount", "deductFromOneBalanceAccount"]},
       costAllocationAccount: :string,
       targetAccount: :string
     ]

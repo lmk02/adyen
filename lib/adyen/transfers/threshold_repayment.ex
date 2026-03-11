@@ -3,9 +3,7 @@ defmodule Adyen.Transfers.ThresholdRepayment do
   Provides struct and type for a ThresholdRepayment
   """
 
-  alias Adyen.Transfers.Amount
-
-  @type t :: %__MODULE__{amount: Amount.t()}
+  @type t :: %__MODULE__{amount: Adyen.Transfers.Amount.t()}
 
   defstruct [:amount]
 
@@ -14,6 +12,6 @@ defmodule Adyen.Transfers.ThresholdRepayment do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [amount: {Amount, :t}]
+    [amount: {Adyen.Transfers.Amount, :t}]
   end
 end

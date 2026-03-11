@@ -3,9 +3,7 @@ defmodule Adyen.BalancePlatform.TransactionRulesResponse do
   Provides struct and type for a TransactionRulesResponse
   """
 
-  alias Adyen.BalancePlatform.TransactionRule
-
-  @type t :: %__MODULE__{transactionRules: [TransactionRule.t()] | nil}
+  @type t :: %__MODULE__{transactionRules: [Adyen.BalancePlatform.TransactionRule.t()] | nil}
 
   defstruct [:transactionRules]
 
@@ -14,6 +12,6 @@ defmodule Adyen.BalancePlatform.TransactionRulesResponse do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [transactionRules: [{TransactionRule, :t}]]
+    [transactionRules: [{Adyen.BalancePlatform.TransactionRule, :t}]]
   end
 end

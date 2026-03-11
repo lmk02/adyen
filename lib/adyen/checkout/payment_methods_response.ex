@@ -3,12 +3,9 @@ defmodule Adyen.Checkout.PaymentMethodsResponse do
   Provides struct and type for a PaymentMethodsResponse
   """
 
-  alias Adyen.Checkout.PaymentMethod
-  alias Adyen.Checkout.StoredPaymentMethod
-
   @type t :: %__MODULE__{
-          paymentMethods: [PaymentMethod.t()] | nil,
-          storedPaymentMethods: [StoredPaymentMethod.t()] | nil
+          paymentMethods: [Adyen.Checkout.PaymentMethod.t()] | nil,
+          storedPaymentMethods: [Adyen.Checkout.StoredPaymentMethod.t()] | nil
         }
 
   defstruct [:paymentMethods, :storedPaymentMethods]
@@ -19,8 +16,8 @@ defmodule Adyen.Checkout.PaymentMethodsResponse do
 
   def __fields__(:t) do
     [
-      paymentMethods: [{PaymentMethod, :t}],
-      storedPaymentMethods: [{StoredPaymentMethod, :t}]
+      paymentMethods: [{Adyen.Checkout.PaymentMethod, :t}],
+      storedPaymentMethods: [{Adyen.Checkout.StoredPaymentMethod, :t}]
     ]
   end
 end

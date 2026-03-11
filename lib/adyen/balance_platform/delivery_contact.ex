@@ -3,17 +3,13 @@ defmodule Adyen.BalancePlatform.DeliveryContact do
   Provides struct and type for a DeliveryContact
   """
 
-  alias Adyen.BalancePlatform.DeliveryAddress
-  alias Adyen.BalancePlatform.Name
-  alias Adyen.BalancePlatform.PhoneNumber
-
   @type t :: %__MODULE__{
-          address: DeliveryAddress.t(),
+          address: Adyen.BalancePlatform.DeliveryAddress.t(),
           company: String.t() | nil,
           email: String.t() | nil,
           fullPhoneNumber: String.t() | nil,
-          name: Name.t(),
-          phoneNumber: PhoneNumber.t() | nil,
+          name: Adyen.BalancePlatform.Name.t(),
+          phoneNumber: Adyen.BalancePlatform.PhoneNumber.t() | nil,
           webAddress: String.t() | nil
         }
 
@@ -25,12 +21,12 @@ defmodule Adyen.BalancePlatform.DeliveryContact do
 
   def __fields__(:t) do
     [
-      address: {DeliveryAddress, :t},
+      address: {Adyen.BalancePlatform.DeliveryAddress, :t},
       company: :string,
       email: :string,
       fullPhoneNumber: :string,
-      name: {Name, :t},
-      phoneNumber: {PhoneNumber, :t},
+      name: {Adyen.BalancePlatform.Name, :t},
+      phoneNumber: {Adyen.BalancePlatform.PhoneNumber, :t},
       webAddress: :string
     ]
   end

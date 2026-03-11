@@ -60,6 +60,7 @@ defmodule Adyen.Transfers.Modification do
            "failed",
            "fee",
            "feePending",
+           "interchangeAdjusted",
            "internalTransfer",
            "internalTransferPending",
            "invoiceDeduction",

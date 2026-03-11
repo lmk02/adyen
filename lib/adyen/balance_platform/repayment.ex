@@ -3,13 +3,10 @@ defmodule Adyen.BalancePlatform.Repayment do
   Provides struct and type for a Repayment
   """
 
-  alias Adyen.BalancePlatform.RepaymentTerm
-  alias Adyen.BalancePlatform.ThresholdRepayment
-
   @type t :: %__MODULE__{
           basisPoints: integer,
-          term: RepaymentTerm.t() | nil,
-          threshold: ThresholdRepayment.t() | nil
+          term: Adyen.BalancePlatform.RepaymentTerm.t() | nil,
+          threshold: Adyen.BalancePlatform.ThresholdRepayment.t() | nil
         }
 
   defstruct [:basisPoints, :term, :threshold]
@@ -21,8 +18,8 @@ defmodule Adyen.BalancePlatform.Repayment do
   def __fields__(:t) do
     [
       basisPoints: {:integer, "int32"},
-      term: {RepaymentTerm, :t},
-      threshold: {ThresholdRepayment, :t}
+      term: {Adyen.BalancePlatform.RepaymentTerm, :t},
+      threshold: {Adyen.BalancePlatform.ThresholdRepayment, :t}
     ]
   end
 end

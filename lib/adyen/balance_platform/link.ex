@@ -3,14 +3,12 @@ defmodule Adyen.BalancePlatform.Link do
   Provides struct and type for a Link
   """
 
-  alias Adyen.BalancePlatform.Href
-
   @type t :: %__MODULE__{
-          first: Href.t() | nil,
-          last: Href.t() | nil,
-          next: Href.t() | nil,
-          previous: Href.t() | nil,
-          self: Href.t() | nil
+          first: Adyen.BalancePlatform.Href.t() | nil,
+          last: Adyen.BalancePlatform.Href.t() | nil,
+          next: Adyen.BalancePlatform.Href.t() | nil,
+          previous: Adyen.BalancePlatform.Href.t() | nil,
+          self: Adyen.BalancePlatform.Href.t() | nil
         }
 
   defstruct [:first, :last, :next, :previous, :self]
@@ -21,11 +19,11 @@ defmodule Adyen.BalancePlatform.Link do
 
   def __fields__(:t) do
     [
-      first: {Href, :t},
-      last: {Href, :t},
-      next: {Href, :t},
-      previous: {Href, :t},
-      self: {Href, :t}
+      first: {Adyen.BalancePlatform.Href, :t},
+      last: {Adyen.BalancePlatform.Href, :t},
+      next: {Adyen.BalancePlatform.Href, :t},
+      previous: {Adyen.BalancePlatform.Href, :t},
+      self: {Adyen.BalancePlatform.Href, :t}
     ]
   end
 end

@@ -3,15 +3,13 @@ defmodule Adyen.Checkout.MerchantRiskIndicator do
   Provides struct and type for a MerchantRiskIndicator
   """
 
-  alias Adyen.Checkout.Amount
-
   @type t :: %__MODULE__{
           addressMatch: boolean | nil,
           deliveryAddressIndicator: String.t() | nil,
           deliveryEmail: String.t() | nil,
           deliveryEmailAddress: String.t() | nil,
           deliveryTimeframe: String.t() | nil,
-          giftCardAmount: Amount.t() | nil,
+          giftCardAmount: Adyen.Checkout.Amount.t() | nil,
           giftCardCount: integer | nil,
           giftCardCurr: String.t() | nil,
           preOrderDate: DateTime.t() | nil,
@@ -59,8 +57,10 @@ defmodule Adyen.Checkout.MerchantRiskIndicator do
          ]},
       deliveryEmail: :string,
       deliveryEmailAddress: :string,
-      deliveryTimeframe: {:enum, ["electronicDelivery", "sameDayShipping", "overnightShipping", "twoOrMoreDaysShipping"]},
-      giftCardAmount: {Amount, :t},
+      deliveryTimeframe:
+        {:enum,
+         ["electronicDelivery", "sameDayShipping", "overnightShipping", "twoOrMoreDaysShipping"]},
+      giftCardAmount: {Adyen.Checkout.Amount, :t},
       giftCardCount: {:integer, "int32"},
       giftCardCurr: :string,
       preOrderDate: {:string, "date-time"},

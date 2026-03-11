@@ -3,11 +3,9 @@ defmodule Adyen.Checkout.CancelOrderRequest do
   Provides struct and type for a CancelOrderRequest
   """
 
-  alias Adyen.Checkout.EncryptedOrderData
-
   @type t :: %__MODULE__{
           merchantAccount: String.t(),
-          order: EncryptedOrderData.t()
+          order: Adyen.Checkout.EncryptedOrderData.t()
         }
 
   defstruct [:merchantAccount, :order]
@@ -17,6 +15,6 @@ defmodule Adyen.Checkout.CancelOrderRequest do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [merchantAccount: :string, order: {EncryptedOrderData, :t}]
+    [merchantAccount: :string, order: {Adyen.Checkout.EncryptedOrderData, :t}]
   end
 end

@@ -3,15 +3,14 @@ defmodule Adyen.BalancePlatform.BalanceAccountInfo do
   Provides struct and type for a BalanceAccountInfo
   """
 
-  alias Adyen.BalancePlatform.PlatformPaymentConfiguration
-
   @type t :: %__MODULE__{
           accountHolderId: String.t(),
           defaultCurrencyCode: String.t() | nil,
           description: String.t() | nil,
           metadata: map | nil,
           migratedAccountCode: String.t() | nil,
-          platformPaymentConfiguration: PlatformPaymentConfiguration.t() | nil,
+          platformPaymentConfiguration:
+            Adyen.BalancePlatform.PlatformPaymentConfiguration.t() | nil,
           reference: String.t() | nil,
           timeZone: String.t() | nil
         }
@@ -38,7 +37,7 @@ defmodule Adyen.BalancePlatform.BalanceAccountInfo do
       description: :string,
       metadata: :map,
       migratedAccountCode: :string,
-      platformPaymentConfiguration: {PlatformPaymentConfiguration, :t},
+      platformPaymentConfiguration: {Adyen.BalancePlatform.PlatformPaymentConfiguration, :t},
       reference: :string,
       timeZone: :string
     ]

@@ -39,7 +39,9 @@ defmodule Adyen.Checkout.Mandate do
       billingDay: :string,
       count: :string,
       endsAt: :string,
-      frequency: {:enum, ["adhoc", "daily", "weekly", "biWeekly", "monthly", "quarterly", "halfYearly", "yearly"]},
+      frequency:
+        {:enum,
+         ["adhoc", "daily", "weekly", "biWeekly", "monthly", "quarterly", "halfYearly", "yearly"]},
       remarks: :string,
       startsAt: :string
     ]

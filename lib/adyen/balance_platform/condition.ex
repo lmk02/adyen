@@ -14,7 +14,8 @@ defmodule Adyen.BalancePlatform.Condition do
   def __fields__(:t) do
     [
       balanceType: {:enum, ["balance", "available", "pending", "reserved"]},
-      conditionType: {:enum, ["greaterThan", "greaterThanOrEqual", "lessThan", "lessThanOrEqual"]},
+      conditionType:
+        {:enum, ["greaterThan", "greaterThanOrEqual", "lessThan", "lessThanOrEqual"]},
       value: {:integer, "int64"}
     ]
   end

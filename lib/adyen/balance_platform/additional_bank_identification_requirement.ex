@@ -17,7 +17,8 @@ defmodule Adyen.BalancePlatform.AdditionalBankIdentificationRequirement do
 
   def __fields__(:t) do
     [
-      additionalBankIdentificationType: {:enum, ["auBsbCode", "caRoutingNumber", "gbSortCode", "usRoutingNumber"]},
+      additionalBankIdentificationType:
+        {:enum, ["auBsbCode", "caRoutingNumber", "gbSortCode", "usRoutingNumber"]},
       description: :string,
       type: {:const, "additionalBankIdentificationRequirement"}
     ]

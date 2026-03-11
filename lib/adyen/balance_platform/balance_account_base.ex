@@ -3,8 +3,6 @@ defmodule Adyen.BalancePlatform.BalanceAccountBase do
   Provides struct and type for a BalanceAccountBase
   """
 
-  alias Adyen.BalancePlatform.PlatformPaymentConfiguration
-
   @type t :: %__MODULE__{
           accountHolderId: String.t(),
           defaultCurrencyCode: String.t() | nil,
@@ -12,7 +10,8 @@ defmodule Adyen.BalancePlatform.BalanceAccountBase do
           id: String.t(),
           metadata: map | nil,
           migratedAccountCode: String.t() | nil,
-          platformPaymentConfiguration: PlatformPaymentConfiguration.t() | nil,
+          platformPaymentConfiguration:
+            Adyen.BalancePlatform.PlatformPaymentConfiguration.t() | nil,
           reference: String.t() | nil,
           status: String.t() | nil,
           timeZone: String.t() | nil
@@ -43,7 +42,7 @@ defmodule Adyen.BalancePlatform.BalanceAccountBase do
       id: :string,
       metadata: :map,
       migratedAccountCode: :string,
-      platformPaymentConfiguration: {PlatformPaymentConfiguration, :t},
+      platformPaymentConfiguration: {Adyen.BalancePlatform.PlatformPaymentConfiguration, :t},
       reference: :string,
       status: {:enum, ["active", "closed", "inactive", "suspended"]},
       timeZone: :string

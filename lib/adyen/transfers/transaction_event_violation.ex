@@ -3,13 +3,10 @@ defmodule Adyen.Transfers.TransactionEventViolation do
   Provides struct and type for a TransactionEventViolation
   """
 
-  alias Adyen.Transfers.TransactionRuleReference
-  alias Adyen.Transfers.TransactionRuleSource
-
   @type t :: %__MODULE__{
           reason: String.t() | nil,
-          transactionRule: TransactionRuleReference.t() | nil,
-          transactionRuleSource: TransactionRuleSource.t() | nil
+          transactionRule: Adyen.Transfers.TransactionRuleReference.t() | nil,
+          transactionRuleSource: Adyen.Transfers.TransactionRuleSource.t() | nil
         }
 
   defstruct [:reason, :transactionRule, :transactionRuleSource]
@@ -21,8 +18,8 @@ defmodule Adyen.Transfers.TransactionEventViolation do
   def __fields__(:t) do
     [
       reason: :string,
-      transactionRule: {TransactionRuleReference, :t},
-      transactionRuleSource: {TransactionRuleSource, :t}
+      transactionRule: {Adyen.Transfers.TransactionRuleReference, :t},
+      transactionRuleSource: {Adyen.Transfers.TransactionRuleSource, :t}
     ]
   end
 end

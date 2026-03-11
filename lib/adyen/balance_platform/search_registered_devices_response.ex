@@ -3,13 +3,10 @@ defmodule Adyen.BalancePlatform.SearchRegisteredDevicesResponse do
   Provides struct and type for a SearchRegisteredDevicesResponse
   """
 
-  alias Adyen.BalancePlatform.Device
-  alias Adyen.BalancePlatform.Link
-
   @type t :: %__MODULE__{
-          data: [Device.t()] | nil,
+          data: [Adyen.BalancePlatform.Device.t()] | nil,
           itemsTotal: integer | nil,
-          link: Link.t() | nil,
+          link: Adyen.BalancePlatform.Link.t() | nil,
           pagesTotal: integer | nil
         }
 
@@ -21,9 +18,9 @@ defmodule Adyen.BalancePlatform.SearchRegisteredDevicesResponse do
 
   def __fields__(:t) do
     [
-      data: [{Device, :t}],
+      data: [{Adyen.BalancePlatform.Device, :t}],
       itemsTotal: {:integer, "int32"},
-      link: {Link, :t},
+      link: {Adyen.BalancePlatform.Link, :t},
       pagesTotal: {:integer, "int32"}
     ]
   end

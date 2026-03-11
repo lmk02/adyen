@@ -3,40 +3,30 @@ defmodule Adyen.Transfers.TransferEvent do
   Provides struct and type for a TransferEvent
   """
 
-  alias Adyen.Transfers.Amount
-  alias Adyen.Transfers.AmountAdjustment
-  alias Adyen.Transfers.BalanceMutation
-  alias Adyen.Transfers.ConfirmationTrackingData
-  alias Adyen.Transfers.EstimationTrackingData
-  alias Adyen.Transfers.ExternalReason
-  alias Adyen.Transfers.InternalReviewTrackingData
-  alias Adyen.Transfers.IssuingTransactionData
-  alias Adyen.Transfers.MerchantPurchaseData
-  alias Adyen.Transfers.Modification
-
   @type t :: %__MODULE__{
-          amount: Amount.t() | nil,
-          amountAdjustments: [AmountAdjustment.t()] | nil,
+          amount: Adyen.Transfers.Amount.t() | nil,
+          amountAdjustments: [Adyen.Transfers.AmountAdjustment.t()] | nil,
           arn: String.t() | nil,
           bookingDate: DateTime.t() | nil,
           estimatedArrivalTime: DateTime.t() | nil,
           eventsData:
             [
-              IssuingTransactionData.t()
-              | MerchantPurchaseData.t()
+              Adyen.Transfers.InterchangeData.t()
+              | Adyen.Transfers.IssuingTransactionData.t()
+              | Adyen.Transfers.MerchantPurchaseData.t()
             ]
             | nil,
-          externalReason: ExternalReason.t() | nil,
+          externalReason: Adyen.Transfers.ExternalReason.t() | nil,
           id: String.t() | nil,
-          modification: Modification.t() | nil,
-          mutations: [BalanceMutation.t()] | nil,
-          originalAmount: Amount.t() | nil,
+          modification: Adyen.Transfers.Modification.t() | nil,
+          mutations: [Adyen.Transfers.BalanceMutation.t()] | nil,
+          originalAmount: Adyen.Transfers.Amount.t() | nil,
           reason: String.t() | nil,
           status: String.t() | nil,
           trackingData:
-            ConfirmationTrackingData.t()
-            | EstimationTrackingData.t()
-            | InternalReviewTrackingData.t()
+            Adyen.Transfers.ConfirmationTrackingData.t()
+            | Adyen.Transfers.EstimationTrackingData.t()
+            | Adyen.Transfers.InternalReviewTrackingData.t()
             | nil,
           transactionId: String.t() | nil,
           type: String.t() | nil,
@@ -71,22 +61,23 @@ defmodule Adyen.Transfers.TransferEvent do
 
   def __fields__(:t) do
     [
-      amount: {Amount, :t},
-      amountAdjustments: [{AmountAdjustment, :t}],
+      amount: {Adyen.Transfers.Amount, :t},
+      amountAdjustments: [{Adyen.Transfers.AmountAdjustment, :t}],
       arn: :string,
       bookingDate: {:string, "date-time"},
       estimatedArrivalTime: {:string, "date-time"},
       eventsData: [
         union: [
-          {IssuingTransactionData, :t},
-          {MerchantPurchaseData, :t}
+          {Adyen.Transfers.InterchangeData, :t},
+          {Adyen.Transfers.IssuingTransactionData, :t},
+          {Adyen.Transfers.MerchantPurchaseData, :t}
         ]
       ],
-      externalReason: {ExternalReason, :t},
+      externalReason: {Adyen.Transfers.ExternalReason, :t},
       id: :string,
-      modification: {Modification, :t},
-      mutations: [{BalanceMutation, :t}],
-      originalAmount: {Amount, :t},
+      modification: {Adyen.Transfers.Modification, :t},
+      mutations: [{Adyen.Transfers.BalanceMutation, :t}],
+      originalAmount: {Adyen.Transfers.Amount, :t},
       reason:
         {:enum,
          [
@@ -214,6 +205,7 @@ defmodule Adyen.Transfers.TransferEvent do
            "failed",
            "fee",
            "feePending",
+           "interchangeAdjusted",
            "internalTransfer",
            "internalTransferPending",
            "invoiceDeduction",
@@ -250,12 +242,12 @@ defmodule Adyen.Transfers.TransferEvent do
       trackingData:
         {:union,
          [
-           {ConfirmationTrackingData, :t},
-           {EstimationTrackingData, :t},
-           {InternalReviewTrackingData, :t}
+           {Adyen.Transfers.ConfirmationTrackingData, :t},
+           {Adyen.Transfers.EstimationTrackingData, :t},
+           {Adyen.Transfers.InternalReviewTrackingData, :t}
          ]},
       transactionId: :string,
-      type: {:enum, ["accounting", "tracking"]},
+      type: {:enum, ["accounting", "tracing", "tracking"]},
       updateDate: {:string, "date-time"},
       valueDate: {:string, "date-time"}
     ]

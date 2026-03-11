@@ -3,12 +3,6 @@ defmodule Adyen.BalancePlatform.Platform do
   Provides API endpoints related to platform
   """
 
-  alias Adyen.BalancePlatform.BalancePlatform
-  alias Adyen.BalancePlatform.PaginatedAccountHoldersResponse
-  alias Adyen.BalancePlatform.Platform
-  alias Adyen.BalancePlatform.RestServiceError
-  alias Adyen.BalancePlatform.TransactionRulesResponse
-
   @default_client Adyen.Client
 
   @doc """
@@ -16,24 +10,24 @@ defmodule Adyen.BalancePlatform.Platform do
 
   Returns a balance platform.
   """
-  @spec get_balance_platform(id :: String.t(), opts :: keyword) ::
-          {:ok, BalancePlatform.t()}
-          | {:error, RestServiceError.t()}
-  def get_balance_platform(id, opts \\ []) do
+  @spec get_balance_platforms_id(id :: String.t(), opts :: keyword) ::
+          {:ok, Adyen.BalancePlatform.BalancePlatform.t()}
+          | {:error, Adyen.BalancePlatform.RestServiceError.t()}
+  def get_balance_platforms_id(id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [id: id],
-      call: {Platform, :get_balance_platform},
+      call: {Adyen.BalancePlatform.Platform, :get_balance_platforms_id},
       url: "/balancePlatforms/#{id}",
       method: :get,
       response: [
-        {200, {BalancePlatform, :t}},
-        {400, {RestServiceError, :t}},
-        {401, {RestServiceError, :t}},
-        {403, {RestServiceError, :t}},
-        {422, {RestServiceError, :t}},
-        {500, {RestServiceError, :t}}
+        {200, {Adyen.BalancePlatform.BalancePlatform, :t}},
+        {400, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {401, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.RestServiceError, :t}}
       ],
       opts: opts
     })
@@ -52,26 +46,26 @@ defmodule Adyen.BalancePlatform.Platform do
     * `limit`: The number of items returned per page, maximum 100 items. By default, the response returns 10 items per page.
 
   """
-  @spec get_balance_platform_account_holders(id :: String.t(), opts :: keyword) ::
-          {:ok, PaginatedAccountHoldersResponse.t()}
-          | {:error, RestServiceError.t()}
-  def get_balance_platform_account_holders(id, opts \\ []) do
+  @spec get_balance_platforms_id_account_holders(id :: String.t(), opts :: keyword) ::
+          {:ok, Adyen.BalancePlatform.PaginatedAccountHoldersResponse.t()}
+          | {:error, Adyen.BalancePlatform.RestServiceError.t()}
+  def get_balance_platforms_id_account_holders(id, opts \\ []) do
     client = opts[:client] || @default_client
     query = Keyword.take(opts, [:limit, :offset])
 
     client.request(%{
       args: [id: id],
-      call: {Platform, :get_balance_platform_account_holders},
+      call: {Adyen.BalancePlatform.Platform, :get_balance_platforms_id_account_holders},
       url: "/balancePlatforms/#{id}/accountHolders",
       method: :get,
       query: query,
       response: [
-        {200, {PaginatedAccountHoldersResponse, :t}},
-        {400, {RestServiceError, :t}},
-        {401, {RestServiceError, :t}},
-        {403, {RestServiceError, :t}},
-        {422, {RestServiceError, :t}},
-        {500, {RestServiceError, :t}}
+        {200, {Adyen.BalancePlatform.PaginatedAccountHoldersResponse, :t}},
+        {400, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {401, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.RestServiceError, :t}}
       ],
       opts: opts
     })
@@ -82,24 +76,24 @@ defmodule Adyen.BalancePlatform.Platform do
 
   Returns a list of transaction rules associated with a balance platform.
   """
-  @spec get_balance_platform_transaction_rules(id :: String.t(), opts :: keyword) ::
-          {:ok, TransactionRulesResponse.t()}
-          | {:error, RestServiceError.t()}
-  def get_balance_platform_transaction_rules(id, opts \\ []) do
+  @spec get_balance_platforms_id_transaction_rules(id :: String.t(), opts :: keyword) ::
+          {:ok, Adyen.BalancePlatform.TransactionRulesResponse.t()}
+          | {:error, Adyen.BalancePlatform.RestServiceError.t()}
+  def get_balance_platforms_id_transaction_rules(id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [id: id],
-      call: {Platform, :get_balance_platform_transaction_rules},
+      call: {Adyen.BalancePlatform.Platform, :get_balance_platforms_id_transaction_rules},
       url: "/balancePlatforms/#{id}/transactionRules",
       method: :get,
       response: [
-        {200, {TransactionRulesResponse, :t}},
-        {400, {RestServiceError, :t}},
-        {401, {RestServiceError, :t}},
-        {403, {RestServiceError, :t}},
-        {422, {RestServiceError, :t}},
-        {500, {RestServiceError, :t}}
+        {200, {Adyen.BalancePlatform.TransactionRulesResponse, :t}},
+        {400, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {401, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.RestServiceError, :t}}
       ],
       opts: opts
     })

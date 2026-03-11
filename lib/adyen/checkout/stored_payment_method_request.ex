@@ -3,11 +3,9 @@ defmodule Adyen.Checkout.StoredPaymentMethodRequest do
   Provides struct and type for a StoredPaymentMethodRequest
   """
 
-  alias Adyen.Checkout.PaymentMethodToStore
-
   @type t :: %__MODULE__{
           merchantAccount: String.t(),
-          paymentMethod: PaymentMethodToStore.t(),
+          paymentMethod: Adyen.Checkout.PaymentMethodToStore.t(),
           recurringProcessingModel: String.t(),
           shopperEmail: String.t() | nil,
           shopperIP: String.t() | nil,
@@ -30,7 +28,7 @@ defmodule Adyen.Checkout.StoredPaymentMethodRequest do
   def __fields__(:t) do
     [
       merchantAccount: :string,
-      paymentMethod: {PaymentMethodToStore, :t},
+      paymentMethod: {Adyen.Checkout.PaymentMethodToStore, :t},
       recurringProcessingModel: {:enum, ["CardOnFile", "Subscription", "UnscheduledCardOnFile"]},
       shopperEmail: :string,
       shopperIP: :string,

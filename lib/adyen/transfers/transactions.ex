@@ -3,11 +3,6 @@ defmodule Adyen.Transfers.Transactions do
   Provides API endpoints related to transactions
   """
 
-  alias Adyen.Transfers.RestServiceError
-  alias Adyen.Transfers.Transaction
-  alias Adyen.Transfers.Transactions
-  alias Adyen.Transfers.TransactionSearchResponse
-
   @default_client Adyen.Client
 
   @doc """
@@ -61,8 +56,8 @@ defmodule Adyen.Transfers.Transactions do
 
   """
   @spec get_transactions(opts :: keyword) ::
-          {:ok, TransactionSearchResponse.t()}
-          | {:error, RestServiceError.t()}
+          {:ok, Adyen.Transfers.TransactionSearchResponse.t()}
+          | {:error, Adyen.Transfers.RestServiceError.t()}
   def get_transactions(opts \\ []) do
     client = opts[:client] || @default_client
 
@@ -81,16 +76,16 @@ defmodule Adyen.Transfers.Transactions do
 
     client.request(%{
       args: [],
-      call: {Transactions, :get_transactions},
+      call: {Adyen.Transfers.Transactions, :get_transactions},
       url: "/transactions",
       method: :get,
       query: query,
       response: [
-        {200, {TransactionSearchResponse, :t}},
-        {401, {RestServiceError, :t}},
-        {403, {RestServiceError, :t}},
-        {422, {RestServiceError, :t}},
-        {500, {RestServiceError, :t}}
+        {200, {Adyen.Transfers.TransactionSearchResponse, :t}},
+        {401, {Adyen.Transfers.RestServiceError, :t}},
+        {403, {Adyen.Transfers.RestServiceError, :t}},
+        {422, {Adyen.Transfers.RestServiceError, :t}},
+        {500, {Adyen.Transfers.RestServiceError, :t}}
       ],
       opts: opts
     })
@@ -103,22 +98,22 @@ defmodule Adyen.Transfers.Transactions do
 
   Returns a transaction.
   """
-  @spec get_transaction(id :: String.t(), opts :: keyword) ::
-          {:ok, Transaction.t()} | {:error, RestServiceError.t()}
-  def get_transaction(id, opts \\ []) do
+  @spec get_transactions_id(id :: String.t(), opts :: keyword) ::
+          {:ok, Adyen.Transfers.Transaction.t()} | {:error, Adyen.Transfers.RestServiceError.t()}
+  def get_transactions_id(id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [id: id],
-      call: {Transactions, :get_transaction},
+      call: {Adyen.Transfers.Transactions, :get_transactions_id},
       url: "/transactions/#{id}",
       method: :get,
       response: [
-        {200, {Transaction, :t}},
-        {401, {RestServiceError, :t}},
-        {403, {RestServiceError, :t}},
-        {422, {RestServiceError, :t}},
-        {500, {RestServiceError, :t}}
+        {200, {Adyen.Transfers.Transaction, :t}},
+        {401, {Adyen.Transfers.RestServiceError, :t}},
+        {403, {Adyen.Transfers.RestServiceError, :t}},
+        {422, {Adyen.Transfers.RestServiceError, :t}},
+        {500, {Adyen.Transfers.RestServiceError, :t}}
       ],
       opts: opts
     })

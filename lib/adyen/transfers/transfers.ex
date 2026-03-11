@@ -3,18 +3,6 @@ defmodule Adyen.Transfers.Transfers do
   Provides API endpoints related to transfers
   """
 
-  alias Adyen.Transfers.ApproveTransfersRequest
-  alias Adyen.Transfers.CancelTransfersRequest
-  alias Adyen.Transfers.FindTransfersResponse
-  alias Adyen.Transfers.ReturnTransferRequest
-  alias Adyen.Transfers.ReturnTransferResponse
-  alias Adyen.Transfers.ServiceError
-  alias Adyen.Transfers.Transfer
-  alias Adyen.Transfers.TransferData
-  alias Adyen.Transfers.TransferInfo
-  alias Adyen.Transfers.Transfers
-  alias Adyen.Transfers.TransferServiceRestServiceError
-
   @default_client Adyen.Client
 
   @doc """
@@ -78,8 +66,8 @@ defmodule Adyen.Transfers.Transfers do
 
   """
   @spec get_transfers(opts :: keyword) ::
-          {:ok, FindTransfersResponse.t()}
-          | {:error, TransferServiceRestServiceError.t()}
+          {:ok, Adyen.Transfers.FindTransfersResponse.t()}
+          | {:error, Adyen.Transfers.TransferServiceRestServiceError.t()}
   def get_transfers(opts \\ []) do
     client = opts[:client] || @default_client
 
@@ -100,16 +88,16 @@ defmodule Adyen.Transfers.Transfers do
 
     client.request(%{
       args: [],
-      call: {Transfers, :get_transfers},
+      call: {Adyen.Transfers.Transfers, :get_transfers},
       url: "/transfers",
       method: :get,
       query: query,
       response: [
-        {200, {FindTransfersResponse, :t}},
-        {401, {TransferServiceRestServiceError, :t}},
-        {403, {TransferServiceRestServiceError, :t}},
-        {422, {TransferServiceRestServiceError, :t}},
-        {500, {TransferServiceRestServiceError, :t}}
+        {200, {Adyen.Transfers.FindTransfersResponse, :t}},
+        {401, {Adyen.Transfers.TransferServiceRestServiceError, :t}},
+        {403, {Adyen.Transfers.TransferServiceRestServiceError, :t}},
+        {422, {Adyen.Transfers.TransferServiceRestServiceError, :t}},
+        {500, {Adyen.Transfers.TransferServiceRestServiceError, :t}}
       ],
       opts: opts
     })
@@ -120,23 +108,23 @@ defmodule Adyen.Transfers.Transfers do
 
   Returns the details of a specified transfer.
   """
-  @spec get_transfer(id :: String.t(), opts :: keyword) ::
-          {:ok, TransferData.t()}
-          | {:error, TransferServiceRestServiceError.t()}
-  def get_transfer(id, opts \\ []) do
+  @spec get_transfers_id(id :: String.t(), opts :: keyword) ::
+          {:ok, Adyen.Transfers.TransferData.t()}
+          | {:error, Adyen.Transfers.TransferServiceRestServiceError.t()}
+  def get_transfers_id(id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [id: id],
-      call: {Transfers, :get_transfer},
+      call: {Adyen.Transfers.Transfers, :get_transfers_id},
       url: "/transfers/#{id}",
       method: :get,
       response: [
-        {200, {TransferData, :t}},
-        {401, {TransferServiceRestServiceError, :t}},
-        {403, {TransferServiceRestServiceError, :t}},
-        {422, {TransferServiceRestServiceError, :t}},
-        {500, {TransferServiceRestServiceError, :t}}
+        {200, {Adyen.Transfers.TransferData, :t}},
+        {401, {Adyen.Transfers.TransferServiceRestServiceError, :t}},
+        {403, {Adyen.Transfers.TransferServiceRestServiceError, :t}},
+        {422, {Adyen.Transfers.TransferServiceRestServiceError, :t}},
+        {500, {Adyen.Transfers.TransferServiceRestServiceError, :t}}
       ],
       opts: opts
     })
@@ -165,27 +153,27 @@ defmodule Adyen.Transfers.Transfers do
 
   **Content Types**: `application/json`
   """
-  @spec create_transfer(body :: TransferInfo.t(), opts :: keyword) ::
-          {:ok, Transfer.t()}
+  @spec post_transfers(body :: Adyen.Transfers.TransferInfo.t(), opts :: keyword) ::
+          {:ok, Adyen.Transfers.Transfer.t()}
           | {:error,
-             ServiceError.t()
-             | TransferServiceRestServiceError.t()}
-  def create_transfer(body, opts \\ []) do
+             Adyen.Transfers.ServiceError.t()
+             | Adyen.Transfers.TransferServiceRestServiceError.t()}
+  def post_transfers(body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [body: body],
-      call: {Transfers, :create_transfer},
+      call: {Adyen.Transfers.Transfers, :post_transfers},
       url: "/transfers",
       body: body,
       method: :post,
-      request: [{"application/json", {TransferInfo, :t}}],
+      request: [{"application/json", {Adyen.Transfers.TransferInfo, :t}}],
       response: [
-        {202, {Transfer, :t}},
-        {401, {ServiceError, :t}},
-        {403, {TransferServiceRestServiceError, :t}},
-        {422, {TransferServiceRestServiceError, :t}},
-        {500, {TransferServiceRestServiceError, :t}}
+        {202, {Adyen.Transfers.Transfer, :t}},
+        {401, {Adyen.Transfers.ServiceError, :t}},
+        {403, {Adyen.Transfers.TransferServiceRestServiceError, :t}},
+        {422, {Adyen.Transfers.TransferServiceRestServiceError, :t}},
+        {500, {Adyen.Transfers.TransferServiceRestServiceError, :t}}
       ],
       opts: opts
     })
@@ -206,30 +194,30 @@ defmodule Adyen.Transfers.Transfers do
 
   **Content Types**: `application/json`
   """
-  @spec create_transfers_approve(
-          body :: ApproveTransfersRequest.t(),
+  @spec post_transfers_approve(
+          body :: Adyen.Transfers.ApproveTransfersRequest.t(),
           opts :: keyword
         ) ::
           {:ok, any}
           | {:error,
-             ServiceError.t()
-             | TransferServiceRestServiceError.t()}
-  def create_transfers_approve(body, opts \\ []) do
+             Adyen.Transfers.ServiceError.t()
+             | Adyen.Transfers.TransferServiceRestServiceError.t()}
+  def post_transfers_approve(body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [body: body],
-      call: {Transfers, :create_transfers_approve},
+      call: {Adyen.Transfers.Transfers, :post_transfers_approve},
       url: "/transfers/approve",
       body: body,
       method: :post,
-      request: [{"application/json", {ApproveTransfersRequest, :t}}],
+      request: [{"application/json", {Adyen.Transfers.ApproveTransfersRequest, :t}}],
       response: [
         {200, :unknown},
-        {401, {ServiceError, :t}},
-        {403, {TransferServiceRestServiceError, :t}},
-        {422, {TransferServiceRestServiceError, :t}},
-        {500, {TransferServiceRestServiceError, :t}}
+        {401, {Adyen.Transfers.ServiceError, :t}},
+        {403, {Adyen.Transfers.TransferServiceRestServiceError, :t}},
+        {422, {Adyen.Transfers.TransferServiceRestServiceError, :t}},
+        {500, {Adyen.Transfers.TransferServiceRestServiceError, :t}}
       ],
       opts: opts
     })
@@ -250,24 +238,24 @@ defmodule Adyen.Transfers.Transfers do
 
   **Content Types**: `application/json`
   """
-  @spec create_transfers_cancel(body :: CancelTransfersRequest.t(), opts :: keyword) ::
-          {:ok, any} | {:error, TransferServiceRestServiceError.t()}
-  def create_transfers_cancel(body, opts \\ []) do
+  @spec post_transfers_cancel(body :: Adyen.Transfers.CancelTransfersRequest.t(), opts :: keyword) ::
+          {:ok, any} | {:error, Adyen.Transfers.TransferServiceRestServiceError.t()}
+  def post_transfers_cancel(body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [body: body],
-      call: {Transfers, :create_transfers_cancel},
+      call: {Adyen.Transfers.Transfers, :post_transfers_cancel},
       url: "/transfers/cancel",
       body: body,
       method: :post,
-      request: [{"application/json", {CancelTransfersRequest, :t}}],
+      request: [{"application/json", {Adyen.Transfers.CancelTransfersRequest, :t}}],
       response: [
         {200, :unknown},
-        {401, {TransferServiceRestServiceError, :t}},
-        {403, {TransferServiceRestServiceError, :t}},
-        {422, {TransferServiceRestServiceError, :t}},
-        {500, {TransferServiceRestServiceError, :t}}
+        {401, {Adyen.Transfers.TransferServiceRestServiceError, :t}},
+        {403, {Adyen.Transfers.TransferServiceRestServiceError, :t}},
+        {422, {Adyen.Transfers.TransferServiceRestServiceError, :t}},
+        {500, {Adyen.Transfers.TransferServiceRestServiceError, :t}}
       ],
       opts: opts
     })
@@ -282,29 +270,29 @@ defmodule Adyen.Transfers.Transfers do
 
   **Content Types**: `application/json`
   """
-  @spec create_transfer_id_returns(
+  @spec post_transfers_transfer_id_returns(
           transferId :: String.t(),
-          body :: ReturnTransferRequest.t(),
+          body :: Adyen.Transfers.ReturnTransferRequest.t(),
           opts :: keyword
         ) ::
-          {:ok, ReturnTransferResponse.t()}
-          | {:error, TransferServiceRestServiceError.t()}
-  def create_transfer_id_returns(transferId, body, opts \\ []) do
+          {:ok, Adyen.Transfers.ReturnTransferResponse.t()}
+          | {:error, Adyen.Transfers.TransferServiceRestServiceError.t()}
+  def post_transfers_transfer_id_returns(transferId, body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [transferId: transferId, body: body],
-      call: {Transfers, :create_transfer_id_returns},
+      call: {Adyen.Transfers.Transfers, :post_transfers_transfer_id_returns},
       url: "/transfers/#{transferId}/returns",
       body: body,
       method: :post,
-      request: [{"application/json", {ReturnTransferRequest, :t}}],
+      request: [{"application/json", {Adyen.Transfers.ReturnTransferRequest, :t}}],
       response: [
-        {200, {ReturnTransferResponse, :t}},
-        {401, {TransferServiceRestServiceError, :t}},
-        {403, {TransferServiceRestServiceError, :t}},
-        {422, {TransferServiceRestServiceError, :t}},
-        {500, {TransferServiceRestServiceError, :t}}
+        {200, {Adyen.Transfers.ReturnTransferResponse, :t}},
+        {401, {Adyen.Transfers.TransferServiceRestServiceError, :t}},
+        {403, {Adyen.Transfers.TransferServiceRestServiceError, :t}},
+        {422, {Adyen.Transfers.TransferServiceRestServiceError, :t}},
+        {500, {Adyen.Transfers.TransferServiceRestServiceError, :t}}
       ],
       opts: opts
     })

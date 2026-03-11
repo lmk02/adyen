@@ -63,12 +63,14 @@ defmodule Adyen.Checkout.AccountInfo do
            "moreThan60Days"
          ]},
       accountChangeDate: {:string, "date-time"},
-      accountChangeIndicator: {:enum, ["thisTransaction", "lessThan30Days", "from30To60Days", "moreThan60Days"]},
+      accountChangeIndicator:
+        {:enum, ["thisTransaction", "lessThan30Days", "from30To60Days", "moreThan60Days"]},
       accountCreationDate: {:string, "date-time"},
       accountType: {:enum, ["notApplicable", "credit", "debit"]},
       addCardAttemptsDay: {:integer, "int32"},
       deliveryAddressUsageDate: {:string, "date-time"},
-      deliveryAddressUsageIndicator: {:enum, ["thisTransaction", "lessThan30Days", "from30To60Days", "moreThan60Days"]},
+      deliveryAddressUsageIndicator:
+        {:enum, ["thisTransaction", "lessThan30Days", "from30To60Days", "moreThan60Days"]},
       homePhone: :string,
       mobilePhone: :string,
       passwordChangeDate: {:string, "date-time"},

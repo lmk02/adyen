@@ -3,10 +3,8 @@ defmodule Adyen.Transfers.FundingInstrument do
   Provides struct and type for a FundingInstrument
   """
 
-  alias Adyen.Transfers.CardIdentification
-
   @type t :: %__MODULE__{
-          cardIdentification: CardIdentification.t() | nil,
+          cardIdentification: Adyen.Transfers.CardIdentification.t() | nil,
           networkPaymentReference: String.t() | nil,
           reference: String.t() | nil,
           sourceOfFunds: String.t() | nil
@@ -20,7 +18,7 @@ defmodule Adyen.Transfers.FundingInstrument do
 
   def __fields__(:t) do
     [
-      cardIdentification: {CardIdentification, :t},
+      cardIdentification: {Adyen.Transfers.CardIdentification, :t},
       networkPaymentReference: :string,
       reference: :string,
       sourceOfFunds: {:enum, ["DEBIT", "DEPOSIT_ACCOUNT"]}

@@ -3,21 +3,15 @@ defmodule Adyen.Checkout.PaymentAmountUpdateRequest do
   Provides struct and type for a PaymentAmountUpdateRequest
   """
 
-  alias Adyen.Checkout.Amount
-  alias Adyen.Checkout.ApplicationInfo
-  alias Adyen.Checkout.EnhancedSchemeData
-  alias Adyen.Checkout.LineItem
-  alias Adyen.Checkout.Split
-
   @type t :: %__MODULE__{
-          amount: Amount.t(),
-          applicationInfo: ApplicationInfo.t() | nil,
-          enhancedSchemeData: EnhancedSchemeData.t() | nil,
+          amount: Adyen.Checkout.Amount.t(),
+          applicationInfo: Adyen.Checkout.ApplicationInfo.t() | nil,
+          enhancedSchemeData: Adyen.Checkout.EnhancedSchemeData.t() | nil,
           industryUsage: String.t() | nil,
-          lineItems: [LineItem.t()] | nil,
+          lineItems: [Adyen.Checkout.LineItem.t()] | nil,
           merchantAccount: String.t(),
           reference: String.t() | nil,
-          splits: [Split.t()] | nil
+          splits: [Adyen.Checkout.Split.t()] | nil
         }
 
   defstruct [
@@ -37,14 +31,14 @@ defmodule Adyen.Checkout.PaymentAmountUpdateRequest do
 
   def __fields__(:t) do
     [
-      amount: {Amount, :t},
-      applicationInfo: {ApplicationInfo, :t},
-      enhancedSchemeData: {EnhancedSchemeData, :t},
+      amount: {Adyen.Checkout.Amount, :t},
+      applicationInfo: {Adyen.Checkout.ApplicationInfo, :t},
+      enhancedSchemeData: {Adyen.Checkout.EnhancedSchemeData, :t},
       industryUsage: {:enum, ["delayedCharge", "installment", "noShow"]},
-      lineItems: [{LineItem, :t}],
+      lineItems: [{Adyen.Checkout.LineItem, :t}],
       merchantAccount: :string,
       reference: :string,
-      splits: [{Split, :t}]
+      splits: [{Adyen.Checkout.Split, :t}]
     ]
   end
 end

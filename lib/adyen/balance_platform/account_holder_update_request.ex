@@ -3,13 +3,10 @@ defmodule Adyen.BalancePlatform.AccountHolderUpdateRequest do
   Provides struct and type for a AccountHolderUpdateRequest
   """
 
-  alias Adyen.BalancePlatform.ContactDetails
-  alias Adyen.BalancePlatform.VerificationDeadline
-
   @type t :: %__MODULE__{
           balancePlatform: String.t() | nil,
           capabilities: map | nil,
-          contactDetails: ContactDetails.t() | nil,
+          contactDetails: Adyen.BalancePlatform.ContactDetails.t() | nil,
           description: String.t() | nil,
           metadata: map | nil,
           migratedAccountHolderCode: String.t() | nil,
@@ -17,7 +14,7 @@ defmodule Adyen.BalancePlatform.AccountHolderUpdateRequest do
           reference: String.t() | nil,
           status: String.t() | nil,
           timeZone: String.t() | nil,
-          verificationDeadlines: [VerificationDeadline.t()] | nil
+          verificationDeadlines: [Adyen.BalancePlatform.VerificationDeadline.t()] | nil
         }
 
   defstruct [
@@ -42,7 +39,7 @@ defmodule Adyen.BalancePlatform.AccountHolderUpdateRequest do
     [
       balancePlatform: :string,
       capabilities: :map,
-      contactDetails: {ContactDetails, :t},
+      contactDetails: {Adyen.BalancePlatform.ContactDetails, :t},
       description: :string,
       metadata: :map,
       migratedAccountHolderCode: :string,
@@ -50,7 +47,7 @@ defmodule Adyen.BalancePlatform.AccountHolderUpdateRequest do
       reference: :string,
       status: {:enum, ["active", "closed", "suspended"]},
       timeZone: :string,
-      verificationDeadlines: [{VerificationDeadline, :t}]
+      verificationDeadlines: [{Adyen.BalancePlatform.VerificationDeadline, :t}]
     ]
   end
 end

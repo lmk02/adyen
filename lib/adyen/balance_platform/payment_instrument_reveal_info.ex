@@ -3,11 +3,9 @@ defmodule Adyen.BalancePlatform.PaymentInstrumentRevealInfo do
   Provides struct and type for a PaymentInstrumentRevealInfo
   """
 
-  alias Adyen.BalancePlatform.Expiry
-
   @type t :: %__MODULE__{
           cvc: String.t(),
-          expiration: Expiry.t(),
+          expiration: Adyen.BalancePlatform.Expiry.t(),
           pan: String.t()
         }
 
@@ -18,6 +16,6 @@ defmodule Adyen.BalancePlatform.PaymentInstrumentRevealInfo do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [cvc: :string, expiration: {Expiry, :t}, pan: :string]
+    [cvc: :string, expiration: {Adyen.BalancePlatform.Expiry, :t}, pan: :string]
   end
 end

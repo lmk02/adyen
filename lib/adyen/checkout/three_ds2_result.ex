@@ -48,7 +48,8 @@ defmodule Adyen.Checkout.ThreeDs2Result do
       challengeCancel: {:enum, ["01", "02", "03", "04", "05", "06", "07"]},
       dsTransID: :string,
       eci: :string,
-      exemptionIndicator: {:enum, ["lowValue", "secureCorporate", "trustedBeneficiary", "transactionRiskAnalysis"]},
+      exemptionIndicator:
+        {:enum, ["lowValue", "secureCorporate", "trustedBeneficiary", "transactionRiskAnalysis"]},
       messageVersion: :string,
       riskScore: :string,
       threeDSRequestorChallengeInd: {:enum, ["01", "02", "03", "04", "05", "06"]},

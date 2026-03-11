@@ -3,12 +3,10 @@ defmodule Adyen.Checkout.CheckoutForwardRequestOptions do
   Provides struct and type for a CheckoutForwardRequestOptions
   """
 
-  alias Adyen.Checkout.CheckoutNetworkTokenOption
-
   @type t :: %__MODULE__{
           accountUpdate: boolean | nil,
           dryRun: boolean | nil,
-          networkToken: CheckoutNetworkTokenOption.t() | nil,
+          networkToken: Adyen.Checkout.CheckoutNetworkTokenOption.t() | nil,
           networkTxReferencePaths: [String.t()] | nil,
           tokenize: boolean | nil
         }
@@ -23,7 +21,7 @@ defmodule Adyen.Checkout.CheckoutForwardRequestOptions do
     [
       accountUpdate: :boolean,
       dryRun: :boolean,
-      networkToken: {CheckoutNetworkTokenOption, :t},
+      networkToken: {Adyen.Checkout.CheckoutNetworkTokenOption, :t},
       networkTxReferencePaths: [:string],
       tokenize: :boolean
     ]

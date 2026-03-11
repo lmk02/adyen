@@ -3,10 +3,8 @@ defmodule Adyen.BalancePlatform.PaginatedAccountHoldersResponse do
   Provides struct and type for a PaginatedAccountHoldersResponse
   """
 
-  alias Adyen.BalancePlatform.AccountHolder
-
   @type t :: %__MODULE__{
-          accountHolders: [AccountHolder.t()],
+          accountHolders: [Adyen.BalancePlatform.AccountHolder.t()],
           hasNext: boolean,
           hasPrevious: boolean
         }
@@ -19,7 +17,7 @@ defmodule Adyen.BalancePlatform.PaginatedAccountHoldersResponse do
 
   def __fields__(:t) do
     [
-      accountHolders: [{AccountHolder, :t}],
+      accountHolders: [{Adyen.BalancePlatform.AccountHolder, :t}],
       hasNext: :boolean,
       hasPrevious: :boolean
     ]

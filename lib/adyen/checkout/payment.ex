@@ -3,12 +3,9 @@ defmodule Adyen.Checkout.Payment do
   Provides struct and type for a Payment
   """
 
-  alias Adyen.Checkout.Amount
-  alias Adyen.Checkout.ResponsePaymentMethod
-
   @type t :: %__MODULE__{
-          amount: Amount.t() | nil,
-          paymentMethod: ResponsePaymentMethod.t() | nil,
+          amount: Adyen.Checkout.Amount.t() | nil,
+          paymentMethod: Adyen.Checkout.ResponsePaymentMethod.t() | nil,
           pspReference: String.t() | nil,
           resultCode: String.t() | nil
         }
@@ -21,8 +18,8 @@ defmodule Adyen.Checkout.Payment do
 
   def __fields__(:t) do
     [
-      amount: {Amount, :t},
-      paymentMethod: {ResponsePaymentMethod, :t},
+      amount: {Adyen.Checkout.Amount, :t},
+      paymentMethod: {Adyen.Checkout.ResponsePaymentMethod, :t},
       pspReference: :string,
       resultCode: {:enum, ["Authorised", "Received", "Pending"]}
     ]

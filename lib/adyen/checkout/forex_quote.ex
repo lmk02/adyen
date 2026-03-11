@@ -3,17 +3,15 @@ defmodule Adyen.Checkout.ForexQuote do
   Provides struct and type for a ForexQuote
   """
 
-  alias Adyen.Checkout.Amount
-
   @type t :: %__MODULE__{
           account: String.t() | nil,
           accountType: String.t() | nil,
-          baseAmount: Amount.t() | nil,
+          baseAmount: Adyen.Checkout.Amount.t() | nil,
           basePoints: integer,
-          buy: Amount.t() | nil,
-          interbank: Amount.t() | nil,
+          buy: Adyen.Checkout.Amount.t() | nil,
+          interbank: Adyen.Checkout.Amount.t() | nil,
           reference: String.t() | nil,
-          sell: Amount.t() | nil,
+          sell: Adyen.Checkout.Amount.t() | nil,
           signature: String.t() | nil,
           source: String.t() | nil,
           type: String.t() | nil,
@@ -43,12 +41,12 @@ defmodule Adyen.Checkout.ForexQuote do
     [
       account: :string,
       accountType: :string,
-      baseAmount: {Amount, :t},
+      baseAmount: {Adyen.Checkout.Amount, :t},
       basePoints: {:integer, "int32"},
-      buy: {Amount, :t},
-      interbank: {Amount, :t},
+      buy: {Adyen.Checkout.Amount, :t},
+      interbank: {Adyen.Checkout.Amount, :t},
       reference: :string,
-      sell: {Amount, :t},
+      sell: {Adyen.Checkout.Amount, :t},
       signature: :string,
       source: :string,
       type: :string,

@@ -3,9 +3,7 @@ defmodule Adyen.BalancePlatform.TimeOfDayRestriction do
   Provides struct and type for a TimeOfDayRestriction
   """
 
-  alias Adyen.BalancePlatform.TimeOfDay
-
-  @type t :: %__MODULE__{operation: String.t(), value: TimeOfDay.t() | nil}
+  @type t :: %__MODULE__{operation: String.t(), value: Adyen.BalancePlatform.TimeOfDay.t() | nil}
 
   defstruct [:operation, :value]
 
@@ -14,6 +12,6 @@ defmodule Adyen.BalancePlatform.TimeOfDayRestriction do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [operation: :string, value: {TimeOfDay, :t}]
+    [operation: :string, value: {Adyen.BalancePlatform.TimeOfDay, :t}]
   end
 end

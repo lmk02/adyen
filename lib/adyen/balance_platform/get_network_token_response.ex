@@ -3,9 +3,7 @@ defmodule Adyen.BalancePlatform.GetNetworkTokenResponse do
   Provides struct and type for a GetNetworkTokenResponse
   """
 
-  alias Adyen.BalancePlatform.NetworkToken
-
-  @type t :: %__MODULE__{token: NetworkToken.t()}
+  @type t :: %__MODULE__{token: Adyen.BalancePlatform.NetworkToken.t()}
 
   defstruct [:token]
 
@@ -14,6 +12,6 @@ defmodule Adyen.BalancePlatform.GetNetworkTokenResponse do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [token: {NetworkToken, :t}]
+    [token: {Adyen.BalancePlatform.NetworkToken, :t}]
   end
 end

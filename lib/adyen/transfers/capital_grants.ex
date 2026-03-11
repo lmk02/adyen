@@ -3,9 +3,7 @@ defmodule Adyen.Transfers.CapitalGrants do
   Provides struct and type for a CapitalGrants
   """
 
-  alias Adyen.Transfers.CapitalGrant
-
-  @type t :: %__MODULE__{grants: [CapitalGrant.t()]}
+  @type t :: %__MODULE__{grants: [Adyen.Transfers.CapitalGrant.t()]}
 
   defstruct [:grants]
 
@@ -14,6 +12,6 @@ defmodule Adyen.Transfers.CapitalGrants do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [grants: [{CapitalGrant, :t}]]
+    [grants: [{Adyen.Transfers.CapitalGrant, :t}]]
   end
 end

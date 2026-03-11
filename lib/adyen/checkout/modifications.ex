@@ -3,21 +3,6 @@ defmodule Adyen.Checkout.Modifications do
   Provides API endpoints related to modifications
   """
 
-  alias Adyen.Checkout.Modifications
-  alias Adyen.Checkout.PaymentAmountUpdateRequest
-  alias Adyen.Checkout.PaymentAmountUpdateResponse
-  alias Adyen.Checkout.PaymentCancelRequest
-  alias Adyen.Checkout.PaymentCancelResponse
-  alias Adyen.Checkout.PaymentCaptureRequest
-  alias Adyen.Checkout.PaymentCaptureResponse
-  alias Adyen.Checkout.PaymentRefundRequest
-  alias Adyen.Checkout.PaymentRefundResponse
-  alias Adyen.Checkout.PaymentReversalRequest
-  alias Adyen.Checkout.PaymentReversalResponse
-  alias Adyen.Checkout.ServiceError
-  alias Adyen.Checkout.StandalonePaymentCancelRequest
-  alias Adyen.Checkout.StandalonePaymentCancelResponse
-
   @default_client Adyen.Client
 
   @doc """
@@ -35,26 +20,26 @@ defmodule Adyen.Checkout.Modifications do
 
   **Content Types**: `application/json`
   """
-  @spec create_cancels(body :: StandalonePaymentCancelRequest.t(), opts :: keyword) ::
-          {:ok, StandalonePaymentCancelResponse.t()}
-          | {:error, ServiceError.t()}
-  def create_cancels(body, opts \\ []) do
+  @spec post_cancels(body :: Adyen.Checkout.StandalonePaymentCancelRequest.t(), opts :: keyword) ::
+          {:ok, Adyen.Checkout.StandalonePaymentCancelResponse.t()}
+          | {:error, Adyen.Checkout.ServiceError.t()}
+  def post_cancels(body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [body: body],
-      call: {Modifications, :create_cancels},
+      call: {Adyen.Checkout.Modifications, :post_cancels},
       url: "/cancels",
       body: body,
       method: :post,
-      request: [{"application/json", {StandalonePaymentCancelRequest, :t}}],
+      request: [{"application/json", {Adyen.Checkout.StandalonePaymentCancelRequest, :t}}],
       response: [
-        {201, {StandalonePaymentCancelResponse, :t}},
-        {400, {ServiceError, :t}},
-        {401, {ServiceError, :t}},
-        {403, {ServiceError, :t}},
-        {422, {ServiceError, :t}},
-        {500, {ServiceError, :t}}
+        {201, {Adyen.Checkout.StandalonePaymentCancelResponse, :t}},
+        {400, {Adyen.Checkout.ServiceError, :t}},
+        {401, {Adyen.Checkout.ServiceError, :t}},
+        {403, {Adyen.Checkout.ServiceError, :t}},
+        {422, {Adyen.Checkout.ServiceError, :t}},
+        {500, {Adyen.Checkout.ServiceError, :t}}
       ],
       opts: opts
     })
@@ -75,30 +60,30 @@ defmodule Adyen.Checkout.Modifications do
 
   **Content Types**: `application/json`
   """
-  @spec create_payment_psp_reference_amount_updates(
+  @spec post_payments_payment_psp_reference_amount_updates(
           paymentPspReference :: String.t(),
-          body :: PaymentAmountUpdateRequest.t(),
+          body :: Adyen.Checkout.PaymentAmountUpdateRequest.t(),
           opts :: keyword
         ) ::
-          {:ok, PaymentAmountUpdateResponse.t()}
-          | {:error, ServiceError.t()}
-  def create_payment_psp_reference_amount_updates(paymentPspReference, body, opts \\ []) do
+          {:ok, Adyen.Checkout.PaymentAmountUpdateResponse.t()}
+          | {:error, Adyen.Checkout.ServiceError.t()}
+  def post_payments_payment_psp_reference_amount_updates(paymentPspReference, body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [paymentPspReference: paymentPspReference, body: body],
-      call: {Modifications, :create_payment_psp_reference_amount_updates},
+      call: {Adyen.Checkout.Modifications, :post_payments_payment_psp_reference_amount_updates},
       url: "/payments/#{paymentPspReference}/amountUpdates",
       body: body,
       method: :post,
-      request: [{"application/json", {PaymentAmountUpdateRequest, :t}}],
+      request: [{"application/json", {Adyen.Checkout.PaymentAmountUpdateRequest, :t}}],
       response: [
-        {201, {PaymentAmountUpdateResponse, :t}},
-        {400, {ServiceError, :t}},
-        {401, {ServiceError, :t}},
-        {403, {ServiceError, :t}},
-        {422, {ServiceError, :t}},
-        {500, {ServiceError, :t}}
+        {201, {Adyen.Checkout.PaymentAmountUpdateResponse, :t}},
+        {400, {Adyen.Checkout.ServiceError, :t}},
+        {401, {Adyen.Checkout.ServiceError, :t}},
+        {403, {Adyen.Checkout.ServiceError, :t}},
+        {422, {Adyen.Checkout.ServiceError, :t}},
+        {500, {Adyen.Checkout.ServiceError, :t}}
       ],
       opts: opts
     })
@@ -119,30 +104,30 @@ defmodule Adyen.Checkout.Modifications do
 
   **Content Types**: `application/json`
   """
-  @spec create_payment_psp_reference_cancels(
+  @spec post_payments_payment_psp_reference_cancels(
           paymentPspReference :: String.t(),
-          body :: PaymentCancelRequest.t(),
+          body :: Adyen.Checkout.PaymentCancelRequest.t(),
           opts :: keyword
         ) ::
-          {:ok, PaymentCancelResponse.t()}
-          | {:error, ServiceError.t()}
-  def create_payment_psp_reference_cancels(paymentPspReference, body, opts \\ []) do
+          {:ok, Adyen.Checkout.PaymentCancelResponse.t()}
+          | {:error, Adyen.Checkout.ServiceError.t()}
+  def post_payments_payment_psp_reference_cancels(paymentPspReference, body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [paymentPspReference: paymentPspReference, body: body],
-      call: {Modifications, :create_payment_psp_reference_cancels},
+      call: {Adyen.Checkout.Modifications, :post_payments_payment_psp_reference_cancels},
       url: "/payments/#{paymentPspReference}/cancels",
       body: body,
       method: :post,
-      request: [{"application/json", {PaymentCancelRequest, :t}}],
+      request: [{"application/json", {Adyen.Checkout.PaymentCancelRequest, :t}}],
       response: [
-        {201, {PaymentCancelResponse, :t}},
-        {400, {ServiceError, :t}},
-        {401, {ServiceError, :t}},
-        {403, {ServiceError, :t}},
-        {422, {ServiceError, :t}},
-        {500, {ServiceError, :t}}
+        {201, {Adyen.Checkout.PaymentCancelResponse, :t}},
+        {400, {Adyen.Checkout.ServiceError, :t}},
+        {401, {Adyen.Checkout.ServiceError, :t}},
+        {403, {Adyen.Checkout.ServiceError, :t}},
+        {422, {Adyen.Checkout.ServiceError, :t}},
+        {500, {Adyen.Checkout.ServiceError, :t}}
       ],
       opts: opts
     })
@@ -163,30 +148,30 @@ defmodule Adyen.Checkout.Modifications do
 
   **Content Types**: `application/json`
   """
-  @spec create_payment_psp_reference_captures(
+  @spec post_payments_payment_psp_reference_captures(
           paymentPspReference :: String.t(),
-          body :: PaymentCaptureRequest.t(),
+          body :: Adyen.Checkout.PaymentCaptureRequest.t(),
           opts :: keyword
         ) ::
-          {:ok, PaymentCaptureResponse.t()}
-          | {:error, ServiceError.t()}
-  def create_payment_psp_reference_captures(paymentPspReference, body, opts \\ []) do
+          {:ok, Adyen.Checkout.PaymentCaptureResponse.t()}
+          | {:error, Adyen.Checkout.ServiceError.t()}
+  def post_payments_payment_psp_reference_captures(paymentPspReference, body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [paymentPspReference: paymentPspReference, body: body],
-      call: {Modifications, :create_payment_psp_reference_captures},
+      call: {Adyen.Checkout.Modifications, :post_payments_payment_psp_reference_captures},
       url: "/payments/#{paymentPspReference}/captures",
       body: body,
       method: :post,
-      request: [{"application/json", {PaymentCaptureRequest, :t}}],
+      request: [{"application/json", {Adyen.Checkout.PaymentCaptureRequest, :t}}],
       response: [
-        {201, {PaymentCaptureResponse, :t}},
-        {400, {ServiceError, :t}},
-        {401, {ServiceError, :t}},
-        {403, {ServiceError, :t}},
-        {422, {ServiceError, :t}},
-        {500, {ServiceError, :t}}
+        {201, {Adyen.Checkout.PaymentCaptureResponse, :t}},
+        {400, {Adyen.Checkout.ServiceError, :t}},
+        {401, {Adyen.Checkout.ServiceError, :t}},
+        {403, {Adyen.Checkout.ServiceError, :t}},
+        {422, {Adyen.Checkout.ServiceError, :t}},
+        {500, {Adyen.Checkout.ServiceError, :t}}
       ],
       opts: opts
     })
@@ -209,30 +194,30 @@ defmodule Adyen.Checkout.Modifications do
 
   **Content Types**: `application/json`
   """
-  @spec create_payment_psp_reference_refunds(
+  @spec post_payments_payment_psp_reference_refunds(
           paymentPspReference :: String.t(),
-          body :: PaymentRefundRequest.t(),
+          body :: Adyen.Checkout.PaymentRefundRequest.t(),
           opts :: keyword
         ) ::
-          {:ok, PaymentRefundResponse.t()}
-          | {:error, ServiceError.t()}
-  def create_payment_psp_reference_refunds(paymentPspReference, body, opts \\ []) do
+          {:ok, Adyen.Checkout.PaymentRefundResponse.t()}
+          | {:error, Adyen.Checkout.ServiceError.t()}
+  def post_payments_payment_psp_reference_refunds(paymentPspReference, body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [paymentPspReference: paymentPspReference, body: body],
-      call: {Modifications, :create_payment_psp_reference_refunds},
+      call: {Adyen.Checkout.Modifications, :post_payments_payment_psp_reference_refunds},
       url: "/payments/#{paymentPspReference}/refunds",
       body: body,
       method: :post,
-      request: [{"application/json", {PaymentRefundRequest, :t}}],
+      request: [{"application/json", {Adyen.Checkout.PaymentRefundRequest, :t}}],
       response: [
-        {201, {PaymentRefundResponse, :t}},
-        {400, {ServiceError, :t}},
-        {401, {ServiceError, :t}},
-        {403, {ServiceError, :t}},
-        {422, {ServiceError, :t}},
-        {500, {ServiceError, :t}}
+        {201, {Adyen.Checkout.PaymentRefundResponse, :t}},
+        {400, {Adyen.Checkout.ServiceError, :t}},
+        {401, {Adyen.Checkout.ServiceError, :t}},
+        {403, {Adyen.Checkout.ServiceError, :t}},
+        {422, {Adyen.Checkout.ServiceError, :t}},
+        {500, {Adyen.Checkout.ServiceError, :t}}
       ],
       opts: opts
     })
@@ -252,30 +237,30 @@ defmodule Adyen.Checkout.Modifications do
 
   **Content Types**: `application/json`
   """
-  @spec create_payment_psp_reference_reversals(
+  @spec post_payments_payment_psp_reference_reversals(
           paymentPspReference :: String.t(),
-          body :: PaymentReversalRequest.t(),
+          body :: Adyen.Checkout.PaymentReversalRequest.t(),
           opts :: keyword
         ) ::
-          {:ok, PaymentReversalResponse.t()}
-          | {:error, ServiceError.t()}
-  def create_payment_psp_reference_reversals(paymentPspReference, body, opts \\ []) do
+          {:ok, Adyen.Checkout.PaymentReversalResponse.t()}
+          | {:error, Adyen.Checkout.ServiceError.t()}
+  def post_payments_payment_psp_reference_reversals(paymentPspReference, body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [paymentPspReference: paymentPspReference, body: body],
-      call: {Modifications, :create_payment_psp_reference_reversals},
+      call: {Adyen.Checkout.Modifications, :post_payments_payment_psp_reference_reversals},
       url: "/payments/#{paymentPspReference}/reversals",
       body: body,
       method: :post,
-      request: [{"application/json", {PaymentReversalRequest, :t}}],
+      request: [{"application/json", {Adyen.Checkout.PaymentReversalRequest, :t}}],
       response: [
-        {201, {PaymentReversalResponse, :t}},
-        {400, {ServiceError, :t}},
-        {401, {ServiceError, :t}},
-        {403, {ServiceError, :t}},
-        {422, {ServiceError, :t}},
-        {500, {ServiceError, :t}}
+        {201, {Adyen.Checkout.PaymentReversalResponse, :t}},
+        {400, {Adyen.Checkout.ServiceError, :t}},
+        {401, {Adyen.Checkout.ServiceError, :t}},
+        {403, {Adyen.Checkout.ServiceError, :t}},
+        {422, {Adyen.Checkout.ServiceError, :t}},
+        {500, {Adyen.Checkout.ServiceError, :t}}
       ],
       opts: opts
     })

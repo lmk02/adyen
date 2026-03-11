@@ -1,0 +1,23 @@
+defmodule Adyen.Management.StarInfo do
+  @moduledoc """
+  Provides struct and type for a StarInfo
+  """
+
+  @type t :: %__MODULE__{
+          processingType: String.t(),
+          transactionDescription: Adyen.Management.TransactionDescriptionInfo.t() | nil
+        }
+
+  defstruct [:processingType, :transactionDescription]
+
+  @doc false
+  @spec __fields__(atom) :: keyword
+  def __fields__(type \\ :t)
+
+  def __fields__(:t) do
+    [
+      processingType: {:enum, ["billpay", "ecom", "pos"]},
+      transactionDescription: {Adyen.Management.TransactionDescriptionInfo, :t}
+    ]
+  end
+end

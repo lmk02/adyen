@@ -3,12 +3,9 @@ defmodule Adyen.Transfers.MerchantPurchaseData do
   Provides struct and type for a MerchantPurchaseData
   """
 
-  alias Adyen.Transfers.Airline
-  alias Adyen.Transfers.Lodging
-
   @type t :: %__MODULE__{
-          airline: Airline.t() | nil,
-          lodging: [Lodging.t()] | nil,
+          airline: Adyen.Transfers.Airline.t() | nil,
+          lodging: [Adyen.Transfers.Lodging.t()] | nil,
           type: String.t()
         }
 
@@ -20,8 +17,8 @@ defmodule Adyen.Transfers.MerchantPurchaseData do
 
   def __fields__(:t) do
     [
-      airline: {Airline, :t},
-      lodging: [{Lodging, :t}],
+      airline: {Adyen.Transfers.Airline, :t},
+      lodging: [{Adyen.Transfers.Lodging, :t}],
       type: {:const, "merchantPurchaseData"}
     ]
   end

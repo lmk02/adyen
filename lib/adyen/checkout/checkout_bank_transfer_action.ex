@@ -3,8 +3,6 @@ defmodule Adyen.Checkout.CheckoutBankTransferAction do
   Provides struct and type for a CheckoutBankTransferAction
   """
 
-  alias Adyen.Checkout.Amount
-
   @type t :: %__MODULE__{
           accountNumber: String.t() | nil,
           bankCode: String.t() | nil,
@@ -18,7 +16,7 @@ defmodule Adyen.Checkout.CheckoutBankTransferAction do
           routingNumber: String.t() | nil,
           shopperEmail: String.t() | nil,
           sortCode: String.t() | nil,
-          totalAmount: Amount.t() | nil,
+          totalAmount: Adyen.Checkout.Amount.t() | nil,
           type: String.t(),
           url: String.t() | nil
         }
@@ -59,7 +57,7 @@ defmodule Adyen.Checkout.CheckoutBankTransferAction do
       routingNumber: :string,
       shopperEmail: :string,
       sortCode: :string,
-      totalAmount: {Amount, :t},
+      totalAmount: {Adyen.Checkout.Amount, :t},
       type: {:const, "bankTransfer"},
       url: :string
     ]

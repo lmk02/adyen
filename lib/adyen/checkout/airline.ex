@@ -3,14 +3,8 @@ defmodule Adyen.Checkout.Airline do
   Provides struct and type for a Airline
   """
 
-  alias Adyen.Checkout.Agency
-  alias Adyen.Checkout.Leg
-  alias Adyen.Checkout.Passenger
-  alias Adyen.Checkout.Ticket
-  alias Adyen.Checkout.TravelAgency
-
   @type t :: %__MODULE__{
-          agency: Agency.t() | nil,
+          agency: Adyen.Checkout.Agency.t() | nil,
           boardingFee: integer | nil,
           code: String.t() | nil,
           computerizedReservationSystem: String.t() | nil,
@@ -18,11 +12,11 @@ defmodule Adyen.Checkout.Airline do
           designatorCode: String.t() | nil,
           documentType: String.t() | nil,
           flightDate: DateTime.t() | nil,
-          legs: [Leg.t()] | nil,
+          legs: [Adyen.Checkout.Leg.t()] | nil,
           passengerName: String.t(),
-          passengers: [Passenger.t()] | nil,
-          ticket: Ticket.t() | nil,
-          travelAgency: TravelAgency.t() | nil
+          passengers: [Adyen.Checkout.Passenger.t()] | nil,
+          ticket: Adyen.Checkout.Ticket.t() | nil,
+          travelAgency: Adyen.Checkout.TravelAgency.t() | nil
         }
 
   defstruct [
@@ -47,7 +41,7 @@ defmodule Adyen.Checkout.Airline do
 
   def __fields__(:t) do
     [
-      agency: {Agency, :t},
+      agency: {Adyen.Checkout.Agency, :t},
       boardingFee: {:integer, "int64"},
       code: :string,
       computerizedReservationSystem: :string,
@@ -55,11 +49,11 @@ defmodule Adyen.Checkout.Airline do
       designatorCode: :string,
       documentType: :string,
       flightDate: {:string, "date-time"},
-      legs: [{Leg, :t}],
+      legs: [{Adyen.Checkout.Leg, :t}],
       passengerName: :string,
-      passengers: [{Passenger, :t}],
-      ticket: {Ticket, :t},
-      travelAgency: {TravelAgency, :t}
+      passengers: [{Adyen.Checkout.Passenger, :t}],
+      ticket: {Adyen.Checkout.Ticket, :t},
+      travelAgency: {Adyen.Checkout.TravelAgency, :t}
     ]
   end
 end

@@ -3,9 +3,7 @@ defmodule Adyen.BalancePlatform.SubmitScaAssociationRequest do
   Provides struct and type for a SubmitScaAssociationRequest
   """
 
-  alias Adyen.BalancePlatform.ScaEntity
-
-  @type t :: %__MODULE__{entities: [ScaEntity.t()]}
+  @type t :: %__MODULE__{entities: [Adyen.BalancePlatform.ScaEntity.t()]}
 
   defstruct [:entities]
 
@@ -14,6 +12,6 @@ defmodule Adyen.BalancePlatform.SubmitScaAssociationRequest do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [entities: [{ScaEntity, :t}]]
+    [entities: [{Adyen.BalancePlatform.ScaEntity, :t}]]
   end
 end

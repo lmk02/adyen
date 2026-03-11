@@ -3,15 +3,12 @@ defmodule Adyen.Checkout.DonationCampaign do
   Provides struct and type for a DonationCampaign
   """
 
-  alias Adyen.Checkout.Amounts
-  alias Adyen.Checkout.Donation
-
   @type t :: %__MODULE__{
-          amounts: Amounts.t() | nil,
+          amounts: Adyen.Checkout.Amounts.t() | nil,
           bannerUrl: String.t() | nil,
           campaignName: String.t() | nil,
           causeName: String.t() | nil,
-          donation: Donation.t() | nil,
+          donation: Adyen.Checkout.Donation.t() | nil,
           id: String.t() | nil,
           logoUrl: String.t() | nil,
           nonprofitDescription: String.t() | nil,
@@ -40,11 +37,11 @@ defmodule Adyen.Checkout.DonationCampaign do
 
   def __fields__(:t) do
     [
-      amounts: {Amounts, :t},
+      amounts: {Adyen.Checkout.Amounts, :t},
       bannerUrl: :string,
       campaignName: :string,
       causeName: :string,
-      donation: {Donation, :t},
+      donation: {Adyen.Checkout.Donation, :t},
       id: :string,
       logoUrl: :string,
       nonprofitDescription: :string,

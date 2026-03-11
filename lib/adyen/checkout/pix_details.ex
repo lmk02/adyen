@@ -3,11 +3,9 @@ defmodule Adyen.Checkout.PixDetails do
   Provides struct and type for a PixDetails
   """
 
-  alias Adyen.Checkout.PixRecurring
-
   @type t :: %__MODULE__{
           checkoutAttemptId: String.t() | nil,
-          pixRecurring: PixRecurring.t() | nil,
+          pixRecurring: Adyen.Checkout.PixRecurring.t() | nil,
           recurringDetailReference: String.t() | nil,
           sdkData: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
@@ -30,7 +28,7 @@ defmodule Adyen.Checkout.PixDetails do
   def __fields__(:t) do
     [
       checkoutAttemptId: :string,
-      pixRecurring: {PixRecurring, :t},
+      pixRecurring: {Adyen.Checkout.PixRecurring, :t},
       recurringDetailReference: :string,
       sdkData: :string,
       storedPaymentMethodId: :string,

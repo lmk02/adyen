@@ -3,11 +3,9 @@ defmodule Adyen.BalancePlatform.CounterpartyBankRestriction do
   Provides struct and type for a CounterpartyBankRestriction
   """
 
-  alias Adyen.BalancePlatform.BankIdentification
-
   @type t :: %__MODULE__{
           operation: String.t(),
-          value: [BankIdentification.t()] | nil
+          value: [Adyen.BalancePlatform.BankIdentification.t()] | nil
         }
 
   defstruct [:operation, :value]
@@ -17,6 +15,6 @@ defmodule Adyen.BalancePlatform.CounterpartyBankRestriction do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [operation: :string, value: [{BankIdentification, :t}]]
+    [operation: :string, value: [{Adyen.BalancePlatform.BankIdentification, :t}]]
   end
 end
