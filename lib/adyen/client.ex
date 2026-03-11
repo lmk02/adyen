@@ -4,39 +4,12 @@ defmodule Adyen.Client do
 
   This module implements the `request/1` callback expected by `oapi_generator`.
   All generated API operations call this module to execute HTTP requests through `Req`.
-
-  ## Configuration
-
-  Configure your API key and environment in your application configuration:
-
-      config :adyen,
-        api_key: "your_api_key",
-        environment: :test  # or :live
-
-  ## Per-request Options
-
-  You can override configuration on a per-request basis by passing options to any API function.
-  These options are passed down to the `request/1` function:
-
-      Adyen.Checkout.Payments.create_session(request,
-        api_key: "other_key",
-        environment: :live
-      )
-
-  Supported options:
-  - `:api_key` - Overrides the API key
-  - `:environment` - Overrides the environment (:test or :live)
-  - `:live_url_prefix` - Required for live Checkout API requests
-  - `:client` - Use a custom client module (defaults to `Adyen.Client`)
-
   """
 
   require Logger
 
   @doc """
   Execute an HTTP request to the Adyen API.
-
-  This is the callback function that oapi_generator uses for all API operations.
   """
   @spec request(map()) :: {:ok, any()} | {:error, Adyen.Error.t()}
   def request(%{method: method, url: url, opts: opts} = req) do
@@ -44,11 +17,11 @@ defmodule Adyen.Client do
     query = Map.get(req, :query, [])
     response_mappings = Map.get(req, :response, [])
 
-    service = detect_service_from_req(req)
-    opts_with_service = Keyword.put(opts, :service, service)
+    {service_name, expected_version} = detect_context(req)
 
-    api_key = Adyen.Config.api_key(opts_with_service)
-    base_url = Adyen.Config.base_url(opts_with_service)
+    version = Adyen.Config.version(service_name, expected_version)
+    api_key = Adyen.Config.api_key(service_name, opts)
+    base_url = Adyen.Config.base_url(service_name, version, opts)
 
     request =
       Req.new(
@@ -76,45 +49,40 @@ defmodule Adyen.Client do
     end
   end
 
-  defp detect_service_from_req(req) do
-    case Map.get(req, :call) do
-      {module, _func} -> detect_service(module)
-      _ -> :checkout
+  defp detect_context(%{call: {module, _func}}) do
+    case Module.split(module) do
+      ["Adyen", service_str, version_str | _] ->
+        service = Adyen.Config.resolve_service_name(service_str)
+        version = String.downcase(version_str)
+        {service, version}
+
+      _ ->
+        {"CheckoutService", nil}
     end
   end
 
-  defp detect_service(module) do
-    module_name = to_string(module)
-
-    cond do
-      String.contains?(module_name, "Transfers") -> :transfers
-      String.contains?(module_name, "BalancePlatform") -> :balance_platform
-      true -> :checkout
-    end
-  end
+  defp detect_context(_req), do: {"CheckoutService", nil}
 
   defp handle_response(status, body, response_mappings) do
+    is_success = status in 200..299
+
     case find_response_type(status, response_mappings) do
-      nil when status in 200..299 ->
-        {:ok, decode_json(body)}
-
-      nil ->
-        {:error, Adyen.Error.from_response(status, decode_json(body))}
-
-      :unknown ->
-        {:ok, decode_json(body)}
-
       {module, :t} ->
-        prototype = prototype_for(module)
-        decoded_body = Poison.decode!(body, as: prototype)
-
-        if status in 200..299 do
-          {:ok, decoded_body}
-        else
-          {:error, decoded_body}
+        case Poison.decode(body, as: prototype_for(module)) do
+          {:ok, decoded_struct} -> format_result(is_success, decoded_struct)
+          {:error, _} -> format_fallback(is_success, status, body)
         end
+
+      _ ->
+        format_fallback(is_success, status, body)
     end
   end
+
+  defp format_result(true, data), do: {:ok, data}
+  defp format_result(false, data), do: {:error, data}
+
+  defp format_fallback(true, _status, body), do: {:ok, decode_json(body)}
+  defp format_fallback(false, status, body), do: {:error, Adyen.Error.from_response(status, decode_json(body))}
 
   defp decode_json(body) do
     case Poison.decode(body) do
@@ -123,18 +91,13 @@ defmodule Adyen.Client do
     end
   end
 
-  # Recursively build a prototype struct for Poison to decode into
   defp prototype_for(module) do
-    if function_exported?(module, :__fields__, 1) do
-      fields = module.__fields__(:t)
-
+    if Code.ensure_loaded?(module) and function_exported?(module, :__fields__, 1) do
       proto_fields =
-        Enum.reduce(fields, [], fn {name, type}, acc ->
-          case resolve_type(type) do
-            nil -> acc
-            val -> [{name, val} | acc]
-          end
-        end)
+        for {name, type} <- module.__fields__(:t),
+            val = resolve_type(type),
+            not is_nil(val),
+            do: {name, val}
 
       struct(module, proto_fields)
     else

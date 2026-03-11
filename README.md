@@ -1,8 +1,14 @@
-# Adyen
+# Adyen Elixir SDK
 
-Elixir client library for the [Adyen API](https://docs.adyen.com/).
+A lean, on-the-fly code-generation Elixir client library for the [Adyen API](https://docs.adyen.com/).
 
-Built with [oapi_generator](https://github.com/aj-foster/open-api-generator) from Adyen's official OpenAPI specs and [Req](https://github.com/wojtekmach/req) for HTTP requests.
+This SDK provides core HTTP client components and dynamically generates exactly the API versions you need at compile-time. All OpenAPI specifications are bundled within the library via a git submodule in `priv/specs`.
+
+## Features
+
+- **On-the-fly Generation:** No manual generation steps. Modules are created during compilation based on your configuration.
+- **Configurable:** Include only the services and versions you need to keep your build small.
+- **Always Up-to-Date:** Bundles the full Adyen OpenAPI spec repository.
 
 ## Installation
 
@@ -16,128 +22,53 @@ def deps do
 end
 ```
 
+> **Note:** If you are developing this library or using it from source, ensure you initialize the submodules:
+> `git submodule update --init --recursive`
+
 ## Configuration
 
-Configure your API key in `config/config.exs`:
+In your `config/config.exs` (or `runtime.exs`), specify the Adyen services and versions you want to include:
 
 ```elixir
 config :adyen,
+  # 1. Compile-time settings: Defines which services and exact versions to generate modules for
+  services: [
+    "CheckoutService:v71",
+    "PayoutService:v68"
+  ],
+  # 2. Global fallback API key (optional)
   api_key: System.get_env("ADYEN_API_KEY"),
-  environment: :test  # or :live
+  
+  # 3. Service-specific configuration
+  CheckoutService: [
+    # Optional: overrides the default `v71` or whatever is inferred from the caller module
+    # version: "v71",
+    api_key: System.get_env("ADYEN_CHECKOUT_API_KEY")
+  ],
+  PayoutService: [
+    api_key: System.get_env("ADYEN_PAYOUT_API_KEY")
+  ]
 ```
 
-For live payments, you also need your live URL prefix:
-
-```elixir
-config :adyen,
-  api_key: System.get_env("ADYEN_API_KEY"),
-  environment: :live,
-  live_url_prefix: "your-company-prefix"  # From Adyen Customer Area
-```
+Available services can be found in the `priv/specs/json` directory of the library.
 
 ## Usage
 
-### Checkout Service
+Once configured, the modules are automatically available under the `Adyen` namespace.
 
-**Create a Checkout Session:**
+### Checkout Service (Example for v71)
 
 ```elixir
-request = %Adyen.Checkout.CreateCheckoutSessionRequest{
+alias Adyen.Checkout.V71, as: CheckoutV71
+
+request = %CheckoutV71.CreateCheckoutSessionRequest{
   merchantAccount: "YOUR_MERCHANT_ACCOUNT",
-  amount: %Adyen.Checkout.Amount{value: 1000, currency: "EUR"},
+  amount: %CheckoutV71.Amount{value: 1000, currency: "EUR"},
   reference: "order-123",
   returnUrl: "https://your-site.com/checkout/return"
 }
 
-{:ok, session} = Adyen.Checkout.Payments.create_session(request)
-# => %Adyen.Checkout.CreateCheckoutSessionResponse{id: "CS...", ...}
-```
-
-**Get Payment Methods:**
-
-```elixir
-request = %Adyen.Checkout.PaymentMethodsRequest{
-  merchantAccount: "YOUR_MERCHANT_ACCOUNT",
-  countryCode: "NL",
-  amount: %Adyen.Checkout.Amount{value: 1000, currency: "EUR"}
-}
-
-{:ok, methods} = Adyen.Checkout.Payments.create_payment_methods(request)
-```
-
-### Transfers Service
-
-**Make a Transfer:**
-
-```elixir
-request = %Adyen.Transfers.TransferInfo{
-  amount: %Adyen.Transfers.Amount{value: 1000, currency: "EUR"},
-  balanceAccountId: "BA...",
-  counterparty: %Adyen.Transfers.CounterpartyInfoV3{balanceAccountId: "BA..."},
-  description: "Payment to seller"
-}
-
-{:ok, transfer} = Adyen.Transfers.Transfers.create_transfer(request)
-```
-
-### Balance Platform Service
-
-**Get Balance Account:**
-
-```elixir
-{:ok, account} = Adyen.BalancePlatform.BalanceAccounts.get_balance_account("BA...")
-```
-
-## Structure
-
-The library is organized by service:
-
-- `Adyen.Checkout.*` - [Checkout API](https://docs.adyen.com/api-explorer/Checkout/latest/overview)
-- `Adyen.Transfers.*` - [Transfers API](https://docs.adyen.com/api-explorer/transfers/latest/overview)
-- `Adyen.BalancePlatform.*` - [Balance Platform API](https://docs.adyen.com/api-explorer/balanceplatform/latest/overview)
-
-## Per-request Options
-
-Override configuration for individual requests:
-
-```elixir
-Adyen.Checkout.Payments.create_session(request,
-  api_key: "different_api_key",
-  environment: :live,
-  live_url_prefix: "company-prefix"
-)
-```
-
-## Error Handling
-
-All API functions return `{:ok, result}` or `{:error, %Adyen.Error{}}`:
-
-```elixir
-case Adyen.Checkout.Payments.create_payment(request) do
-  {:ok, response} ->
-    IO.puts("Payment successful: #{response.pspReference}")
-
-  {:error, %Adyen.Error{error_code: "validation"} = error} ->
-    IO.puts("Validation error: #{error.message}")
-
-  {:error, %Adyen.Error{status: 401}} ->
-    IO.puts("Authentication failed")
-end
-```
-
-## Regenerating from OpenAPI Specs
-
-The library is generated from Adyen's OpenAPI specs. To regenerate:
-
-```bash
-# Checkout API
-mix api.gen adyen_checkout priv/specs/CheckoutService-v71.json
-
-# Transfers API
-mix api.gen adyen_transfers priv/specs/TransferService-v4.json
-
-# Balance Platform API
-mix api.gen adyen_balance_platform priv/specs/BalancePlatformService-v2.json
+{:ok, session} = CheckoutV71.Payments.post_sessions(request)
 ```
 
 ## License

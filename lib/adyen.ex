@@ -3,73 +3,51 @@ defmodule Adyen do
   Elixir client library for the Adyen API.
 
   This library provides a modern, idiomatic Elixir interface to Adyen's payment
-  and financial services APIs. It uses `Req` for HTTP requests and is generated
-  from Adyen's official OpenAPI specifications.
+  and financial services APIs.
 
   ## Configuration
 
-  Configure your API credentials in `config/config.exs`:
+  Configure the services you want to generate modules for, as well as specific API keys for each service, in your `config/config.exs`:
 
       config :adyen,
-        api_key: System.get_env("ADYEN_API_KEY"),
-        environment: :test  # or :live
+        services: ["CheckoutService:v71", "PayoutService:v68"],
+        api_key: System.get_env("ADYEN_API_KEY"), # Global fallback API key
+        CheckoutService: [
+          api_key: System.get_env("ADYEN_CHECKOUT_API_KEY")
+        ]
 
-  For production use with live payments, you'll also need:
+  ## Dynamic Generation
 
-      config :adyen,
-        live_url_prefix: "your-company-prefix"
-
-  ## Usage
-
-  All API operations are organized into namespaces matching the service:
-
-      # Checkout Service
-      request = %Adyen.Checkout.CreateCheckoutSessionRequest{...}
-      {:ok, session} = Adyen.Checkout.Payments.create_session(request)
-
-      # Transfers Service
-      request = %Adyen.Transfers.TransferInfo{...}
-      {:ok, transfer} = Adyen.Transfers.Transfers.create_transfer(request)
-
-      # Balance Platform Service
-      {:ok, account} = Adyen.BalancePlatform.BalanceAccounts.get_balance_account(id)
-
-  ## Per-request Options
-
-  All API functions accept optional keyword arguments to override configuration:
-
-      Adyen.Checkout.Payments.create_session(request,
-        api_key: "different_key",
-        environment: :live,
-        live_url_prefix: "company"
-      )
-
-  ## Error Handling
-
-  All API functions return `{:ok, result}` or `{:error, %Adyen.Error{}}`:
-
-      case Adyen.Checkout.Payments.create_session(request) do
-        {:ok, session} ->
-          # Handle success
-          session.id
-
-        {:error, %Adyen.Error{error_code: "validation"} = error} ->
-          # Handle validation errors
-          IO.puts(error.message)
-
-        {:error, %Adyen.Error{status: 401}} ->
-          # Handle authentication errors
-      end
-
-  ## Supported APIs
-
-  - `Adyen.Checkout` - Online payments, sessions, modifications
-  - `Adyen.Transfers` - Payouts and transfers
-  - `Adyen.BalancePlatform` - Account holders, balance accounts, cards
+  All API client modules are generated at compile-time based on the services
+  specified in the configuration. This ensures a lean library that only
+  includes what you need.
   """
 
   @doc """
   Returns the library version.
   """
   def version, do: "0.1.0"
+end
+
+# Handle on-the-fly generation during compilation
+# Application.compile_env works during compilation if configured in the parent project.
+services = Application.compile_env(:adyen, :services, [])
+
+if Enum.any?(services) do
+  # Ensure Adyen.Codegen is loaded (it should be as it is compiled earlier or parallel)
+  # Iterate and evaluate each module AST
+  for service_string <- services do
+    case String.split(service_string, ":") do
+      [service, version] ->
+        asts = Adyen.Codegen.generate_ast(service, version)
+
+        for ast <- asts do
+          # Evaluation of the defmodule AST will define the module in the BEAM
+          Code.eval_quoted(ast, [], __ENV__)
+        end
+
+      _ ->
+        nil
+    end
+  end
 end
