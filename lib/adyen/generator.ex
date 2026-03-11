@@ -9,7 +9,7 @@ defmodule Adyen.Generator do
   def generate_all(services \\ nil, output_path \\ nil) do
     specs_dir = get_specs_dir()
     services = services || Application.get_env(:adyen, :services, [])
-    output_path = output_path || Application.get_env(:adyen, :output_path, "lib/adyen")
+    output_path = output_path || Application.get_env(:adyen, :output_path, "generated_lib")
 
     with :ok <- validate_specs_dir(specs_dir),
          {:ok, false} <- check_services_empty(services) do
@@ -43,6 +43,24 @@ defmodule Adyen.Generator do
 
       path ->
         Path.join([Path.expand(path), "specs", "json"])
+    end
+  end
+
+  def get_all_services do
+    specs_dir = get_specs_dir()
+
+    if File.dir?(specs_dir) do
+      specs_dir
+      |> File.ls!()
+      |> Enum.filter(&String.ends_with?(&1, ".json"))
+      |> Enum.map(fn filename ->
+        filename
+        |> String.replace(".json", "")
+        |> String.replace("-v", ":v")
+      end)
+      |> Enum.sort()
+    else
+      []
     end
   end
 

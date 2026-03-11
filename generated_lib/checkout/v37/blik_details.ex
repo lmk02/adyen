@@ -1,0 +1,27 @@
+defmodule Adyen.Checkout.V37.BlikDetails do
+  @moduledoc """
+  Provides struct and type for a BlikDetails
+  """
+
+  @type t :: %__MODULE__{
+          blikCode: String.t() | nil,
+          checkoutAttemptId: String.t() | nil,
+          recurringDetailReference: String.t() | nil,
+          type: String.t() | nil
+        }
+
+  defstruct [:blikCode, :checkoutAttemptId, :recurringDetailReference, :type]
+
+  @doc false
+  @spec __fields__(atom) :: keyword
+  def __fields__(type \\ :t)
+
+  def __fields__(:t) do
+    [
+      blikCode: :string,
+      checkoutAttemptId: :string,
+      recurringDetailReference: :string,
+      type: {:const, "blik"}
+    ]
+  end
+end

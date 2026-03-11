@@ -1,0 +1,99 @@
+defmodule Adyen.Checkout.V67.PaymentResponse do
+  @moduledoc """
+  Provides struct and type for a PaymentResponse
+  """
+
+  @type t :: %__MODULE__{
+          action:
+            Adyen.Checkout.V67.CheckoutAwaitAction.t()
+            | Adyen.Checkout.V67.CheckoutBankTransferAction.t()
+            | Adyen.Checkout.V67.CheckoutNativeRedirectAction.t()
+            | Adyen.Checkout.V67.CheckoutQrCodeAction.t()
+            | Adyen.Checkout.V67.CheckoutRedirectAction.t()
+            | Adyen.Checkout.V67.CheckoutSDKAction.t()
+            | Adyen.Checkout.V67.CheckoutThreeDs2Action.t()
+            | Adyen.Checkout.V67.CheckoutVoucherAction.t()
+            | nil,
+          additionalData: map | nil,
+          amount: Adyen.Checkout.V67.Amount.t() | nil,
+          donationToken: String.t() | nil,
+          fraudResult: Adyen.Checkout.V67.FraudResult.t() | nil,
+          merchantReference: String.t() | nil,
+          order: Adyen.Checkout.V67.CheckoutOrderResponse.t() | nil,
+          pspReference: String.t() | nil,
+          refusalReason: String.t() | nil,
+          refusalReasonCode: String.t() | nil,
+          resultCode: String.t() | nil,
+          threeDS2ResponseData: Adyen.Checkout.V67.ThreeDs2ResponseData.t() | nil,
+          threeDS2Result: Adyen.Checkout.V67.ThreeDs2Result.t() | nil,
+          threeDSPaymentData: String.t() | nil
+        }
+
+  defstruct [
+    :action,
+    :additionalData,
+    :amount,
+    :donationToken,
+    :fraudResult,
+    :merchantReference,
+    :order,
+    :pspReference,
+    :refusalReason,
+    :refusalReasonCode,
+    :resultCode,
+    :threeDS2ResponseData,
+    :threeDS2Result,
+    :threeDSPaymentData
+  ]
+
+  @doc false
+  @spec __fields__(atom) :: keyword
+  def __fields__(type \\ :t)
+
+  def __fields__(:t) do
+    [
+      action:
+        {:union,
+         [
+           {Adyen.Checkout.V67.CheckoutAwaitAction, :t},
+           {Adyen.Checkout.V67.CheckoutBankTransferAction, :t},
+           {Adyen.Checkout.V67.CheckoutNativeRedirectAction, :t},
+           {Adyen.Checkout.V67.CheckoutQrCodeAction, :t},
+           {Adyen.Checkout.V67.CheckoutRedirectAction, :t},
+           {Adyen.Checkout.V67.CheckoutSDKAction, :t},
+           {Adyen.Checkout.V67.CheckoutThreeDs2Action, :t},
+           {Adyen.Checkout.V67.CheckoutVoucherAction, :t}
+         ]},
+      additionalData: :map,
+      amount: {Adyen.Checkout.V67.Amount, :t},
+      donationToken: :string,
+      fraudResult: {Adyen.Checkout.V67.FraudResult, :t},
+      merchantReference: :string,
+      order: {Adyen.Checkout.V67.CheckoutOrderResponse, :t},
+      pspReference: :string,
+      refusalReason: :string,
+      refusalReasonCode: :string,
+      resultCode:
+        {:enum,
+         [
+           "AuthenticationFinished",
+           "AuthenticationNotRequired",
+           "Authorised",
+           "Cancelled",
+           "ChallengeShopper",
+           "Error",
+           "IdentifyShopper",
+           "PartiallyAuthorised",
+           "Pending",
+           "PresentToShopper",
+           "Received",
+           "RedirectShopper",
+           "Refused",
+           "Success"
+         ]},
+      threeDS2ResponseData: {Adyen.Checkout.V67.ThreeDs2ResponseData, :t},
+      threeDS2Result: {Adyen.Checkout.V67.ThreeDs2Result, :t},
+      threeDSPaymentData: :string
+    ]
+  end
+end

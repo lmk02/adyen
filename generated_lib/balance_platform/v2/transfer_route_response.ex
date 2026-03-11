@@ -1,0 +1,17 @@
+defmodule Adyen.BalancePlatform.V2.TransferRouteResponse do
+  @moduledoc """
+  Provides struct and type for a TransferRouteResponse
+  """
+
+  @type t :: %__MODULE__{transferRoutes: [Adyen.BalancePlatform.V2.TransferRoute.t()] | nil}
+
+  defstruct [:transferRoutes]
+
+  @doc false
+  @spec __fields__(atom) :: keyword
+  def __fields__(type \\ :t)
+
+  def __fields__(:t) do
+    [transferRoutes: [{Adyen.BalancePlatform.V2.TransferRoute, :t}]]
+  end
+end

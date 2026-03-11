@@ -6,8 +6,8 @@ This SDK provides core HTTP client components and dynamically generates exactly 
 
 ## Features
 
-- **On-the-fly Generation:** No manual generation steps. Modules are created during compilation based on your configuration.
-- **Configurable:** Include only the services and versions you need to keep your build small.
+- **Pre-generated Modules:** All Adyen API modules are pre-generated within the library.
+- **Selective Compilation:** Include only the services and versions you need in your configuration. Only these will be compiled into your application, keeping it lean.
 - **Always Up-to-Date:** Bundles the full Adyen OpenAPI spec repository.
 
 ## Installation
@@ -54,7 +54,7 @@ Available services can be found in the `priv/specs/json` directory of the librar
 
 ## Usage
 
-Once configured, the modules are automatically available under the `Adyen` namespace.
+Once configured, only the specified services will be compiled. The modules are available under the `Adyen` namespace.
 
 ### Checkout Service (Example for v71)
 

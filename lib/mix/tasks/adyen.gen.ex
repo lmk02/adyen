@@ -32,15 +32,23 @@ defmodule Mix.Tasks.Adyen.Gen do
     # Ensure dependencies are started
     Application.ensure_all_started(:req)
 
+    {opts, extra, _} = OptionParser.parse(args, switches: [all: :boolean])
+
     # Use CLI args if provided, otherwise fall back to application config
-    services = if Enum.any?(args), do: args, else: Application.get_env(:adyen, :services, [])
-    output_path = Application.get_env(:adyen, :output_path, "lib/adyen")
+    services =
+      cond do
+        opts[:all] -> Adyen.Generator.get_all_services()
+        Enum.any?(extra) -> extra
+        true -> Application.get_env(:adyen, :services, [])
+      end
+
+    output_path = Application.get_env(:adyen, :output_path, "generated_lib")
 
     if Enum.empty?(services) do
       display_available_services()
 
       Mix.shell().info(
-        "\nNo Adyen services configured. Add them to `config :adyen, services: [...]` or pass as arguments."
+        "\nNo Adyen services configured. Add them to `config :adyen, services: [...]` or pass as arguments or use --all."
       )
     else
       case Adyen.Generator.generate_all(services, output_path) do
