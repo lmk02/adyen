@@ -1,0 +1,3 @@
+[submodule "priv/specs"]
+	path = priv/specs
+	url = https://github.com/Adyen/adyen-openapi

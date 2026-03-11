@@ -96,17 +96,18 @@ defmodule Adyen.Error do
 end
 
 defimpl String.Chars, for: Adyen.Error do
+  @spec to_string(Adyen.Error.t()) :: binary()
   def to_string(%Adyen.Error{message: message, error_code: code, status: status, error_type: type}) do
-    parts = []
-    parts = if status, do: ["HTTP #{status}" | parts], else: parts
-    parts = if type, do: ["(#{type})" | parts], else: parts
-    parts = if code, do: ["#{code}" | parts], else: parts
-    parts = if message, do: [message | parts], else: parts
-
-    if parts == [] do
-      "Adyen Error"
-    else
-      Enum.join(Enum.reverse(parts), " - ")
+    [
+      if(status, do: "HTTP #{status}"),
+      if(type, do: "(#{type})"),
+      code,
+      message
+    ]
+    |> Enum.reject(&is_nil/1)
+    |> case do
+      [] -> "Adyen Error"
+      parts -> Enum.join(parts, " - ")
     end
   end
 end

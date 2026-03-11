@@ -3,7 +3,7 @@ defmodule AdyenTest do
 
   doctest Adyen
 
-  test "greets the world" do
-    assert Adyen.hello() == :world
+  test "version returns the library version" do
+    assert Adyen.version() == "0.1.0"
   end
 end

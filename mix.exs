@@ -24,7 +24,7 @@ defmodule Adyen.MixProject do
       {:req, "~> 0.5"},
       {:jason, "~> 1.4"},
       {:poison, "~> 6.0"},
-      {:oapi_generator, "~> 0.4", only: :dev, runtime: false},
+      {:oapi_generator, "~> 0.4", runtime: false},
       {:ex_doc, "~> 0.31", only: :dev, runtime: false},
       {:styler, "~> 1.10", only: [:dev, :test], runtime: false}
     ]
