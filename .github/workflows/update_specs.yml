@@ -63,21 +63,34 @@ jobs:
         if: steps.check_specs.outputs.changes == 'true'
         id: bump
         run: |
+          CURRENT_VERSION=$(elixir scripts/bump_version.exs --current)
+
           # Use git-cliff to calculate the next version
-          NEW_VERSION=$(git-cliff --bump --unreleased | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
-          if [ -z "$NEW_VERSION" ]; then
-            # Fallback if no tags exist or bump fails
-            NEW_VERSION=$(elixir scripts/bump_version.exs)
+          # Ensure git tags are fetched for git-cliff to work better
+          git fetch --tags
+          NEXT_VERSION=$(git-cliff --bump --unreleased | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
+
+          echo "Current: $CURRENT_VERSION, Next from cliff: $NEXT_VERSION"
+
+          if [ -n "$NEXT_VERSION" ] && [ "$NEXT_VERSION" != "$CURRENT_VERSION" ]; then
+            # Perform the specified bump
+            FINAL_VERSION=$(elixir scripts/bump_version.exs "$NEXT_VERSION")
           else
-            elixir scripts/bump_version.exs "$NEW_VERSION"
+            # Fallback to manual patch bump if cliff didn't find a reason to bump
+            FINAL_VERSION=$(elixir scripts/bump_version.exs)
           fi
-          echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+
+          echo "version=$FINAL_VERSION" >> $GITHUB_OUTPUT
 
       - name: Commit Release
         if: steps.check_specs.outputs.changes == 'true'
         run: |
-          git add mix.exs
-          git commit -m "chore(release): bump version to ${{ steps.bump.outputs.version }}"
+          if [ -n "$(git status --porcelain mix.exs)" ]; then
+            git add mix.exs
+            git commit -m "chore(release): bump version to ${{ steps.bump.outputs.version }}"
+          else
+            echo "No changes in mix.exs, skipping release commit."
+          fi
 
       - name: Create Pull Request
         if: steps.check_specs.outputs.changes == 'true'
