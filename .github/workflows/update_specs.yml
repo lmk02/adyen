@@ -2,7 +2,7 @@ name: Update Adyen Specs
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Daily at midnight
+    - cron: "0 0 * * *" # Daily at midnight
   workflow_dispatch: # Manual trigger
 
 jobs:
@@ -20,8 +20,8 @@ jobs:
       - name: Set up Elixir
         uses: erlef/setup-beam@v1
         with:
-          elixir-version: '1.17'
-          otp-version: '26'
+          elixir-version: "1.19"
+          otp-version: "27"
 
       - name: Install Dependencies
         run: mix deps.get
@@ -29,7 +29,7 @@ jobs:
       - name: Update Submodule
         run: |
           git submodule update --remote --merge priv/specs
-          
+
       - name: Check for changes in specs
         id: check_specs
         run: |
@@ -87,7 +87,7 @@ jobs:
           title: "Update Adyen Specs"
           body: |
             This is an automated PR to update Adyen OpenAPI specifications.
-            
+
             Changes:
             - Updated `priv/specs` submodule to the latest commit.
             - Regenerated all API clients in `generated_lib/` via `mix adyen.gen --all`.
