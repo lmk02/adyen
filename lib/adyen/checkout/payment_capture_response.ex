@@ -3,23 +3,17 @@ defmodule Adyen.Checkout.PaymentCaptureResponse do
   Provides struct and type for a PaymentCaptureResponse
   """
 
-  alias Adyen.Checkout.Amount
-  alias Adyen.Checkout.LineItem
-  alias Adyen.Checkout.PlatformChargebackLogic
-  alias Adyen.Checkout.Split
-  alias Adyen.Checkout.SubMerchantInfo
-
   @type t :: %__MODULE__{
-          amount: Amount.t(),
-          lineItems: [LineItem.t()] | nil,
+          amount: Adyen.Checkout.Amount.t(),
+          lineItems: [Adyen.Checkout.LineItem.t()] | nil,
           merchantAccount: String.t(),
           paymentPspReference: String.t(),
-          platformChargebackLogic: PlatformChargebackLogic.t() | nil,
+          platformChargebackLogic: Adyen.Checkout.PlatformChargebackLogic.t() | nil,
           pspReference: String.t(),
           reference: String.t() | nil,
-          splits: [Split.t()] | nil,
+          splits: [Adyen.Checkout.Split.t()] | nil,
           status: String.t(),
-          subMerchants: [SubMerchantInfo.t()] | nil
+          subMerchants: [Adyen.Checkout.SubMerchantInfo.t()] | nil
         }
 
   defstruct [
@@ -41,16 +35,16 @@ defmodule Adyen.Checkout.PaymentCaptureResponse do
 
   def __fields__(:t) do
     [
-      amount: {Amount, :t},
-      lineItems: [{LineItem, :t}],
+      amount: {Adyen.Checkout.Amount, :t},
+      lineItems: [{Adyen.Checkout.LineItem, :t}],
       merchantAccount: :string,
       paymentPspReference: :string,
-      platformChargebackLogic: {PlatformChargebackLogic, :t},
+      platformChargebackLogic: {Adyen.Checkout.PlatformChargebackLogic, :t},
       pspReference: :string,
       reference: :string,
-      splits: [{Split, :t}],
+      splits: [{Adyen.Checkout.Split, :t}],
       status: {:const, "received"},
-      subMerchants: [{SubMerchantInfo, :t}]
+      subMerchants: [{Adyen.Checkout.SubMerchantInfo, :t}]
     ]
   end
 end

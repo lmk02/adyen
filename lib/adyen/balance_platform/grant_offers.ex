@@ -3,10 +3,6 @@ defmodule Adyen.BalancePlatform.GrantOffers do
   Provides API endpoints related to grant offers
   """
 
-  alias Adyen.BalancePlatform.GrantOffer
-  alias Adyen.BalancePlatform.GrantOffers
-  alias Adyen.BalancePlatform.RestServiceError
-
   @default_client Adyen.Client
 
   @doc """
@@ -20,25 +16,25 @@ defmodule Adyen.BalancePlatform.GrantOffers do
 
   """
   @spec get_grant_offers(opts :: keyword) ::
-          {:ok, GrantOffers.t()}
-          | {:error, RestServiceError.t()}
+          {:ok, Adyen.BalancePlatform.GrantOffers.t()}
+          | {:error, Adyen.BalancePlatform.RestServiceError.t()}
   def get_grant_offers(opts \\ []) do
     client = opts[:client] || @default_client
     query = Keyword.take(opts, [:accountHolderId])
 
     client.request(%{
       args: [],
-      call: {GrantOffers, :get_grant_offers},
+      call: {Adyen.BalancePlatform.GrantOffers, :get_grant_offers},
       url: "/grantOffers",
       method: :get,
       query: query,
       response: [
-        {200, {GrantOffers, :t}},
-        {400, {RestServiceError, :t}},
-        {401, {RestServiceError, :t}},
-        {403, {RestServiceError, :t}},
-        {422, {RestServiceError, :t}},
-        {500, {RestServiceError, :t}}
+        {200, {Adyen.BalancePlatform.GrantOffers, :t}},
+        {400, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {401, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.RestServiceError, :t}}
       ],
       opts: opts
     })
@@ -49,30 +45,30 @@ defmodule Adyen.BalancePlatform.GrantOffers do
 
   Returns the details of a single grant offer.
   """
-  @spec get_grant_offers_grant_offer(grantOfferId :: String.t(), opts :: keyword) ::
-          {:ok, GrantOffer.t()}
-          | {:error, RestServiceError.t()}
-  def get_grant_offers_grant_offer(grantOfferId, opts \\ []) do
+  @spec get_grant_offers_grant_offer_id(grantOfferId :: String.t(), opts :: keyword) ::
+          {:ok, Adyen.BalancePlatform.GrantOffer.t()}
+          | {:error, Adyen.BalancePlatform.RestServiceError.t()}
+  def get_grant_offers_grant_offer_id(grantOfferId, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [grantOfferId: grantOfferId],
-      call: {GrantOffers, :get_grant_offers_grant_offer},
+      call: {Adyen.BalancePlatform.GrantOffers, :get_grant_offers_grant_offer_id},
       url: "/grantOffers/#{grantOfferId}",
       method: :get,
       response: [
-        {200, {GrantOffer, :t}},
-        {400, {RestServiceError, :t}},
-        {401, {RestServiceError, :t}},
-        {403, {RestServiceError, :t}},
-        {422, {RestServiceError, :t}},
-        {500, {RestServiceError, :t}}
+        {200, {Adyen.BalancePlatform.GrantOffer, :t}},
+        {400, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {401, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.RestServiceError, :t}}
       ],
       opts: opts
     })
   end
 
-  @type t :: %__MODULE__{grantOffers: [GrantOffer.t()]}
+  @type t :: %__MODULE__{grantOffers: [Adyen.BalancePlatform.GrantOffer.t()]}
 
   defstruct [:grantOffers]
 
@@ -81,6 +77,6 @@ defmodule Adyen.BalancePlatform.GrantOffers do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [grantOffers: [{GrantOffer, :t}]]
+    [grantOffers: [{Adyen.BalancePlatform.GrantOffer, :t}]]
   end
 end

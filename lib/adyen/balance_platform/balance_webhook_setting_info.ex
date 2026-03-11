@@ -3,14 +3,11 @@ defmodule Adyen.BalancePlatform.BalanceWebhookSettingInfo do
   Provides struct and type for a BalanceWebhookSettingInfo
   """
 
-  alias Adyen.BalancePlatform.Condition
-  alias Adyen.BalancePlatform.Target
-
   @type t :: %__MODULE__{
-          conditions: [Condition.t()] | nil,
+          conditions: [Adyen.BalancePlatform.Condition.t()] | nil,
           currency: String.t(),
           status: String.t(),
-          target: Target.t(),
+          target: Adyen.BalancePlatform.Target.t(),
           type: String.t()
         }
 
@@ -22,10 +19,10 @@ defmodule Adyen.BalancePlatform.BalanceWebhookSettingInfo do
 
   def __fields__(:t) do
     [
-      conditions: [{Condition, :t}],
+      conditions: [{Adyen.BalancePlatform.Condition, :t}],
       currency: :string,
       status: {:enum, ["active", "inactive"]},
-      target: {Target, :t},
+      target: {Adyen.BalancePlatform.Target, :t},
       type: {:const, "balance"}
     ]
   end

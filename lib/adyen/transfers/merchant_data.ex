@@ -3,13 +3,11 @@ defmodule Adyen.Transfers.MerchantData do
   Provides struct and type for a MerchantData
   """
 
-  alias Adyen.Transfers.NameLocation
-
   @type t :: %__MODULE__{
           acquirerId: String.t() | nil,
           mcc: String.t() | nil,
           merchantId: String.t() | nil,
-          nameLocation: NameLocation.t() | nil,
+          nameLocation: Adyen.Transfers.NameLocation.t() | nil,
           postalCode: String.t() | nil
         }
 
@@ -24,7 +22,7 @@ defmodule Adyen.Transfers.MerchantData do
       acquirerId: :string,
       mcc: :string,
       merchantId: :string,
-      nameLocation: {NameLocation, :t},
+      nameLocation: {Adyen.Transfers.NameLocation, :t},
       postalCode: :string
     ]
   end

@@ -3,12 +3,10 @@ defmodule Adyen.BalancePlatform.DeviceInfo do
   Provides struct and type for a DeviceInfo
   """
 
-  alias Adyen.BalancePlatform.PhoneInfo
-
   @type t :: %__MODULE__{
           formFactor: String.t() | nil,
           osName: String.t() | nil,
-          phone: PhoneInfo.t() | nil
+          phone: Adyen.BalancePlatform.PhoneInfo.t() | nil
         }
 
   defstruct [:formFactor, :osName, :phone]
@@ -18,6 +16,6 @@ defmodule Adyen.BalancePlatform.DeviceInfo do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [formFactor: :string, osName: :string, phone: {PhoneInfo, :t}]
+    [formFactor: :string, osName: :string, phone: {Adyen.BalancePlatform.PhoneInfo, :t}]
   end
 end

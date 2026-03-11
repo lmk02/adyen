@@ -3,11 +3,9 @@ defmodule Adyen.Checkout.ValidateShopperIdRequest do
   Provides struct and type for a ValidateShopperIdRequest
   """
 
-  alias Adyen.Checkout.ShopperIdPaymentMethod
-
   @type t :: %__MODULE__{
           merchantAccount: String.t(),
-          paymentMethod: ShopperIdPaymentMethod.t(),
+          paymentMethod: Adyen.Checkout.ShopperIdPaymentMethod.t(),
           shopperEmail: String.t() | nil,
           shopperIP: String.t() | nil,
           shopperReference: String.t() | nil
@@ -22,7 +20,7 @@ defmodule Adyen.Checkout.ValidateShopperIdRequest do
   def __fields__(:t) do
     [
       merchantAccount: :string,
-      paymentMethod: {ShopperIdPaymentMethod, :t},
+      paymentMethod: {Adyen.Checkout.ShopperIdPaymentMethod, :t},
       shopperEmail: :string,
       shopperIP: :string,
       shopperReference: :string

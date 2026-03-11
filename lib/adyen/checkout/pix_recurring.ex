@@ -3,16 +3,14 @@ defmodule Adyen.Checkout.PixRecurring do
   Provides struct and type for a PixRecurring
   """
 
-  alias Adyen.Checkout.Amount
-
   @type t :: %__MODULE__{
           billingDate: String.t() | nil,
           businessDayOnly: boolean | nil,
           endsAt: String.t() | nil,
           frequency: String.t() | nil,
-          minAmount: Amount.t() | nil,
+          minAmount: Adyen.Checkout.Amount.t() | nil,
           originalPspReference: String.t() | nil,
-          recurringAmount: Amount.t() | nil,
+          recurringAmount: Adyen.Checkout.Amount.t() | nil,
           recurringStatement: String.t() | nil,
           retryPolicy: boolean | nil,
           startsAt: String.t() | nil
@@ -41,9 +39,9 @@ defmodule Adyen.Checkout.PixRecurring do
       businessDayOnly: :boolean,
       endsAt: :string,
       frequency: {:enum, ["weekly", "monthly", "quarterly", "half-yearly", "yearly"]},
-      minAmount: {Amount, :t},
+      minAmount: {Adyen.Checkout.Amount, :t},
       originalPspReference: :string,
-      recurringAmount: {Amount, :t},
+      recurringAmount: {Adyen.Checkout.Amount, :t},
       recurringStatement: :string,
       retryPolicy: :boolean,
       startsAt: :string

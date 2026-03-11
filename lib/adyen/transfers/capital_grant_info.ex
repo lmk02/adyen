@@ -3,10 +3,8 @@ defmodule Adyen.Transfers.CapitalGrantInfo do
   Provides struct and type for a CapitalGrantInfo
   """
 
-  alias Adyen.Transfers.Counterparty
-
   @type t :: %__MODULE__{
-          counterparty: Counterparty.t() | nil,
+          counterparty: Adyen.Transfers.GrantInfoCounterparty.t() | nil,
           grantAccountId: String.t(),
           grantOfferId: String.t()
         }
@@ -19,7 +17,7 @@ defmodule Adyen.Transfers.CapitalGrantInfo do
 
   def __fields__(:t) do
     [
-      counterparty: {Counterparty, :t},
+      counterparty: {Adyen.Transfers.GrantInfoCounterparty, :t},
       grantAccountId: :string,
       grantOfferId: :string
     ]

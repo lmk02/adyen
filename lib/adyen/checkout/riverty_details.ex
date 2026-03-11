@@ -47,7 +47,8 @@ defmodule Adyen.Checkout.RivertyDetails do
       sdkData: :string,
       storedPaymentMethodId: :string,
       subtype: :string,
-      type: {:enum, ["riverty", "riverty_account", "riverty_installments", "sepadirectdebit_riverty"]}
+      type:
+        {:enum, ["riverty", "riverty_account", "riverty_installments", "sepadirectdebit_riverty"]}
     ]
   end
 end

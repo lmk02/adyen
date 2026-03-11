@@ -3,15 +3,11 @@ defmodule Adyen.Transfers.CounterpartyV3 do
   Provides struct and type for a CounterpartyV3
   """
 
-  alias Adyen.Transfers.BankAccountV3
-  alias Adyen.Transfers.Card
-  alias Adyen.Transfers.MerchantData
-
   @type t :: %__MODULE__{
           balanceAccountId: String.t() | nil,
-          bankAccount: BankAccountV3.t() | nil,
-          card: Card.t() | nil,
-          merchant: MerchantData.t() | nil,
+          bankAccount: Adyen.Transfers.BankAccountV3.t() | nil,
+          card: Adyen.Transfers.Card.t() | nil,
+          merchant: Adyen.Transfers.MerchantData.t() | nil,
           transferInstrumentId: String.t() | nil
         }
 
@@ -24,9 +20,9 @@ defmodule Adyen.Transfers.CounterpartyV3 do
   def __fields__(:t) do
     [
       balanceAccountId: :string,
-      bankAccount: {BankAccountV3, :t},
-      card: {Card, :t},
-      merchant: {MerchantData, :t},
+      bankAccount: {Adyen.Transfers.BankAccountV3, :t},
+      card: {Adyen.Transfers.Card, :t},
+      merchant: {Adyen.Transfers.MerchantData, :t},
       transferInstrumentId: :string
     ]
   end

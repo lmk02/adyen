@@ -3,58 +3,35 @@ defmodule Adyen.BalancePlatform.TransactionRuleRestrictions do
   Provides struct and type for a TransactionRuleRestrictions
   """
 
-  alias Adyen.BalancePlatform.ActiveNetworkTokensRestriction
-  alias Adyen.BalancePlatform.BrandVariantsRestriction
-  alias Adyen.BalancePlatform.CounterpartyBankRestriction
-  alias Adyen.BalancePlatform.CounterpartyTypesRestriction
-  alias Adyen.BalancePlatform.CountriesRestriction
-  alias Adyen.BalancePlatform.DayOfWeekRestriction
-  alias Adyen.BalancePlatform.DifferentCurrenciesRestriction
-  alias Adyen.BalancePlatform.EntryModesRestriction
-  alias Adyen.BalancePlatform.InternationalTransactionRestriction
-  alias Adyen.BalancePlatform.MatchingTransactionsRestriction
-  alias Adyen.BalancePlatform.MatchingValuesRestriction
-  alias Adyen.BalancePlatform.MccsRestriction
-  alias Adyen.BalancePlatform.MerchantNamesRestriction
-  alias Adyen.BalancePlatform.MerchantsRestriction
-  alias Adyen.BalancePlatform.ProcessingTypesRestriction
-  alias Adyen.BalancePlatform.RiskScoresRestriction
-  alias Adyen.BalancePlatform.SameAmountRestriction
-  alias Adyen.BalancePlatform.SameCounterpartyRestriction
-  alias Adyen.BalancePlatform.SourceAccountTypesRestriction
-  alias Adyen.BalancePlatform.TimeOfDayRestriction
-  alias Adyen.BalancePlatform.TokenRequestorsRestriction
-  alias Adyen.BalancePlatform.TotalAmountRestriction
-  alias Adyen.BalancePlatform.WalletProviderAccountScoreRestriction
-  alias Adyen.BalancePlatform.WalletProviderDeviceScore
-  alias Adyen.BalancePlatform.WalletProviderDeviceType
-
   @type t :: %__MODULE__{
-          activeNetworkTokens: ActiveNetworkTokensRestriction.t() | nil,
-          brandVariants: BrandVariantsRestriction.t() | nil,
-          counterpartyBank: CounterpartyBankRestriction.t() | nil,
-          counterpartyTypes: CounterpartyTypesRestriction.t() | nil,
-          countries: CountriesRestriction.t() | nil,
-          dayOfWeek: DayOfWeekRestriction.t() | nil,
-          differentCurrencies: DifferentCurrenciesRestriction.t() | nil,
-          entryModes: EntryModesRestriction.t() | nil,
-          internationalTransaction: InternationalTransactionRestriction.t() | nil,
-          matchingTransactions: MatchingTransactionsRestriction.t() | nil,
-          matchingValues: MatchingValuesRestriction.t() | nil,
-          mccs: MccsRestriction.t() | nil,
-          merchantNames: MerchantNamesRestriction.t() | nil,
-          merchants: MerchantsRestriction.t() | nil,
-          processingTypes: ProcessingTypesRestriction.t() | nil,
-          riskScores: RiskScoresRestriction.t() | nil,
-          sameAmountRestriction: SameAmountRestriction.t() | nil,
-          sameCounterpartyRestriction: SameCounterpartyRestriction.t() | nil,
-          sourceAccountTypes: SourceAccountTypesRestriction.t() | nil,
-          timeOfDay: TimeOfDayRestriction.t() | nil,
-          tokenRequestors: TokenRequestorsRestriction.t() | nil,
-          totalAmount: TotalAmountRestriction.t() | nil,
-          walletProviderAccountScore: WalletProviderAccountScoreRestriction.t() | nil,
-          walletProviderDeviceScore: WalletProviderDeviceScore.t() | nil,
-          walletProviderDeviceType: WalletProviderDeviceType.t() | nil
+          activeNetworkTokens: Adyen.BalancePlatform.ActiveNetworkTokensRestriction.t() | nil,
+          brandVariants: Adyen.BalancePlatform.BrandVariantsRestriction.t() | nil,
+          counterpartyBank: Adyen.BalancePlatform.CounterpartyBankRestriction.t() | nil,
+          counterpartyTypes: Adyen.BalancePlatform.CounterpartyTypesRestriction.t() | nil,
+          countries: Adyen.BalancePlatform.CountriesRestriction.t() | nil,
+          dayOfWeek: Adyen.BalancePlatform.DayOfWeekRestriction.t() | nil,
+          differentCurrencies: Adyen.BalancePlatform.DifferentCurrenciesRestriction.t() | nil,
+          entryModes: Adyen.BalancePlatform.EntryModesRestriction.t() | nil,
+          internationalTransaction:
+            Adyen.BalancePlatform.InternationalTransactionRestriction.t() | nil,
+          matchingTransactions: Adyen.BalancePlatform.MatchingTransactionsRestriction.t() | nil,
+          matchingValues: Adyen.BalancePlatform.MatchingValuesRestriction.t() | nil,
+          mccs: Adyen.BalancePlatform.MccsRestriction.t() | nil,
+          merchantNames: Adyen.BalancePlatform.MerchantNamesRestriction.t() | nil,
+          merchants: Adyen.BalancePlatform.MerchantsRestriction.t() | nil,
+          processingTypes: Adyen.BalancePlatform.ProcessingTypesRestriction.t() | nil,
+          riskScores: Adyen.BalancePlatform.RiskScoresRestriction.t() | nil,
+          sameAmountRestriction: Adyen.BalancePlatform.SameAmountRestriction.t() | nil,
+          sameCounterpartyRestriction:
+            Adyen.BalancePlatform.SameCounterpartyRestriction.t() | nil,
+          sourceAccountTypes: Adyen.BalancePlatform.SourceAccountTypesRestriction.t() | nil,
+          timeOfDay: Adyen.BalancePlatform.TimeOfDayRestriction.t() | nil,
+          tokenRequestors: Adyen.BalancePlatform.TokenRequestorsRestriction.t() | nil,
+          totalAmount: Adyen.BalancePlatform.TotalAmountRestriction.t() | nil,
+          walletProviderAccountScore:
+            Adyen.BalancePlatform.WalletProviderAccountScoreRestriction.t() | nil,
+          walletProviderDeviceScore: Adyen.BalancePlatform.WalletProviderDeviceScore.t() | nil,
+          walletProviderDeviceType: Adyen.BalancePlatform.WalletProviderDeviceType.t() | nil
         }
 
   defstruct [
@@ -91,31 +68,32 @@ defmodule Adyen.BalancePlatform.TransactionRuleRestrictions do
 
   def __fields__(:t) do
     [
-      activeNetworkTokens: {ActiveNetworkTokensRestriction, :t},
-      brandVariants: {BrandVariantsRestriction, :t},
-      counterpartyBank: {CounterpartyBankRestriction, :t},
-      counterpartyTypes: {CounterpartyTypesRestriction, :t},
-      countries: {CountriesRestriction, :t},
-      dayOfWeek: {DayOfWeekRestriction, :t},
-      differentCurrencies: {DifferentCurrenciesRestriction, :t},
-      entryModes: {EntryModesRestriction, :t},
-      internationalTransaction: {InternationalTransactionRestriction, :t},
-      matchingTransactions: {MatchingTransactionsRestriction, :t},
-      matchingValues: {MatchingValuesRestriction, :t},
-      mccs: {MccsRestriction, :t},
-      merchantNames: {MerchantNamesRestriction, :t},
-      merchants: {MerchantsRestriction, :t},
-      processingTypes: {ProcessingTypesRestriction, :t},
-      riskScores: {RiskScoresRestriction, :t},
-      sameAmountRestriction: {SameAmountRestriction, :t},
-      sameCounterpartyRestriction: {SameCounterpartyRestriction, :t},
-      sourceAccountTypes: {SourceAccountTypesRestriction, :t},
-      timeOfDay: {TimeOfDayRestriction, :t},
-      tokenRequestors: {TokenRequestorsRestriction, :t},
-      totalAmount: {TotalAmountRestriction, :t},
-      walletProviderAccountScore: {WalletProviderAccountScoreRestriction, :t},
-      walletProviderDeviceScore: {WalletProviderDeviceScore, :t},
-      walletProviderDeviceType: {WalletProviderDeviceType, :t}
+      activeNetworkTokens: {Adyen.BalancePlatform.ActiveNetworkTokensRestriction, :t},
+      brandVariants: {Adyen.BalancePlatform.BrandVariantsRestriction, :t},
+      counterpartyBank: {Adyen.BalancePlatform.CounterpartyBankRestriction, :t},
+      counterpartyTypes: {Adyen.BalancePlatform.CounterpartyTypesRestriction, :t},
+      countries: {Adyen.BalancePlatform.CountriesRestriction, :t},
+      dayOfWeek: {Adyen.BalancePlatform.DayOfWeekRestriction, :t},
+      differentCurrencies: {Adyen.BalancePlatform.DifferentCurrenciesRestriction, :t},
+      entryModes: {Adyen.BalancePlatform.EntryModesRestriction, :t},
+      internationalTransaction: {Adyen.BalancePlatform.InternationalTransactionRestriction, :t},
+      matchingTransactions: {Adyen.BalancePlatform.MatchingTransactionsRestriction, :t},
+      matchingValues: {Adyen.BalancePlatform.MatchingValuesRestriction, :t},
+      mccs: {Adyen.BalancePlatform.MccsRestriction, :t},
+      merchantNames: {Adyen.BalancePlatform.MerchantNamesRestriction, :t},
+      merchants: {Adyen.BalancePlatform.MerchantsRestriction, :t},
+      processingTypes: {Adyen.BalancePlatform.ProcessingTypesRestriction, :t},
+      riskScores: {Adyen.BalancePlatform.RiskScoresRestriction, :t},
+      sameAmountRestriction: {Adyen.BalancePlatform.SameAmountRestriction, :t},
+      sameCounterpartyRestriction: {Adyen.BalancePlatform.SameCounterpartyRestriction, :t},
+      sourceAccountTypes: {Adyen.BalancePlatform.SourceAccountTypesRestriction, :t},
+      timeOfDay: {Adyen.BalancePlatform.TimeOfDayRestriction, :t},
+      tokenRequestors: {Adyen.BalancePlatform.TokenRequestorsRestriction, :t},
+      totalAmount: {Adyen.BalancePlatform.TotalAmountRestriction, :t},
+      walletProviderAccountScore:
+        {Adyen.BalancePlatform.WalletProviderAccountScoreRestriction, :t},
+      walletProviderDeviceScore: {Adyen.BalancePlatform.WalletProviderDeviceScore, :t},
+      walletProviderDeviceType: {Adyen.BalancePlatform.WalletProviderDeviceType, :t}
     ]
   end
 end

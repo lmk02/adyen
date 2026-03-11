@@ -3,9 +3,7 @@ defmodule Adyen.Checkout.DonationCampaignsResponse do
   Provides struct and type for a DonationCampaignsResponse
   """
 
-  alias Adyen.Checkout.DonationCampaign
-
-  @type t :: %__MODULE__{donationCampaigns: [DonationCampaign.t()] | nil}
+  @type t :: %__MODULE__{donationCampaigns: [Adyen.Checkout.DonationCampaign.t()] | nil}
 
   defstruct [:donationCampaigns]
 
@@ -14,6 +12,6 @@ defmodule Adyen.Checkout.DonationCampaignsResponse do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [donationCampaigns: [{DonationCampaign, :t}]]
+    [donationCampaigns: [{Adyen.Checkout.DonationCampaign, :t}]]
   end
 end

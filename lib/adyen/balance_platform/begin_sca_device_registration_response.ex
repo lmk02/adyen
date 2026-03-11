@@ -3,10 +3,8 @@ defmodule Adyen.BalancePlatform.BeginScaDeviceRegistrationResponse do
   Provides struct and type for a BeginScaDeviceRegistrationResponse
   """
 
-  alias Adyen.BalancePlatform.ScaDevice
-
   @type t :: %__MODULE__{
-          scaDevice: ScaDevice.t() | nil,
+          scaDevice: Adyen.BalancePlatform.ScaDevice.t() | nil,
           sdkInput: String.t() | nil
         }
 
@@ -17,6 +15,6 @@ defmodule Adyen.BalancePlatform.BeginScaDeviceRegistrationResponse do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [scaDevice: {ScaDevice, :t}, sdkInput: :string]
+    [scaDevice: {Adyen.BalancePlatform.ScaDevice, :t}, sdkInput: :string]
   end
 end

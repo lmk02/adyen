@@ -3,11 +3,6 @@ defmodule Adyen.BalancePlatform.CardOrders do
   Provides API endpoints related to card orders
   """
 
-  alias Adyen.BalancePlatform.CardOrders
-  alias Adyen.BalancePlatform.PaginatedGetCardOrderItemResponse
-  alias Adyen.BalancePlatform.PaginatedGetCardOrderResponse
-  alias Adyen.BalancePlatform.RestServiceError
-
   @default_client Adyen.Client
 
   @doc """
@@ -35,8 +30,8 @@ defmodule Adyen.BalancePlatform.CardOrders do
 
   """
   @spec get_cardorders(opts :: keyword) ::
-          {:ok, PaginatedGetCardOrderResponse.t()}
-          | {:error, RestServiceError.t()}
+          {:ok, Adyen.BalancePlatform.PaginatedGetCardOrderResponse.t()}
+          | {:error, Adyen.BalancePlatform.RestServiceError.t()}
   def get_cardorders(opts \\ []) do
     client = opts[:client] || @default_client
 
@@ -57,16 +52,16 @@ defmodule Adyen.BalancePlatform.CardOrders do
 
     client.request(%{
       args: [],
-      call: {CardOrders, :get_cardorders},
+      call: {Adyen.BalancePlatform.CardOrders, :get_cardorders},
       url: "/cardorders",
       method: :get,
       query: query,
       response: [
-        {200, {PaginatedGetCardOrderResponse, :t}},
-        {401, {RestServiceError, :t}},
-        {403, {RestServiceError, :t}},
-        {422, {RestServiceError, :t}},
-        {500, {RestServiceError, :t}}
+        {200, {Adyen.BalancePlatform.PaginatedGetCardOrderResponse, :t}},
+        {401, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.RestServiceError, :t}}
       ],
       opts: opts
     })
@@ -85,25 +80,25 @@ defmodule Adyen.BalancePlatform.CardOrders do
     * `limit`: The number of card order items returned per page. **Default:** 10.
 
   """
-  @spec get_cardorder_items(id :: String.t(), opts :: keyword) ::
-          {:ok, PaginatedGetCardOrderItemResponse.t()}
-          | {:error, RestServiceError.t()}
-  def get_cardorder_items(id, opts \\ []) do
+  @spec get_cardorders_id_items(id :: String.t(), opts :: keyword) ::
+          {:ok, Adyen.BalancePlatform.PaginatedGetCardOrderItemResponse.t()}
+          | {:error, Adyen.BalancePlatform.RestServiceError.t()}
+  def get_cardorders_id_items(id, opts \\ []) do
     client = opts[:client] || @default_client
     query = Keyword.take(opts, [:limit, :offset])
 
     client.request(%{
       args: [id: id],
-      call: {CardOrders, :get_cardorder_items},
+      call: {Adyen.BalancePlatform.CardOrders, :get_cardorders_id_items},
       url: "/cardorders/#{id}/items",
       method: :get,
       query: query,
       response: [
-        {200, {PaginatedGetCardOrderItemResponse, :t}},
-        {401, {RestServiceError, :t}},
-        {403, {RestServiceError, :t}},
-        {422, {RestServiceError, :t}},
-        {500, {RestServiceError, :t}}
+        {200, {Adyen.BalancePlatform.PaginatedGetCardOrderItemResponse, :t}},
+        {401, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.RestServiceError, :t}}
       ],
       opts: opts
     })

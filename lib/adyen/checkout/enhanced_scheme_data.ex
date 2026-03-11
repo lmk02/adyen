@@ -3,12 +3,9 @@ defmodule Adyen.Checkout.EnhancedSchemeData do
   Provides struct and type for a EnhancedSchemeData
   """
 
-  alias Adyen.Checkout.Airline
-  alias Adyen.Checkout.LevelTwoThree
-
   @type t :: %__MODULE__{
-          airline: Airline.t() | nil,
-          levelTwoThree: LevelTwoThree.t() | nil
+          airline: Adyen.Checkout.Airline.t() | nil,
+          levelTwoThree: Adyen.Checkout.LevelTwoThree.t() | nil
         }
 
   defstruct [:airline, :levelTwoThree]
@@ -18,6 +15,6 @@ defmodule Adyen.Checkout.EnhancedSchemeData do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [airline: {Airline, :t}, levelTwoThree: {LevelTwoThree, :t}]
+    [airline: {Adyen.Checkout.Airline, :t}, levelTwoThree: {Adyen.Checkout.LevelTwoThree, :t}]
   end
 end

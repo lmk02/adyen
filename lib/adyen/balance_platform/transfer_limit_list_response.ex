@@ -3,9 +3,7 @@ defmodule Adyen.BalancePlatform.TransferLimitListResponse do
   Provides struct and type for a TransferLimitListResponse
   """
 
-  alias Adyen.BalancePlatform.TransferLimit
-
-  @type t :: %__MODULE__{transferLimits: [TransferLimit.t()]}
+  @type t :: %__MODULE__{transferLimits: [Adyen.BalancePlatform.TransferLimit.t()]}
 
   defstruct [:transferLimits]
 
@@ -14,6 +12,6 @@ defmodule Adyen.BalancePlatform.TransferLimitListResponse do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [transferLimits: [{TransferLimit, :t}]]
+    [transferLimits: [{Adyen.BalancePlatform.TransferLimit, :t}]]
   end
 end

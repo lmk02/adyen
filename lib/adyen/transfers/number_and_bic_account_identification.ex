@@ -3,11 +3,9 @@ defmodule Adyen.Transfers.NumberAndBicAccountIdentification do
   Provides struct and type for a NumberAndBicAccountIdentification
   """
 
-  alias Adyen.Transfers.AdditionalBankIdentification
-
   @type t :: %__MODULE__{
           accountNumber: String.t(),
-          additionalBankIdentification: AdditionalBankIdentification.t() | nil,
+          additionalBankIdentification: Adyen.Transfers.AdditionalBankIdentification.t() | nil,
           bic: String.t(),
           type: String.t()
         }
@@ -21,7 +19,7 @@ defmodule Adyen.Transfers.NumberAndBicAccountIdentification do
   def __fields__(:t) do
     [
       accountNumber: :string,
-      additionalBankIdentification: {AdditionalBankIdentification, :t},
+      additionalBankIdentification: {Adyen.Transfers.AdditionalBankIdentification, :t},
       bic: :string,
       type: {:const, "numberAndBic"}
     ]

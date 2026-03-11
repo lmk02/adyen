@@ -3,8 +3,6 @@ defmodule Adyen.Checkout.StoredPaymentMethodResource do
   Provides struct and type for a StoredPaymentMethodResource
   """
 
-  alias Adyen.Checkout.TokenMandate
-
   @type t :: %__MODULE__{
           brand: String.t() | nil,
           cardBin: String.t() | nil,
@@ -17,7 +15,7 @@ defmodule Adyen.Checkout.StoredPaymentMethodResource do
           id: String.t() | nil,
           issuerName: String.t() | nil,
           lastFour: String.t() | nil,
-          mandate: TokenMandate.t() | nil,
+          mandate: Adyen.Checkout.TokenMandate.t() | nil,
           name: String.t() | nil,
           networkTxReference: String.t() | nil,
           ownerName: String.t() | nil,
@@ -66,7 +64,7 @@ defmodule Adyen.Checkout.StoredPaymentMethodResource do
       id: :string,
       issuerName: :string,
       lastFour: :string,
-      mandate: {TokenMandate, :t},
+      mandate: {Adyen.Checkout.TokenMandate, :t},
       name: :string,
       networkTxReference: :string,
       ownerName: :string,

@@ -3,11 +3,9 @@ defmodule Adyen.Checkout.SubInputDetail do
   Provides struct and type for a SubInputDetail
   """
 
-  alias Adyen.Checkout.Item
-
   @type t :: %__MODULE__{
           configuration: map | nil,
-          items: [Item.t()] | nil,
+          items: [Adyen.Checkout.Item.t()] | nil,
           key: String.t() | nil,
           optional: boolean | nil,
           type: String.t() | nil,
@@ -23,7 +21,7 @@ defmodule Adyen.Checkout.SubInputDetail do
   def __fields__(:t) do
     [
       configuration: :map,
-      items: [{Item, :t}],
+      items: [{Adyen.Checkout.Item, :t}],
       key: :string,
       optional: :boolean,
       type: :string,

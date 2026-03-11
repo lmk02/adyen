@@ -55,7 +55,9 @@ defmodule Adyen.Checkout.TokenMandate do
       count: :string,
       currency: :string,
       endsAt: :string,
-      frequency: {:enum, ["adhoc", "daily", "weekly", "biWeekly", "monthly", "quarterly", "halfYearly", "yearly"]},
+      frequency:
+        {:enum,
+         ["adhoc", "daily", "weekly", "biWeekly", "monthly", "quarterly", "halfYearly", "yearly"]},
       mandateId: :string,
       maskedAccountId: :string,
       providerId: :string,

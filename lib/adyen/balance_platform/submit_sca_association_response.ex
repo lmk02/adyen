@@ -3,9 +3,7 @@ defmodule Adyen.BalancePlatform.SubmitScaAssociationResponse do
   Provides struct and type for a SubmitScaAssociationResponse
   """
 
-  alias Adyen.BalancePlatform.Association
-
-  @type t :: %__MODULE__{scaAssociations: [Association.t()]}
+  @type t :: %__MODULE__{scaAssociations: [Adyen.BalancePlatform.Association.t()]}
 
   defstruct [:scaAssociations]
 
@@ -14,6 +12,6 @@ defmodule Adyen.BalancePlatform.SubmitScaAssociationResponse do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [scaAssociations: [{Association, :t}]]
+    [scaAssociations: [{Adyen.BalancePlatform.Association, :t}]]
   end
 end

@@ -3,10 +3,8 @@ defmodule Adyen.Transfers.PartyIdentification do
   Provides struct and type for a PartyIdentification
   """
 
-  alias Adyen.Transfers.Address
-
   @type t :: %__MODULE__{
-          address: Address.t() | nil,
+          address: Adyen.Transfers.Address.t() | nil,
           dateOfBirth: Date.t() | nil,
           email: String.t() | nil,
           firstName: String.t() | nil,
@@ -35,7 +33,7 @@ defmodule Adyen.Transfers.PartyIdentification do
 
   def __fields__(:t) do
     [
-      address: {Address, :t},
+      address: {Adyen.Transfers.Address, :t},
       dateOfBirth: {:string, "date"},
       email: :string,
       firstName: :string,

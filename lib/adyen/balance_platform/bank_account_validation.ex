@@ -3,9 +3,6 @@ defmodule Adyen.BalancePlatform.BankAccountValidation do
   Provides API endpoint related to bank account validation
   """
 
-  alias Adyen.BalancePlatform.BankAccountIdentificationValidationRequest
-  alias Adyen.BalancePlatform.RestServiceError
-
   @default_client Adyen.Client
 
   @doc """
@@ -17,28 +14,30 @@ defmodule Adyen.BalancePlatform.BankAccountValidation do
 
   **Content Types**: `application/json`
   """
-  @spec create_validate_bank_account_identification(
-          body :: BankAccountIdentificationValidationRequest.t(),
+  @spec post_validate_bank_account_identification(
+          body :: Adyen.BalancePlatform.BankAccountIdentificationValidationRequest.t(),
           opts :: keyword
-        ) :: :ok | {:error, RestServiceError.t()}
-  def create_validate_bank_account_identification(body, opts \\ []) do
+        ) :: :ok | {:error, Adyen.BalancePlatform.RestServiceError.t()}
+  def post_validate_bank_account_identification(body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [body: body],
-      call: {Adyen.BalancePlatform.BankAccountValidation, :create_validate_bank_account_identification},
+      call:
+        {Adyen.BalancePlatform.BankAccountValidation, :post_validate_bank_account_identification},
       url: "/validateBankAccountIdentification",
       body: body,
       method: :post,
       request: [
-        {"application/json", {BankAccountIdentificationValidationRequest, :t}}
+        {"application/json",
+         {Adyen.BalancePlatform.BankAccountIdentificationValidationRequest, :t}}
       ],
       response: [
         {200, :null},
-        {401, {RestServiceError, :t}},
-        {403, {RestServiceError, :t}},
-        {422, {RestServiceError, :t}},
-        {500, {RestServiceError, :t}}
+        {401, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.RestServiceError, :t}}
       ],
       opts: opts
     })

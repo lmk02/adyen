@@ -3,15 +3,13 @@ defmodule Adyen.Checkout.CheckoutVoucherAction do
   Provides struct and type for a CheckoutVoucherAction
   """
 
-  alias Adyen.Checkout.Amount
-
   @type t :: %__MODULE__{
           alternativeReference: String.t() | nil,
           collectionInstitutionNumber: String.t() | nil,
           downloadUrl: String.t() | nil,
           entity: String.t() | nil,
           expiresAt: String.t() | nil,
-          initialAmount: Amount.t() | nil,
+          initialAmount: Adyen.Checkout.Amount.t() | nil,
           instructionsUrl: String.t() | nil,
           issuer: String.t() | nil,
           maskedTelephoneNumber: String.t() | nil,
@@ -23,8 +21,8 @@ defmodule Adyen.Checkout.CheckoutVoucherAction do
           reference: String.t() | nil,
           shopperEmail: String.t() | nil,
           shopperName: String.t() | nil,
-          surcharge: Amount.t() | nil,
-          totalAmount: Amount.t() | nil,
+          surcharge: Adyen.Checkout.Amount.t() | nil,
+          totalAmount: Adyen.Checkout.Amount.t() | nil,
           type: String.t(),
           url: String.t() | nil
         }
@@ -64,7 +62,7 @@ defmodule Adyen.Checkout.CheckoutVoucherAction do
       downloadUrl: :string,
       entity: :string,
       expiresAt: :string,
-      initialAmount: {Amount, :t},
+      initialAmount: {Adyen.Checkout.Amount, :t},
       instructionsUrl: :string,
       issuer: :string,
       maskedTelephoneNumber: :string,
@@ -76,8 +74,8 @@ defmodule Adyen.Checkout.CheckoutVoucherAction do
       reference: :string,
       shopperEmail: :string,
       shopperName: :string,
-      surcharge: {Amount, :t},
-      totalAmount: {Amount, :t},
+      surcharge: {Adyen.Checkout.Amount, :t},
+      totalAmount: {Adyen.Checkout.Amount, :t},
       type: {:const, "voucher"},
       url: :string
     ]

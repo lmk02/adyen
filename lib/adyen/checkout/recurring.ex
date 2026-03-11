@@ -3,13 +3,6 @@ defmodule Adyen.Checkout.Recurring do
   Provides API endpoints related to recurring
   """
 
-  alias Adyen.Checkout.CheckoutForwardRequest
-  alias Adyen.Checkout.CheckoutForwardResponse
-  alias Adyen.Checkout.ListStoredPaymentMethodsResponse
-  alias Adyen.Checkout.Recurring
-  alias Adyen.Checkout.StoredPaymentMethodRequest
-  alias Adyen.Checkout.StoredPaymentMethodResource
-
   @default_client Adyen.Client
 
   @doc """
@@ -24,17 +17,17 @@ defmodule Adyen.Checkout.Recurring do
     * `merchantAccount`: Your merchant account.
 
   """
-  @spec delete_stored_payment_methods_stored_payment_method(
+  @spec delete_stored_payment_methods_stored_payment_method_id(
           storedPaymentMethodId :: String.t(),
           opts :: keyword
         ) :: :ok | :error
-  def delete_stored_payment_methods_stored_payment_method(storedPaymentMethodId, opts \\ []) do
+  def delete_stored_payment_methods_stored_payment_method_id(storedPaymentMethodId, opts \\ []) do
     client = opts[:client] || @default_client
     query = Keyword.take(opts, [:merchantAccount, :shopperReference])
 
     client.request(%{
       args: [storedPaymentMethodId: storedPaymentMethodId],
-      call: {Recurring, :delete_stored_payment_methods_stored_payment_method},
+      call: {Adyen.Checkout.Recurring, :delete_stored_payment_methods_stored_payment_method_id},
       url: "/storedPaymentMethods/#{storedPaymentMethodId}",
       method: :delete,
       query: query,
@@ -57,18 +50,18 @@ defmodule Adyen.Checkout.Recurring do
 
   """
   @spec get_stored_payment_methods(opts :: keyword) ::
-          {:ok, ListStoredPaymentMethodsResponse.t()} | :error
+          {:ok, Adyen.Checkout.ListStoredPaymentMethodsResponse.t()} | :error
   def get_stored_payment_methods(opts \\ []) do
     client = opts[:client] || @default_client
     query = Keyword.take(opts, [:merchantAccount, :shopperReference])
 
     client.request(%{
       args: [],
-      call: {Recurring, :get_stored_payment_methods},
+      call: {Adyen.Checkout.Recurring, :get_stored_payment_methods},
       url: "/storedPaymentMethods",
       method: :get,
       query: query,
-      response: [{200, {ListStoredPaymentMethodsResponse, :t}}],
+      response: [{200, {Adyen.Checkout.ListStoredPaymentMethodsResponse, :t}}],
       opts: opts
     })
   end
@@ -82,19 +75,19 @@ defmodule Adyen.Checkout.Recurring do
 
   **Content Types**: `application/json`
   """
-  @spec create_forward(body :: CheckoutForwardRequest.t(), opts :: keyword) ::
-          {:ok, CheckoutForwardResponse.t()} | :error
-  def create_forward(body, opts \\ []) do
+  @spec post_forward(body :: Adyen.Checkout.CheckoutForwardRequest.t(), opts :: keyword) ::
+          {:ok, Adyen.Checkout.CheckoutForwardResponse.t()} | :error
+  def post_forward(body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [body: body],
-      call: {Recurring, :create_forward},
+      call: {Adyen.Checkout.Recurring, :post_forward},
       url: "/forward",
       body: body,
       method: :post,
-      request: [{"application/json", {CheckoutForwardRequest, :t}}],
-      response: [{200, {CheckoutForwardResponse, :t}}],
+      request: [{"application/json", {Adyen.Checkout.CheckoutForwardRequest, :t}}],
+      response: [{200, {Adyen.Checkout.CheckoutForwardResponse, :t}}],
       opts: opts
     })
   end
@@ -108,21 +101,21 @@ defmodule Adyen.Checkout.Recurring do
 
   **Content Types**: `application/json`
   """
-  @spec create_stored_payment_methods(
-          body :: StoredPaymentMethodRequest.t(),
+  @spec post_stored_payment_methods(
+          body :: Adyen.Checkout.StoredPaymentMethodRequest.t(),
           opts :: keyword
-        ) :: {:ok, StoredPaymentMethodResource.t()} | :error
-  def create_stored_payment_methods(body, opts \\ []) do
+        ) :: {:ok, Adyen.Checkout.StoredPaymentMethodResource.t()} | :error
+  def post_stored_payment_methods(body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
       args: [body: body],
-      call: {Recurring, :create_stored_payment_methods},
+      call: {Adyen.Checkout.Recurring, :post_stored_payment_methods},
       url: "/storedPaymentMethods",
       body: body,
       method: :post,
-      request: [{"application/json", {StoredPaymentMethodRequest, :t}}],
-      response: [{201, {StoredPaymentMethodResource, :t}}],
+      request: [{"application/json", {Adyen.Checkout.StoredPaymentMethodRequest, :t}}],
+      response: [{201, {Adyen.Checkout.StoredPaymentMethodResource, :t}}],
       opts: opts
     })
   end
@@ -153,7 +146,8 @@ defmodule Adyen.Checkout.Recurring do
       recurringDetailName: :string,
       recurringExpiry: {:string, "date-time"},
       recurringFrequency: :string,
-      tokenService: {:enum, ["VISATOKENSERVICE", "MCTOKENSERVICE", "AMEXTOKENSERVICE", "TOKEN_SHARING"]}
+      tokenService:
+        {:enum, ["VISATOKENSERVICE", "MCTOKENSERVICE", "AMEXTOKENSERVICE", "TOKEN_SHARING"]}
     ]
   end
 end

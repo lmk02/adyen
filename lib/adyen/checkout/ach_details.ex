@@ -43,7 +43,8 @@ defmodule Adyen.Checkout.AchDetails do
     [
       accountHolderType: {:enum, ["business", "personal"]},
       bankAccountNumber: :string,
-      bankAccountType: {:enum, ["balance", "checking", "deposit", "general", "other", "payment", "savings"]},
+      bankAccountType:
+        {:enum, ["balance", "checking", "deposit", "general", "other", "payment", "savings"]},
       bankLocationId: :string,
       checkoutAttemptId: :string,
       encryptedBankAccountNumber: :string,

@@ -3,44 +3,31 @@ defmodule Adyen.Checkout.BalanceCheckRequest do
   Provides struct and type for a BalanceCheckRequest
   """
 
-  alias Adyen.Checkout.AccountInfo
-  alias Adyen.Checkout.Address
-  alias Adyen.Checkout.Amount
-  alias Adyen.Checkout.ApplicationInfo
-  alias Adyen.Checkout.BrowserInfo
-  alias Adyen.Checkout.ForexQuote
-  alias Adyen.Checkout.Installments
-  alias Adyen.Checkout.MerchantRiskIndicator
-  alias Adyen.Checkout.Name
-  alias Adyen.Checkout.Recurring
-  alias Adyen.Checkout.Split
-  alias Adyen.Checkout.ThreeDs2RequestData
-
   @type t :: %__MODULE__{
-          accountInfo: AccountInfo.t() | nil,
-          additionalAmount: Amount.t() | nil,
+          accountInfo: Adyen.Checkout.AccountInfo.t() | nil,
+          additionalAmount: Adyen.Checkout.Amount.t() | nil,
           additionalData: map | nil,
-          amount: Amount.t(),
-          applicationInfo: ApplicationInfo.t() | nil,
-          billingAddress: Address.t() | nil,
-          browserInfo: BrowserInfo.t() | nil,
+          amount: Adyen.Checkout.Amount.t(),
+          applicationInfo: Adyen.Checkout.ApplicationInfo.t() | nil,
+          billingAddress: Adyen.Checkout.Address.t() | nil,
+          browserInfo: Adyen.Checkout.BrowserInfo.t() | nil,
           captureDelayHours: integer | nil,
           dateOfBirth: Date.t() | nil,
-          dccQuote: ForexQuote.t() | nil,
-          deliveryAddress: Address.t() | nil,
+          dccQuote: Adyen.Checkout.ForexQuote.t() | nil,
+          deliveryAddress: Adyen.Checkout.Address.t() | nil,
           deliveryDate: DateTime.t() | nil,
           deviceFingerprint: String.t() | nil,
           fraudOffset: integer | nil,
-          installments: Installments.t() | nil,
+          installments: Adyen.Checkout.Installments.t() | nil,
           localizedShopperStatement: map | nil,
           mcc: String.t() | nil,
           merchantAccount: String.t(),
           merchantOrderReference: String.t() | nil,
-          merchantRiskIndicator: MerchantRiskIndicator.t() | nil,
+          merchantRiskIndicator: Adyen.Checkout.MerchantRiskIndicator.t() | nil,
           metadata: map | nil,
           orderReference: String.t() | nil,
           paymentMethod: map,
-          recurring: Recurring.t() | nil,
+          recurring: Adyen.Checkout.Recurring.t() | nil,
           recurringProcessingModel: String.t() | nil,
           reference: String.t() | nil,
           selectedBrand: String.t() | nil,
@@ -50,14 +37,14 @@ defmodule Adyen.Checkout.BalanceCheckRequest do
           shopperIP: String.t() | nil,
           shopperInteraction: String.t() | nil,
           shopperLocale: String.t() | nil,
-          shopperName: Name.t() | nil,
+          shopperName: Adyen.Checkout.Name.t() | nil,
           shopperReference: String.t() | nil,
           shopperStatement: String.t() | nil,
           socialSecurityNumber: String.t() | nil,
-          splits: [Split.t()] | nil,
+          splits: [Adyen.Checkout.Split.t()] | nil,
           store: String.t() | nil,
           telephoneNumber: String.t() | nil,
-          threeDS2RequestData: ThreeDs2RequestData.t() | nil,
+          threeDS2RequestData: Adyen.Checkout.ThreeDs2RequestData.t() | nil,
           threeDSAuthenticationOnly: boolean | nil,
           totalsGroup: String.t() | nil,
           trustedShopper: boolean | nil
@@ -116,30 +103,30 @@ defmodule Adyen.Checkout.BalanceCheckRequest do
 
   def __fields__(:t) do
     [
-      accountInfo: {AccountInfo, :t},
-      additionalAmount: {Amount, :t},
+      accountInfo: {Adyen.Checkout.AccountInfo, :t},
+      additionalAmount: {Adyen.Checkout.Amount, :t},
       additionalData: :map,
-      amount: {Amount, :t},
-      applicationInfo: {ApplicationInfo, :t},
-      billingAddress: {Address, :t},
-      browserInfo: {BrowserInfo, :t},
+      amount: {Adyen.Checkout.Amount, :t},
+      applicationInfo: {Adyen.Checkout.ApplicationInfo, :t},
+      billingAddress: {Adyen.Checkout.Address, :t},
+      browserInfo: {Adyen.Checkout.BrowserInfo, :t},
       captureDelayHours: {:integer, "int32"},
       dateOfBirth: {:string, "date"},
-      dccQuote: {ForexQuote, :t},
-      deliveryAddress: {Address, :t},
+      dccQuote: {Adyen.Checkout.ForexQuote, :t},
+      deliveryAddress: {Adyen.Checkout.Address, :t},
       deliveryDate: {:string, "date-time"},
       deviceFingerprint: :string,
       fraudOffset: {:integer, "int32"},
-      installments: {Installments, :t},
+      installments: {Adyen.Checkout.Installments, :t},
       localizedShopperStatement: :map,
       mcc: :string,
       merchantAccount: :string,
       merchantOrderReference: :string,
-      merchantRiskIndicator: {MerchantRiskIndicator, :t},
+      merchantRiskIndicator: {Adyen.Checkout.MerchantRiskIndicator, :t},
       metadata: :map,
       orderReference: :string,
       paymentMethod: :map,
-      recurring: {Recurring, :t},
+      recurring: {Adyen.Checkout.Recurring, :t},
       recurringProcessingModel: {:enum, ["CardOnFile", "Subscription", "UnscheduledCardOnFile"]},
       reference: :string,
       selectedBrand: :string,
@@ -149,14 +136,14 @@ defmodule Adyen.Checkout.BalanceCheckRequest do
       shopperIP: :string,
       shopperInteraction: {:enum, ["Ecommerce", "ContAuth", "Moto", "POS"]},
       shopperLocale: :string,
-      shopperName: {Name, :t},
+      shopperName: {Adyen.Checkout.Name, :t},
       shopperReference: :string,
       shopperStatement: :string,
       socialSecurityNumber: :string,
-      splits: [{Split, :t}],
+      splits: [{Adyen.Checkout.Split, :t}],
       store: :string,
       telephoneNumber: :string,
-      threeDS2RequestData: {ThreeDs2RequestData, :t},
+      threeDS2RequestData: {Adyen.Checkout.ThreeDs2RequestData, :t},
       threeDSAuthenticationOnly: :boolean,
       totalsGroup: :string,
       trustedShopper: :boolean

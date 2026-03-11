@@ -3,19 +3,16 @@ defmodule Adyen.Checkout.CreateOrderResponse do
   Provides struct and type for a CreateOrderResponse
   """
 
-  alias Adyen.Checkout.Amount
-  alias Adyen.Checkout.FraudResult
-
   @type t :: %__MODULE__{
           additionalData: map | nil,
-          amount: Amount.t(),
+          amount: Adyen.Checkout.Amount.t(),
           expiresAt: String.t(),
-          fraudResult: FraudResult.t() | nil,
+          fraudResult: Adyen.Checkout.FraudResult.t() | nil,
           orderData: String.t(),
           pspReference: String.t() | nil,
           reference: String.t() | nil,
           refusalReason: String.t() | nil,
-          remainingAmount: Amount.t(),
+          remainingAmount: Adyen.Checkout.Amount.t(),
           resultCode: String.t()
         }
 
@@ -39,14 +36,14 @@ defmodule Adyen.Checkout.CreateOrderResponse do
   def __fields__(:t) do
     [
       additionalData: :map,
-      amount: {Amount, :t},
+      amount: {Adyen.Checkout.Amount, :t},
       expiresAt: :string,
-      fraudResult: {FraudResult, :t},
+      fraudResult: {Adyen.Checkout.FraudResult, :t},
       orderData: :string,
       pspReference: :string,
       reference: :string,
       refusalReason: :string,
-      remainingAmount: {Amount, :t},
+      remainingAmount: {Adyen.Checkout.Amount, :t},
       resultCode: {:const, "Success"}
     ]
   end

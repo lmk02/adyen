@@ -3,15 +3,12 @@ defmodule Adyen.Checkout.InputDetail do
   Provides struct and type for a InputDetail
   """
 
-  alias Adyen.Checkout.Item
-  alias Adyen.Checkout.SubInputDetail
-
   @type t :: %__MODULE__{
           configuration: map | nil,
-          details: [SubInputDetail.t()] | nil,
-          inputDetails: [SubInputDetail.t()] | nil,
+          details: [Adyen.Checkout.SubInputDetail.t()] | nil,
+          inputDetails: [Adyen.Checkout.SubInputDetail.t()] | nil,
           itemSearchUrl: String.t() | nil,
-          items: [Item.t()] | nil,
+          items: [Adyen.Checkout.Item.t()] | nil,
           key: String.t() | nil,
           optional: boolean | nil,
           type: String.t() | nil,
@@ -37,10 +34,10 @@ defmodule Adyen.Checkout.InputDetail do
   def __fields__(:t) do
     [
       configuration: :map,
-      details: [{SubInputDetail, :t}],
-      inputDetails: [{SubInputDetail, :t}],
+      details: [{Adyen.Checkout.SubInputDetail, :t}],
+      inputDetails: [{Adyen.Checkout.SubInputDetail, :t}],
       itemSearchUrl: :string,
-      items: [{Item, :t}],
+      items: [{Adyen.Checkout.Item, :t}],
       key: :string,
       optional: :boolean,
       type: :string,

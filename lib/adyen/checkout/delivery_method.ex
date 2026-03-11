@@ -3,10 +3,8 @@ defmodule Adyen.Checkout.DeliveryMethod do
   Provides struct and type for a DeliveryMethod
   """
 
-  alias Adyen.Checkout.Amount
-
   @type t :: %__MODULE__{
-          amount: Amount.t() | nil,
+          amount: Adyen.Checkout.Amount.t() | nil,
           description: String.t() | nil,
           reference: String.t() | nil,
           selected: boolean | nil,
@@ -21,7 +19,7 @@ defmodule Adyen.Checkout.DeliveryMethod do
 
   def __fields__(:t) do
     [
-      amount: {Amount, :t},
+      amount: {Adyen.Checkout.Amount, :t},
       description: :string,
       reference: :string,
       selected: :boolean,

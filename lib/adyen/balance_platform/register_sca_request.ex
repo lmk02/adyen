@@ -3,12 +3,10 @@ defmodule Adyen.BalancePlatform.RegisterSCARequest do
   Provides struct and type for a RegisterSCARequest
   """
 
-  alias Adyen.BalancePlatform.DelegatedAuthenticationData
-
   @type t :: %__MODULE__{
           name: String.t() | nil,
           paymentInstrumentId: String.t(),
-          strongCustomerAuthentication: DelegatedAuthenticationData.t()
+          strongCustomerAuthentication: Adyen.BalancePlatform.DelegatedAuthenticationData.t()
         }
 
   defstruct [:name, :paymentInstrumentId, :strongCustomerAuthentication]
@@ -21,7 +19,7 @@ defmodule Adyen.BalancePlatform.RegisterSCARequest do
     [
       name: :string,
       paymentInstrumentId: :string,
-      strongCustomerAuthentication: {DelegatedAuthenticationData, :t}
+      strongCustomerAuthentication: {Adyen.BalancePlatform.DelegatedAuthenticationData, :t}
     ]
   end
 end

@@ -3,13 +3,11 @@ defmodule Adyen.BalancePlatform.DefaultErrorResponseEntity do
   Provides struct and type for a DefaultErrorResponseEntity
   """
 
-  alias Adyen.BalancePlatform.InvalidField
-
   @type t :: %__MODULE__{
           detail: String.t() | nil,
           errorCode: String.t() | nil,
           instance: String.t() | nil,
-          invalidFields: [InvalidField.t()] | nil,
+          invalidFields: [Adyen.BalancePlatform.InvalidField.t()] | nil,
           requestId: String.t() | nil,
           status: integer | nil,
           title: String.t() | nil,
@@ -27,7 +25,7 @@ defmodule Adyen.BalancePlatform.DefaultErrorResponseEntity do
       detail: :string,
       errorCode: :string,
       instance: :string,
-      invalidFields: [{InvalidField, :t}],
+      invalidFields: [{Adyen.BalancePlatform.InvalidField, :t}],
       requestId: :string,
       status: {:integer, "int32"},
       title: :string,

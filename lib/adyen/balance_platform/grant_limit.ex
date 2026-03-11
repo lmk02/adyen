@@ -3,9 +3,7 @@ defmodule Adyen.BalancePlatform.GrantLimit do
   Provides struct and type for a GrantLimit
   """
 
-  alias Adyen.BalancePlatform.Amount
-
-  @type t :: %__MODULE__{amount: Amount.t() | nil}
+  @type t :: %__MODULE__{amount: Adyen.BalancePlatform.Amount.t() | nil}
 
   defstruct [:amount]
 
@@ -14,6 +12,6 @@ defmodule Adyen.BalancePlatform.GrantLimit do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [amount: {Amount, :t}]
+    [amount: {Adyen.BalancePlatform.Amount, :t}]
   end
 end

@@ -3,15 +3,12 @@ defmodule Adyen.BalancePlatform.UpdatePaymentInstrument do
   Provides struct and type for a UpdatePaymentInstrument
   """
 
-  alias Adyen.BalancePlatform.BankAccountDetails
-  alias Adyen.BalancePlatform.Card
-  alias Adyen.BalancePlatform.IbanAccountIdentification
-
   @type t :: %__MODULE__{
-          additionalBankAccountIdentifications: [IbanAccountIdentification.t()] | nil,
+          additionalBankAccountIdentifications:
+            [Adyen.BalancePlatform.IbanAccountIdentification.t()] | nil,
           balanceAccountId: String.t(),
-          bankAccount: BankAccountDetails.t() | nil,
-          card: Card.t() | nil,
+          bankAccount: Adyen.BalancePlatform.BankAccountDetails.t() | nil,
+          card: Adyen.BalancePlatform.Card.t() | nil,
           description: String.t() | nil,
           id: String.t(),
           issuingCountryCode: String.t(),
@@ -50,11 +47,11 @@ defmodule Adyen.BalancePlatform.UpdatePaymentInstrument do
   def __fields__(:t) do
     [
       additionalBankAccountIdentifications: [
-        {IbanAccountIdentification, :t}
+        {Adyen.BalancePlatform.IbanAccountIdentification, :t}
       ],
       balanceAccountId: :string,
-      bankAccount: {BankAccountDetails, :t},
-      card: {Card, :t},
+      bankAccount: {Adyen.BalancePlatform.BankAccountDetails, :t},
+      card: {Adyen.BalancePlatform.Card, :t},
       description: :string,
       id: :string,
       issuingCountryCode: :string,

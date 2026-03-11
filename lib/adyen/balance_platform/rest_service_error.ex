@@ -3,13 +3,11 @@ defmodule Adyen.BalancePlatform.RestServiceError do
   Provides struct and type for a RestServiceError
   """
 
-  alias Adyen.BalancePlatform.InvalidField
-
   @type t :: %__MODULE__{
           detail: String.t(),
           errorCode: String.t(),
           instance: String.t() | nil,
-          invalidFields: [InvalidField.t()] | nil,
+          invalidFields: [Adyen.BalancePlatform.InvalidField.t()] | nil,
           requestId: String.t() | nil,
           response: map | nil,
           status: integer,
@@ -38,7 +36,7 @@ defmodule Adyen.BalancePlatform.RestServiceError do
       detail: :string,
       errorCode: :string,
       instance: :string,
-      invalidFields: [{InvalidField, :t}],
+      invalidFields: [{Adyen.BalancePlatform.InvalidField, :t}],
       requestId: :string,
       response: :map,
       status: {:integer, "int32"},

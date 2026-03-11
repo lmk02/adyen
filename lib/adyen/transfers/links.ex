@@ -3,11 +3,9 @@ defmodule Adyen.Transfers.Links do
   Provides struct and type for a Links
   """
 
-  alias Adyen.Transfers.Link
-
   @type t :: %__MODULE__{
-          next: Link.t() | nil,
-          prev: Link.t() | nil
+          next: Adyen.Transfers.Link.t() | nil,
+          prev: Adyen.Transfers.Link.t() | nil
         }
 
   defstruct [:next, :prev]
@@ -17,6 +15,6 @@ defmodule Adyen.Transfers.Links do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [next: {Link, :t}, prev: {Link, :t}]
+    [next: {Adyen.Transfers.Link, :t}, prev: {Adyen.Transfers.Link, :t}]
   end
 end

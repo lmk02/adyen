@@ -3,22 +3,16 @@ defmodule Adyen.Checkout.PaymentRefundRequest do
   Provides struct and type for a PaymentRefundRequest
   """
 
-  alias Adyen.Checkout.Amount
-  alias Adyen.Checkout.ApplicationInfo
-  alias Adyen.Checkout.EnhancedSchemeData
-  alias Adyen.Checkout.LineItem
-  alias Adyen.Checkout.Split
-
   @type t :: %__MODULE__{
-          amount: Amount.t(),
-          applicationInfo: ApplicationInfo.t() | nil,
+          amount: Adyen.Checkout.Amount.t(),
+          applicationInfo: Adyen.Checkout.ApplicationInfo.t() | nil,
           capturePspReference: String.t() | nil,
-          enhancedSchemeData: EnhancedSchemeData.t() | nil,
-          lineItems: [LineItem.t()] | nil,
+          enhancedSchemeData: Adyen.Checkout.EnhancedSchemeData.t() | nil,
+          lineItems: [Adyen.Checkout.LineItem.t()] | nil,
           merchantAccount: String.t(),
           merchantRefundReason: String.t() | nil,
           reference: String.t() | nil,
-          splits: [Split.t()] | nil,
+          splits: [Adyen.Checkout.Split.t()] | nil,
           store: String.t() | nil
         }
 
@@ -41,15 +35,16 @@ defmodule Adyen.Checkout.PaymentRefundRequest do
 
   def __fields__(:t) do
     [
-      amount: {Amount, :t},
-      applicationInfo: {ApplicationInfo, :t},
+      amount: {Adyen.Checkout.Amount, :t},
+      applicationInfo: {Adyen.Checkout.ApplicationInfo, :t},
       capturePspReference: :string,
-      enhancedSchemeData: {EnhancedSchemeData, :t},
-      lineItems: [{LineItem, :t}],
+      enhancedSchemeData: {Adyen.Checkout.EnhancedSchemeData, :t},
+      lineItems: [{Adyen.Checkout.LineItem, :t}],
       merchantAccount: :string,
-      merchantRefundReason: {:enum, ["FRAUD", "CUSTOMER REQUEST", "RETURN", "DUPLICATE", "OTHER"]},
+      merchantRefundReason:
+        {:enum, ["FRAUD", "CUSTOMER REQUEST", "RETURN", "DUPLICATE", "OTHER"]},
       reference: :string,
-      splits: [{Split, :t}],
+      splits: [{Adyen.Checkout.Split, :t}],
       store: :string
     ]
   end

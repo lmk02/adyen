@@ -3,13 +3,11 @@ defmodule Adyen.BalancePlatform.TransferRouteRequest do
   Provides struct and type for a TransferRouteRequest
   """
 
-  alias Adyen.BalancePlatform.Counterparty
-
   @type t :: %__MODULE__{
           balanceAccountId: String.t() | nil,
           balancePlatform: String.t(),
           category: String.t(),
-          counterparty: Counterparty.t() | nil,
+          counterparty: Adyen.BalancePlatform.Counterparty.t() | nil,
           country: String.t() | nil,
           currency: String.t(),
           priorities: [String.t()] | nil
@@ -34,7 +32,7 @@ defmodule Adyen.BalancePlatform.TransferRouteRequest do
       balanceAccountId: :string,
       balancePlatform: :string,
       category: {:const, "bank"},
-      counterparty: {Counterparty, :t},
+      counterparty: {Adyen.BalancePlatform.Counterparty, :t},
       country: :string,
       currency: :string,
       priorities: [enum: ["crossBorder", "fast", "instant", "internal", "regular", "wire"]]

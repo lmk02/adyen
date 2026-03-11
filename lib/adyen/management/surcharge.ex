@@ -1,0 +1,25 @@
+defmodule Adyen.Management.Surcharge do
+  @moduledoc """
+  Provides struct and type for a Surcharge
+  """
+
+  @type t :: %__MODULE__{
+          askConfirmation: boolean | nil,
+          configurations: [Adyen.Management.Configuration.t()] | nil,
+          excludeGratuityFromSurcharge: boolean | nil
+        }
+
+  defstruct [:askConfirmation, :configurations, :excludeGratuityFromSurcharge]
+
+  @doc false
+  @spec __fields__(atom) :: keyword
+  def __fields__(type \\ :t)
+
+  def __fields__(:t) do
+    [
+      askConfirmation: :boolean,
+      configurations: [{Adyen.Management.Configuration, :t}],
+      excludeGratuityFromSurcharge: :boolean
+    ]
+  end
+end

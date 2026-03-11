@@ -3,10 +3,8 @@ defmodule Adyen.BalancePlatform.PaginatedGetCardOrderResponse do
   Provides struct and type for a PaginatedGetCardOrderResponse
   """
 
-  alias Adyen.BalancePlatform.CardOrder
-
   @type t :: %__MODULE__{
-          cardOrders: [CardOrder.t()] | nil,
+          cardOrders: [Adyen.BalancePlatform.CardOrder.t()] | nil,
           hasNext: boolean,
           hasPrevious: boolean
         }
@@ -19,7 +17,7 @@ defmodule Adyen.BalancePlatform.PaginatedGetCardOrderResponse do
 
   def __fields__(:t) do
     [
-      cardOrders: [{CardOrder, :t}],
+      cardOrders: [{Adyen.BalancePlatform.CardOrder, :t}],
       hasNext: :boolean,
       hasPrevious: :boolean
     ]

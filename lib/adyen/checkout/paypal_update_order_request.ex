@@ -3,17 +3,13 @@ defmodule Adyen.Checkout.PaypalUpdateOrderRequest do
   Provides struct and type for a PaypalUpdateOrderRequest
   """
 
-  alias Adyen.Checkout.Amount
-  alias Adyen.Checkout.DeliveryMethod
-  alias Adyen.Checkout.TaxTotal
-
   @type t :: %__MODULE__{
-          amount: Amount.t() | nil,
-          deliveryMethods: [DeliveryMethod.t()] | nil,
+          amount: Adyen.Checkout.Amount.t() | nil,
+          deliveryMethods: [Adyen.Checkout.DeliveryMethod.t()] | nil,
           paymentData: String.t() | nil,
           pspReference: String.t() | nil,
           sessionId: String.t() | nil,
-          taxTotal: TaxTotal.t() | nil
+          taxTotal: Adyen.Checkout.TaxTotal.t() | nil
         }
 
   defstruct [:amount, :deliveryMethods, :paymentData, :pspReference, :sessionId, :taxTotal]
@@ -24,12 +20,12 @@ defmodule Adyen.Checkout.PaypalUpdateOrderRequest do
 
   def __fields__(:t) do
     [
-      amount: {Amount, :t},
-      deliveryMethods: [{DeliveryMethod, :t}],
+      amount: {Adyen.Checkout.Amount, :t},
+      deliveryMethods: [{Adyen.Checkout.DeliveryMethod, :t}],
       paymentData: :string,
       pspReference: :string,
       sessionId: :string,
-      taxTotal: {TaxTotal, :t}
+      taxTotal: {Adyen.Checkout.TaxTotal, :t}
     ]
   end
 end

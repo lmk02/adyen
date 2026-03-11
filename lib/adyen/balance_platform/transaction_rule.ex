@@ -3,21 +3,17 @@ defmodule Adyen.BalancePlatform.TransactionRule do
   Provides struct and type for a TransactionRule
   """
 
-  alias Adyen.BalancePlatform.TransactionRuleEntityKey
-  alias Adyen.BalancePlatform.TransactionRuleInterval
-  alias Adyen.BalancePlatform.TransactionRuleRestrictions
-
   @type t :: %__MODULE__{
           aggregationLevel: String.t() | nil,
           description: String.t(),
           endDate: String.t() | nil,
-          entityKey: TransactionRuleEntityKey.t(),
+          entityKey: Adyen.BalancePlatform.TransactionRuleEntityKey.t(),
           id: String.t() | nil,
-          interval: TransactionRuleInterval.t(),
+          interval: Adyen.BalancePlatform.TransactionRuleInterval.t(),
           outcomeType: String.t() | nil,
           reference: String.t(),
           requestType: String.t() | nil,
-          ruleRestrictions: TransactionRuleRestrictions.t(),
+          ruleRestrictions: Adyen.BalancePlatform.TransactionRuleRestrictions.t(),
           score: integer | nil,
           startDate: String.t() | nil,
           status: String.t() | nil,
@@ -50,13 +46,13 @@ defmodule Adyen.BalancePlatform.TransactionRule do
       aggregationLevel: :string,
       description: :string,
       endDate: :string,
-      entityKey: {TransactionRuleEntityKey, :t},
+      entityKey: {Adyen.BalancePlatform.TransactionRuleEntityKey, :t},
       id: :string,
-      interval: {TransactionRuleInterval, :t},
+      interval: {Adyen.BalancePlatform.TransactionRuleInterval, :t},
       outcomeType: {:enum, ["enforceSCA", "hardBlock", "scoreBased", "timedBlock"]},
       reference: :string,
       requestType: {:enum, ["authentication", "authorization", "bankTransfer", "tokenization"]},
-      ruleRestrictions: {TransactionRuleRestrictions, :t},
+      ruleRestrictions: {Adyen.BalancePlatform.TransactionRuleRestrictions, :t},
       score: {:integer, "int32"},
       startDate: :string,
       status: {:enum, ["active", "inactive"]},

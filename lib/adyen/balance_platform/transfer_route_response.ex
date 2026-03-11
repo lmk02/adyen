@@ -3,9 +3,7 @@ defmodule Adyen.BalancePlatform.TransferRouteResponse do
   Provides struct and type for a TransferRouteResponse
   """
 
-  alias Adyen.BalancePlatform.TransferRoute
-
-  @type t :: %__MODULE__{transferRoutes: [TransferRoute.t()] | nil}
+  @type t :: %__MODULE__{transferRoutes: [Adyen.BalancePlatform.TransferRoute.t()] | nil}
 
   defstruct [:transferRoutes]
 
@@ -14,6 +12,6 @@ defmodule Adyen.BalancePlatform.TransferRouteResponse do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [transferRoutes: [{TransferRoute, :t}]]
+    [transferRoutes: [{Adyen.BalancePlatform.TransferRoute, :t}]]
   end
 end

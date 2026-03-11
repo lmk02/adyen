@@ -3,17 +3,6 @@ defmodule Adyen.BalancePlatform.TransferRoute do
   Provides struct and type for a TransferRoute
   """
 
-  alias Adyen.BalancePlatform.AdditionalBankIdentificationRequirement
-  alias Adyen.BalancePlatform.AddressRequirement
-  alias Adyen.BalancePlatform.AmountMinMaxRequirement
-  alias Adyen.BalancePlatform.AmountNonZeroDecimalsRequirement
-  alias Adyen.BalancePlatform.BankAccountIdentificationTypeRequirement
-  alias Adyen.BalancePlatform.IbanAccountIdentificationRequirement
-  alias Adyen.BalancePlatform.PaymentInstrumentRequirement
-  alias Adyen.BalancePlatform.USInstantPayoutAddressRequirement
-  alias Adyen.BalancePlatform.USInternationalAchAddressRequirement
-  alias Adyen.BalancePlatform.USInternationalAchPriorityRequirement
-
   @type t :: %__MODULE__{
           category: String.t() | nil,
           country: String.t() | nil,
@@ -21,16 +10,16 @@ defmodule Adyen.BalancePlatform.TransferRoute do
           priority: String.t() | nil,
           requirements:
             [
-              AdditionalBankIdentificationRequirement.t()
-              | AddressRequirement.t()
-              | AmountMinMaxRequirement.t()
-              | AmountNonZeroDecimalsRequirement.t()
-              | BankAccountIdentificationTypeRequirement.t()
-              | IbanAccountIdentificationRequirement.t()
-              | PaymentInstrumentRequirement.t()
-              | USInstantPayoutAddressRequirement.t()
-              | USInternationalAchAddressRequirement.t()
-              | USInternationalAchPriorityRequirement.t()
+              Adyen.BalancePlatform.AdditionalBankIdentificationRequirement.t()
+              | Adyen.BalancePlatform.AddressRequirement.t()
+              | Adyen.BalancePlatform.AmountMinMaxRequirement.t()
+              | Adyen.BalancePlatform.AmountNonZeroDecimalsRequirement.t()
+              | Adyen.BalancePlatform.BankAccountIdentificationTypeRequirement.t()
+              | Adyen.BalancePlatform.IbanAccountIdentificationRequirement.t()
+              | Adyen.BalancePlatform.PaymentInstrumentRequirement.t()
+              | Adyen.BalancePlatform.USInstantPayoutAddressRequirement.t()
+              | Adyen.BalancePlatform.USInternationalAchAddressRequirement.t()
+              | Adyen.BalancePlatform.USInternationalAchPriorityRequirement.t()
             ]
             | nil
         }
@@ -62,16 +51,16 @@ defmodule Adyen.BalancePlatform.TransferRoute do
       priority: {:enum, ["crossBorder", "fast", "instant", "internal", "regular", "wire"]},
       requirements: [
         union: [
-          {AdditionalBankIdentificationRequirement, :t},
-          {AddressRequirement, :t},
-          {AmountMinMaxRequirement, :t},
-          {AmountNonZeroDecimalsRequirement, :t},
-          {BankAccountIdentificationTypeRequirement, :t},
-          {IbanAccountIdentificationRequirement, :t},
-          {PaymentInstrumentRequirement, :t},
-          {USInstantPayoutAddressRequirement, :t},
-          {USInternationalAchAddressRequirement, :t},
-          {USInternationalAchPriorityRequirement, :t}
+          {Adyen.BalancePlatform.AdditionalBankIdentificationRequirement, :t},
+          {Adyen.BalancePlatform.AddressRequirement, :t},
+          {Adyen.BalancePlatform.AmountMinMaxRequirement, :t},
+          {Adyen.BalancePlatform.AmountNonZeroDecimalsRequirement, :t},
+          {Adyen.BalancePlatform.BankAccountIdentificationTypeRequirement, :t},
+          {Adyen.BalancePlatform.IbanAccountIdentificationRequirement, :t},
+          {Adyen.BalancePlatform.PaymentInstrumentRequirement, :t},
+          {Adyen.BalancePlatform.USInstantPayoutAddressRequirement, :t},
+          {Adyen.BalancePlatform.USInternationalAchAddressRequirement, :t},
+          {Adyen.BalancePlatform.USInternationalAchPriorityRequirement, :t}
         ]
       ]
     ]

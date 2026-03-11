@@ -35,7 +35,8 @@ defmodule Adyen.Checkout.CheckoutBankAccount do
 
   def __fields__(:t) do
     [
-      accountType: {:enum, ["balance", "checking", "deposit", "general", "other", "payment", "savings"]},
+      accountType:
+        {:enum, ["balance", "checking", "deposit", "general", "other", "payment", "savings"]},
       bankAccountNumber: :string,
       bankCity: :string,
       bankLocationId: :string,

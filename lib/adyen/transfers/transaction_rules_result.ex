@@ -3,13 +3,11 @@ defmodule Adyen.Transfers.TransactionRulesResult do
   Provides struct and type for a TransactionRulesResult
   """
 
-  alias Adyen.Transfers.TransactionEventViolation
-
   @type t :: %__MODULE__{
           advice: String.t() | nil,
           allHardBlockRulesPassed: boolean | nil,
           score: integer | nil,
-          triggeredTransactionRules: [TransactionEventViolation.t()] | nil
+          triggeredTransactionRules: [Adyen.Transfers.TransactionEventViolation.t()] | nil
         }
 
   defstruct [:advice, :allHardBlockRulesPassed, :score, :triggeredTransactionRules]
@@ -23,7 +21,7 @@ defmodule Adyen.Transfers.TransactionRulesResult do
       advice: :string,
       allHardBlockRulesPassed: :boolean,
       score: {:integer, "int32"},
-      triggeredTransactionRules: [{TransactionEventViolation, :t}]
+      triggeredTransactionRules: [{Adyen.Transfers.TransactionEventViolation, :t}]
     ]
   end
 end

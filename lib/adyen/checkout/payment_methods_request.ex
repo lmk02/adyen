@@ -3,20 +3,16 @@ defmodule Adyen.Checkout.PaymentMethodsRequest do
   Provides struct and type for a PaymentMethodsRequest
   """
 
-  alias Adyen.Checkout.Amount
-  alias Adyen.Checkout.BrowserInfo
-  alias Adyen.Checkout.EncryptedOrderData
-
   @type t :: %__MODULE__{
           additionalData: map | nil,
           allowedPaymentMethods: [String.t()] | nil,
-          amount: Amount.t() | nil,
+          amount: Adyen.Checkout.Amount.t() | nil,
           blockedPaymentMethods: [String.t()] | nil,
-          browserInfo: BrowserInfo.t() | nil,
+          browserInfo: Adyen.Checkout.BrowserInfo.t() | nil,
           channel: String.t() | nil,
           countryCode: String.t() | nil,
           merchantAccount: String.t(),
-          order: EncryptedOrderData.t() | nil,
+          order: Adyen.Checkout.EncryptedOrderData.t() | nil,
           shopperConversionId: String.t() | nil,
           shopperEmail: String.t() | nil,
           shopperIP: String.t() | nil,
@@ -57,13 +53,13 @@ defmodule Adyen.Checkout.PaymentMethodsRequest do
     [
       additionalData: :map,
       allowedPaymentMethods: [:string],
-      amount: {Amount, :t},
+      amount: {Adyen.Checkout.Amount, :t},
       blockedPaymentMethods: [:string],
-      browserInfo: {BrowserInfo, :t},
+      browserInfo: {Adyen.Checkout.BrowserInfo, :t},
       channel: {:enum, ["iOS", "Android", "Web"]},
       countryCode: :string,
       merchantAccount: :string,
-      order: {EncryptedOrderData, :t},
+      order: {Adyen.Checkout.EncryptedOrderData, :t},
       shopperConversionId: :string,
       shopperEmail: :string,
       shopperIP: :string,

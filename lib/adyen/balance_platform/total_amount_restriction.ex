@@ -3,9 +3,7 @@ defmodule Adyen.BalancePlatform.TotalAmountRestriction do
   Provides struct and type for a TotalAmountRestriction
   """
 
-  alias Adyen.BalancePlatform.Amount
-
-  @type t :: %__MODULE__{operation: String.t(), value: Amount.t() | nil}
+  @type t :: %__MODULE__{operation: String.t(), value: Adyen.BalancePlatform.Amount.t() | nil}
 
   defstruct [:operation, :value]
 
@@ -14,6 +12,6 @@ defmodule Adyen.BalancePlatform.TotalAmountRestriction do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [operation: :string, value: {Amount, :t}]
+    [operation: :string, value: {Adyen.BalancePlatform.Amount, :t}]
   end
 end

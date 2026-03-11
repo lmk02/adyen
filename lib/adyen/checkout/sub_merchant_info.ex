@@ -3,12 +3,9 @@ defmodule Adyen.Checkout.SubMerchantInfo do
   Provides struct and type for a SubMerchantInfo
   """
 
-  alias Adyen.Checkout.Amount
-  alias Adyen.Checkout.BillingAddress
-
   @type t :: %__MODULE__{
-          address: BillingAddress.t() | nil,
-          amount: Amount.t() | nil,
+          address: Adyen.Checkout.BillingAddress.t() | nil,
+          amount: Adyen.Checkout.Amount.t() | nil,
           email: String.t() | nil,
           id: String.t() | nil,
           mcc: String.t() | nil,
@@ -38,8 +35,8 @@ defmodule Adyen.Checkout.SubMerchantInfo do
 
   def __fields__(:t) do
     [
-      address: {BillingAddress, :t},
-      amount: {Amount, :t},
+      address: {Adyen.Checkout.BillingAddress, :t},
+      amount: {Adyen.Checkout.Amount, :t},
       email: :string,
       id: :string,
       mcc: :string,

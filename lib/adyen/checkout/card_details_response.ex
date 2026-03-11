@@ -3,10 +3,8 @@ defmodule Adyen.Checkout.CardDetailsResponse do
   Provides struct and type for a CardDetailsResponse
   """
 
-  alias Adyen.Checkout.CardBrandDetails
-
   @type t :: %__MODULE__{
-          brands: [CardBrandDetails.t()] | nil,
+          brands: [Adyen.Checkout.CardBrandDetails.t()] | nil,
           fundingSource: String.t() | nil,
           isCardCommercial: boolean | nil,
           issuingCountryCode: String.t() | nil
@@ -20,7 +18,7 @@ defmodule Adyen.Checkout.CardDetailsResponse do
 
   def __fields__(:t) do
     [
-      brands: [{CardBrandDetails, :t}],
+      brands: [{Adyen.Checkout.CardBrandDetails, :t}],
       fundingSource: :string,
       isCardCommercial: :boolean,
       issuingCountryCode: :string

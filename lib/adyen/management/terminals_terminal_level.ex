@@ -1,0 +1,105 @@
+defmodule Adyen.Management.TerminalsTerminalLevel do
+  @moduledoc """
+  Provides API endpoints related to terminals terminal level
+  """
+
+  @default_client Adyen.Client
+
+  @doc """
+  Get a list of terminals
+
+  Returns the payment terminals that the API credential has access to and that match the query parameters. 
+  To make this request, your API credential must have the following [roles](https://docs.adyen.com/development-resources/api-credentials#api-permissions):
+  * Management API — Terminal actions read
+
+  In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
+
+  ## Options
+
+    * `searchQuery`: Returns terminals with an ID that contains the specified string. If present, other query parameters are ignored.
+    * `otpQuery`: Returns one or more terminals associated with the one-time passwords specified in the request. If this query parameter is used, other query parameters are ignored.
+    * `countries`: Returns terminals located in the countries specified by their [two-letter country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+    * `merchantIds`: Returns terminals that belong to the merchant accounts specified by their unique merchant account ID.
+    * `storeIds`: Returns terminals that are assigned to the [stores](https://docs.adyen.com/api-explorer/#/ManagementService/latest/get/stores) specified by their unique store ID.
+    * `brandModels`: Returns terminals of the [models](https://docs.adyen.com/api-explorer/#/ManagementService/latest/get/companies/{companyId}/terminalModels) specified in the format *brand.model*.
+    * `pageNumber`: The number of the page to fetch.
+    * `pageSize`: The number of items to have on a page, maximum 100. The default is 20 items on a page.
+
+  """
+  @spec get_terminals(opts :: keyword) ::
+          {:ok, Adyen.Management.ListTerminalsResponse.t()}
+          | {:error, Adyen.Management.RestServiceError.t()}
+  def get_terminals(opts \\ []) do
+    client = opts[:client] || @default_client
+
+    query =
+      Keyword.take(opts, [
+        :brandModels,
+        :countries,
+        :merchantIds,
+        :otpQuery,
+        :pageNumber,
+        :pageSize,
+        :searchQuery,
+        :storeIds
+      ])
+
+    client.request(%{
+      args: [],
+      call: {Adyen.Management.TerminalsTerminalLevel, :get_terminals},
+      url: "/terminals",
+      method: :get,
+      query: query,
+      response: [
+        {200, {Adyen.Management.ListTerminalsResponse, :t}},
+        {400, {Adyen.Management.RestServiceError, :t}},
+        {401, {Adyen.Management.RestServiceError, :t}},
+        {403, {Adyen.Management.RestServiceError, :t}},
+        {422, {Adyen.Management.RestServiceError, :t}},
+        {500, {Adyen.Management.RestServiceError, :t}}
+      ],
+      opts: opts
+    })
+  end
+
+  @doc """
+  Reassign a terminal
+
+  Reassigns a payment terminal to a company account, merchant account, merchant account inventory, or a store.
+
+  To make this request, your API credential must have the following [role](https://docs.adyen.com/development-resources/api-credentials#api-permissions):
+  * Management API—Assign Terminal
+
+  In the live environment, requests to this endpoint are subject to [rate limits](https://docs.adyen.com/point-of-sale/automating-terminal-management#rate-limits-in-the-live-environment).
+
+  ## Request Body
+
+  **Content Types**: `application/json`
+  """
+  @spec post_terminals_terminal_id_reassign(
+          terminalId :: String.t(),
+          body :: Adyen.Management.TerminalReassignmentRequest.t(),
+          opts :: keyword
+        ) :: :ok | {:error, Adyen.Management.RestServiceError.t()}
+  def post_terminals_terminal_id_reassign(terminalId, body, opts \\ []) do
+    client = opts[:client] || @default_client
+
+    client.request(%{
+      args: [terminalId: terminalId, body: body],
+      call: {Adyen.Management.TerminalsTerminalLevel, :post_terminals_terminal_id_reassign},
+      url: "/terminals/#{terminalId}/reassign",
+      body: body,
+      method: :post,
+      request: [{"application/json", {Adyen.Management.TerminalReassignmentRequest, :t}}],
+      response: [
+        {200, :null},
+        {400, {Adyen.Management.RestServiceError, :t}},
+        {401, {Adyen.Management.RestServiceError, :t}},
+        {403, {Adyen.Management.RestServiceError, :t}},
+        {422, {Adyen.Management.RestServiceError, :t}},
+        {500, {Adyen.Management.RestServiceError, :t}}
+      ],
+      opts: opts
+    })
+  end
+end

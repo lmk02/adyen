@@ -3,12 +3,10 @@ defmodule Adyen.BalancePlatform.AccountHolderInfo do
   Provides struct and type for a AccountHolderInfo
   """
 
-  alias Adyen.BalancePlatform.ContactDetails
-
   @type t :: %__MODULE__{
           balancePlatform: String.t() | nil,
           capabilities: map | nil,
-          contactDetails: ContactDetails.t() | nil,
+          contactDetails: Adyen.BalancePlatform.ContactDetails.t() | nil,
           description: String.t() | nil,
           legalEntityId: String.t(),
           metadata: map | nil,
@@ -37,7 +35,7 @@ defmodule Adyen.BalancePlatform.AccountHolderInfo do
     [
       balancePlatform: :string,
       capabilities: :map,
-      contactDetails: {ContactDetails, :t},
+      contactDetails: {Adyen.BalancePlatform.ContactDetails, :t},
       description: :string,
       legalEntityId: :string,
       metadata: :map,

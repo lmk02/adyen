@@ -3,16 +3,13 @@ defmodule Adyen.Transfers.UltimatePartyIdentification do
   Provides struct and type for a UltimatePartyIdentification
   """
 
-  alias Adyen.Transfers.Address
-  alias Adyen.Transfers.FundingInstrument
-
   @type t :: %__MODULE__{
-          address: Address.t() | nil,
+          address: Adyen.Transfers.Address.t() | nil,
           dateOfBirth: Date.t() | nil,
           email: String.t() | nil,
           firstName: String.t() | nil,
           fullName: String.t() | nil,
-          fundingInstrument: FundingInstrument.t() | nil,
+          fundingInstrument: Adyen.Transfers.FundingInstrument.t() | nil,
           lastName: String.t() | nil,
           reference: String.t() | nil,
           type: String.t() | nil,
@@ -38,12 +35,12 @@ defmodule Adyen.Transfers.UltimatePartyIdentification do
 
   def __fields__(:t) do
     [
-      address: {Address, :t},
+      address: {Adyen.Transfers.Address, :t},
       dateOfBirth: {:string, "date"},
       email: :string,
       firstName: :string,
       fullName: :string,
-      fundingInstrument: {FundingInstrument, :t},
+      fundingInstrument: {Adyen.Transfers.FundingInstrument, :t},
       lastName: :string,
       reference: :string,
       type: {:enum, ["individual", "organization", "unknown"]},
