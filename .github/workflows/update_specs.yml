@@ -37,11 +37,25 @@ jobs:
             echo "changes=false" >> $GITHUB_OUTPUT
           else
             echo "changes=true" >> $GITHUB_OUTPUT
+            # Identify which JSON files changed in the submodule
+            OLD_SHA=$(git rev-parse HEAD:priv/specs)
+            NEW_SHA=$(git -C priv/specs rev-parse HEAD)
+            
+            # Find added or modified JSON files relative to the submodule root
+            CHANGED_FILES=$(git -C priv/specs diff --name-only --diff-filter=ACMR $OLD_SHA $NEW_SHA -- json/ | grep '\.json$' || true)
+            
+            if [ -n "$CHANGED_FILES" ]; then
+              # Transform "json/ServiceName-vVersion.json" to "ServiceName:vVersion"
+              SERVICES=$(echo "$CHANGED_FILES" | sed -E 's|json/||g' | sed -E 's|\.json||g' | sed -E 's|-v|:v|g' | tr '\n' ' ')
+              echo "services=$SERVICES" >> $GITHUB_OUTPUT
+            else
+              echo "services=" >> $GITHUB_OUTPUT
+            fi
           fi
 
       - name: Regenerate APIs
-        if: steps.check_specs.outputs.changes == 'true'
-        run: mix adyen.gen --all
+        if: steps.check_specs.outputs.changes == 'true' && steps.check_specs.outputs.services != ''
+        run: mix adyen.gen ${{ steps.check_specs.outputs.services }}
 
       - name: Configure Git
         if: steps.check_specs.outputs.changes == 'true'
@@ -103,7 +117,7 @@ jobs:
 
             Changes:
             - Updated `priv/specs` submodule to the latest commit.
-            - Regenerated all API clients in `generated_lib/` via `mix adyen.gen --all`.
+            - Regenerated changed API clients in `generated_lib/` via `mix adyen.gen`.
             - Bumped version in `mix.exs` using `git-cliff`.
           branch: "automation/update-adyen-specs"
           base: "main"
