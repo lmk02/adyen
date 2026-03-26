@@ -4,6 +4,7 @@ defmodule Adyen.Checkout.V53.CheckoutForwardRequest do
   """
 
   @type t :: %__MODULE__{
+          amount: Adyen.Checkout.V53.Amount.t() | nil,
           baseUrl: String.t(),
           merchantAccount: String.t(),
           merchantReference: String.t() | nil,
@@ -15,6 +16,7 @@ defmodule Adyen.Checkout.V53.CheckoutForwardRequest do
         }
 
   defstruct [
+    :amount,
     :baseUrl,
     :merchantAccount,
     :merchantReference,
@@ -31,6 +33,7 @@ defmodule Adyen.Checkout.V53.CheckoutForwardRequest do
 
   def __fields__(:t) do
     [
+      amount: {Adyen.Checkout.V53.Amount, :t},
       baseUrl: :string,
       merchantAccount: :string,
       merchantReference: :string,

@@ -49,6 +49,7 @@ defmodule Adyen.Checkout.V71.DonationPaymentRequest do
           shopperName: Adyen.Checkout.V71.ShopperName.t() | nil,
           shopperReference: String.t() | nil,
           socialSecurityNumber: String.t() | nil,
+          store: String.t() | nil,
           telephoneNumber: String.t() | nil,
           threeDS2RequestData: Adyen.Checkout.V71.ThreeDs2RequestFields.t() | nil,
           threeDSAuthenticationOnly: boolean | nil
@@ -94,6 +95,7 @@ defmodule Adyen.Checkout.V71.DonationPaymentRequest do
     :shopperName,
     :shopperReference,
     :socialSecurityNumber,
+    :store,
     :telephoneNumber,
     :threeDS2RequestData,
     :threeDSAuthenticationOnly
@@ -152,6 +154,7 @@ defmodule Adyen.Checkout.V71.DonationPaymentRequest do
       shopperName: {Adyen.Checkout.V71.ShopperName, :t},
       shopperReference: :string,
       socialSecurityNumber: :string,
+      store: :string,
       telephoneNumber: :string,
       threeDS2RequestData: {Adyen.Checkout.V71.ThreeDs2RequestFields, :t},
       threeDSAuthenticationOnly: :boolean
