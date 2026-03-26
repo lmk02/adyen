@@ -19,7 +19,7 @@ defmodule Adyen.Checkout.V70.PlatformChargebackLogic do
     [
       behavior:
         {:enum,
-         ["deductAccordingToSplitRatio", "deductFromLiableAccount", "deductFromOneBalanceAccount"]},
+         ["deductFromOneBalanceAccount", "deductAccordingToSplitRatio", "deductFromLiableAccount"]},
       costAllocationAccount: :string,
       targetAccount: :string
     ]

@@ -48,6 +48,7 @@ defmodule Adyen.Checkout.V69.PaymentRequest do
             Adyen.Checkout.V69.AchDetails.t()
             | Adyen.Checkout.V69.AffirmDetails.t()
             | Adyen.Checkout.V69.AfterpayDetails.t()
+            | Adyen.Checkout.V69.AlmaDetails.t()
             | Adyen.Checkout.V69.AmazonPayDetails.t()
             | Adyen.Checkout.V69.AncvDetails.t()
             | Adyen.Checkout.V69.AndroidPayDetails.t()
@@ -58,6 +59,7 @@ defmodule Adyen.Checkout.V69.PaymentRequest do
             | Adyen.Checkout.V69.CardDetails.t()
             | Adyen.Checkout.V69.CashAppDetails.t()
             | Adyen.Checkout.V69.CellulantDetails.t()
+            | Adyen.Checkout.V69.DirectDebitAuDetails.t()
             | Adyen.Checkout.V69.DokuDetails.t()
             | Adyen.Checkout.V69.DragonpayDetails.t()
             | Adyen.Checkout.V69.EBankingFinlandDetails.t()
@@ -69,6 +71,7 @@ defmodule Adyen.Checkout.V69.PaymentRequest do
             | Adyen.Checkout.V69.GooglePayDetails.t()
             | Adyen.Checkout.V69.IdealDetails.t()
             | Adyen.Checkout.V69.KlarnaDetails.t()
+            | Adyen.Checkout.V69.KlarnaNetworkDetails.t()
             | Adyen.Checkout.V69.MasterpassDetails.t()
             | Adyen.Checkout.V69.MbwayDetails.t()
             | Adyen.Checkout.V69.MobilePayDetails.t()
@@ -83,6 +86,7 @@ defmodule Adyen.Checkout.V69.PaymentRequest do
             | Adyen.Checkout.V69.PayWithGoogleDetails.t()
             | Adyen.Checkout.V69.PaymentDetails.t()
             | Adyen.Checkout.V69.PixDetails.t()
+            | Adyen.Checkout.V69.PixPayByBankDetails.t()
             | Adyen.Checkout.V69.PseDetails.t()
             | Adyen.Checkout.V69.RakutenPayDetails.t()
             | Adyen.Checkout.V69.RatepayDetails.t()
@@ -257,6 +261,7 @@ defmodule Adyen.Checkout.V69.PaymentRequest do
            {Adyen.Checkout.V69.AchDetails, :t},
            {Adyen.Checkout.V69.AffirmDetails, :t},
            {Adyen.Checkout.V69.AfterpayDetails, :t},
+           {Adyen.Checkout.V69.AlmaDetails, :t},
            {Adyen.Checkout.V69.AmazonPayDetails, :t},
            {Adyen.Checkout.V69.AncvDetails, :t},
            {Adyen.Checkout.V69.AndroidPayDetails, :t},
@@ -267,6 +272,7 @@ defmodule Adyen.Checkout.V69.PaymentRequest do
            {Adyen.Checkout.V69.CardDetails, :t},
            {Adyen.Checkout.V69.CashAppDetails, :t},
            {Adyen.Checkout.V69.CellulantDetails, :t},
+           {Adyen.Checkout.V69.DirectDebitAuDetails, :t},
            {Adyen.Checkout.V69.DokuDetails, :t},
            {Adyen.Checkout.V69.DragonpayDetails, :t},
            {Adyen.Checkout.V69.EBankingFinlandDetails, :t},
@@ -278,6 +284,7 @@ defmodule Adyen.Checkout.V69.PaymentRequest do
            {Adyen.Checkout.V69.GooglePayDetails, :t},
            {Adyen.Checkout.V69.IdealDetails, :t},
            {Adyen.Checkout.V69.KlarnaDetails, :t},
+           {Adyen.Checkout.V69.KlarnaNetworkDetails, :t},
            {Adyen.Checkout.V69.MasterpassDetails, :t},
            {Adyen.Checkout.V69.MbwayDetails, :t},
            {Adyen.Checkout.V69.MobilePayDetails, :t},
@@ -292,6 +299,7 @@ defmodule Adyen.Checkout.V69.PaymentRequest do
            {Adyen.Checkout.V69.PayWithGoogleDetails, :t},
            {Adyen.Checkout.V69.PaymentDetails, :t},
            {Adyen.Checkout.V69.PixDetails, :t},
+           {Adyen.Checkout.V69.PixPayByBankDetails, :t},
            {Adyen.Checkout.V69.PseDetails, :t},
            {Adyen.Checkout.V69.RakutenPayDetails, :t},
            {Adyen.Checkout.V69.RatepayDetails, :t},
