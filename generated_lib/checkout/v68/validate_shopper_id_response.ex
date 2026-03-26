@@ -12,6 +12,6 @@ defmodule Adyen.Checkout.V68.ValidateShopperIdResponse do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [reason: :string, result: {:enum, ["VALID", "INVALID", "UNKNOWN"]}]
+    [reason: :string, result: {:enum, ["VALID", "INVALID", "UNKNOWN", "NOT_REQUIRED"]}]
   end
 end

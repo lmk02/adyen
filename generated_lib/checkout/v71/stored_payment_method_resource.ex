@@ -4,6 +4,8 @@ defmodule Adyen.Checkout.V71.StoredPaymentMethodResource do
   """
 
   @type t :: %__MODULE__{
+          alias: String.t() | nil,
+          aliasType: String.t() | nil,
           brand: String.t() | nil,
           cardBin: String.t() | nil,
           expiryMonth: String.t() | nil,
@@ -26,6 +28,8 @@ defmodule Adyen.Checkout.V71.StoredPaymentMethodResource do
         }
 
   defstruct [
+    :alias,
+    :aliasType,
     :brand,
     :cardBin,
     :expiryMonth,
@@ -53,6 +57,8 @@ defmodule Adyen.Checkout.V71.StoredPaymentMethodResource do
 
   def __fields__(:t) do
     [
+      alias: :string,
+      aliasType: :string,
       brand: :string,
       cardBin: :string,
       expiryMonth: :string,
