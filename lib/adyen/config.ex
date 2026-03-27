@@ -3,9 +3,18 @@ defmodule Adyen.Config do
   Configuration handling for the Adyen library.
   """
 
+  @spec_dir Path.expand("../../priv/specs/json", __DIR__)
+
+  # Track all existing JSON specs as external resources to trigger recompilation on changes
+  for path <- Path.wildcard(Path.join(@spec_dir, "*.json")) do
+    @external_resource path
+  end
+
+  # Track the directory to detect new files (mtime changes on directory additions)
+  @external_resource @spec_dir
+
   specs_map =
-    "../../priv/specs/json"
-    |> Path.expand(__DIR__)
+    @spec_dir
     |> Path.join("*.json")
     |> Path.wildcard()
     |> Enum.reduce(%{}, fn path, acc ->
