@@ -1,10 +1,12 @@
 defmodule Adyen.MixProject do
   use Mix.Project
 
+  @version "0.2.1"
+
   def project do
     [
       app: :adyen,
-      version: "0.2.0",
+      version: @version,
       elixir: "~> 1.19",
       start_permanent: Mix.env() == :prod,
       elixirc_paths: elixirc_paths(Mix.env()),
