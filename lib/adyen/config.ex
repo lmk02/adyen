@@ -53,6 +53,13 @@ defmodule Adyen.Config do
 
   @specs specs_map
 
+  if Enum.empty?(@specs) do
+    # During compilation, this will raise and stop the build
+    raise "No OpenAPI specs found in #{inspect(@spec_dir)}. " <>
+            "This usually means the 'priv/specs' submodule is not initialized. " <>
+            "Please ensure your mix dependency includes 'submodules: true'."
+  end
+
   @latest_versions Map.new(@specs, fn {service, versions} ->
                      {latest_ver_str, _} = Enum.max_by(versions, fn {_ver, %{num: num}} -> num end)
                      {service, latest_ver_str}
