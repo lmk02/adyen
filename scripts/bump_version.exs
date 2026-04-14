@@ -4,13 +4,13 @@ defmodule BumpVersion do
     path = "mix.exs"
     content = File.read!(path)
     
-    # Regex to find version: "x.y.z"
-    regex = ~r/version:\s*"(\d+)\.(\d+)\.(\d+)"/
-    
-    {current_version, major, minor, patch} = 
+    # Regex to find @version "x.y.z"
+    regex = ~r/@version\s*"(\d+)\.(\d+)\.(\d+)"/
+
+    {current_version, major, minor, patch} =
       case Regex.run(regex, content) do
-        [full_match, major, minor, patch] ->
-          {String.replace(full_match, ~r/version:\s*"/, "") |> String.replace("\"", ""), major, minor, patch}
+        [_full_match, major, minor, patch] ->
+          {"#{major}.#{minor}.#{patch}", major, minor, patch}
         _ ->
           IO.puts(:stderr, "Could not find version in mix.exs")
           System.halt(1)
@@ -30,7 +30,7 @@ defmodule BumpVersion do
       end
 
     if new_version != current_version do
-      new_content = String.replace(content, "version: \"#{current_version}\"", "version: \"#{new_version}\"")
+      new_content = String.replace(content, "@version \"#{current_version}\"", "@version \"#{new_version}\"")
       File.write!(path, new_content)
       IO.puts(new_version)
     else
