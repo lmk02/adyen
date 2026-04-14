@@ -17,15 +17,6 @@ jobs:
           submodules: true
           fetch-depth: 0
 
-      - name: Set up Elixir
-        uses: erlef/setup-beam@v1
-        with:
-          elixir-version: "1.19"
-          otp-version: "27"
-
-      - name: Install Dependencies
-        run: mix deps.get
-
       - name: Update Submodule
         run: |
           git submodule update --remote --merge priv/specs
@@ -37,21 +28,40 @@ jobs:
             echo "changes=false" >> $GITHUB_OUTPUT
           else
             echo "changes=true" >> $GITHUB_OUTPUT
-            # Identify which JSON files changed in the submodule
             OLD_SHA=$(git rev-parse HEAD:priv/specs)
             NEW_SHA=$(git -C priv/specs rev-parse HEAD)
-            
-            # Find added or modified JSON files relative to the submodule root
+
             CHANGED_FILES=$(git -C priv/specs diff --name-only --diff-filter=ACMR $OLD_SHA $NEW_SHA -- json/ | grep '\.json$' || true)
-            
+
             if [ -n "$CHANGED_FILES" ]; then
-              # Transform "json/ServiceName-vVersion.json" to "ServiceName:vVersion"
               SERVICES=$(echo "$CHANGED_FILES" | sed -E 's|json/||g' | sed -E 's|\.json||g' | sed -E 's|-v|:v|g' | tr '\n' ' ')
               echo "services=$SERVICES" >> $GITHUB_OUTPUT
             else
               echo "services=" >> $GITHUB_OUTPUT
             fi
           fi
+
+      - name: Set up Elixir
+        if: steps.check_specs.outputs.changes == 'true'
+        uses: erlef/setup-beam@v1
+        with:
+          elixir-version: "1.19"
+          otp-version: "27"
+
+      - name: Cache Mix deps
+        if: steps.check_specs.outputs.changes == 'true'
+        uses: actions/cache@v4
+        with:
+          path: |
+            deps
+            _build
+          key: ${{ runner.os }}-mix-${{ hashFiles('mix.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-mix-
+
+      - name: Install Dependencies
+        if: steps.check_specs.outputs.changes == 'true'
+        run: mix deps.get
 
       - name: Regenerate APIs
         if: steps.check_specs.outputs.changes == 'true' && steps.check_specs.outputs.services != ''
@@ -79,18 +89,17 @@ jobs:
         run: |
           CURRENT_VERSION=$(elixir scripts/bump_version.exs --current)
 
-          # Use git-cliff to calculate the next version
-          # Ensure git tags are fetched for git-cliff to work better
           git fetch --tags
           NEXT_VERSION=$(git-cliff --bump --unreleased | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
 
           echo "Current: $CURRENT_VERSION, Next from cliff: $NEXT_VERSION"
 
-          if [ -n "$NEXT_VERSION" ] && [ "$NEXT_VERSION" != "$CURRENT_VERSION" ]; then
-            # Perform the specified bump
+          # Only use git-cliff's suggestion if it is strictly higher than current
+          # (guards against no-tags case where cliff outputs 0.1.0 regardless of current)
+          IS_HIGHER=$(printf '%s\n%s' "$CURRENT_VERSION" "$NEXT_VERSION" | sort -V | tail -n 1)
+          if [ -n "$NEXT_VERSION" ] && [ "$IS_HIGHER" = "$NEXT_VERSION" ] && [ "$NEXT_VERSION" != "$CURRENT_VERSION" ]; then
             FINAL_VERSION=$(elixir scripts/bump_version.exs "$NEXT_VERSION")
           else
-            # Fallback to manual patch bump if cliff didn't find a reason to bump
             FINAL_VERSION=$(elixir scripts/bump_version.exs)
           fi
 
@@ -106,8 +115,14 @@ jobs:
             echo "No changes in mix.exs, skipping release commit."
           fi
 
+      - name: Tag release
+        if: steps.check_specs.outputs.changes == 'true'
+        run: |
+          git tag "v${{ steps.bump.outputs.version }}"
+
       - name: Create Pull Request
         if: steps.check_specs.outputs.changes == 'true'
+        id: cpr
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -122,3 +137,8 @@ jobs:
           branch: "automation/update-adyen-specs"
           base: "main"
           delete-branch: true
+
+      - name: Push release tag
+        if: steps.check_specs.outputs.changes == 'true' && steps.cpr.outputs.pull-request-number != ''
+        run: |
+          git push origin "v${{ steps.bump.outputs.version }}"

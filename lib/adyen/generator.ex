@@ -21,12 +21,18 @@ defmodule Adyen.Generator do
   end
 
   defp do_generate_all(services, specs_dir, output_path) do
-    for arg <- services do
-      case String.split(arg, ":") do
-        [service, version] -> process_service(service, version, specs_dir, output_path)
-        _ -> {:error, "Invalid service format: #{arg}. Expected ServiceName:vXX"}
-      end
-    end
+    services
+    |> Task.async_stream(
+      fn arg ->
+        case String.split(arg, ":") do
+          [service, version] -> process_service(service, version, specs_dir, output_path)
+          _ -> {:error, "Invalid service format: #{arg}. Expected ServiceName:vXX"}
+        end
+      end,
+      max_concurrency: System.schedulers_online(),
+      timeout: :infinity
+    )
+    |> Enum.map(fn {:ok, result} -> result end)
   end
 
   defp validate_specs_dir(dir) do
@@ -90,12 +96,7 @@ defmodule Adyen.Generator do
       ]
     )
 
-    # Ensure the task is available and re-enabled
-    Mix.Task.reenable("api.gen")
-
-    case Mix.Task.run("api.gen", [to_string(profile_name), spec_path]) do
-      :ok -> {:ok, {service, version, location}}
-      _ -> {:error, "Failed to generate #{service} #{version}"}
-    end
+    OpenAPI.run(to_string(profile_name), [spec_path])
+    {:ok, {service, version, location}}
   end
 end
