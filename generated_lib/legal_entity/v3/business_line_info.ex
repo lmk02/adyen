@@ -6,6 +6,7 @@ defmodule Adyen.LegalEntity.V3.BusinessLineInfo do
   @type t :: %__MODULE__{
           capability: String.t() | nil,
           industryCode: String.t(),
+          industryCodeDescription: String.t() | nil,
           legalEntityId: String.t(),
           salesChannels: [String.t()] | nil,
           service: String.t(),
@@ -17,6 +18,7 @@ defmodule Adyen.LegalEntity.V3.BusinessLineInfo do
   defstruct [
     :capability,
     :industryCode,
+    :industryCodeDescription,
     :legalEntityId,
     :salesChannels,
     :service,
@@ -33,6 +35,7 @@ defmodule Adyen.LegalEntity.V3.BusinessLineInfo do
     [
       capability: {:enum, ["receivePayments", "receiveFromPlatformPayments", "issueBankAccount"]},
       industryCode: :string,
+      industryCodeDescription: :string,
       legalEntityId: :string,
       salesChannels: [:string],
       service: {:enum, ["paymentProcessing", "banking"]},
