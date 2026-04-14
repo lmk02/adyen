@@ -134,7 +134,7 @@ jobs:
             - Updated `priv/specs` submodule to the latest commit.
             - Regenerated changed API clients in `generated_lib/` via `mix adyen.gen`.
             - Bumped version in `mix.exs` using `git-cliff`.
-          branch: "automation/update-adyen-specs"
+          branch: "release/v${{ steps.bump.outputs.version }}"
           base: "main"
           delete-branch: true
 

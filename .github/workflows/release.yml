@@ -1,0 +1,62 @@
+name: Release
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+jobs:
+  release:
+    if: >
+      github.event.pull_request.merged == true &&
+      startsWith(github.event.pull_request.head.ref, 'release/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Extract version from branch name
+        id: version
+        run: |
+          VERSION=$(echo "${{ github.event.pull_request.head.ref }}" \
+            | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' \
+            | head -n 1)
+          echo "tag=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Checkout with full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Force-move tag to merge commit
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
+          MERGE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+        run: |
+          git tag -f "$TAG" "$MERGE_SHA"
+          git push origin -f "refs/tags/$TAG"
+
+      - name: Install git-cliff
+        uses: kenji-miyake/setup-git-cliff@v1
+
+      - name: Generate changelog
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          git-cliff --latest --strip all > /tmp/release_notes.md
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          gh release create "$TAG" \
+            --title "$TAG" \
+            --notes-file /tmp/release_notes.md \
+            --latest
