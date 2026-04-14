@@ -6,6 +6,7 @@ defmodule Adyen.LegalEntity.V4.BusinessLine do
   @type t :: %__MODULE__{
           id: String.t(),
           industryCode: String.t(),
+          industryCodeDescription: String.t() | nil,
           legalEntityId: String.t(),
           problems: [Adyen.LegalEntity.V4.CapabilityProblem.t()] | nil,
           salesChannels: [String.t()] | nil,
@@ -18,6 +19,7 @@ defmodule Adyen.LegalEntity.V4.BusinessLine do
   defstruct [
     :id,
     :industryCode,
+    :industryCodeDescription,
     :legalEntityId,
     :problems,
     :salesChannels,
@@ -35,6 +37,7 @@ defmodule Adyen.LegalEntity.V4.BusinessLine do
     [
       id: :string,
       industryCode: :string,
+      industryCodeDescription: :string,
       legalEntityId: :string,
       problems: [{Adyen.LegalEntity.V4.CapabilityProblem, :t}],
       salesChannels: [:string],
