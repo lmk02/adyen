@@ -6,11 +6,22 @@ defmodule Adyen.Checkout.V69.KlarnaNetworkDetails do
   @type t :: %__MODULE__{
           checkoutAttemptId: String.t() | nil,
           klarnaNetworkData: String.t() | nil,
+          klarnaNetworkSessionToken: String.t() | nil,
+          recurringDetailReference: String.t() | nil,
           sdkData: String.t() | nil,
+          storedPaymentMethodId: String.t() | nil,
           type: String.t()
         }
 
-  defstruct [:checkoutAttemptId, :klarnaNetworkData, :sdkData, :type]
+  defstruct [
+    :checkoutAttemptId,
+    :klarnaNetworkData,
+    :klarnaNetworkSessionToken,
+    :recurringDetailReference,
+    :sdkData,
+    :storedPaymentMethodId,
+    :type
+  ]
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -20,7 +31,10 @@ defmodule Adyen.Checkout.V69.KlarnaNetworkDetails do
     [
       checkoutAttemptId: :string,
       klarnaNetworkData: :string,
+      klarnaNetworkSessionToken: :string,
+      recurringDetailReference: :string,
       sdkData: :string,
+      storedPaymentMethodId: :string,
       type: {:const, "klarna_network"}
     ]
   end
