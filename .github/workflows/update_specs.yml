@@ -126,7 +126,7 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          title: "Update Adyen Specs"
+          title: "chore: update adyen specs (v${{ steps.bump.outputs.version }})"
           body: |
             This is an automated PR to update Adyen OpenAPI specifications.
 
