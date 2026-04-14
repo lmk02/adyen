@@ -5,6 +5,7 @@ defmodule Adyen.LegalEntity.V4.BusinessLineInfo do
 
   @type t :: %__MODULE__{
           industryCode: String.t(),
+          industryCodeDescription: String.t() | nil,
           legalEntityId: String.t(),
           salesChannels: [String.t()] | nil,
           service: String.t(),
@@ -15,6 +16,7 @@ defmodule Adyen.LegalEntity.V4.BusinessLineInfo do
 
   defstruct [
     :industryCode,
+    :industryCodeDescription,
     :legalEntityId,
     :salesChannels,
     :service,
@@ -30,6 +32,7 @@ defmodule Adyen.LegalEntity.V4.BusinessLineInfo do
   def __fields__(:t) do
     [
       industryCode: :string,
+      industryCodeDescription: :string,
       legalEntityId: :string,
       salesChannels: [:string],
       service: {:enum, ["paymentProcessing", "issuing", "banking"]},
