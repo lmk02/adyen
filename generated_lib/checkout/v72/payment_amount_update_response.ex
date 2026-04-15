@@ -1,0 +1,50 @@
+defmodule Adyen.Checkout.V72.PaymentAmountUpdateResponse do
+  @moduledoc """
+  Provides struct and type for a PaymentAmountUpdateResponse
+  """
+
+  @type t :: %__MODULE__{
+          adjustAuthorisationData: String.t() | nil,
+          amount: Adyen.Checkout.V72.Amount.t(),
+          industryUsage: String.t() | nil,
+          lineItems: [Adyen.Checkout.V72.LineItem.t()] | nil,
+          merchantAccount: String.t(),
+          paymentPspReference: String.t(),
+          pspReference: String.t(),
+          reference: String.t(),
+          splits: [Adyen.Checkout.V72.Split.t()] | nil,
+          status: String.t()
+        }
+
+  defstruct [
+    :adjustAuthorisationData,
+    :amount,
+    :industryUsage,
+    :lineItems,
+    :merchantAccount,
+    :paymentPspReference,
+    :pspReference,
+    :reference,
+    :splits,
+    :status
+  ]
+
+  @doc false
+  @spec __fields__(atom) :: keyword
+  def __fields__(type \\ :t)
+
+  def __fields__(:t) do
+    [
+      adjustAuthorisationData: :string,
+      amount: {Adyen.Checkout.V72.Amount, :t},
+      industryUsage: {:enum, ["delayedCharge", "installment", "noShow"]},
+      lineItems: [{Adyen.Checkout.V72.LineItem, :t}],
+      merchantAccount: :string,
+      paymentPspReference: :string,
+      pspReference: :string,
+      reference: :string,
+      splits: [{Adyen.Checkout.V72.Split, :t}],
+      status: {:enum, ["authorised", "received", "refused"]}
+    ]
+  end
+end
