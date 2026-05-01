@@ -7,13 +7,14 @@ defmodule Adyen.Transfer.V4.TransferNotificationMerchantData do
           acquirerId: String.t() | nil,
           city: String.t() | nil,
           country: String.t() | nil,
+          countryCode: String.t() | nil,
           mcc: String.t() | nil,
           merchantId: String.t() | nil,
           name: String.t() | nil,
           postalCode: String.t() | nil
         }
 
-  defstruct [:acquirerId, :city, :country, :mcc, :merchantId, :name, :postalCode]
+  defstruct [:acquirerId, :city, :country, :countryCode, :mcc, :merchantId, :name, :postalCode]
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -24,6 +25,7 @@ defmodule Adyen.Transfer.V4.TransferNotificationMerchantData do
       acquirerId: :string,
       city: :string,
       country: :string,
+      countryCode: :string,
       mcc: :string,
       merchantId: :string,
       name: :string,

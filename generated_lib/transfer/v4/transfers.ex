@@ -39,17 +39,21 @@ defmodule Adyen.Transfer.V4.Transfers do
       
       The `paymentInstrumentId` must be related to the `balanceAccountId` or `accountHolderId` that you provide.
     * `reference`: The reference you provided in the POST [/transfers](https://docs.adyen.com/api-explorer/transfers/latest/post/transfers) request
-    * `category`: The type of transfer.
+    * `category`: The category of the transfer.
       
       Possible values:
       
-       - **bank**: Transfer to a [transfer instrument](https://docs.adyen.com/api-explorer/#/legalentity/latest/post/transferInstruments__resParam_id) or a bank account.
+       - **bank**: A transfer involving a [transfer instrument](https://docs.adyen.com/api-explorer/legalentity/latest/post/transferInstruments#responses-200-id) or a bank account.
       
-      - **internal**: Transfer to another [balance account](https://docs.adyen.com/api-explorer/#/balanceplatform/latest/post/balanceAccounts__resParam_id) within your platform.
+      - **card**: A transfer involving a third-party card.
       
-      - **issuedCard**: Transfer initiated by a Adyen-issued card.
+      - **internal**: A transfer between [balance accounts](https://docs.adyen.com/api-explorer/balanceplatform/latest/post/balanceAccounts#responses-200-id) within your platform.
       
-      - **platformPayment**: Fund movements related to payments that are acquired for your users.
+      - **issuedCard**: A transfer initiated by an Adyen-issued card.
+      
+      - **platformPayment**: Funds movements related to payments that are acquired for your users.
+      
+      - **topUp**: An incoming transfer initiated by your user to top up their balance account.
     * `createdSince`: Only include transfers that have been created on or after this point in time. The value must be in ISO 8601 format and not earlier than 6 months before the `createdUntil` date. For example, **2021-05-30T15:07:40Z**.
     * `createdUntil`: Only include transfers that have been created on or before this point in time. The value must be in ISO 8601 format and not later than 6 months after the `createdSince` date. For example, **2021-05-30T15:07:40Z**.
     * `sortOrder`: Determines the sort order of the returned transfers. The sort order is based on the creation date of the transfers.
@@ -169,6 +173,7 @@ defmodule Adyen.Transfer.V4.Transfers do
       method: :post,
       request: [{"application/json", {Adyen.Transfer.V4.TransferInfo, :t}}],
       response: [
+        {200, {Adyen.Transfer.V4.Transfer, :t}},
         {202, {Adyen.Transfer.V4.Transfer, :t}},
         {401, {Adyen.Transfer.V4.ServiceError, :t}},
         {403, {Adyen.Transfer.V4.TransferServiceRestServiceError, :t}},

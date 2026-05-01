@@ -8,8 +8,8 @@ defmodule Adyen.TerminalAPI.V1.CurrencyConversion do
           ConvertedAmount: Adyen.TerminalAPI.V1.ConvertedAmount.t(),
           CustomerApprovedFlag: boolean | nil,
           Declaration: String.t() | nil,
-          Markup: String.t() | nil,
-          Rate: String.t() | nil
+          Markup: number | nil,
+          Rate: number | nil
         }
 
   defstruct [:Commission, :ConvertedAmount, :CustomerApprovedFlag, :Declaration, :Markup, :Rate]
@@ -24,8 +24,8 @@ defmodule Adyen.TerminalAPI.V1.CurrencyConversion do
       ConvertedAmount: {Adyen.TerminalAPI.V1.ConvertedAmount, :t},
       CustomerApprovedFlag: :boolean,
       Declaration: :string,
-      Markup: :string,
-      Rate: :string
+      Markup: :number,
+      Rate: :number
     ]
   end
 end
