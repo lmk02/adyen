@@ -12,16 +12,6 @@ defmodule Adyen.SessionAuthentication.V1.Resource do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [
-      type:
-        {:enum,
-         [
-           "legalEntity",
-           "balanceAccount",
-           "accountHolder",
-           "merchantAccount",
-           "paymentInstrument"
-         ]}
-    ]
+    [type: {:enum, ["legalEntity", "accountHolder", "paymentInstrument"]}]
   end
 end

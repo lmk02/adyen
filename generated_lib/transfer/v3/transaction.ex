@@ -129,7 +129,8 @@ defmodule Adyen.Transfer.V3.Transaction do
            "repayment",
            "reserveAdjustment",
            "secondChargeback",
-           "secondChargebackCorrection"
+           "secondChargebackCorrection",
+           "subsidization"
          ]},
       valueDate: {:string, "date-time"}
     ]
