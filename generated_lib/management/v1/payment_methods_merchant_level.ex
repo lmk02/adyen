@@ -111,7 +111,7 @@ defmodule Adyen.Management.V1.PaymentMethodsMerchantLevel do
           paymentMethodId :: String.t(),
           opts :: keyword
         ) ::
-          {:ok, Adyen.Management.V1.ApplePayInfo.t()}
+          {:ok, Adyen.Management.V1.ApplePayResponseInfo.t()}
           | {:error, Adyen.Management.V1.RestServiceError.t()}
   def get_merchants_merchant_id_payment_method_settings_payment_method_id_get_apple_pay_domains(
         merchantId,
@@ -128,7 +128,7 @@ defmodule Adyen.Management.V1.PaymentMethodsMerchantLevel do
       url: "/merchants/#{merchantId}/paymentMethodSettings/#{paymentMethodId}/getApplePayDomains",
       method: :get,
       response: [
-        {200, {Adyen.Management.V1.ApplePayInfo, :t}},
+        {200, {Adyen.Management.V1.ApplePayResponseInfo, :t}},
         {204, :null},
         {400, {Adyen.Management.V1.RestServiceError, :t}},
         {401, {Adyen.Management.V1.RestServiceError, :t}},

@@ -80,7 +80,7 @@ defmodule Adyen.BalancePlatform.V2.DirectDebitMandates do
   """
   @spec patch_mandates_mandate_id(
           mandateId :: String.t(),
-          body :: Adyen.BalancePlatform.V2.PatchableMandate.t(),
+          body :: Adyen.BalancePlatform.V2.MandateUpdate.t(),
           opts :: keyword
         ) :: :ok | {:error, Adyen.BalancePlatform.V2.DefaultErrorResponseEntity.t()}
   def patch_mandates_mandate_id(mandateId, body, opts \\ []) do
@@ -92,7 +92,7 @@ defmodule Adyen.BalancePlatform.V2.DirectDebitMandates do
       url: "/mandates/#{mandateId}",
       body: body,
       method: :patch,
-      request: [{"application/json", {Adyen.BalancePlatform.V2.PatchableMandate, :t}}],
+      request: [{"application/json", {Adyen.BalancePlatform.V2.MandateUpdate, :t}}],
       response: [
         {202, :null},
         {401, {Adyen.BalancePlatform.V2.DefaultErrorResponseEntity, :t}},

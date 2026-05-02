@@ -77,6 +77,7 @@ defmodule Adyen.Transfer.V4.Modification do
            "miscCostPending",
            "paymentCost",
            "paymentCostPending",
+           "pending",
            "pendingApproval",
            "pendingExecution",
            "received",
@@ -90,6 +91,7 @@ defmodule Adyen.Transfer.V4.Modification do
            "reserveAdjustment",
            "reserveAdjustmentPending",
            "returned",
+           "reversed",
            "secondChargeback",
            "secondChargebackPending",
            "undefined"

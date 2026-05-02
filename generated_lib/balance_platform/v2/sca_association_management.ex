@@ -47,7 +47,7 @@ defmodule Adyen.BalancePlatform.V2.SCAAssociationManagement do
 
     * `entityType`: The type of entity you want to retrieve a list of associations for. 
       
-      Possible values: **accountHolder** or **paymentInstrument**.
+      Possible values: **accountHolder**, **legalEntity** or **paymentInstrument**.
     * `entityId`: The unique identifier of the entity.
     * `pageSize`: The number of items to have on a page. 
       
