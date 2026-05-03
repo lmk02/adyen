@@ -31,7 +31,7 @@ defmodule Adyen.BalancePlatform.V2.AssociationListing do
     [
       createdAt: {:string, "date-time"},
       entityId: :string,
-      entityType: {:enum, ["accountHolder", "paymentInstrument"]},
+      entityType: {:enum, ["accountHolder", "legalEntity", "paymentInstrument"]},
       scaDeviceId: :string,
       scaDeviceName: :string,
       scaDeviceType: {:enum, ["browser", "ios", "android"]},

@@ -3,15 +3,15 @@ defmodule Adyen.Transfer.V3.IbanAccountIdentification do
   Provides struct and type for a IbanAccountIdentification
   """
 
-  @type t :: %__MODULE__{iban: String.t(), type: String.t()}
+  @type t :: %__MODULE__{bic: String.t() | nil, iban: String.t(), type: String.t()}
 
-  defstruct [:iban, :type]
+  defstruct [:bic, :iban, :type]
 
   @doc false
   @spec __fields__(atom) :: keyword
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [iban: :string, type: {:const, "iban"}]
+    [bic: :string, iban: :string, type: {:const, "iban"}]
   end
 end

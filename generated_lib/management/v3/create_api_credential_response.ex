@@ -14,6 +14,7 @@ defmodule Adyen.Management.V3.CreateApiCredentialResponse do
           id: String.t(),
           password: String.t(),
           roles: [String.t()],
+          subjectDN: String.t() | nil,
           username: String.t()
         }
 
@@ -28,6 +29,7 @@ defmodule Adyen.Management.V3.CreateApiCredentialResponse do
     :id,
     :password,
     :roles,
+    :subjectDN,
     :username
   ]
 
@@ -47,6 +49,7 @@ defmodule Adyen.Management.V3.CreateApiCredentialResponse do
       id: :string,
       password: :string,
       roles: [:string],
+      subjectDN: :string,
       username: :string
     ]
   end
