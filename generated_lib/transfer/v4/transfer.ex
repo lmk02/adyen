@@ -28,7 +28,8 @@ defmodule Adyen.Transfer.V4.Transfer do
           referenceForBeneficiary: String.t() | nil,
           review: Adyen.Transfer.V4.TransferReview.t() | nil,
           status: String.t(),
-          type: String.t() | nil
+          type: String.t() | nil,
+          ultimateParty: Adyen.Transfer.V4.UltimatePartyIdentification.t() | nil
         }
 
   defstruct [
@@ -51,7 +52,8 @@ defmodule Adyen.Transfer.V4.Transfer do
     :referenceForBeneficiary,
     :review,
     :status,
-    :type
+    :type,
+    :ultimateParty
   ]
 
   @doc false
@@ -228,6 +230,7 @@ defmodule Adyen.Transfer.V4.Transfer do
            "miscCostPending",
            "paymentCost",
            "paymentCostPending",
+           "pending",
            "pendingApproval",
            "pendingExecution",
            "received",
@@ -241,6 +244,7 @@ defmodule Adyen.Transfer.V4.Transfer do
            "reserveAdjustment",
            "reserveAdjustmentPending",
            "returned",
+           "reversed",
            "secondChargeback",
            "secondChargebackPending",
            "undefined"
@@ -286,7 +290,8 @@ defmodule Adyen.Transfer.V4.Transfer do
            "balanceAdjustment",
            "balanceRollover",
            "balanceMigration"
-         ]}
+         ]},
+      ultimateParty: {Adyen.Transfer.V4.UltimatePartyIdentification, :t}
     ]
   end
 end

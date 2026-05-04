@@ -222,6 +222,7 @@ defmodule Adyen.Transfer.V4.TransferEvent do
            "miscCostPending",
            "paymentCost",
            "paymentCostPending",
+           "pending",
            "pendingApproval",
            "pendingExecution",
            "received",
@@ -235,6 +236,7 @@ defmodule Adyen.Transfer.V4.TransferEvent do
            "reserveAdjustment",
            "reserveAdjustmentPending",
            "returned",
+           "reversed",
            "secondChargeback",
            "secondChargebackPending",
            "undefined"
