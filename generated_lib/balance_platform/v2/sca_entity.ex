@@ -12,6 +12,6 @@ defmodule Adyen.BalancePlatform.V2.ScaEntity do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [id: :string, type: {:enum, ["accountHolder", "paymentInstrument"]}]
+    [id: :string, type: {:enum, ["accountHolder", "legalEntity", "paymentInstrument"]}]
   end
 end

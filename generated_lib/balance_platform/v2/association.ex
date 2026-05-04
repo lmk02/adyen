@@ -19,7 +19,7 @@ defmodule Adyen.BalancePlatform.V2.Association do
   def __fields__(:t) do
     [
       entityId: :string,
-      entityType: {:enum, ["accountHolder", "paymentInstrument"]},
+      entityType: {:enum, ["accountHolder", "legalEntity", "paymentInstrument"]},
       scaDeviceId: :string,
       status: {:enum, ["pendingApproval", "active"]}
     ]
