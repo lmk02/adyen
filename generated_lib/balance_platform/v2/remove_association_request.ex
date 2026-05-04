@@ -14,7 +14,7 @@ defmodule Adyen.BalancePlatform.V2.RemoveAssociationRequest do
   def __fields__(:t) do
     [
       entityId: :string,
-      entityType: {:enum, ["accountHolder", "paymentInstrument"]},
+      entityType: {:enum, ["accountHolder", "legalEntity", "paymentInstrument"]},
       scaDeviceIds: [:string]
     ]
   end

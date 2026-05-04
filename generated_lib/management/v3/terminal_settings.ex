@@ -6,6 +6,7 @@ defmodule Adyen.Management.V3.TerminalSettings do
   @type t :: %__MODULE__{
           cardholderReceipt: Adyen.Management.V3.CardholderReceipt.t() | nil,
           connectivity: Adyen.Management.V3.Connectivity.t() | nil,
+          dcc: Adyen.Management.V3.Dcc.t() | nil,
           gratuities: [Adyen.Management.V3.Gratuity.t()] | nil,
           hardware: Adyen.Management.V3.Hardware.t() | nil,
           homeScreen: Adyen.Management.V3.HomeScreenSettings.t() | nil,
@@ -34,6 +35,7 @@ defmodule Adyen.Management.V3.TerminalSettings do
   defstruct [
     :cardholderReceipt,
     :connectivity,
+    :dcc,
     :gratuities,
     :hardware,
     :homeScreen,
@@ -67,6 +69,7 @@ defmodule Adyen.Management.V3.TerminalSettings do
     [
       cardholderReceipt: {Adyen.Management.V3.CardholderReceipt, :t},
       connectivity: {Adyen.Management.V3.Connectivity, :t},
+      dcc: {Adyen.Management.V3.Dcc, :t},
       gratuities: [{Adyen.Management.V3.Gratuity, :t}],
       hardware: {Adyen.Management.V3.Hardware, :t},
       homeScreen: {Adyen.Management.V3.HomeScreenSettings, :t},

@@ -17,6 +17,7 @@ defmodule Adyen.BalancePlatform.V2.CardConfiguration do
           language: String.t() | nil,
           logoImageId: String.t() | nil,
           pinMailer: String.t() | nil,
+          printLine: String.t() | nil,
           shipmentMethod: String.t() | nil
         }
 
@@ -34,6 +35,7 @@ defmodule Adyen.BalancePlatform.V2.CardConfiguration do
     :language,
     :logoImageId,
     :pinMailer,
+    :printLine,
     :shipmentMethod
   ]
 
@@ -56,6 +58,7 @@ defmodule Adyen.BalancePlatform.V2.CardConfiguration do
       language: :string,
       logoImageId: :string,
       pinMailer: :string,
+      printLine: :string,
       shipmentMethod: :string
     ]
   end

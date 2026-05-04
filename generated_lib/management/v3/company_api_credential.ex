@@ -13,6 +13,7 @@ defmodule Adyen.Management.V3.CompanyApiCredential do
           description: String.t() | nil,
           id: String.t(),
           roles: [String.t()],
+          subjectDN: String.t() | nil,
           username: String.t()
         }
 
@@ -26,6 +27,7 @@ defmodule Adyen.Management.V3.CompanyApiCredential do
     :description,
     :id,
     :roles,
+    :subjectDN,
     :username
   ]
 
@@ -44,6 +46,7 @@ defmodule Adyen.Management.V3.CompanyApiCredential do
       description: :string,
       id: :string,
       roles: [:string],
+      subjectDN: :string,
       username: :string
     ]
   end
