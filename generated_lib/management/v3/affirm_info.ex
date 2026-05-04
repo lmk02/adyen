@@ -12,6 +12,6 @@ defmodule Adyen.Management.V3.AffirmInfo do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [pricePlan: {:enum, ["BRONZE", "SILVER", "GOLD"]}, supportEmail: :string]
+    [pricePlan: :string, supportEmail: :string]
   end
 end

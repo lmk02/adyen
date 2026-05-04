@@ -44,6 +44,7 @@ defmodule Adyen.Transfer.V3.Transfers do
       method: :post,
       request: [{"application/json", {Adyen.Transfer.V3.TransferInfo, :t}}],
       response: [
+        {200, {Adyen.Transfer.V3.Transfer, :t}},
         {202, {Adyen.Transfer.V3.Transfer, :t}},
         {401, {Adyen.Transfer.V3.ServiceError, :t}},
         {403, {Adyen.Transfer.V3.TransferServiceRestServiceError, :t}},
