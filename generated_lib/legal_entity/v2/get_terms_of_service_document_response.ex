@@ -12,14 +12,17 @@ defmodule Adyen.LegalEntity.V2.GetTermsOfServiceDocumentResponse do
           type: String.t() | nil
         }
 
-  defstruct [
-    :document,
-    :id,
-    :language,
-    :termsOfServiceDocumentFormat,
-    :termsOfServiceDocumentId,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :document,
+      :id,
+      :language,
+      :termsOfServiceDocumentFormat,
+      :termsOfServiceDocumentId,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

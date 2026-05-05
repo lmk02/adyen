@@ -11,13 +11,16 @@ defmodule Adyen.Payment.V50.DonationRequest do
           reference: String.t() | nil
         }
 
-  defstruct [
-    :donationAccount,
-    :merchantAccount,
-    :modificationAmount,
-    :originalReference,
-    :reference
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :donationAccount,
+      :merchantAccount,
+      :modificationAmount,
+      :originalReference,
+      :reference
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

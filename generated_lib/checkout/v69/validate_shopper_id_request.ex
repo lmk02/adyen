@@ -11,7 +11,10 @@ defmodule Adyen.Checkout.V69.ValidateShopperIdRequest do
           shopperReference: String.t() | nil
         }
 
-  defstruct [:merchantAccount, :paymentMethod, :shopperEmail, :shopperIP, :shopperReference]
+  (
+    @derive Jason.Encoder
+    defstruct [:merchantAccount, :paymentMethod, :shopperEmail, :shopperIP, :shopperReference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

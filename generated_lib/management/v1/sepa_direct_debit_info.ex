@@ -8,7 +8,10 @@ defmodule Adyen.Management.V1.SepaDirectDebitInfo do
           transactionDescription: Adyen.Management.V1.TransactionDescriptionInfo.t() | nil
         }
 
-  defstruct [:creditorId, :transactionDescription]
+  (
+    @derive Jason.Encoder
+    defstruct [:creditorId, :transactionDescription]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

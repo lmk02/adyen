@@ -8,7 +8,10 @@ defmodule Adyen.BalancePlatform.V2.Counterparty do
           transferInstrumentId: String.t() | nil
         }
 
-  defstruct [:bankAccount, :transferInstrumentId]
+  (
+    @derive Jason.Encoder
+    defstruct [:bankAccount, :transferInstrumentId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

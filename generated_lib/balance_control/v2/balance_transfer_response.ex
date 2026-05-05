@@ -5,7 +5,10 @@ defmodule Adyen.BalanceControl.V2.BalanceTransferResponse do
 
   @type t :: %__MODULE__{createdAt: DateTime.t(), pspReference: String.t()}
 
-  defstruct [:createdAt, :pspReference]
+  (
+    @derive Jason.Encoder
+    defstruct [:createdAt, :pspReference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

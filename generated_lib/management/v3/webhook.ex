@@ -28,30 +28,33 @@ defmodule Adyen.Management.V3.Webhook do
           username: String.t() | nil
         }
 
-  defstruct [
-    :_links,
-    :acceptsExpiredCertificate,
-    :acceptsSelfSignedCertificate,
-    :acceptsUntrustedRootCertificate,
-    :accountReference,
-    :active,
-    :additionalSettings,
-    :certificateAlias,
-    :communicationFormat,
-    :description,
-    :encryptionProtocol,
-    :filterMerchantAccountType,
-    :filterMerchantAccounts,
-    :hasError,
-    :hasPassword,
-    :hmacKeyCheckValue,
-    :id,
-    :networkType,
-    :populateSoapActionHeader,
-    :type,
-    :url,
-    :username
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :_links,
+      :acceptsExpiredCertificate,
+      :acceptsSelfSignedCertificate,
+      :acceptsUntrustedRootCertificate,
+      :accountReference,
+      :active,
+      :additionalSettings,
+      :certificateAlias,
+      :communicationFormat,
+      :description,
+      :encryptionProtocol,
+      :filterMerchantAccountType,
+      :filterMerchantAccounts,
+      :hasError,
+      :hasPassword,
+      :hmacKeyCheckValue,
+      :id,
+      :networkType,
+      :populateSoapActionHeader,
+      :type,
+      :url,
+      :username
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

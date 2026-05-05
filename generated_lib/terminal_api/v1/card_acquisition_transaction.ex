@@ -15,17 +15,20 @@ defmodule Adyen.TerminalAPI.V1.CardAcquisitionTransaction do
           TotalAmount: number | nil
         }
 
-  defstruct [
-    :AllowedLoyaltyBrand,
-    :AllowedPaymentBrand,
-    :CashBackFlag,
-    :CustomerLanguage,
-    :ForceCustomerSelectionFlag,
-    :ForceEntryMode,
-    :LoyaltyHandling,
-    :PaymentType,
-    :TotalAmount
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :AllowedLoyaltyBrand,
+      :AllowedPaymentBrand,
+      :CashBackFlag,
+      :CustomerLanguage,
+      :ForceCustomerSelectionFlag,
+      :ForceEntryMode,
+      :LoyaltyHandling,
+      :PaymentType,
+      :TotalAmount
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

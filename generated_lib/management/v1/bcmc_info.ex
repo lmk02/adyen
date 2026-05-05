@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.BcmcInfo do
 
   @type t :: %__MODULE__{enableBcmcMobile: boolean | nil}
 
-  defstruct [:enableBcmcMobile]
+  (
+    @derive Jason.Encoder
+    defstruct [:enableBcmcMobile]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

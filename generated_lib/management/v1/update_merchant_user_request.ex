@@ -13,7 +13,10 @@ defmodule Adyen.Management.V1.UpdateMerchantUserRequest do
           timeZoneCode: String.t() | nil
         }
 
-  defstruct [:accountGroups, :active, :email, :loginMethod, :name, :roles, :timeZoneCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountGroups, :active, :email, :loginMethod, :name, :roles, :timeZoneCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

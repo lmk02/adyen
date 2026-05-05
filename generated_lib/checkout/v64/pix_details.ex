@@ -11,13 +11,16 @@ defmodule Adyen.Checkout.V64.PixDetails do
           type: String.t() | nil
         }
 
-  defstruct [
-    :checkoutAttemptId,
-    :pixRecurring,
-    :recurringDetailReference,
-    :storedPaymentMethodId,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :checkoutAttemptId,
+      :pixRecurring,
+      :recurringDetailReference,
+      :storedPaymentMethodId,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

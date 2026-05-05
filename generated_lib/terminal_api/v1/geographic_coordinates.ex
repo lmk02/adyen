@@ -5,7 +5,10 @@ defmodule Adyen.TerminalAPI.V1.GeographicCoordinates do
 
   @type t :: %__MODULE__{Latitude: String.t(), Longitude: String.t()}
 
-  defstruct [:Latitude, :Longitude]
+  (
+    @derive Jason.Encoder
+    defstruct [:Latitude, :Longitude]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

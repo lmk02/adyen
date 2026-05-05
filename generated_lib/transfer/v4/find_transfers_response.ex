@@ -8,7 +8,10 @@ defmodule Adyen.Transfer.V4.FindTransfersResponse do
           data: [Adyen.Transfer.V4.TransferData.t()] | nil
         }
 
-  defstruct [:_links, :data]
+  (
+    @derive Jason.Encoder
+    defstruct [:_links, :data]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.LegalEntity.V4.GetPciQuestionnaireInfosResponse do
 
   @type t :: %__MODULE__{data: [Adyen.LegalEntity.V4.PciDocumentInfo.t()] | nil}
 
-  defstruct [:data]
+  (
+    @derive Jason.Encoder
+    defstruct [:data]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

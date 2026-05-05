@@ -14,16 +14,19 @@ defmodule Adyen.Transfer.V1.TransferOld do
           source: Adyen.Transfer.V1.InternalPartyIdentification.t()
         }
 
-  defstruct [
-    :amount,
-    :description,
-    :destination,
-    :id,
-    :reference,
-    :refusalReason,
-    :resultCode,
-    :source
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amount,
+      :description,
+      :destination,
+      :id,
+      :reference,
+      :refusalReason,
+      :resultCode,
+      :source
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

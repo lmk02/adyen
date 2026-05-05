@@ -9,7 +9,10 @@ defmodule Adyen.Transfer.V4.InternalCategoryData do
           type: String.t() | nil
         }
 
-  defstruct [:modificationMerchantReference, :modificationPspReference, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:modificationMerchantReference, :modificationPspReference, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

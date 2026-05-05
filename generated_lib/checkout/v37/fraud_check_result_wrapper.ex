@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V37.FraudCheckResultWrapper do
 
   @type t :: %__MODULE__{FraudCheckResult: Adyen.Checkout.V37.FraudCheckResult.t() | nil}
 
-  defstruct [:FraudCheckResult]
+  (
+    @derive Jason.Encoder
+    defstruct [:FraudCheckResult]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

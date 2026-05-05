@@ -8,7 +8,10 @@ defmodule Adyen.NotificationConfiguration.V1.NotificationEventConfigurationWrapp
             Adyen.NotificationConfiguration.V1.NotificationEventConfiguration.t() | nil
         }
 
-  defstruct [:NotificationEventConfiguration]
+  (
+    @derive Jason.Encoder
+    defstruct [:NotificationEventConfiguration]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

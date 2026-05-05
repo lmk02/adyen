@@ -9,7 +9,10 @@ defmodule Adyen.Dispute.V30.DefenseReason do
           satisfied: boolean
         }
 
-  defstruct [:defenseDocumentTypes, :defenseReasonCode, :satisfied]
+  (
+    @derive Jason.Encoder
+    defstruct [:defenseDocumentTypes, :defenseReasonCode, :satisfied]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -9,7 +9,10 @@ defmodule Adyen.Management.V1.AmexInfo do
           serviceLevel: String.t()
         }
 
-  defstruct [:midNumber, :reuseMidNumber, :serviceLevel]
+  (
+    @derive Jason.Encoder
+    defstruct [:midNumber, :reuseMidNumber, :serviceLevel]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

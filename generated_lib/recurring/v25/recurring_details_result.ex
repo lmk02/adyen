@@ -10,7 +10,10 @@ defmodule Adyen.Recurring.V25.RecurringDetailsResult do
           shopperReference: String.t() | nil
         }
 
-  defstruct [:creationDate, :details, :lastKnownShopperEmail, :shopperReference]
+  (
+    @derive Jason.Encoder
+    defstruct [:creationDate, :details, :lastKnownShopperEmail, :shopperReference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

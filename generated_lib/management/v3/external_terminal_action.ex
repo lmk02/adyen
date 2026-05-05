@@ -14,7 +14,19 @@ defmodule Adyen.Management.V3.ExternalTerminalAction do
           terminalId: String.t() | nil
         }
 
-  defstruct [:actionType, :config, :confirmedAt, :id, :result, :scheduledAt, :status, :terminalId]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :actionType,
+      :config,
+      :confirmedAt,
+      :id,
+      :result,
+      :scheduledAt,
+      :status,
+      :terminalId
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

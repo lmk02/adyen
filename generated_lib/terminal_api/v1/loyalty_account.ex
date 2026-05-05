@@ -8,7 +8,10 @@ defmodule Adyen.TerminalAPI.V1.LoyaltyAccount do
           LoyaltyBrand: String.t() | nil
         }
 
-  defstruct [:LoyaltyAccountID, :LoyaltyBrand]
+  (
+    @derive Jason.Encoder
+    defstruct [:LoyaltyAccountID, :LoyaltyBrand]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -10,7 +10,10 @@ defmodule Adyen.Payout.V52.SubmitResponse do
           resultCode: String.t()
         }
 
-  defstruct [:additionalData, :pspReference, :refusalReason, :resultCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:additionalData, :pspReference, :refusalReason, :resultCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

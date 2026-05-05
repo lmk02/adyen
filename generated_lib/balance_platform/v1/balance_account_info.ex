@@ -12,14 +12,17 @@ defmodule Adyen.BalancePlatform.V1.BalanceAccountInfo do
           timeZone: String.t() | nil
         }
 
-  defstruct [
-    :accountHolderId,
-    :defaultCurrencyCode,
-    :description,
-    :reference,
-    :sweepConfigurations,
-    :timeZone
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountHolderId,
+      :defaultCurrencyCode,
+      :description,
+      :reference,
+      :sweepConfigurations,
+      :timeZone
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

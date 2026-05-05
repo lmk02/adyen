@@ -5,7 +5,10 @@ defmodule Adyen.Management.V3.RequestActivationResponse do
 
   @type t :: %__MODULE__{companyId: String.t() | nil, merchantId: String.t() | nil}
 
-  defstruct [:companyId, :merchantId]
+  (
+    @derive Jason.Encoder
+    defstruct [:companyId, :merchantId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

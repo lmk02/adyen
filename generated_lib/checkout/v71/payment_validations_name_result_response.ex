@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V71.PaymentValidationsNameResultResponse do
           middleName: String.t() | nil
         }
 
-  defstruct [:firstName, :fullName, :lastName, :middleName]
+  (
+    @derive Jason.Encoder
+    defstruct [:firstName, :fullName, :lastName, :middleName]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

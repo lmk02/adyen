@@ -16,18 +16,21 @@ defmodule Adyen.Checkout.V66.CashAppDetails do
           type: String.t() | nil
         }
 
-  defstruct [
-    :cashtag,
-    :checkoutAttemptId,
-    :customerId,
-    :grantId,
-    :onFileGrantId,
-    :recurringDetailReference,
-    :requestId,
-    :storedPaymentMethodId,
-    :subtype,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :cashtag,
+      :checkoutAttemptId,
+      :customerId,
+      :grantId,
+      :onFileGrantId,
+      :recurringDetailReference,
+      :requestId,
+      :storedPaymentMethodId,
+      :subtype,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

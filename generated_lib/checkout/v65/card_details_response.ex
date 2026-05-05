@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V65.CardDetailsResponse do
           issuingCountryCode: String.t() | nil
         }
 
-  defstruct [:brands, :fundingSource, :isCardCommercial, :issuingCountryCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:brands, :fundingSource, :isCardCommercial, :issuingCountryCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.LegalEntity.V3.BirthData do
 
   @type t :: %__MODULE__{dateOfBirth: String.t() | nil}
 
-  defstruct [:dateOfBirth]
+  (
+    @derive Jason.Encoder
+    defstruct [:dateOfBirth]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

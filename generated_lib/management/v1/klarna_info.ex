@@ -10,7 +10,10 @@ defmodule Adyen.Management.V1.KlarnaInfo do
           supportEmail: String.t()
         }
 
-  defstruct [:autoCapture, :disputeEmail, :region, :supportEmail]
+  (
+    @derive Jason.Encoder
+    defstruct [:autoCapture, :disputeEmail, :region, :supportEmail]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

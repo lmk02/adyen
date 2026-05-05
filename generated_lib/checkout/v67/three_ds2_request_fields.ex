@@ -26,28 +26,31 @@ defmodule Adyen.Checkout.V67.ThreeDs2RequestFields do
           whiteListStatus: String.t() | nil
         }
 
-  defstruct [
-    :acquirerBIN,
-    :acquirerMerchantID,
-    :authenticationOnly,
-    :challengeIndicator,
-    :deviceRenderOptions,
-    :mcc,
-    :merchantName,
-    :messageVersion,
-    :notificationURL,
-    :sdkAppID,
-    :sdkEphemPubKey,
-    :sdkMaxTimeout,
-    :sdkReferenceNumber,
-    :sdkTransID,
-    :threeDSCompInd,
-    :threeDSRequestorID,
-    :threeDSRequestorName,
-    :threeDSRequestorURL,
-    :transactionType,
-    :whiteListStatus
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :acquirerBIN,
+      :acquirerMerchantID,
+      :authenticationOnly,
+      :challengeIndicator,
+      :deviceRenderOptions,
+      :mcc,
+      :merchantName,
+      :messageVersion,
+      :notificationURL,
+      :sdkAppID,
+      :sdkEphemPubKey,
+      :sdkMaxTimeout,
+      :sdkReferenceNumber,
+      :sdkTransID,
+      :threeDSCompInd,
+      :threeDSRequestorID,
+      :threeDSRequestorName,
+      :threeDSRequestorURL,
+      :transactionType,
+      :whiteListStatus
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

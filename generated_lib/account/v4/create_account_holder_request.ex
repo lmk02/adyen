@@ -13,15 +13,18 @@ defmodule Adyen.Account.V4.CreateAccountHolderRequest do
           processingTier: integer | nil
         }
 
-  defstruct [
-    :accountHolderCode,
-    :accountHolderDetails,
-    :createDefaultAccount,
-    :description,
-    :legalEntity,
-    :primaryCurrency,
-    :processingTier
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountHolderCode,
+      :accountHolderDetails,
+      :createDefaultAccount,
+      :description,
+      :legalEntity,
+      :primaryCurrency,
+      :processingTier
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

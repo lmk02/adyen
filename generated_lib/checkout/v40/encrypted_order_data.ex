@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V40.EncryptedOrderData do
 
   @type t :: %__MODULE__{orderData: String.t(), pspReference: String.t()}
 
-  defstruct [:orderData, :pspReference]
+  (
+    @derive Jason.Encoder
+    defstruct [:orderData, :pspReference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

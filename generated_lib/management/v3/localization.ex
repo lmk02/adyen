@@ -9,7 +9,10 @@ defmodule Adyen.Management.V3.Localization do
           timezone: String.t() | nil
         }
 
-  defstruct [:language, :secondaryLanguage, :timezone]
+  (
+    @derive Jason.Encoder
+    defstruct [:language, :secondaryLanguage, :timezone]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

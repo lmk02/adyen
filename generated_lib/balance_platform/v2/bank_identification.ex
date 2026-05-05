@@ -9,7 +9,10 @@ defmodule Adyen.BalancePlatform.V2.BankIdentification do
           identificationType: String.t() | nil
         }
 
-  defstruct [:country, :identification, :identificationType]
+  (
+    @derive Jason.Encoder
+    defstruct [:country, :identification, :identificationType]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

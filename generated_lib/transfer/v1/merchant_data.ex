@@ -11,7 +11,10 @@ defmodule Adyen.Transfer.V1.MerchantData do
           postalCode: String.t() | nil
         }
 
-  defstruct [:acquirerId, :mcc, :merchantId, :nameLocation, :postalCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:acquirerId, :mcc, :merchantId, :nameLocation, :postalCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

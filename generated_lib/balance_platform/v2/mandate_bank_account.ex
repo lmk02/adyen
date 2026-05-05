@@ -8,7 +8,10 @@ defmodule Adyen.BalancePlatform.V2.MandateBankAccount do
           accountIdentification: Adyen.BalancePlatform.V2.MandateAccountIdentification.t()
         }
 
-  defstruct [:accountHolder, :accountIdentification]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountHolder, :accountIdentification]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

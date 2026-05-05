@@ -9,7 +9,10 @@ defmodule Adyen.NotificationConfiguration.V2.GenericResponse do
           submittedAsync: boolean | nil
         }
 
-  defstruct [:pspReference, :resultCode, :submittedAsync]
+  (
+    @derive Jason.Encoder
+    defstruct [:pspReference, :resultCode, :submittedAsync]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

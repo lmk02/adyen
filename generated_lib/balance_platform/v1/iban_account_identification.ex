@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V1.IbanAccountIdentification do
 
   @type t :: %__MODULE__{iban: String.t(), type: String.t()}
 
-  defstruct [:iban, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:iban, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

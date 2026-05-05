@@ -9,7 +9,10 @@ defmodule Adyen.Account.V3.UpdateAccountHolderRequest do
           processingTier: integer | nil
         }
 
-  defstruct [:accountHolderCode, :accountHolderDetails, :processingTier]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountHolderCode, :accountHolderDetails, :processingTier]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.TerminalAPI.V1.LogoutRequest do
 
   @type t :: %__MODULE__{MaintenanceAllowed: boolean | nil}
 
-  defstruct [:MaintenanceAllowed]
+  (
+    @derive Jason.Encoder
+    defstruct [:MaintenanceAllowed]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

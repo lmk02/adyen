@@ -5,7 +5,10 @@ defmodule Adyen.Transaction.V1.InvalidField do
 
   @type t :: %__MODULE__{message: String.t(), name: String.t(), value: String.t()}
 
-  defstruct [:message, :name, :value]
+  (
+    @derive Jason.Encoder
+    defstruct [:message, :name, :value]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

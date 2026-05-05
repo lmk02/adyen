@@ -13,15 +13,18 @@ defmodule Adyen.BalancePlatform.V2.AssociationListing do
           status: String.t()
         }
 
-  defstruct [
-    :createdAt,
-    :entityId,
-    :entityType,
-    :scaDeviceId,
-    :scaDeviceName,
-    :scaDeviceType,
-    :status
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :createdAt,
+      :entityId,
+      :entityType,
+      :scaDeviceId,
+      :scaDeviceName,
+      :scaDeviceType,
+      :status
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -31,7 +34,7 @@ defmodule Adyen.BalancePlatform.V2.AssociationListing do
     [
       createdAt: {:string, "date-time"},
       entityId: :string,
-      entityType: {:enum, ["accountHolder", "legalEntity", "paymentInstrument"]},
+      entityType: {:enum, ["accountHolder", "paymentInstrument"]},
       scaDeviceId: :string,
       scaDeviceName: :string,
       scaDeviceType: {:enum, ["browser", "ios", "android"]},

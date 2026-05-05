@@ -8,11 +8,14 @@ defmodule Adyen.TerminalAPI.V1.CurrencyConversion do
           ConvertedAmount: Adyen.TerminalAPI.V1.ConvertedAmount.t(),
           CustomerApprovedFlag: boolean | nil,
           Declaration: String.t() | nil,
-          Markup: number | nil,
-          Rate: number | nil
+          Markup: String.t() | nil,
+          Rate: String.t() | nil
         }
 
-  defstruct [:Commission, :ConvertedAmount, :CustomerApprovedFlag, :Declaration, :Markup, :Rate]
+  (
+    @derive Jason.Encoder
+    defstruct [:Commission, :ConvertedAmount, :CustomerApprovedFlag, :Declaration, :Markup, :Rate]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -24,8 +27,8 @@ defmodule Adyen.TerminalAPI.V1.CurrencyConversion do
       ConvertedAmount: {Adyen.TerminalAPI.V1.ConvertedAmount, :t},
       CustomerApprovedFlag: :boolean,
       Declaration: :string,
-      Markup: :number,
-      Rate: :number
+      Markup: :string,
+      Rate: :string
     ]
   end
 end

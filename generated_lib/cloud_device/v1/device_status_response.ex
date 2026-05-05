@@ -5,7 +5,10 @@ defmodule Adyen.CloudDevice.V1.DeviceStatusResponse do
 
   @type t :: %__MODULE__{deviceId: String.t() | nil, status: String.t() | nil}
 
-  defstruct [:deviceId, :status]
+  (
+    @derive Jason.Encoder
+    defstruct [:deviceId, :status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

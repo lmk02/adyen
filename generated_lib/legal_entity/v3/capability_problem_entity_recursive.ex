@@ -9,7 +9,10 @@ defmodule Adyen.LegalEntity.V3.CapabilityProblemEntityRecursive do
           type: String.t() | nil
         }
 
-  defstruct [:documents, :id, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:documents, :id, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -8,7 +8,10 @@ defmodule Adyen.Account.V3.DeleteLegalArrangementRequest do
           legalArrangements: [Adyen.Account.V3.LegalArrangementRequestWrapper.t()]
         }
 
-  defstruct [:accountHolderCode, :legalArrangements]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountHolderCode, :legalArrangements]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V40.PixDetails do
           type: String.t() | nil
         }
 
-  defstruct [:checkoutAttemptId, :pixRecurring, :recurringDetailReference, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:checkoutAttemptId, :pixRecurring, :recurringDetailReference, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

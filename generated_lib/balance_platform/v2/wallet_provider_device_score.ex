@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.WalletProviderDeviceScore do
 
   @type t :: %__MODULE__{operation: String.t(), value: integer | nil}
 
-  defstruct [:operation, :value]
+  (
+    @derive Jason.Encoder
+    defstruct [:operation, :value]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

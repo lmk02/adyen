@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.WeChatPayInfo do
 
   @type t :: %__MODULE__{contactPersonName: String.t(), email: String.t()}
 
-  defstruct [:contactPersonName, :email]
+  (
+    @derive Jason.Encoder
+    defstruct [:contactPersonName, :email]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.LegalEntity.V2.CalculateTermsOfServiceStatusResponse do
 
   @type t :: %__MODULE__{termsOfServiceTypes: [String.t()] | nil}
 
-  defstruct [:termsOfServiceTypes]
+  (
+    @derive Jason.Encoder
+    defstruct [:termsOfServiceTypes]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -11,7 +11,10 @@ defmodule Adyen.Management.V3.TerminalAssignment do
           storeId: String.t() | nil
         }
 
-  defstruct [:companyId, :merchantId, :reassignmentTarget, :status, :storeId]
+  (
+    @derive Jason.Encoder
+    defstruct [:companyId, :merchantId, :reassignmentTarget, :status, :storeId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

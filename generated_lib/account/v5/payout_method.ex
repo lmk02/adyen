@@ -11,13 +11,16 @@ defmodule Adyen.Account.V5.PayoutMethod do
           shopperReference: String.t()
         }
 
-  defstruct [
-    :merchantAccount,
-    :payoutMethodCode,
-    :payoutMethodReference,
-    :recurringDetailReference,
-    :shopperReference
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :merchantAccount,
+      :payoutMethodCode,
+      :payoutMethodReference,
+      :recurringDetailReference,
+      :shopperReference
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

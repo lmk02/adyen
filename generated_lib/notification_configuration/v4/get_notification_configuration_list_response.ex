@@ -11,7 +11,10 @@ defmodule Adyen.NotificationConfiguration.V4.GetNotificationConfigurationListRes
           submittedAsync: boolean | nil
         }
 
-  defstruct [:configurations, :pspReference, :resultCode, :submittedAsync]
+  (
+    @derive Jason.Encoder
+    defstruct [:configurations, :pspReference, :resultCode, :submittedAsync]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

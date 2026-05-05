@@ -5,7 +5,10 @@ defmodule Adyen.Recurring.V68.PermitResult do
 
   @type t :: %__MODULE__{resultKey: String.t() | nil, token: String.t() | nil}
 
-  defstruct [:resultKey, :token]
+  (
+    @derive Jason.Encoder
+    defstruct [:resultKey, :token]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

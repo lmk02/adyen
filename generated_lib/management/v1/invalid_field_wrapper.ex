@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.InvalidFieldWrapper do
 
   @type t :: %__MODULE__{InvalidField: Adyen.Management.V1.InvalidField.t() | nil}
 
-  defstruct [:InvalidField]
+  (
+    @derive Jason.Encoder
+    defstruct [:InvalidField]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

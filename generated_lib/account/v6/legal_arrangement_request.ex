@@ -8,7 +8,10 @@ defmodule Adyen.Account.V6.LegalArrangementRequest do
           legalArrangementEntityCodes: [String.t()] | nil
         }
 
-  defstruct [:legalArrangementCode, :legalArrangementEntityCodes]
+  (
+    @derive Jason.Encoder
+    defstruct [:legalArrangementCode, :legalArrangementEntityCodes]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

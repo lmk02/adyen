@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.Commission do
 
   @type t :: %__MODULE__{fixedAmount: integer | nil, variablePercentage: integer | nil}
 
-  defstruct [:fixedAmount, :variablePercentage]
+  (
+    @derive Jason.Encoder
+    defstruct [:fixedAmount, :variablePercentage]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

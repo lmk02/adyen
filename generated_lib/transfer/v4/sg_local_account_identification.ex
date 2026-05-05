@@ -5,7 +5,10 @@ defmodule Adyen.Transfer.V4.SGLocalAccountIdentification do
 
   @type t :: %__MODULE__{accountNumber: String.t(), bic: String.t(), type: String.t() | nil}
 
-  defstruct [:accountNumber, :bic, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountNumber, :bic, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

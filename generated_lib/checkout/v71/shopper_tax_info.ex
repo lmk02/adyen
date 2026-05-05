@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V71.ShopperTaxInfo do
 
   @type t :: %__MODULE__{taxCountryCode: String.t(), taxIdentificationNumber: String.t()}
 
-  defstruct [:taxCountryCode, :taxIdentificationNumber]
+  (
+    @derive Jason.Encoder
+    defstruct [:taxCountryCode, :taxIdentificationNumber]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

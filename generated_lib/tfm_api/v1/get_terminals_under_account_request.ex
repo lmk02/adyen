@@ -9,7 +9,10 @@ defmodule Adyen.TfmAPI.V1.GetTerminalsUnderAccountRequest do
           store: String.t() | nil
         }
 
-  defstruct [:companyAccount, :merchantAccount, :store]
+  (
+    @derive Jason.Encoder
+    defstruct [:companyAccount, :merchantAccount, :store]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

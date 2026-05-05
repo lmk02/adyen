@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V71.Agency do
 
   @type t :: %__MODULE__{invoiceNumber: String.t() | nil, planName: String.t() | nil}
 
-  defstruct [:invoiceNumber, :planName]
+  (
+    @derive Jason.Encoder
+    defstruct [:invoiceNumber, :planName]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

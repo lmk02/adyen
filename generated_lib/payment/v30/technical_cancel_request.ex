@@ -13,15 +13,18 @@ defmodule Adyen.Payment.V30.TechnicalCancelRequest do
           uniqueTerminalId: String.t() | nil
         }
 
-  defstruct [
-    :additionalData,
-    :merchantAccount,
-    :modificationAmount,
-    :originalMerchantReference,
-    :reference,
-    :tenderReference,
-    :uniqueTerminalId
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :additionalData,
+      :merchantAccount,
+      :modificationAmount,
+      :originalMerchantReference,
+      :reference,
+      :tenderReference,
+      :uniqueTerminalId
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

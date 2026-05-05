@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.AssociationInitiateResponse do
 
   @type t :: %__MODULE__{sdkInput: String.t() | nil}
 
-  defstruct [:sdkInput]
+  (
+    @derive Jason.Encoder
+    defstruct [:sdkInput]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

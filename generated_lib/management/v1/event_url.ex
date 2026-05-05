@@ -8,7 +8,10 @@ defmodule Adyen.Management.V1.EventUrl do
           eventPublicUrls: [Adyen.Management.V1.Url.t()] | nil
         }
 
-  defstruct [:eventLocalUrls, :eventPublicUrls]
+  (
+    @derive Jason.Encoder
+    defstruct [:eventLocalUrls, :eventPublicUrls]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

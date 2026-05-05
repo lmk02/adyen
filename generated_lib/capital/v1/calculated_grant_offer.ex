@@ -13,7 +13,10 @@ defmodule Adyen.Capital.V1.CalculatedGrantOffer do
           startsAt: DateTime.t()
         }
 
-  defstruct [:accountHolderId, :amount, :contractType, :expiresAt, :fee, :repayment, :startsAt]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountHolderId, :amount, :contractType, :expiresAt, :fee, :repayment, :startsAt]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

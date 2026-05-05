@@ -9,7 +9,10 @@ defmodule Adyen.TerminalAPI.V1.PaymentToken do
           TokenValue: String.t()
         }
 
-  defstruct [:ExpiryDateTime, :TokenRequestedType, :TokenValue]
+  (
+    @derive Jason.Encoder
+    defstruct [:ExpiryDateTime, :TokenRequestedType, :TokenValue]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

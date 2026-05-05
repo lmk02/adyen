@@ -5,7 +5,10 @@ defmodule Adyen.LegalEntity.V2.Name do
 
   @type t :: %__MODULE__{firstName: String.t(), infix: String.t() | nil, lastName: String.t()}
 
-  defstruct [:firstName, :infix, :lastName]
+  (
+    @derive Jason.Encoder
+    defstruct [:firstName, :infix, :lastName]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -11,7 +11,10 @@ defmodule Adyen.Management.V1.Notification do
           title: String.t() | nil
         }
 
-  defstruct [:category, :details, :enabled, :showButton, :title]
+  (
+    @derive Jason.Encoder
+    defstruct [:category, :details, :enabled, :showButton, :title]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -12,14 +12,17 @@ defmodule Adyen.TerminalAPI.V1.MenuEntry do
           PredefinedContent: Adyen.TerminalAPI.V1.PredefinedContent.t() | nil
         }
 
-  defstruct [
-    :DefaultSelectedFlag,
-    :MenuEntryTag,
-    :OutputFormat,
-    :OutputText,
-    :OutputXHTML,
-    :PredefinedContent
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :DefaultSelectedFlag,
+      :MenuEntryTag,
+      :OutputFormat,
+      :OutputText,
+      :OutputXHTML,
+      :PredefinedContent
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

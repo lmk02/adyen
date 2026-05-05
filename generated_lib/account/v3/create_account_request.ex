@@ -9,7 +9,10 @@ defmodule Adyen.Account.V3.CreateAccountRequest do
           payoutScheduleReason: String.t() | nil
         }
 
-  defstruct [:accountHolderCode, :payoutSchedule, :payoutScheduleReason]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountHolderCode, :payoutSchedule, :payoutScheduleReason]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

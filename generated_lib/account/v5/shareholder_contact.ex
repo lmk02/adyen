@@ -17,19 +17,22 @@ defmodule Adyen.Account.V5.ShareholderContact do
           webAddress: String.t() | nil
         }
 
-  defstruct [
-    :address,
-    :email,
-    :fullPhoneNumber,
-    :jobTitle,
-    :name,
-    :personalData,
-    :phoneNumber,
-    :shareholderCode,
-    :shareholderReference,
-    :shareholderType,
-    :webAddress
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :address,
+      :email,
+      :fullPhoneNumber,
+      :jobTitle,
+      :name,
+      :personalData,
+      :phoneNumber,
+      :shareholderCode,
+      :shareholderReference,
+      :shareholderType,
+      :webAddress
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

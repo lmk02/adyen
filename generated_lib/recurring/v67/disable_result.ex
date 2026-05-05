@@ -5,7 +5,10 @@ defmodule Adyen.Recurring.V67.DisableResult do
 
   @type t :: %__MODULE__{response: String.t() | nil}
 
-  defstruct [:response]
+  (
+    @derive Jason.Encoder
+    defstruct [:response]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

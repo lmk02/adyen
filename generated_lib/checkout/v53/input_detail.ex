@@ -15,17 +15,20 @@ defmodule Adyen.Checkout.V53.InputDetail do
           value: String.t() | nil
         }
 
-  defstruct [
-    :configuration,
-    :details,
-    :inputDetails,
-    :itemSearchUrl,
-    :items,
-    :key,
-    :optional,
-    :type,
-    :value
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :configuration,
+      :details,
+      :inputDetails,
+      :itemSearchUrl,
+      :items,
+      :key,
+      :optional,
+      :type,
+      :value
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.Fund.V3.TransactionWrapper do
 
   @type t :: %__MODULE__{Transaction: Adyen.Fund.V3.Transaction.t() | nil}
 
-  defstruct [:Transaction]
+  (
+    @derive Jason.Encoder
+    defstruct [:Transaction]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

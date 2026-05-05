@@ -8,7 +8,10 @@ defmodule Adyen.Account.V3.UpdateAccountRequest do
           payoutSchedule: Adyen.Account.V3.UpdatePayoutScheduleRequest.t()
         }
 
-  defstruct [:accountCode, :payoutSchedule]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountCode, :payoutSchedule]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

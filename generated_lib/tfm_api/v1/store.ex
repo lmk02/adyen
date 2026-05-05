@@ -12,7 +12,10 @@ defmodule Adyen.TfmAPI.V1.Store do
           store: String.t()
         }
 
-  defstruct [:address, :description, :inStoreTerminals, :merchantAccountCode, :status, :store]
+  (
+    @derive Jason.Encoder
+    defstruct [:address, :description, :inStoreTerminals, :merchantAccountCode, :status, :store]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

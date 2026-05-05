@@ -10,7 +10,10 @@ defmodule Adyen.Transfer.V4.BalanceMutation do
           reserved: integer | nil
         }
 
-  defstruct [:balance, :currency, :received, :reserved]
+  (
+    @derive Jason.Encoder
+    defstruct [:balance, :currency, :received, :reserved]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

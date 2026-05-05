@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V71.ResponsePaymentMethod do
 
   @type t :: %__MODULE__{brand: String.t() | nil, type: String.t() | nil}
 
-  defstruct [:brand, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:brand, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -14,16 +14,19 @@ defmodule Adyen.Checkout.V46.ExternalTokenDetails do
           type: String.t()
         }
 
-  defstruct [
-    :checkoutAttemptId,
-    :expiryMonth,
-    :expiryYear,
-    :holderName,
-    :number,
-    :storedPaymentMethodId,
-    :subtype,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :checkoutAttemptId,
+      :expiryMonth,
+      :expiryYear,
+      :holderName,
+      :number,
+      :storedPaymentMethodId,
+      :subtype,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

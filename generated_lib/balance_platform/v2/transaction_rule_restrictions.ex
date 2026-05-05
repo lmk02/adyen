@@ -35,33 +35,36 @@ defmodule Adyen.BalancePlatform.V2.TransactionRuleRestrictions do
           walletProviderDeviceType: Adyen.BalancePlatform.V2.WalletProviderDeviceType.t() | nil
         }
 
-  defstruct [
-    :activeNetworkTokens,
-    :brandVariants,
-    :counterpartyBank,
-    :counterpartyTypes,
-    :countries,
-    :dayOfWeek,
-    :differentCurrencies,
-    :entryModes,
-    :internationalTransaction,
-    :matchingTransactions,
-    :matchingValues,
-    :mccs,
-    :merchantNames,
-    :merchants,
-    :processingTypes,
-    :riskScores,
-    :sameAmountRestriction,
-    :sameCounterpartyRestriction,
-    :sourceAccountTypes,
-    :timeOfDay,
-    :tokenRequestors,
-    :totalAmount,
-    :walletProviderAccountScore,
-    :walletProviderDeviceScore,
-    :walletProviderDeviceType
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :activeNetworkTokens,
+      :brandVariants,
+      :counterpartyBank,
+      :counterpartyTypes,
+      :countries,
+      :dayOfWeek,
+      :differentCurrencies,
+      :entryModes,
+      :internationalTransaction,
+      :matchingTransactions,
+      :matchingValues,
+      :mccs,
+      :merchantNames,
+      :merchants,
+      :processingTypes,
+      :riskScores,
+      :sameAmountRestriction,
+      :sameCounterpartyRestriction,
+      :sourceAccountTypes,
+      :timeOfDay,
+      :tokenRequestors,
+      :totalAmount,
+      :walletProviderAccountScore,
+      :walletProviderDeviceScore,
+      :walletProviderDeviceType
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

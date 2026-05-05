@@ -9,7 +9,10 @@ defmodule Adyen.Payment.V40.MerchantDevice do
           reference: String.t() | nil
         }
 
-  defstruct [:os, :osVersion, :reference]
+  (
+    @derive Jason.Encoder
+    defstruct [:os, :osVersion, :reference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

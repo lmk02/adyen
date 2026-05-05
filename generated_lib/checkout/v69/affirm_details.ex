@@ -9,7 +9,10 @@ defmodule Adyen.Checkout.V69.AffirmDetails do
           type: String.t() | nil
         }
 
-  defstruct [:checkoutAttemptId, :sdkData, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:checkoutAttemptId, :sdkData, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

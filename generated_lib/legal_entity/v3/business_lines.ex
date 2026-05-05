@@ -176,7 +176,10 @@ defmodule Adyen.LegalEntity.V3.BusinessLines do
 
   @type t :: %__MODULE__{businessLines: [Adyen.LegalEntity.V3.BusinessLine.t()]}
 
-  defstruct [:businessLines]
+  (
+    @derive Jason.Encoder
+    defstruct [:businessLines]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

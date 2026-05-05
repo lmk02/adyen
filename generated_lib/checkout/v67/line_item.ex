@@ -16,18 +16,21 @@ defmodule Adyen.Checkout.V67.LineItem do
           taxPercentage: integer | nil
         }
 
-  defstruct [
-    :amountExcludingTax,
-    :amountIncludingTax,
-    :description,
-    :id,
-    :imageUrl,
-    :itemCategory,
-    :productUrl,
-    :quantity,
-    :taxAmount,
-    :taxPercentage
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amountExcludingTax,
+      :amountIncludingTax,
+      :description,
+      :id,
+      :imageUrl,
+      :itemCategory,
+      :productUrl,
+      :quantity,
+      :taxAmount,
+      :taxPercentage
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

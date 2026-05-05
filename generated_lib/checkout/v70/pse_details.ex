@@ -13,15 +13,18 @@ defmodule Adyen.Checkout.V70.PseDetails do
           type: String.t() | nil
         }
 
-  defstruct [
-    :bank,
-    :checkoutAttemptId,
-    :clientType,
-    :identification,
-    :identificationType,
-    :sdkData,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :bank,
+      :checkoutAttemptId,
+      :clientType,
+      :identification,
+      :identificationType,
+      :sdkData,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

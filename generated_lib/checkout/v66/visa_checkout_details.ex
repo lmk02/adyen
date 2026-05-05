@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V66.VisaCheckoutDetails do
           visaCheckoutCallId: String.t()
         }
 
-  defstruct [:checkoutAttemptId, :fundingSource, :type, :visaCheckoutCallId]
+  (
+    @derive Jason.Encoder
+    defstruct [:checkoutAttemptId, :fundingSource, :type, :visaCheckoutCallId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

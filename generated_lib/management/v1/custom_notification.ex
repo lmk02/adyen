@@ -13,15 +13,18 @@ defmodule Adyen.Management.V1.CustomNotification do
           success: boolean | nil
         }
 
-  defstruct [
-    :amount,
-    :eventCode,
-    :eventDate,
-    :merchantReference,
-    :paymentMethod,
-    :reason,
-    :success
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amount,
+      :eventCode,
+      :eventDate,
+      :merchantReference,
+      :paymentMethod,
+      :reason,
+      :success
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

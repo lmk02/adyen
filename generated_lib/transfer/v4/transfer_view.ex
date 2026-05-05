@@ -14,7 +14,10 @@ defmodule Adyen.Transfer.V4.TransferView do
           reference: String.t()
         }
 
-  defstruct [:categoryData, :id, :reference]
+  (
+    @derive Jason.Encoder
+    defstruct [:categoryData, :id, :reference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

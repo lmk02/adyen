@@ -12,14 +12,17 @@ defmodule Adyen.Checkout.V50.PayUUpiDetails do
           virtualPaymentAddress: String.t() | nil
         }
 
-  defstruct [
-    :checkoutAttemptId,
-    :recurringDetailReference,
-    :shopperNotificationReference,
-    :storedPaymentMethodId,
-    :type,
-    :virtualPaymentAddress
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :checkoutAttemptId,
+      :recurringDetailReference,
+      :shopperNotificationReference,
+      :storedPaymentMethodId,
+      :type,
+      :virtualPaymentAddress
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

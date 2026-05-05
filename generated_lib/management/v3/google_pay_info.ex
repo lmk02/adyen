@@ -5,7 +5,10 @@ defmodule Adyen.Management.V3.GooglePayInfo do
 
   @type t :: %__MODULE__{merchantId: String.t(), reuseMerchantId: boolean | nil}
 
-  defstruct [:merchantId, :reuseMerchantId]
+  (
+    @derive Jason.Encoder
+    defstruct [:merchantId, :reuseMerchantId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

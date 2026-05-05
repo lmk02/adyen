@@ -9,7 +9,10 @@ defmodule Adyen.BalancePlatform.V2.CardOrderItemDeliveryStatus do
           trackingNumber: String.t() | nil
         }
 
-  defstruct [:errorMessage, :status, :trackingNumber]
+  (
+    @derive Jason.Encoder
+    defstruct [:errorMessage, :status, :trackingNumber]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

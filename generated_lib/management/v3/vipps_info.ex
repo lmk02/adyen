@@ -5,7 +5,10 @@ defmodule Adyen.Management.V3.VippsInfo do
 
   @type t :: %__MODULE__{logo: String.t(), subscriptionCancelUrl: String.t() | nil}
 
-  defstruct [:logo, :subscriptionCancelUrl]
+  (
+    @derive Jason.Encoder
+    defstruct [:logo, :subscriptionCancelUrl]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

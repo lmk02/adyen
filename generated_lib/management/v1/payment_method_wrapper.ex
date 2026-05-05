@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.PaymentMethodWrapper do
 
   @type t :: %__MODULE__{PaymentMethod: Adyen.Management.V1.PaymentMethod.t() | nil}
 
-  defstruct [:PaymentMethod]
+  (
+    @derive Jason.Encoder
+    defstruct [:PaymentMethod]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

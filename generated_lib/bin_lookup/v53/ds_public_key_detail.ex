@@ -11,7 +11,10 @@ defmodule Adyen.BinLookup.V53.DSPublicKeyDetail do
           rootCertificates: String.t() | nil
         }
 
-  defstruct [:brand, :directoryServerId, :fromSDKVersion, :publicKey, :rootCertificates]
+  (
+    @derive Jason.Encoder
+    defstruct [:brand, :directoryServerId, :fromSDKVersion, :publicKey, :rootCertificates]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

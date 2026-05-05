@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.WebhookSettings do
 
   @type t :: %__MODULE__{webhookSettings: [Adyen.BalancePlatform.V2.WebhookSetting.t()] | nil}
 
-  defstruct [:webhookSettings]
+  (
+    @derive Jason.Encoder
+    defstruct [:webhookSettings]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

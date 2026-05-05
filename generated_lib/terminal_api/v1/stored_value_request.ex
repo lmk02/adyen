@@ -8,7 +8,10 @@ defmodule Adyen.TerminalAPI.V1.StoredValueRequest do
           StoredValueData: [Adyen.TerminalAPI.V1.StoredValueData.t()]
         }
 
-  defstruct [:SaleData, :StoredValueData]
+  (
+    @derive Jason.Encoder
+    defstruct [:SaleData, :StoredValueData]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

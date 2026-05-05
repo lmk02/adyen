@@ -13,23 +13,24 @@ defmodule Adyen.Management.V1.MeApiCredential do
           description: String.t() | nil,
           id: String.t(),
           roles: [String.t()],
-          subjectDN: String.t() | nil,
           username: String.t()
         }
 
-  defstruct [
-    :_links,
-    :active,
-    :allowedIpAddresses,
-    :allowedOrigins,
-    :clientKey,
-    :companyName,
-    :description,
-    :id,
-    :roles,
-    :subjectDN,
-    :username
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :_links,
+      :active,
+      :allowedIpAddresses,
+      :allowedOrigins,
+      :clientKey,
+      :companyName,
+      :description,
+      :id,
+      :roles,
+      :username
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -46,7 +47,6 @@ defmodule Adyen.Management.V1.MeApiCredential do
       description: :string,
       id: :string,
       roles: [:string],
-      subjectDN: :string,
       username: :string
     ]
   end

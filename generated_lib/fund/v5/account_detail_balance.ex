@@ -8,7 +8,10 @@ defmodule Adyen.Fund.V5.AccountDetailBalance do
           detailBalance: Adyen.Fund.V5.DetailBalance.t() | nil
         }
 
-  defstruct [:accountCode, :detailBalance]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountCode, :detailBalance]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

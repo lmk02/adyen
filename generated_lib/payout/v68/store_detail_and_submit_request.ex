@@ -25,27 +25,30 @@ defmodule Adyen.Payout.V68.StoreDetailAndSubmitRequest do
           telephoneNumber: String.t() | nil
         }
 
-  defstruct [
-    :additionalData,
-    :amount,
-    :bank,
-    :billingAddress,
-    :card,
-    :dateOfBirth,
-    :entityType,
-    :fraudOffset,
-    :merchantAccount,
-    :nationality,
-    :recurring,
-    :reference,
-    :selectedBrand,
-    :shopperEmail,
-    :shopperName,
-    :shopperReference,
-    :shopperStatement,
-    :socialSecurityNumber,
-    :telephoneNumber
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :additionalData,
+      :amount,
+      :bank,
+      :billingAddress,
+      :card,
+      :dateOfBirth,
+      :entityType,
+      :fraudOffset,
+      :merchantAccount,
+      :nationality,
+      :recurring,
+      :reference,
+      :selectedBrand,
+      :shopperEmail,
+      :shopperName,
+      :shopperReference,
+      :shopperStatement,
+      :socialSecurityNumber,
+      :telephoneNumber
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

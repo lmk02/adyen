@@ -14,7 +14,10 @@ defmodule Adyen.Transaction.V3.DefaultErrorResponseEntity do
           type: String.t() | nil
         }
 
-  defstruct [:detail, :errorCode, :instance, :invalidFields, :requestId, :status, :title, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:detail, :errorCode, :instance, :invalidFields, :requestId, :status, :title, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

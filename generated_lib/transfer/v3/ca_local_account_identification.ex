@@ -11,7 +11,10 @@ defmodule Adyen.Transfer.V3.CALocalAccountIdentification do
           type: String.t()
         }
 
-  defstruct [:accountNumber, :accountType, :institutionNumber, :transitNumber, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountNumber, :accountType, :institutionNumber, :transitNumber, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

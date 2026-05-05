@@ -12,14 +12,17 @@ defmodule Adyen.Account.V4.Account do
           status: String.t() | nil
         }
 
-  defstruct [
-    :accountCode,
-    :beneficiaryAccount,
-    :beneficiaryMerchantReference,
-    :description,
-    :payoutSchedule,
-    :status
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountCode,
+      :beneficiaryAccount,
+      :beneficiaryMerchantReference,
+      :description,
+      :payoutSchedule,
+      :status
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

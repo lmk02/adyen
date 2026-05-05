@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.BankAccountModel do
 
   @type t :: %__MODULE__{formFactor: String.t() | nil}
 
-  defstruct [:formFactor]
+  (
+    @derive Jason.Encoder
+    defstruct [:formFactor]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

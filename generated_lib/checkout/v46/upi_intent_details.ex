@@ -12,14 +12,17 @@ defmodule Adyen.Checkout.V46.UpiIntentDetails do
           type: String.t()
         }
 
-  defstruct [
-    :appId,
-    :billingSequenceNumber,
-    :checkoutAttemptId,
-    :recurringDetailReference,
-    :shopperNotificationReference,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :appId,
+      :billingSequenceNumber,
+      :checkoutAttemptId,
+      :recurringDetailReference,
+      :shopperNotificationReference,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

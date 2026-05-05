@@ -9,7 +9,10 @@ defmodule Adyen.BalancePlatform.V2.Repayment do
           threshold: Adyen.BalancePlatform.V2.ThresholdRepayment.t() | nil
         }
 
-  defstruct [:basisPoints, :term, :threshold]
+  (
+    @derive Jason.Encoder
+    defstruct [:basisPoints, :term, :threshold]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

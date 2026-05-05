@@ -10,7 +10,10 @@ defmodule Adyen.TerminalAPI.V1.ReconciliationResponse do
           TransactionTotals: [Adyen.TerminalAPI.V1.TransactionTotals.t()] | nil
         }
 
-  defstruct [:POIReconciliationID, :ReconciliationType, :Response, :TransactionTotals]
+  (
+    @derive Jason.Encoder
+    defstruct [:POIReconciliationID, :ReconciliationType, :Response, :TransactionTotals]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

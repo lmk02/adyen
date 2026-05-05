@@ -40,42 +40,45 @@ defmodule Adyen.Checkout.V37.PaymentLinkResponse do
           url: String.t()
         }
 
-  defstruct [
-    :allowedPaymentMethods,
-    :amount,
-    :applicationInfo,
-    :billingAddress,
-    :blockedPaymentMethods,
-    :countryCode,
-    :deliverAt,
-    :deliveryAddress,
-    :description,
-    :expiresAt,
-    :fundOrigin,
-    :fundRecipient,
-    :installmentOptions,
-    :lineItems,
-    :manualCapture,
-    :merchantAccount,
-    :merchantOrderReference,
-    :metadata,
-    :platformChargebackLogic,
-    :recurringProcessingModel,
-    :reference,
-    :returnUrl,
-    :reusable,
-    :shopperEmail,
-    :shopperLocale,
-    :shopperName,
-    :shopperReference,
-    :showRemovePaymentMethodButton,
-    :splits,
-    :status,
-    :store,
-    :threeDS2RequestData,
-    :updatedAt,
-    :url
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :allowedPaymentMethods,
+      :amount,
+      :applicationInfo,
+      :billingAddress,
+      :blockedPaymentMethods,
+      :countryCode,
+      :deliverAt,
+      :deliveryAddress,
+      :description,
+      :expiresAt,
+      :fundOrigin,
+      :fundRecipient,
+      :installmentOptions,
+      :lineItems,
+      :manualCapture,
+      :merchantAccount,
+      :merchantOrderReference,
+      :metadata,
+      :platformChargebackLogic,
+      :recurringProcessingModel,
+      :reference,
+      :returnUrl,
+      :reusable,
+      :shopperEmail,
+      :shopperLocale,
+      :shopperName,
+      :shopperReference,
+      :showRemovePaymentMethodButton,
+      :splits,
+      :status,
+      :store,
+      :threeDS2RequestData,
+      :updatedAt,
+      :url
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

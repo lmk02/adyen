@@ -9,7 +9,10 @@ defmodule Adyen.Account.V6.ErrorFieldType do
           fieldType: Adyen.Account.V6.FieldType.t() | nil
         }
 
-  defstruct [:errorCode, :errorDescription, :fieldType]
+  (
+    @derive Jason.Encoder
+    defstruct [:errorCode, :errorDescription, :fieldType]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

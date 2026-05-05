@@ -10,7 +10,10 @@ defmodule Adyen.TerminalAPI.V1.LoyaltyAcquirerData do
           LoyaltyTransactionID: Adyen.TerminalAPI.V1.TransactionIDType.t() | nil
         }
 
-  defstruct [:ApprovalCode, :HostReconciliationID, :LoyaltyAcquirerID, :LoyaltyTransactionID]
+  (
+    @derive Jason.Encoder
+    defstruct [:ApprovalCode, :HostReconciliationID, :LoyaltyAcquirerID, :LoyaltyTransactionID]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

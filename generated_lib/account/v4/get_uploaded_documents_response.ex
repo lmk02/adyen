@@ -10,7 +10,10 @@ defmodule Adyen.Account.V4.GetUploadedDocumentsResponse do
           submittedAsync: boolean | nil
         }
 
-  defstruct [:documentDetails, :pspReference, :resultCode, :submittedAsync]
+  (
+    @derive Jason.Encoder
+    defstruct [:documentDetails, :pspReference, :resultCode, :submittedAsync]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

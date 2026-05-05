@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V64.TaxTotal do
 
   @type t :: %__MODULE__{amount: Adyen.Checkout.V64.Amount.t() | nil}
 
-  defstruct [:amount]
+  (
+    @derive Jason.Encoder
+    defstruct [:amount]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

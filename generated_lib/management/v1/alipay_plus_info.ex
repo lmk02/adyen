@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.AlipayPlusInfo do
 
   @type t :: %__MODULE__{settlementCurrencyCode: String.t() | nil}
 
-  defstruct [:settlementCurrencyCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:settlementCurrencyCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

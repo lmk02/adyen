@@ -9,7 +9,10 @@ defmodule Adyen.LegalEntity.V2.DocumentPage do
           type: String.t() | nil
         }
 
-  defstruct [:pageName, :pageNumber, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:pageName, :pageNumber, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

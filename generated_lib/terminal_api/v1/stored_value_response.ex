@@ -11,7 +11,10 @@ defmodule Adyen.TerminalAPI.V1.StoredValueResponse do
           StoredValueResult: [Adyen.TerminalAPI.V1.StoredValueResult.t()] | nil
         }
 
-  defstruct [:POIData, :PaymentReceipt, :Response, :SaleData, :StoredValueResult]
+  (
+    @derive Jason.Encoder
+    defstruct [:POIData, :PaymentReceipt, :Response, :SaleData, :StoredValueResult]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

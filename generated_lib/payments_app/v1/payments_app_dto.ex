@@ -10,7 +10,10 @@ defmodule Adyen.PaymentsApp.V1.PaymentsAppDto do
           status: String.t()
         }
 
-  defstruct [:installationId, :merchantAccountCode, :merchantStoreCode, :status]
+  (
+    @derive Jason.Encoder
+    defstruct [:installationId, :merchantAccountCode, :merchantStoreCode, :status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

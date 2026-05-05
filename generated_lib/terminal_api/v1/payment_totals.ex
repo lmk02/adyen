@@ -9,7 +9,10 @@ defmodule Adyen.TerminalAPI.V1.PaymentTotals do
           TransactionType: String.t()
         }
 
-  defstruct [:TransactionAmount, :TransactionCount, :TransactionType]
+  (
+    @derive Jason.Encoder
+    defstruct [:TransactionAmount, :TransactionCount, :TransactionType]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

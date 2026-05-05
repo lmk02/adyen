@@ -10,7 +10,10 @@ defmodule Adyen.TerminalAPI.V1.LoyaltyAccountID do
           LoyaltyID: String.t()
         }
 
-  defstruct [:EntryMode, :IdentificationSupport, :IdentificationType, :LoyaltyID]
+  (
+    @derive Jason.Encoder
+    defstruct [:EntryMode, :IdentificationSupport, :IdentificationType, :LoyaltyID]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

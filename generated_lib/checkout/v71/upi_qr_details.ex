@@ -13,15 +13,18 @@ defmodule Adyen.Checkout.V71.UpiQrDetails do
           type: String.t()
         }
 
-  defstruct [
-    :billingSequenceNumber,
-    :checkoutAttemptId,
-    :recurringDetailReference,
-    :sdkData,
-    :shopperNotificationReference,
-    :storedPaymentMethodId,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :billingSequenceNumber,
+      :checkoutAttemptId,
+      :recurringDetailReference,
+      :sdkData,
+      :shopperNotificationReference,
+      :storedPaymentMethodId,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

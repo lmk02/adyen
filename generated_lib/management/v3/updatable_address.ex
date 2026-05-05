@@ -12,7 +12,10 @@ defmodule Adyen.Management.V3.UpdatableAddress do
           stateOrProvince: String.t() | nil
         }
 
-  defstruct [:city, :line1, :line2, :line3, :postalCode, :stateOrProvince]
+  (
+    @derive Jason.Encoder
+    defstruct [:city, :line1, :line2, :line3, :postalCode, :stateOrProvince]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

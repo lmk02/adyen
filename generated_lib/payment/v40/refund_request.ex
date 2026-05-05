@@ -15,17 +15,20 @@ defmodule Adyen.Payment.V40.RefundRequest do
           uniqueTerminalId: String.t() | nil
         }
 
-  defstruct [
-    :additionalData,
-    :merchantAccount,
-    :modificationAmount,
-    :originalMerchantReference,
-    :originalReference,
-    :reference,
-    :splits,
-    :tenderReference,
-    :uniqueTerminalId
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :additionalData,
+      :merchantAccount,
+      :modificationAmount,
+      :originalMerchantReference,
+      :originalReference,
+      :reference,
+      :splits,
+      :tenderReference,
+      :uniqueTerminalId
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

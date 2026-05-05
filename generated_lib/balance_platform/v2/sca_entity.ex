@@ -5,13 +5,16 @@ defmodule Adyen.BalancePlatform.V2.ScaEntity do
 
   @type t :: %__MODULE__{id: String.t(), type: String.t()}
 
-  defstruct [:id, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:id, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [id: :string, type: {:enum, ["accountHolder", "legalEntity", "paymentInstrument"]}]
+    [id: :string, type: {:enum, ["accountHolder", "paymentInstrument"]}]
   end
 end

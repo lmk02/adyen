@@ -20,15 +20,18 @@ defmodule Adyen.Management.V3.ScheduleTerminalActionsResponse do
           totalScheduled: integer | nil
         }
 
-  defstruct [
-    :actionDetails,
-    :items,
-    :scheduledAt,
-    :storeId,
-    :terminalsWithErrors,
-    :totalErrors,
-    :totalScheduled
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :actionDetails,
+      :items,
+      :scheduledAt,
+      :storeId,
+      :terminalsWithErrors,
+      :totalErrors,
+      :totalScheduled
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

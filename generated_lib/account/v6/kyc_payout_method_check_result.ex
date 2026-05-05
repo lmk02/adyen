@@ -8,7 +8,10 @@ defmodule Adyen.Account.V6.KYCPayoutMethodCheckResult do
           payoutMethodCode: String.t() | nil
         }
 
-  defstruct [:checks, :payoutMethodCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:checks, :payoutMethodCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

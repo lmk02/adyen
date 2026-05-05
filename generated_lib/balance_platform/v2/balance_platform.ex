@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.BalancePlatform do
 
   @type t :: %__MODULE__{description: String.t() | nil, id: String.t(), status: String.t() | nil}
 
-  defstruct [:description, :id, :status]
+  (
+    @derive Jason.Encoder
+    defstruct [:description, :id, :status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

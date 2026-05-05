@@ -15,17 +15,20 @@ defmodule Adyen.Checkout.V49.CreateOrderResponse do
           resultCode: String.t()
         }
 
-  defstruct [
-    :additionalData,
-    :expiresAt,
-    :fraudResult,
-    :orderData,
-    :pspReference,
-    :reference,
-    :refusalReason,
-    :remainingAmount,
-    :resultCode
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :additionalData,
+      :expiresAt,
+      :fraudResult,
+      :orderData,
+      :pspReference,
+      :reference,
+      :refusalReason,
+      :remainingAmount,
+      :resultCode
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

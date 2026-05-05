@@ -8,7 +8,10 @@ defmodule Adyen.Recurring.V40.CreatePermitResult do
           pspReference: String.t() | nil
         }
 
-  defstruct [:permitResultList, :pspReference]
+  (
+    @derive Jason.Encoder
+    defstruct [:permitResultList, :pspReference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

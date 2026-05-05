@@ -5,7 +5,10 @@ defmodule Adyen.LegalEntity.V4.GetTermsOfServiceAcceptanceInfosResponse do
 
   @type t :: %__MODULE__{data: [Adyen.LegalEntity.V4.TermsOfServiceAcceptanceInfo.t()] | nil}
 
-  defstruct [:data]
+  (
+    @derive Jason.Encoder
+    defstruct [:data]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -9,7 +9,10 @@ defmodule Adyen.Transfer.V3.GrantCounterparty do
           transferInstrumentId: String.t() | nil
         }
 
-  defstruct [:accountHolderId, :balanceAccountId, :transferInstrumentId]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountHolderId, :balanceAccountId, :transferInstrumentId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

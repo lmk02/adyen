@@ -8,7 +8,10 @@ defmodule Adyen.TerminalAPI.V1.BalanceInquiryRequest do
           PaymentAccountReq: Adyen.TerminalAPI.V1.PaymentAccountReq.t() | nil
         }
 
-  defstruct [:LoyaltyAccountReq, :PaymentAccountReq]
+  (
+    @derive Jason.Encoder
+    defstruct [:LoyaltyAccountReq, :PaymentAccountReq]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

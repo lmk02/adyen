@@ -9,7 +9,10 @@ defmodule Adyen.Fund.V6.SetupBeneficiaryResponse do
           resultCode: String.t() | nil
         }
 
-  defstruct [:invalidFields, :pspReference, :resultCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:invalidFields, :pspReference, :resultCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

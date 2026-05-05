@@ -11,7 +11,10 @@ defmodule Adyen.Management.V3.TerminalProduct do
           price: Adyen.Management.V3.TerminalProductPrice.t() | nil
         }
 
-  defstruct [:description, :id, :itemsIncluded, :name, :price]
+  (
+    @derive Jason.Encoder
+    defstruct [:description, :id, :itemsIncluded, :name, :price]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

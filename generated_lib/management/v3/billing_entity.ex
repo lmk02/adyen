@@ -11,7 +11,10 @@ defmodule Adyen.Management.V3.BillingEntity do
           taxId: String.t() | nil
         }
 
-  defstruct [:address, :email, :id, :name, :taxId]
+  (
+    @derive Jason.Encoder
+    defstruct [:address, :email, :id, :name, :taxId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

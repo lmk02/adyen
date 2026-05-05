@@ -16,18 +16,21 @@ defmodule Adyen.Account.V4.SignatoryContact do
           webAddress: String.t() | nil
         }
 
-  defstruct [
-    :address,
-    :email,
-    :fullPhoneNumber,
-    :jobTitle,
-    :name,
-    :personalData,
-    :phoneNumber,
-    :signatoryCode,
-    :signatoryReference,
-    :webAddress
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :address,
+      :email,
+      :fullPhoneNumber,
+      :jobTitle,
+      :name,
+      :personalData,
+      :phoneNumber,
+      :signatoryCode,
+      :signatoryReference,
+      :webAddress
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

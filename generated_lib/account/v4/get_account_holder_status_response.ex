@@ -11,13 +11,16 @@ defmodule Adyen.Account.V4.GetAccountHolderStatusResponse do
           submittedAsync: boolean | nil
         }
 
-  defstruct [
-    :accountHolderCode,
-    :accountHolderStatus,
-    :pspReference,
-    :resultCode,
-    :submittedAsync
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountHolderCode,
+      :accountHolderStatus,
+      :pspReference,
+      :resultCode,
+      :submittedAsync
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

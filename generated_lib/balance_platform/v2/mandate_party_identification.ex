@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.MandatePartyIdentification do
 
   @type t :: %__MODULE__{fullName: String.t() | nil}
 
-  defstruct [:fullName]
+  (
+    @derive Jason.Encoder
+    defstruct [:fullName]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

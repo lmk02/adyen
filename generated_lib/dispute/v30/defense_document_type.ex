@@ -9,7 +9,10 @@ defmodule Adyen.Dispute.V30.DefenseDocumentType do
           requirementLevel: String.t()
         }
 
-  defstruct [:available, :defenseDocumentTypeCode, :requirementLevel]
+  (
+    @derive Jason.Encoder
+    defstruct [:available, :defenseDocumentTypeCode, :requirementLevel]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

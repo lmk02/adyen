@@ -5,7 +5,10 @@ defmodule Adyen.Capital.V1.DisbursementInfoUpdate do
 
   @type t :: %__MODULE__{repayment: Adyen.Capital.V1.DisbursementRepaymentInfoUpdate.t() | nil}
 
-  defstruct [:repayment]
+  (
+    @derive Jason.Encoder
+    defstruct [:repayment]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

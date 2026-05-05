@@ -15,17 +15,20 @@ defmodule Adyen.Checkout.V40.PaymentMethod do
           type: String.t() | nil
         }
 
-  defstruct [
-    :apps,
-    :configuration,
-    :details,
-    :group,
-    :inputDetails,
-    :name,
-    :promoted,
-    :supportsRecurring,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :apps,
+      :configuration,
+      :details,
+      :group,
+      :inputDetails,
+      :name,
+      :promoted,
+      :supportsRecurring,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

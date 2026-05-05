@@ -5,7 +5,10 @@ defmodule Adyen.LegalEntity.V3.RemediatingAction do
 
   @type t :: %__MODULE__{code: String.t() | nil, message: String.t() | nil}
 
-  defstruct [:code, :message]
+  (
+    @derive Jason.Encoder
+    defstruct [:code, :message]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.NotificationConfiguration.V5.NotificationEventConfiguration do
 
   @type t :: %__MODULE__{eventType: String.t(), includeMode: String.t()}
 
-  defstruct [:eventType, :includeMode]
+  (
+    @derive Jason.Encoder
+    defstruct [:eventType, :includeMode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

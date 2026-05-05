@@ -19,18 +19,21 @@ defmodule Adyen.BalancePlatform.V1.PaymentInstrument do
           type: String.t()
         }
 
-  defstruct [
-    :balanceAccountId,
-    :bankAccount,
-    :card,
-    :description,
-    :id,
-    :issuingCountryCode,
-    :paymentInstrumentGroupId,
-    :reference,
-    :status,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :balanceAccountId,
+      :bankAccount,
+      :card,
+      :description,
+      :id,
+      :issuingCountryCode,
+      :paymentInstrumentGroupId,
+      :reference,
+      :status,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

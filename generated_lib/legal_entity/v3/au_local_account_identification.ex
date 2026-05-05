@@ -5,7 +5,10 @@ defmodule Adyen.LegalEntity.V3.AULocalAccountIdentification do
 
   @type t :: %__MODULE__{accountNumber: String.t(), bsbCode: String.t(), type: String.t()}
 
-  defstruct [:accountNumber, :bsbCode, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountNumber, :bsbCode, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -18,20 +18,23 @@ defmodule Adyen.Checkout.V51.PaymentMethodToStore do
           type: String.t() | nil
         }
 
-  defstruct [
-    :brand,
-    :cvc,
-    :encryptedCard,
-    :encryptedCardNumber,
-    :encryptedExpiryMonth,
-    :encryptedExpiryYear,
-    :encryptedSecurityCode,
-    :expiryMonth,
-    :expiryYear,
-    :holderName,
-    :number,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :brand,
+      :cvc,
+      :encryptedCard,
+      :encryptedCardNumber,
+      :encryptedExpiryMonth,
+      :encryptedExpiryYear,
+      :encryptedSecurityCode,
+      :expiryMonth,
+      :expiryYear,
+      :holderName,
+      :number,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

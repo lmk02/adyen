@@ -8,7 +8,10 @@ defmodule Adyen.TerminalAPI.V1.PrintResponse do
           Response: Adyen.TerminalAPI.V1.Response.t()
         }
 
-  defstruct [:DocumentQualifier, :Response]
+  (
+    @derive Jason.Encoder
+    defstruct [:DocumentQualifier, :Response]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

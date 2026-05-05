@@ -12,7 +12,10 @@ defmodule Adyen.Checkout.V69.BillingAddress do
           street: String.t()
         }
 
-  defstruct [:city, :country, :houseNumberOrName, :postalCode, :stateOrProvince, :street]
+  (
+    @derive Jason.Encoder
+    defstruct [:city, :country, :houseNumberOrName, :postalCode, :stateOrProvince, :street]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

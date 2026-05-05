@@ -8,7 +8,10 @@ defmodule Adyen.Capital.V1.FundsCollection do
           fundsCollectionType: String.t() | nil
         }
 
-  defstruct [:accountIdentification, :fundsCollectionType]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountIdentification, :fundsCollectionType]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

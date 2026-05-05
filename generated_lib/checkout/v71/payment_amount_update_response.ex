@@ -15,17 +15,20 @@ defmodule Adyen.Checkout.V71.PaymentAmountUpdateResponse do
           status: String.t()
         }
 
-  defstruct [
-    :amount,
-    :industryUsage,
-    :lineItems,
-    :merchantAccount,
-    :paymentPspReference,
-    :pspReference,
-    :reference,
-    :splits,
-    :status
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amount,
+      :industryUsage,
+      :lineItems,
+      :merchantAccount,
+      :paymentPspReference,
+      :pspReference,
+      :reference,
+      :splits,
+      :status
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.TerminalAPI.V1.AdminRequest do
 
   @type t :: %__MODULE__{ServiceIdentification: String.t() | nil}
 
-  defstruct [:ServiceIdentification]
+  (
+    @derive Jason.Encoder
+    defstruct [:ServiceIdentification]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

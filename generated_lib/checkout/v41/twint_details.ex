@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V41.TwintDetails do
           type: String.t() | nil
         }
 
-  defstruct [:checkoutAttemptId, :recurringDetailReference, :subtype, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:checkoutAttemptId, :recurringDetailReference, :subtype, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

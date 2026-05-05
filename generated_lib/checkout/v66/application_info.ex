@@ -12,14 +12,17 @@ defmodule Adyen.Checkout.V66.ApplicationInfo do
           shopperInteractionDevice: Adyen.Checkout.V66.ShopperInteractionDevice.t() | nil
         }
 
-  defstruct [
-    :adyenLibrary,
-    :adyenPaymentSource,
-    :externalPlatform,
-    :merchantApplication,
-    :merchantDevice,
-    :shopperInteractionDevice
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :adyenLibrary,
+      :adyenPaymentSource,
+      :externalPlatform,
+      :merchantApplication,
+      :merchantDevice,
+      :shopperInteractionDevice
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

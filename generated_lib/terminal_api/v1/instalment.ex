@@ -16,18 +16,21 @@ defmodule Adyen.TerminalAPI.V1.Instalment do
           TotalNbOfPayments: integer | nil
         }
 
-  defstruct [
-    :Charges,
-    :CumulativeAmount,
-    :FirstAmount,
-    :FirstPaymentDate,
-    :InstalmentType,
-    :Period,
-    :PeriodUnit,
-    :PlanID,
-    :SequenceNumber,
-    :TotalNbOfPayments
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :Charges,
+      :CumulativeAmount,
+      :FirstAmount,
+      :FirstPaymentDate,
+      :InstalmentType,
+      :Period,
+      :PeriodUnit,
+      :PlanID,
+      :SequenceNumber,
+      :TotalNbOfPayments
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

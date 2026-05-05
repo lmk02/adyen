@@ -15,17 +15,20 @@ defmodule Adyen.Transfer.V3.PartyIdentification do
           url: String.t() | nil
         }
 
-  defstruct [
-    :address,
-    :dateOfBirth,
-    :email,
-    :firstName,
-    :fullName,
-    :lastName,
-    :reference,
-    :type,
-    :url
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :address,
+      :dateOfBirth,
+      :email,
+      :firstName,
+      :fullName,
+      :lastName,
+      :reference,
+      :type,
+      :url
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

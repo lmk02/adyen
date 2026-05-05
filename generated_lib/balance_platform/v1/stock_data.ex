@@ -9,7 +9,10 @@ defmodule Adyen.BalancePlatform.V1.StockData do
           tickerSymbol: String.t() | nil
         }
 
-  defstruct [:marketIdentifier, :stockNumber, :tickerSymbol]
+  (
+    @derive Jason.Encoder
+    defstruct [:marketIdentifier, :stockNumber, :tickerSymbol]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

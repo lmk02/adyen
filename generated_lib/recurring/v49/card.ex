@@ -14,16 +14,19 @@ defmodule Adyen.Recurring.V49.Card do
           startYear: String.t() | nil
         }
 
-  defstruct [
-    :cvc,
-    :expiryMonth,
-    :expiryYear,
-    :holderName,
-    :issueNumber,
-    :number,
-    :startMonth,
-    :startYear
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :cvc,
+      :expiryMonth,
+      :expiryYear,
+      :holderName,
+      :issueNumber,
+      :number,
+      :startMonth,
+      :startYear
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

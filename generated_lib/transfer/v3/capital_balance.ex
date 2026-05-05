@@ -5,7 +5,10 @@ defmodule Adyen.Transfer.V3.CapitalBalance do
 
   @type t :: %__MODULE__{currency: String.t(), fee: integer, principal: integer, total: integer}
 
-  defstruct [:currency, :fee, :principal, :total]
+  (
+    @derive Jason.Encoder
+    defstruct [:currency, :fee, :principal, :total]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

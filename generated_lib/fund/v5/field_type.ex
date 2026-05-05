@@ -9,7 +9,10 @@ defmodule Adyen.Fund.V5.FieldType do
           shareholderCode: String.t() | nil
         }
 
-  defstruct [:field, :fieldName, :shareholderCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:field, :fieldName, :shareholderCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

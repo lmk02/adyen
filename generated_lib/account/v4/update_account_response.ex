@@ -12,14 +12,17 @@ defmodule Adyen.Account.V4.UpdateAccountResponse do
           submittedAsync: boolean | nil
         }
 
-  defstruct [
-    :accountCode,
-    :description,
-    :payoutSchedule,
-    :pspReference,
-    :resultCode,
-    :submittedAsync
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountCode,
+      :description,
+      :payoutSchedule,
+      :pspReference,
+      :resultCode,
+      :submittedAsync
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

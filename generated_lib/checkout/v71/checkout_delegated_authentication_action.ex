@@ -12,7 +12,10 @@ defmodule Adyen.Checkout.V71.CheckoutDelegatedAuthenticationAction do
           url: String.t() | nil
         }
 
-  defstruct [:authorisationToken, :paymentData, :paymentMethodType, :token, :type, :url]
+  (
+    @derive Jason.Encoder
+    defstruct [:authorisationToken, :paymentData, :paymentMethodType, :token, :type, :url]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

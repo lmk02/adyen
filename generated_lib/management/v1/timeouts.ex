@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.Timeouts do
 
   @type t :: %__MODULE__{fromActiveToSleep: integer | nil}
 
-  defstruct [:fromActiveToSleep]
+  (
+    @derive Jason.Encoder
+    defstruct [:fromActiveToSleep]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -11,7 +11,10 @@ defmodule Adyen.Account.V5.GetTaxFormResponse do
           resultCode: String.t() | nil
         }
 
-  defstruct [:content, :contentType, :invalidFields, :pspReference, :resultCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:content, :contentType, :invalidFields, :pspReference, :resultCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.PaymentInstrumentRevealResponse do
 
   @type t :: %__MODULE__{encryptedData: String.t()}
 
-  defstruct [:encryptedData]
+  (
+    @derive Jason.Encoder
+    defstruct [:encryptedData]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

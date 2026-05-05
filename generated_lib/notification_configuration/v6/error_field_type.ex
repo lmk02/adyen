@@ -9,7 +9,10 @@ defmodule Adyen.NotificationConfiguration.V6.ErrorFieldType do
           fieldType: Adyen.NotificationConfiguration.V6.FieldType.t() | nil
         }
 
-  defstruct [:errorCode, :errorDescription, :fieldType]
+  (
+    @derive Jason.Encoder
+    defstruct [:errorCode, :errorDescription, :fieldType]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

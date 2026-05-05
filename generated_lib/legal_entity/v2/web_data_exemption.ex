@@ -5,7 +5,10 @@ defmodule Adyen.LegalEntity.V2.WebDataExemption do
 
   @type t :: %__MODULE__{reason: String.t() | nil}
 
-  defstruct [:reason]
+  (
+    @derive Jason.Encoder
+    defstruct [:reason]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

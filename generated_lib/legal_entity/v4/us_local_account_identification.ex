@@ -10,7 +10,10 @@ defmodule Adyen.LegalEntity.V4.USLocalAccountIdentification do
           type: String.t()
         }
 
-  defstruct [:accountNumber, :accountType, :routingNumber, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountNumber, :accountType, :routingNumber, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

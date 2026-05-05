@@ -9,7 +9,10 @@ defmodule Adyen.Fund.V5.SetupBeneficiaryRequest do
           sourceAccountCode: String.t()
         }
 
-  defstruct [:destinationAccountCode, :merchantReference, :sourceAccountCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:destinationAccountCode, :merchantReference, :sourceAccountCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

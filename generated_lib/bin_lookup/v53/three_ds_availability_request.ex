@@ -12,14 +12,17 @@ defmodule Adyen.BinLookup.V53.ThreeDSAvailabilityRequest do
           shopperReference: String.t() | nil
         }
 
-  defstruct [
-    :additionalData,
-    :brands,
-    :cardNumber,
-    :merchantAccount,
-    :recurringDetailReference,
-    :shopperReference
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :additionalData,
+      :brands,
+      :cardNumber,
+      :merchantAccount,
+      :recurringDetailReference,
+      :shopperReference
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

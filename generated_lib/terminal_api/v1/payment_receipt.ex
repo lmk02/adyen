@@ -10,7 +10,10 @@ defmodule Adyen.TerminalAPI.V1.PaymentReceipt do
           RequiredSignatureFlag: boolean | nil
         }
 
-  defstruct [:DocumentQualifier, :IntegratedPrintFlag, :OutputContent, :RequiredSignatureFlag]
+  (
+    @derive Jason.Encoder
+    defstruct [:DocumentQualifier, :IntegratedPrintFlag, :OutputContent, :RequiredSignatureFlag]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

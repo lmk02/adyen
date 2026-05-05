@@ -5,7 +5,10 @@ defmodule Adyen.Transfer.V4.Lodging do
 
   @type t :: %__MODULE__{checkInDate: String.t() | nil, numberOfNights: integer | nil}
 
-  defstruct [:checkInDate, :numberOfNights]
+  (
+    @derive Jason.Encoder
+    defstruct [:checkInDate, :numberOfNights]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -12,14 +12,17 @@ defmodule Adyen.Checkout.V69.AncvDetails do
           type: String.t() | nil
         }
 
-  defstruct [
-    :beneficiaryId,
-    :checkoutAttemptId,
-    :recurringDetailReference,
-    :sdkData,
-    :storedPaymentMethodId,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :beneficiaryId,
+      :checkoutAttemptId,
+      :recurringDetailReference,
+      :sdkData,
+      :storedPaymentMethodId,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

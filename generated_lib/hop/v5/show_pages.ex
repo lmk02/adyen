@@ -15,17 +15,20 @@ defmodule Adyen.Hop.V5.ShowPages do
           welcomePage: boolean | nil
         }
 
-  defstruct [
-    :bankDetailsSummaryPage,
-    :bankVerificationPage,
-    :businessDetailsSummaryPage,
-    :checksOverviewPage,
-    :individualDetailsSummaryPage,
-    :legalArrangementsDetailsSummaryPage,
-    :manualBankAccountPage,
-    :shareholderDetailsSummaryPage,
-    :welcomePage
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :bankDetailsSummaryPage,
+      :bankVerificationPage,
+      :businessDetailsSummaryPage,
+      :checksOverviewPage,
+      :individualDetailsSummaryPage,
+      :legalArrangementsDetailsSummaryPage,
+      :manualBankAccountPage,
+      :shareholderDetailsSummaryPage,
+      :welcomePage
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

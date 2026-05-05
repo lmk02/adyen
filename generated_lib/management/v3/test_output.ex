@@ -12,7 +12,10 @@ defmodule Adyen.Management.V3.TestOutput do
           status: String.t()
         }
 
-  defstruct [:merchantId, :output, :requestSent, :responseCode, :responseTime, :status]
+  (
+    @derive Jason.Encoder
+    defstruct [:merchantId, :output, :requestSent, :responseCode, :responseTime, :status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

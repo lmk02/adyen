@@ -11,7 +11,10 @@ defmodule Adyen.Hop.V1.GetOnboardingUrlResponse do
           submittedAsync: boolean | nil
         }
 
-  defstruct [:invalidFields, :pspReference, :redirectUrl, :resultCode, :submittedAsync]
+  (
+    @derive Jason.Encoder
+    defstruct [:invalidFields, :pspReference, :redirectUrl, :resultCode, :submittedAsync]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

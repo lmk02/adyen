@@ -14,16 +14,19 @@ defmodule Adyen.LegalEntity.V1.Individual do
           webData: Adyen.LegalEntity.V1.WebData.t() | nil
         }
 
-  defstruct [
-    :birthData,
-    :email,
-    :identificationData,
-    :name,
-    :nationality,
-    :phone,
-    :residentialAddress,
-    :webData
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :birthData,
+      :email,
+      :identificationData,
+      :name,
+      :nationality,
+      :phone,
+      :residentialAddress,
+      :webData
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

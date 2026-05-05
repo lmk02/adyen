@@ -8,7 +8,10 @@ defmodule Adyen.Dispute.V30.DefenseReasonsResponse do
           disputeServiceResult: Adyen.Dispute.V30.DisputeServiceResult.t()
         }
 
-  defstruct [:defenseReasons, :disputeServiceResult]
+  (
+    @derive Jason.Encoder
+    defstruct [:defenseReasons, :disputeServiceResult]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

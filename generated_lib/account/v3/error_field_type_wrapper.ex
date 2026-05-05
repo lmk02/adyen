@@ -5,7 +5,10 @@ defmodule Adyen.Account.V3.ErrorFieldTypeWrapper do
 
   @type t :: %__MODULE__{ErrorFieldType: Adyen.Account.V3.ErrorFieldType.t() | nil}
 
-  defstruct [:ErrorFieldType]
+  (
+    @derive Jason.Encoder
+    defstruct [:ErrorFieldType]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

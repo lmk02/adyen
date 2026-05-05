@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V67.CheckoutAwaitAction do
           url: String.t() | nil
         }
 
-  defstruct [:paymentData, :paymentMethodType, :type, :url]
+  (
+    @derive Jason.Encoder
+    defstruct [:paymentData, :paymentMethodType, :type, :url]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

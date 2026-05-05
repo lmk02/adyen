@@ -8,7 +8,10 @@ defmodule Adyen.SessionAuthentication.V1.Policy do
           roles: [String.t()] | nil
         }
 
-  defstruct [:resources, :roles]
+  (
+    @derive Jason.Encoder
+    defstruct [:resources, :roles]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

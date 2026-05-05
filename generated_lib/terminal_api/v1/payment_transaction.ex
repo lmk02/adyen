@@ -9,7 +9,10 @@ defmodule Adyen.TerminalAPI.V1.PaymentTransaction do
           TransactionConditions: Adyen.TerminalAPI.V1.TransactionConditions.t() | nil
         }
 
-  defstruct [:AmountsReq, :OriginalPOITransaction, :TransactionConditions]
+  (
+    @derive Jason.Encoder
+    defstruct [:AmountsReq, :OriginalPOITransaction, :TransactionConditions]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

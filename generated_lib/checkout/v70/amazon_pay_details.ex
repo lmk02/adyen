@@ -11,7 +11,10 @@ defmodule Adyen.Checkout.V70.AmazonPayDetails do
           type: String.t() | nil
         }
 
-  defstruct [:amazonPayToken, :checkoutAttemptId, :checkoutSessionId, :sdkData, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:amazonPayToken, :checkoutAttemptId, :checkoutSessionId, :sdkData, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

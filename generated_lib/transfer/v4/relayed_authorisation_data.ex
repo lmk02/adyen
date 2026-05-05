@@ -5,7 +5,10 @@ defmodule Adyen.Transfer.V4.RelayedAuthorisationData do
 
   @type t :: %__MODULE__{metadata: map | nil, reference: String.t() | nil}
 
-  defstruct [:metadata, :reference]
+  (
+    @derive Jason.Encoder
+    defstruct [:metadata, :reference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

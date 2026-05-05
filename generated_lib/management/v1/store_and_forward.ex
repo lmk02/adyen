@@ -9,7 +9,10 @@ defmodule Adyen.Management.V1.StoreAndForward do
           supportedCardTypes: Adyen.Management.V1.SupportedCardTypes.t() | nil
         }
 
-  defstruct [:maxAmount, :maxPayments, :supportedCardTypes]
+  (
+    @derive Jason.Encoder
+    defstruct [:maxAmount, :maxPayments, :supportedCardTypes]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

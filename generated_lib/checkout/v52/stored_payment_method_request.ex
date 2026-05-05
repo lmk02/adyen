@@ -12,14 +12,17 @@ defmodule Adyen.Checkout.V52.StoredPaymentMethodRequest do
           storingMethod: Adyen.Checkout.V52.PaymentMethodToStore.t() | nil
         }
 
-  defstruct [
-    :merchantAccount,
-    :paymentMethod,
-    :shopperEmail,
-    :shopperIP,
-    :shopperReference,
-    :storingMethod
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :merchantAccount,
+      :paymentMethod,
+      :shopperEmail,
+      :shopperIP,
+      :shopperReference,
+      :storingMethod
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

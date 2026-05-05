@@ -18,20 +18,23 @@ defmodule Adyen.Account.V6.CreateAccountHolderResponse do
           verificationProfile: String.t() | nil
         }
 
-  defstruct [
-    :accountCode,
-    :accountHolderCode,
-    :accountHolderDetails,
-    :accountHolderStatus,
-    :description,
-    :invalidFields,
-    :legalEntity,
-    :primaryCurrency,
-    :pspReference,
-    :resultCode,
-    :verification,
-    :verificationProfile
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountCode,
+      :accountHolderCode,
+      :accountHolderDetails,
+      :accountHolderStatus,
+      :description,
+      :invalidFields,
+      :legalEntity,
+      :primaryCurrency,
+      :pspReference,
+      :resultCode,
+      :verification,
+      :verificationProfile
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

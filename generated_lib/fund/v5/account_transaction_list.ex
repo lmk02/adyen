@@ -9,7 +9,10 @@ defmodule Adyen.Fund.V5.AccountTransactionList do
           transactions: [Adyen.Fund.V5.Transaction.t()] | nil
         }
 
-  defstruct [:accountCode, :hasNextPage, :transactions]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountCode, :hasNextPage, :transactions]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -11,13 +11,16 @@ defmodule Adyen.StoredValue.V46.StoredValueBalanceCheckResponse do
           thirdPartyRefusalReason: String.t() | nil
         }
 
-  defstruct [
-    :currentBalance,
-    :pspReference,
-    :refusalReason,
-    :resultCode,
-    :thirdPartyRefusalReason
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :currentBalance,
+      :pspReference,
+      :refusalReason,
+      :resultCode,
+      :thirdPartyRefusalReason
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

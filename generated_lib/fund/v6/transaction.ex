@@ -22,24 +22,27 @@ defmodule Adyen.Fund.V6.Transaction do
           transferCode: String.t() | nil
         }
 
-  defstruct [
-    :amount,
-    :bankAccountDetail,
-    :captureMerchantReference,
-    :capturePspReference,
-    :creationDate,
-    :description,
-    :destinationAccountCode,
-    :disputePspReference,
-    :disputeReasonCode,
-    :merchantReference,
-    :paymentPspReference,
-    :payoutPspReference,
-    :pspReference,
-    :sourceAccountCode,
-    :transactionStatus,
-    :transferCode
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amount,
+      :bankAccountDetail,
+      :captureMerchantReference,
+      :capturePspReference,
+      :creationDate,
+      :description,
+      :destinationAccountCode,
+      :disputePspReference,
+      :disputeReasonCode,
+      :merchantReference,
+      :paymentPspReference,
+      :payoutPspReference,
+      :pspReference,
+      :sourceAccountCode,
+      :transactionStatus,
+      :transferCode
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

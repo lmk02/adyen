@@ -11,13 +11,16 @@ defmodule Adyen.Checkout.V70.StandalonePaymentCancelRequest do
           reference: String.t() | nil
         }
 
-  defstruct [
-    :applicationInfo,
-    :enhancedSchemeData,
-    :merchantAccount,
-    :paymentReference,
-    :reference
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :applicationInfo,
+      :enhancedSchemeData,
+      :merchantAccount,
+      :paymentReference,
+      :reference
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

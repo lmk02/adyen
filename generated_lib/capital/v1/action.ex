@@ -5,7 +5,10 @@ defmodule Adyen.Capital.V1.Action do
 
   @type t :: %__MODULE__{actionCode: String.t(), resolved: boolean}
 
-  defstruct [:actionCode, :resolved]
+  (
+    @derive Jason.Encoder
+    defstruct [:actionCode, :resolved]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

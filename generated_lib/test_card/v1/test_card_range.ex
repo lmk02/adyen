@@ -16,18 +16,21 @@ defmodule Adyen.TestCard.V1.TestCardRange do
           threeDUsername: String.t() | nil
         }
 
-  defstruct [
-    :address,
-    :cardHolderName,
-    :cvc,
-    :expiryMonth,
-    :expiryYear,
-    :rangeEnd,
-    :rangeStart,
-    :threeDDirectoryServerResponse,
-    :threeDPassword,
-    :threeDUsername
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :address,
+      :cardHolderName,
+      :cvc,
+      :expiryMonth,
+      :expiryYear,
+      :rangeEnd,
+      :rangeStart,
+      :threeDDirectoryServerResponse,
+      :threeDPassword,
+      :threeDUsername
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

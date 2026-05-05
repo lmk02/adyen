@@ -17,19 +17,22 @@ defmodule Adyen.Checkout.V69.DonationCampaign do
           termsAndConditionsUrl: String.t() | nil
         }
 
-  defstruct [
-    :amounts,
-    :bannerUrl,
-    :campaignName,
-    :causeName,
-    :donation,
-    :id,
-    :logoUrl,
-    :nonprofitDescription,
-    :nonprofitName,
-    :nonprofitUrl,
-    :termsAndConditionsUrl
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amounts,
+      :bannerUrl,
+      :campaignName,
+      :causeName,
+      :donation,
+      :id,
+      :logoUrl,
+      :nonprofitDescription,
+      :nonprofitName,
+      :nonprofitUrl,
+      :termsAndConditionsUrl
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

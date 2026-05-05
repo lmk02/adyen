@@ -6,7 +6,6 @@ defmodule Adyen.Management.V3.TerminalSettings do
   @type t :: %__MODULE__{
           cardholderReceipt: Adyen.Management.V3.CardholderReceipt.t() | nil,
           connectivity: Adyen.Management.V3.Connectivity.t() | nil,
-          dcc: Adyen.Management.V3.Dcc.t() | nil,
           gratuities: [Adyen.Management.V3.Gratuity.t()] | nil,
           hardware: Adyen.Management.V3.Hardware.t() | nil,
           homeScreen: Adyen.Management.V3.HomeScreenSettings.t() | nil,
@@ -32,34 +31,36 @@ defmodule Adyen.Management.V3.TerminalSettings do
           wifiProfiles: Adyen.Management.V3.WifiProfiles.t() | nil
         }
 
-  defstruct [
-    :cardholderReceipt,
-    :connectivity,
-    :dcc,
-    :gratuities,
-    :hardware,
-    :homeScreen,
-    :kioskMode,
-    :localization,
-    :moto,
-    :nexo,
-    :offlineProcessing,
-    :opi,
-    :passcodes,
-    :payAtTable,
-    :payment,
-    :receiptOptions,
-    :receiptPrinting,
-    :refunds,
-    :signature,
-    :standalone,
-    :storeAndForward,
-    :surcharge,
-    :tapToPay,
-    :terminalInstructions,
-    :timeouts,
-    :wifiProfiles
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :cardholderReceipt,
+      :connectivity,
+      :gratuities,
+      :hardware,
+      :homeScreen,
+      :kioskMode,
+      :localization,
+      :moto,
+      :nexo,
+      :offlineProcessing,
+      :opi,
+      :passcodes,
+      :payAtTable,
+      :payment,
+      :receiptOptions,
+      :receiptPrinting,
+      :refunds,
+      :signature,
+      :standalone,
+      :storeAndForward,
+      :surcharge,
+      :tapToPay,
+      :terminalInstructions,
+      :timeouts,
+      :wifiProfiles
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -69,7 +70,6 @@ defmodule Adyen.Management.V3.TerminalSettings do
     [
       cardholderReceipt: {Adyen.Management.V3.CardholderReceipt, :t},
       connectivity: {Adyen.Management.V3.Connectivity, :t},
-      dcc: {Adyen.Management.V3.Dcc, :t},
       gratuities: [{Adyen.Management.V3.Gratuity, :t}],
       hardware: {Adyen.Management.V3.Hardware, :t},
       homeScreen: {Adyen.Management.V3.HomeScreenSettings, :t},

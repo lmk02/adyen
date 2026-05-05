@@ -9,7 +9,10 @@ defmodule Adyen.Fund.V5.AccountHolderTransactionListRequest do
           transactionStatuses: [String.t()] | nil
         }
 
-  defstruct [:accountHolderCode, :transactionListsPerAccount, :transactionStatuses]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountHolderCode, :transactionListsPerAccount, :transactionStatuses]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

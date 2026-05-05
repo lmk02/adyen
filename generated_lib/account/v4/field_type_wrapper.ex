@@ -5,7 +5,10 @@ defmodule Adyen.Account.V4.FieldTypeWrapper do
 
   @type t :: %__MODULE__{FieldType: Adyen.Account.V4.FieldType.t() | nil}
 
-  defstruct [:FieldType]
+  (
+    @derive Jason.Encoder
+    defstruct [:FieldType]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

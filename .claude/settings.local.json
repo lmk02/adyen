@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(elixir:*)",
+      "Bash(grep -E \"\\\\.ex$\")",
+      "Bash(mix clean *)",
+      "Bash(mix compile *)",
+      "Bash(mix adyen.gen AccountService:v6)",
+      "Bash(mix adyen.gen --all)",
+      "Bash(shuf)",
+      "Bash(xargs -I {} bash -c \"echo '===== {} ====='; head -25 {}\")",
+      "Bash(mix test *)"
+    ]
+  }
+}

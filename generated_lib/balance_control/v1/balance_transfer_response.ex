@@ -15,17 +15,20 @@ defmodule Adyen.BalanceControl.V1.BalanceTransferResponse do
           type: String.t()
         }
 
-  defstruct [
-    :amount,
-    :createdAt,
-    :description,
-    :fromMerchant,
-    :pspReference,
-    :reference,
-    :status,
-    :toMerchant,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amount,
+      :createdAt,
+      :description,
+      :fromMerchant,
+      :pspReference,
+      :reference,
+      :status,
+      :toMerchant,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -11,7 +11,10 @@ defmodule Adyen.BalancePlatform.V2.Link do
           self: Adyen.BalancePlatform.V2.Href.t() | nil
         }
 
-  defstruct [:first, :last, :next, :previous, :self]
+  (
+    @derive Jason.Encoder
+    defstruct [:first, :last, :next, :previous, :self]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

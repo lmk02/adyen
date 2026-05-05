@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.DataCenter do
 
   @type t :: %__MODULE__{livePrefix: String.t() | nil, name: String.t() | nil}
 
-  defstruct [:livePrefix, :name]
+  (
+    @derive Jason.Encoder
+    defstruct [:livePrefix, :name]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

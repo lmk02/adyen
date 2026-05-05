@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V37.VippsDetails do
           type: String.t() | nil
         }
 
-  defstruct [:checkoutAttemptId, :recurringDetailReference, :telephoneNumber, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:checkoutAttemptId, :recurringDetailReference, :telephoneNumber, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

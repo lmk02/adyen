@@ -12,7 +12,10 @@ defmodule Adyen.TerminalAPI.V1.PaymentResponse do
           SaleData: Adyen.TerminalAPI.V1.SaleData.t()
         }
 
-  defstruct [:LoyaltyResult, :POIData, :PaymentReceipt, :PaymentResult, :Response, :SaleData]
+  (
+    @derive Jason.Encoder
+    defstruct [:LoyaltyResult, :POIData, :PaymentReceipt, :PaymentResult, :Response, :SaleData]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

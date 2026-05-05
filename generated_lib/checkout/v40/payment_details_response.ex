@@ -20,22 +20,25 @@ defmodule Adyen.Checkout.V40.PaymentDetailsResponse do
           shopperLocale: String.t() | nil
         }
 
-  defstruct [
-    :additionalData,
-    :authentication,
-    :details,
-    :fraudResult,
-    :merchantReference,
-    :order,
-    :outputDetails,
-    :paymentData,
-    :pspReference,
-    :redirect,
-    :refusalReason,
-    :refusalReasonCode,
-    :resultCode,
-    :shopperLocale
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :additionalData,
+      :authentication,
+      :details,
+      :fraudResult,
+      :merchantReference,
+      :order,
+      :outputDetails,
+      :paymentData,
+      :pspReference,
+      :redirect,
+      :refusalReason,
+      :refusalReasonCode,
+      :resultCode,
+      :shopperLocale
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

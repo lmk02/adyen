@@ -12,7 +12,10 @@ defmodule Adyen.LegalEntity.V3.VerificationError do
           type: String.t() | nil
         }
 
-  defstruct [:capabilities, :code, :message, :remediatingActions, :subErrors, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:capabilities, :code, :message, :remediatingActions, :subErrors, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

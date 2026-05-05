@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V1.Expiry do
 
   @type t :: %__MODULE__{month: String.t() | nil, year: String.t() | nil}
 
-  defstruct [:month, :year]
+  (
+    @derive Jason.Encoder
+    defstruct [:month, :year]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

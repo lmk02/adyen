@@ -9,7 +9,10 @@ defmodule Adyen.Management.V3.Key do
           version: integer | nil
         }
 
-  defstruct [:identifier, :passphrase, :version]
+  (
+    @derive Jason.Encoder
+    defstruct [:identifier, :passphrase, :version]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

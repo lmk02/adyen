@@ -5,7 +5,10 @@ defmodule Adyen.Dispute.V30.AcceptDisputeResponse do
 
   @type t :: %__MODULE__{disputeServiceResult: Adyen.Dispute.V30.DisputeServiceResult.t()}
 
-  defstruct [:disputeServiceResult]
+  (
+    @derive Jason.Encoder
+    defstruct [:disputeServiceResult]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -12,7 +12,10 @@ defmodule Adyen.Account.V3.ViasAddress do
           street: String.t() | nil
         }
 
-  defstruct [:city, :country, :houseNumberOrName, :postalCode, :stateOrProvince, :street]
+  (
+    @derive Jason.Encoder
+    defstruct [:city, :country, :houseNumberOrName, :postalCode, :stateOrProvince, :street]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

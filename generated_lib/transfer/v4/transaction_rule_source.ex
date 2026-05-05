@@ -5,7 +5,10 @@ defmodule Adyen.Transfer.V4.TransactionRuleSource do
 
   @type t :: %__MODULE__{id: String.t() | nil, type: String.t() | nil}
 
-  defstruct [:id, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:id, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

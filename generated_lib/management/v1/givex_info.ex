@@ -10,7 +10,10 @@ defmodule Adyen.Management.V1.GivexInfo do
           username: String.t()
         }
 
-  defstruct [:currencyCode, :password, :paymentFlow, :username]
+  (
+    @derive Jason.Encoder
+    defstruct [:currencyCode, :password, :paymentFlow, :username]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

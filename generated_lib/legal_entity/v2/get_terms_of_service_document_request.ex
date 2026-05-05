@@ -9,7 +9,10 @@ defmodule Adyen.LegalEntity.V2.GetTermsOfServiceDocumentRequest do
           type: String.t()
         }
 
-  defstruct [:language, :termsOfServiceDocumentFormat, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:language, :termsOfServiceDocumentFormat, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

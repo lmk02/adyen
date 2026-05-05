@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.RegisterSCAFinalResponse do
 
   @type t :: %__MODULE__{success: boolean | nil}
 
-  defstruct [:success]
+  (
+    @derive Jason.Encoder
+    defstruct [:success]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

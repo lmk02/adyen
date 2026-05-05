@@ -7,7 +7,10 @@ defmodule Adyen.BalanceControl.V2.CompanyBalances do
           merchantBalancesOverview: [Adyen.BalanceControl.V2.MerchantBalance.t()] | nil
         }
 
-  defstruct [:merchantBalancesOverview]
+  (
+    @derive Jason.Encoder
+    defstruct [:merchantBalancesOverview]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

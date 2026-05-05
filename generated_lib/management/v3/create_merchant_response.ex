@@ -13,15 +13,18 @@ defmodule Adyen.Management.V3.CreateMerchantResponse do
           reference: String.t() | nil
         }
 
-  defstruct [
-    :businessLineId,
-    :companyId,
-    :description,
-    :id,
-    :legalEntityId,
-    :pricingPlan,
-    :reference
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :businessLineId,
+      :companyId,
+      :description,
+      :id,
+      :legalEntityId,
+      :pricingPlan,
+      :reference
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

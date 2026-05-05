@@ -10,7 +10,10 @@ defmodule Adyen.LegalEntity.V4.TaxReportingClassification do
           type: String.t() | nil
         }
 
-  defstruct [:businessType, :financialInstitutionNumber, :mainSourceOfIncome, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:businessType, :financialInstitutionNumber, :mainSourceOfIncome, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

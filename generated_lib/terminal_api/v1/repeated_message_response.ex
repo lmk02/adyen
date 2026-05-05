@@ -8,7 +8,10 @@ defmodule Adyen.TerminalAPI.V1.RepeatedMessageResponse do
           RepeatedResponseMessageBody: Adyen.TerminalAPI.V1.RepeatedResponseMessageBody.t()
         }
 
-  defstruct [:MessageHeader, :RepeatedResponseMessageBody]
+  (
+    @derive Jason.Encoder
+    defstruct [:MessageHeader, :RepeatedResponseMessageBody]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

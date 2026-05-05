@@ -8,7 +8,10 @@ defmodule Adyen.TerminalAPI.V1.InputRequest do
           InputData: Adyen.TerminalAPI.V1.InputData.t()
         }
 
-  defstruct [:DisplayOutput, :InputData]
+  (
+    @derive Jason.Encoder
+    defstruct [:DisplayOutput, :InputData]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

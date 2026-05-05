@@ -8,7 +8,10 @@ defmodule Adyen.TerminalAPI.V1.GetTotalsRequest do
           TotalFilter: Adyen.TerminalAPI.V1.TotalFilter.t() | nil
         }
 
-  defstruct [:TotalDetails, :TotalFilter]
+  (
+    @derive Jason.Encoder
+    defstruct [:TotalDetails, :TotalFilter]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

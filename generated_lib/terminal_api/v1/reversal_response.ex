@@ -11,7 +11,10 @@ defmodule Adyen.TerminalAPI.V1.ReversalResponse do
           ReversedAmount: number | nil
         }
 
-  defstruct [:OriginalPOITransaction, :POIData, :PaymentReceipt, :Response, :ReversedAmount]
+  (
+    @derive Jason.Encoder
+    defstruct [:OriginalPOITransaction, :POIData, :PaymentReceipt, :Response, :ReversedAmount]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

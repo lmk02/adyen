@@ -10,7 +10,10 @@ defmodule Adyen.TfmAPI.V1.MerchantAccount do
           stores: [Adyen.TfmAPI.V1.Store.t()] | nil
         }
 
-  defstruct [:inStoreTerminals, :inventoryTerminals, :merchantAccount, :stores]
+  (
+    @derive Jason.Encoder
+    defstruct [:inStoreTerminals, :inventoryTerminals, :merchantAccount, :stores]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

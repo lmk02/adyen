@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.Unreferenced do
 
   @type t :: %__MODULE__{enableUnreferencedRefunds: boolean | nil}
 
-  defstruct [:enableUnreferencedRefunds]
+  (
+    @derive Jason.Encoder
+    defstruct [:enableUnreferencedRefunds]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

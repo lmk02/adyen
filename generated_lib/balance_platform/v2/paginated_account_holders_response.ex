@@ -9,7 +9,10 @@ defmodule Adyen.BalancePlatform.V2.PaginatedAccountHoldersResponse do
           hasPrevious: boolean
         }
 
-  defstruct [:accountHolders, :hasNext, :hasPrevious]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountHolders, :hasNext, :hasPrevious]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

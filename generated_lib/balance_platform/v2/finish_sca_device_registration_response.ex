@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.FinishScaDeviceRegistrationResponse do
 
   @type t :: %__MODULE__{scaDevice: Adyen.BalancePlatform.V2.ScaDevice.t() | nil}
 
-  defstruct [:scaDevice]
+  (
+    @derive Jason.Encoder
+    defstruct [:scaDevice]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

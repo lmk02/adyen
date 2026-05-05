@@ -12,7 +12,10 @@ defmodule Adyen.TerminalAPI.V1.CardReaderAPDURequest do
           APDUPar2: String.t()
         }
 
-  defstruct [:APDUClass, :APDUData, :APDUExpectedLength, :APDUInstruction, :APDUPar1, :APDUPar2]
+  (
+    @derive Jason.Encoder
+    defstruct [:APDUClass, :APDUData, :APDUExpectedLength, :APDUInstruction, :APDUPar1, :APDUPar2]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

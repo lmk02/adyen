@@ -5,7 +5,10 @@ defmodule Adyen.TerminalAPI.V1.SaleTerminalData do
 
   @type t :: %__MODULE__{TotalsGroupID: String.t() | nil}
 
-  defstruct [:TotalsGroupID]
+  (
+    @derive Jason.Encoder
+    defstruct [:TotalsGroupID]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

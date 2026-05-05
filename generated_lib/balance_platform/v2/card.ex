@@ -20,22 +20,25 @@ defmodule Adyen.BalancePlatform.V2.Card do
           usage: String.t() | nil
         }
 
-  defstruct [
-    :authentication,
-    :bin,
-    :brand,
-    :brandVariant,
-    :cardholderName,
-    :configuration,
-    :cvc,
-    :deliveryContact,
-    :expiration,
-    :formFactor,
-    :lastFour,
-    :number,
-    :threeDSecure,
-    :usage
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :authentication,
+      :bin,
+      :brand,
+      :brandVariant,
+      :cardholderName,
+      :configuration,
+      :cvc,
+      :deliveryContact,
+      :expiration,
+      :formFactor,
+      :lastFour,
+      :number,
+      :threeDSecure,
+      :usage
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

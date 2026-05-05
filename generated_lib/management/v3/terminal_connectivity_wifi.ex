@@ -9,7 +9,10 @@ defmodule Adyen.Management.V3.TerminalConnectivityWifi do
           ssid: String.t() | nil
         }
 
-  defstruct [:ipAddress, :macAddress, :ssid]
+  (
+    @derive Jason.Encoder
+    defstruct [:ipAddress, :macAddress, :ssid]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

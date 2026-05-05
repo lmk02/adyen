@@ -9,7 +9,10 @@ defmodule Adyen.BalancePlatform.V2.PaginatedGetCardOrderResponse do
           hasPrevious: boolean
         }
 
-  defstruct [:cardOrders, :hasNext, :hasPrevious]
+  (
+    @derive Jason.Encoder
+    defstruct [:cardOrders, :hasNext, :hasPrevious]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

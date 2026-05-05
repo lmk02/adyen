@@ -9,7 +9,10 @@ defmodule Adyen.Transfer.V3.CapitalGrantInfo do
           grantOfferId: String.t()
         }
 
-  defstruct [:counterparty, :grantAccountId, :grantOfferId]
+  (
+    @derive Jason.Encoder
+    defstruct [:counterparty, :grantAccountId, :grantOfferId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

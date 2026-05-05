@@ -11,7 +11,16 @@ defmodule Adyen.Checkout.V71.CardDetailsRequest do
           supportedBrands: [String.t()] | nil
         }
 
-  defstruct [:cardNumber, :countryCode, :encryptedCardNumber, :merchantAccount, :supportedBrands]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :cardNumber,
+      :countryCode,
+      :encryptedCardNumber,
+      :merchantAccount,
+      :supportedBrands
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

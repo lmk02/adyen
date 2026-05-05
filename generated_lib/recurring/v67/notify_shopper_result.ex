@@ -13,15 +13,18 @@ defmodule Adyen.Recurring.V67.NotifyShopperResult do
           storedPaymentMethodId: String.t() | nil
         }
 
-  defstruct [
-    :displayedReference,
-    :message,
-    :pspReference,
-    :reference,
-    :resultCode,
-    :shopperNotificationReference,
-    :storedPaymentMethodId
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :displayedReference,
+      :message,
+      :pspReference,
+      :reference,
+      :resultCode,
+      :shopperNotificationReference,
+      :storedPaymentMethodId
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

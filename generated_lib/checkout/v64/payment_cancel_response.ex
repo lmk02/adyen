@@ -11,7 +11,10 @@ defmodule Adyen.Checkout.V64.PaymentCancelResponse do
           status: String.t()
         }
 
-  defstruct [:merchantAccount, :paymentPspReference, :pspReference, :reference, :status]
+  (
+    @derive Jason.Encoder
+    defstruct [:merchantAccount, :paymentPspReference, :pspReference, :reference, :status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

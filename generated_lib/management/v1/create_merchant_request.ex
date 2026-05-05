@@ -13,15 +13,18 @@ defmodule Adyen.Management.V1.CreateMerchantRequest do
           salesChannels: [String.t()] | nil
         }
 
-  defstruct [
-    :businessLineId,
-    :companyId,
-    :description,
-    :legalEntityId,
-    :pricingPlan,
-    :reference,
-    :salesChannels
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :businessLineId,
+      :companyId,
+      :description,
+      :legalEntityId,
+      :pricingPlan,
+      :reference,
+      :salesChannels
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

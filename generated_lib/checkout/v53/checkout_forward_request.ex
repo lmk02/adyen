@@ -15,17 +15,20 @@ defmodule Adyen.Checkout.V53.CheckoutForwardRequest do
           storedPaymentMethodId: String.t() | nil
         }
 
-  defstruct [
-    :amount,
-    :baseUrl,
-    :merchantAccount,
-    :merchantReference,
-    :options,
-    :paymentMethod,
-    :request,
-    :shopperReference,
-    :storedPaymentMethodId
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amount,
+      :baseUrl,
+      :merchantAccount,
+      :merchantReference,
+      :options,
+      :paymentMethod,
+      :request,
+      :shopperReference,
+      :storedPaymentMethodId
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

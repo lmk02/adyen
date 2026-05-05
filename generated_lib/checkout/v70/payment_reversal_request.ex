@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V70.PaymentReversalRequest do
           reference: String.t() | nil
         }
 
-  defstruct [:applicationInfo, :enhancedSchemeData, :merchantAccount, :reference]
+  (
+    @derive Jason.Encoder
+    defstruct [:applicationInfo, :enhancedSchemeData, :merchantAccount, :reference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

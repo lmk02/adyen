@@ -11,7 +11,10 @@ defmodule Adyen.BalanceControl.V2.BalanceTransferRequest do
           type: String.t()
         }
 
-  defstruct [:amount, :fromMerchant, :reference, :toMerchant, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:amount, :fromMerchant, :reference, :toMerchant, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -11,7 +11,10 @@ defmodule Adyen.Account.V3.AccountHolderStatus do
           statusReason: String.t() | nil
         }
 
-  defstruct [:events, :payoutState, :processingState, :status, :statusReason]
+  (
+    @derive Jason.Encoder
+    defstruct [:events, :payoutState, :processingState, :status, :statusReason]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

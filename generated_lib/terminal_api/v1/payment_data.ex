@@ -12,14 +12,17 @@ defmodule Adyen.TerminalAPI.V1.PaymentData do
           SplitPaymentFlag: boolean | nil
         }
 
-  defstruct [
-    :CardAcquisitionReference,
-    :Instalment,
-    :PaymentInstrumentData,
-    :PaymentType,
-    :RequestedValidityDate,
-    :SplitPaymentFlag
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :CardAcquisitionReference,
+      :Instalment,
+      :PaymentInstrumentData,
+      :PaymentType,
+      :RequestedValidityDate,
+      :SplitPaymentFlag
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

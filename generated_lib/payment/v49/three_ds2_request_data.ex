@@ -28,30 +28,33 @@ defmodule Adyen.Payment.V49.ThreeDs2RequestData do
           whiteListStatus: String.t() | nil
         }
 
-  defstruct [
-    :acquirerBIN,
-    :acquirerMerchantID,
-    :authenticationOnly,
-    :challengeIndicator,
-    :deviceChannel,
-    :deviceRenderOptions,
-    :mcc,
-    :merchantName,
-    :messageVersion,
-    :notificationURL,
-    :sdkAppID,
-    :sdkEncData,
-    :sdkEphemPubKey,
-    :sdkMaxTimeout,
-    :sdkReferenceNumber,
-    :sdkTransID,
-    :sdkVersion,
-    :threeDSCompInd,
-    :threeDSRequestorID,
-    :threeDSRequestorName,
-    :threeDSRequestorURL,
-    :whiteListStatus
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :acquirerBIN,
+      :acquirerMerchantID,
+      :authenticationOnly,
+      :challengeIndicator,
+      :deviceChannel,
+      :deviceRenderOptions,
+      :mcc,
+      :merchantName,
+      :messageVersion,
+      :notificationURL,
+      :sdkAppID,
+      :sdkEncData,
+      :sdkEphemPubKey,
+      :sdkMaxTimeout,
+      :sdkReferenceNumber,
+      :sdkTransID,
+      :sdkVersion,
+      :threeDSCompInd,
+      :threeDSRequestorID,
+      :threeDSRequestorName,
+      :threeDSRequestorURL,
+      :whiteListStatus
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -13,15 +13,18 @@ defmodule Adyen.Management.V1.UpdateStoreRequest do
           status: String.t() | nil
         }
 
-  defstruct [
-    :address,
-    :businessLineIds,
-    :description,
-    :externalReferenceId,
-    :phoneNumber,
-    :splitConfiguration,
-    :status
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :address,
+      :businessLineIds,
+      :description,
+      :externalReferenceId,
+      :phoneNumber,
+      :splitConfiguration,
+      :status
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

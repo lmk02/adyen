@@ -5,7 +5,10 @@ defmodule Adyen.Management.V3.GenerateApiKeyResponse do
 
   @type t :: %__MODULE__{apiKey: String.t()}
 
-  defstruct [:apiKey]
+  (
+    @derive Jason.Encoder
+    defstruct [:apiKey]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

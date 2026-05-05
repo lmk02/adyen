@@ -12,7 +12,10 @@ defmodule Adyen.Checkout.V40.PaypalUpdateOrderRequest do
           taxTotal: Adyen.Checkout.V40.TaxTotal.t() | nil
         }
 
-  defstruct [:amount, :deliveryMethods, :paymentData, :pspReference, :sessionId, :taxTotal]
+  (
+    @derive Jason.Encoder
+    defstruct [:amount, :deliveryMethods, :paymentData, :pspReference, :sessionId, :taxTotal]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

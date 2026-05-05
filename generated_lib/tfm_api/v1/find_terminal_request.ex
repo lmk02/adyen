@@ -5,7 +5,10 @@ defmodule Adyen.TfmAPI.V1.FindTerminalRequest do
 
   @type t :: %__MODULE__{terminal: String.t()}
 
-  defstruct [:terminal]
+  (
+    @derive Jason.Encoder
+    defstruct [:terminal]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

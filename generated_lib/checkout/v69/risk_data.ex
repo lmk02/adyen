@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V69.RiskData do
           profileReference: String.t() | nil
         }
 
-  defstruct [:clientData, :customFields, :fraudOffset, :profileReference]
+  (
+    @derive Jason.Encoder
+    defstruct [:clientData, :customFields, :fraudOffset, :profileReference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

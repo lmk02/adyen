@@ -16,18 +16,21 @@ defmodule Adyen.Transfer.V4.TransferServiceRestServiceError do
           type: String.t()
         }
 
-  defstruct [
-    :detail,
-    :errorCode,
-    :instance,
-    :invalidFields,
-    :requestId,
-    :response,
-    :routingDetails,
-    :status,
-    :title,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :detail,
+      :errorCode,
+      :instance,
+      :invalidFields,
+      :requestId,
+      :response,
+      :routingDetails,
+      :status,
+      :title,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -9,7 +9,10 @@ defmodule Adyen.LegalEntity.V4.VerificationDeadline do
           expiresAt: DateTime.t()
         }
 
-  defstruct [:capabilities, :entityIds, :expiresAt]
+  (
+    @derive Jason.Encoder
+    defstruct [:capabilities, :entityIds, :expiresAt]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

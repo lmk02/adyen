@@ -9,7 +9,10 @@ defmodule Adyen.BalancePlatform.V2.Authentication do
           phone: Adyen.BalancePlatform.V2.Phone.t() | nil
         }
 
-  defstruct [:email, :password, :phone]
+  (
+    @derive Jason.Encoder
+    defstruct [:email, :password, :phone]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -20,22 +20,25 @@ defmodule Adyen.LegalEntity.V4.Trust do
           vatNumber: String.t() | nil
         }
 
-  defstruct [
-    :countryOfGoverningLaw,
-    :dateOfIncorporation,
-    :description,
-    :doingBusinessAs,
-    :doingBusinessAsAbsent,
-    :name,
-    :principalPlaceOfBusiness,
-    :registeredAddress,
-    :registrationNumber,
-    :taxInformation,
-    :type,
-    :undefinedBeneficiaryInfo,
-    :vatAbsenceReason,
-    :vatNumber
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :countryOfGoverningLaw,
+      :dateOfIncorporation,
+      :description,
+      :doingBusinessAs,
+      :doingBusinessAsAbsent,
+      :name,
+      :principalPlaceOfBusiness,
+      :registeredAddress,
+      :registrationNumber,
+      :taxInformation,
+      :type,
+      :undefinedBeneficiaryInfo,
+      :vatAbsenceReason,
+      :vatNumber
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

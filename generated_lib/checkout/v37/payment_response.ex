@@ -17,19 +17,22 @@ defmodule Adyen.Checkout.V37.PaymentResponse do
           resultCode: String.t() | nil
         }
 
-  defstruct [
-    :additionalData,
-    :details,
-    :fraudResult,
-    :order,
-    :outputDetails,
-    :paymentData,
-    :pspReference,
-    :redirect,
-    :refusalReason,
-    :refusalReasonCode,
-    :resultCode
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :additionalData,
+      :details,
+      :fraudResult,
+      :order,
+      :outputDetails,
+      :paymentData,
+      :pspReference,
+      :redirect,
+      :refusalReason,
+      :refusalReasonCode,
+      :resultCode
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

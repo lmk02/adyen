@@ -17,19 +17,22 @@ defmodule Adyen.Management.V1.CreateCompanyUserResponse do
           username: String.t()
         }
 
-  defstruct [
-    :_links,
-    :accountGroups,
-    :active,
-    :apps,
-    :associatedMerchantAccounts,
-    :email,
-    :id,
-    :name,
-    :roles,
-    :timeZoneCode,
-    :username
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :_links,
+      :accountGroups,
+      :active,
+      :apps,
+      :associatedMerchantAccounts,
+      :email,
+      :id,
+      :name,
+      :roles,
+      :timeZoneCode,
+      :username
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

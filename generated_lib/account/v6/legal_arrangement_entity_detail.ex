@@ -17,19 +17,22 @@ defmodule Adyen.Account.V6.LegalArrangementEntityDetail do
           webAddress: String.t() | nil
         }
 
-  defstruct [
-    :address,
-    :businessDetails,
-    :email,
-    :fullPhoneNumber,
-    :individualDetails,
-    :legalArrangementEntityCode,
-    :legalArrangementEntityReference,
-    :legalArrangementMembers,
-    :legalEntityType,
-    :phoneNumber,
-    :webAddress
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :address,
+      :businessDetails,
+      :email,
+      :fullPhoneNumber,
+      :individualDetails,
+      :legalArrangementEntityCode,
+      :legalArrangementEntityReference,
+      :legalArrangementMembers,
+      :legalEntityType,
+      :phoneNumber,
+      :webAddress
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

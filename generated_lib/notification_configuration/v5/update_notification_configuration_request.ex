@@ -8,7 +8,10 @@ defmodule Adyen.NotificationConfiguration.V5.UpdateNotificationConfigurationRequ
             Adyen.NotificationConfiguration.V5.NotificationConfigurationDetails.t()
         }
 
-  defstruct [:configurationDetails]
+  (
+    @derive Jason.Encoder
+    defstruct [:configurationDetails]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

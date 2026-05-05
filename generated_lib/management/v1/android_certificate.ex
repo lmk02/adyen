@@ -13,7 +13,10 @@ defmodule Adyen.Management.V1.AndroidCertificate do
           status: String.t() | nil
         }
 
-  defstruct [:description, :extension, :id, :name, :notAfter, :notBefore, :status]
+  (
+    @derive Jason.Encoder
+    defstruct [:description, :extension, :id, :name, :notAfter, :notBefore, :status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

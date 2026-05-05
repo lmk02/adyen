@@ -5,7 +5,10 @@ defmodule Adyen.LegalEntity.V2.OnboardingLink do
 
   @type t :: %__MODULE__{url: String.t() | nil}
 
-  defstruct [:url]
+  (
+    @derive Jason.Encoder
+    defstruct [:url]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

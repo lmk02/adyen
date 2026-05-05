@@ -11,7 +11,10 @@ defmodule Adyen.Payment.V68.SubMerchant do
           taxId: String.t() | nil
         }
 
-  defstruct [:city, :country, :mcc, :name, :taxId]
+  (
+    @derive Jason.Encoder
+    defstruct [:city, :country, :mcc, :name, :taxId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

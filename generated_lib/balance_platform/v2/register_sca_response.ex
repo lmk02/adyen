@@ -10,7 +10,10 @@ defmodule Adyen.BalancePlatform.V2.RegisterSCAResponse do
           success: boolean | nil
         }
 
-  defstruct [:id, :paymentInstrumentId, :sdkInput, :success]
+  (
+    @derive Jason.Encoder
+    defstruct [:id, :paymentInstrumentId, :sdkInput, :success]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

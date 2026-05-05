@@ -8,7 +8,10 @@ defmodule Adyen.Payment.V68.AuthenticationResultResponse do
           threeDS2Result: Adyen.Payment.V68.ThreeDs2Result.t() | nil
         }
 
-  defstruct [:threeDS1Result, :threeDS2Result]
+  (
+    @derive Jason.Encoder
+    defstruct [:threeDS1Result, :threeDS2Result]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

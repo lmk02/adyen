@@ -5,7 +5,10 @@ defmodule Adyen.Capital.V1.Status do
 
   @type t :: %__MODULE__{actions: [Adyen.Capital.V1.Action.t()] | nil, code: String.t()}
 
-  defstruct [:actions, :code]
+  (
+    @derive Jason.Encoder
+    defstruct [:actions, :code]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

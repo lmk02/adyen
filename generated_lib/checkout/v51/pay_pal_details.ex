@@ -15,17 +15,20 @@ defmodule Adyen.Checkout.V51.PayPalDetails do
           type: String.t()
         }
 
-  defstruct [
-    :checkoutAttemptId,
-    :orderID,
-    :payeePreferred,
-    :payerID,
-    :payerSelected,
-    :recurringDetailReference,
-    :storedPaymentMethodId,
-    :subtype,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :checkoutAttemptId,
+      :orderID,
+      :payeePreferred,
+      :payerID,
+      :payerSelected,
+      :recurringDetailReference,
+      :storedPaymentMethodId,
+      :subtype,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

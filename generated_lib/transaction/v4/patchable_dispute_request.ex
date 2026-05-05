@@ -11,7 +11,10 @@ defmodule Adyen.Transaction.V4.PatchableDisputeRequest do
           status: String.t() | nil
         }
 
-  defstruct [:duplicateInfo, :fraudInfo, :notDeliveredInfo, :otherInfo, :status]
+  (
+    @derive Jason.Encoder
+    defstruct [:duplicateInfo, :fraudInfo, :notDeliveredInfo, :otherInfo, :status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

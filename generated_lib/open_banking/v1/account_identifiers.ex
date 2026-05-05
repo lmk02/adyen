@@ -12,7 +12,10 @@ defmodule Adyen.OpenBanking.V1.AccountIdentifiers do
           rix: Adyen.OpenBanking.V1.RIXAccountIdentifier.t() | nil
         }
 
-  defstruct [:ach, :bacs, :bsb, :eft, :iban, :rix]
+  (
+    @derive Jason.Encoder
+    defstruct [:ach, :bacs, :bsb, :eft, :iban, :rix]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

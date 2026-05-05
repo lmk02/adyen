@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.SwishInfo do
 
   @type t :: %__MODULE__{swishNumber: String.t()}
 
-  defstruct [:swishNumber]
+  (
+    @derive Jason.Encoder
+    defstruct [:swishNumber]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

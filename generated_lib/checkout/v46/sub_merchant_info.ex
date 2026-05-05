@@ -16,18 +16,21 @@ defmodule Adyen.Checkout.V46.SubMerchantInfo do
           url: String.t() | nil
         }
 
-  defstruct [
-    :address,
-    :amount,
-    :email,
-    :id,
-    :mcc,
-    :name,
-    :phoneNumber,
-    :registeredSince,
-    :taxId,
-    :url
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :address,
+      :amount,
+      :email,
+      :id,
+      :mcc,
+      :name,
+      :phoneNumber,
+      :registeredSince,
+      :taxId,
+      :url
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

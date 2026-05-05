@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.CardholderReceipt do
 
   @type t :: %__MODULE__{headerForAuthorizedReceipt: String.t() | nil}
 
-  defstruct [:headerForAuthorizedReceipt]
+  (
+    @derive Jason.Encoder
+    defstruct [:headerForAuthorizedReceipt]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

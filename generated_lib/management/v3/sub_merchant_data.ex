@@ -5,7 +5,10 @@ defmodule Adyen.Management.V3.SubMerchantData do
 
   @type t :: %__MODULE__{email: String.t(), id: String.t(), mcc: String.t(), name: String.t()}
 
-  defstruct [:email, :id, :mcc, :name]
+  (
+    @derive Jason.Encoder
+    defstruct [:email, :id, :mcc, :name]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

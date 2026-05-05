@@ -9,7 +9,10 @@ defmodule Adyen.Management.V3.HomeScreenSettings do
           showSettingsMenu: boolean | nil
         }
 
-  defstruct [:hideNavigationBar, :showPaymentsMenu, :showSettingsMenu]
+  (
+    @derive Jason.Encoder
+    defstruct [:hideNavigationBar, :showPaymentsMenu, :showSettingsMenu]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

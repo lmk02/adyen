@@ -9,7 +9,10 @@ defmodule Adyen.BalancePlatform.V2.RegisterSCARequest do
           strongCustomerAuthentication: Adyen.BalancePlatform.V2.DelegatedAuthenticationData.t()
         }
 
-  defstruct [:name, :paymentInstrumentId, :strongCustomerAuthentication]
+  (
+    @derive Jason.Encoder
+    defstruct [:name, :paymentInstrumentId, :strongCustomerAuthentication]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

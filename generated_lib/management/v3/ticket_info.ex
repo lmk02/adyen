@@ -5,7 +5,10 @@ defmodule Adyen.Management.V3.TicketInfo do
 
   @type t :: %__MODULE__{requestorId: String.t() | nil}
 
-  defstruct [:requestorId]
+  (
+    @derive Jason.Encoder
+    defstruct [:requestorId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

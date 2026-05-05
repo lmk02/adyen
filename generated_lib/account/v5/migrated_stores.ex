@@ -10,7 +10,10 @@ defmodule Adyen.Account.V5.MigratedStores do
           storeReference: String.t() | nil
         }
 
-  defstruct [:businessLineId, :storeCode, :storeId, :storeReference]
+  (
+    @derive Jason.Encoder
+    defstruct [:businessLineId, :storeCode, :storeId, :storeReference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -14,16 +14,19 @@ defmodule Adyen.Checkout.V68.EftDetails do
           type: String.t() | nil
         }
 
-  defstruct [
-    :bankAccountNumber,
-    :bankCode,
-    :bankLocationId,
-    :checkoutAttemptId,
-    :ownerName,
-    :recurringDetailReference,
-    :storedPaymentMethodId,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :bankAccountNumber,
+      :bankCode,
+      :bankLocationId,
+      :checkoutAttemptId,
+      :ownerName,
+      :recurringDetailReference,
+      :storedPaymentMethodId,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -9,7 +9,10 @@ defmodule Adyen.Account.V5.PerformVerificationRequest do
           tier: integer
         }
 
-  defstruct [:accountHolderCode, :accountStateType, :tier]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountHolderCode, :accountStateType, :tier]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

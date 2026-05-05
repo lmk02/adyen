@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V40.ConfidenceScore do
 
   @type t :: %__MODULE__{errors: [String.t()] | nil, score: number | nil}
 
-  defstruct [:errors, :score]
+  (
+    @derive Jason.Encoder
+    defstruct [:errors, :score]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

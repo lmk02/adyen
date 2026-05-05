@@ -34,36 +34,39 @@ defmodule Adyen.Checkout.V70.CardDetails do
           type: String.t() | nil
         }
 
-  defstruct [
-    :billingSequenceNumber,
-    :brand,
-    :checkoutAttemptId,
-    :"cupsecureplus.smscode",
-    :cvc,
-    :encryptedCard,
-    :encryptedCardNumber,
-    :encryptedExpiryMonth,
-    :encryptedExpiryYear,
-    :encryptedPassword,
-    :encryptedSecurityCode,
-    :expiryMonth,
-    :expiryYear,
-    :fastlaneData,
-    :fundingSource,
-    :holderName,
-    :networkPaymentReference,
-    :number,
-    :recurringDetailReference,
-    :sdkData,
-    :shopperNotificationReference,
-    :srcCorrelationId,
-    :srcDigitalCardId,
-    :srcScheme,
-    :srcTokenReference,
-    :storedPaymentMethodId,
-    :threeDS2SdkVersion,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :billingSequenceNumber,
+      :brand,
+      :checkoutAttemptId,
+      :"cupsecureplus.smscode",
+      :cvc,
+      :encryptedCard,
+      :encryptedCardNumber,
+      :encryptedExpiryMonth,
+      :encryptedExpiryYear,
+      :encryptedPassword,
+      :encryptedSecurityCode,
+      :expiryMonth,
+      :expiryYear,
+      :fastlaneData,
+      :fundingSource,
+      :holderName,
+      :networkPaymentReference,
+      :number,
+      :recurringDetailReference,
+      :sdkData,
+      :shopperNotificationReference,
+      :srcCorrelationId,
+      :srcDigitalCardId,
+      :srcScheme,
+      :srcTokenReference,
+      :storedPaymentMethodId,
+      :threeDS2SdkVersion,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

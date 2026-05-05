@@ -26,28 +26,31 @@ defmodule Adyen.Checkout.V53.PaymentCompletionDetails do
           vaultToken: String.t() | nil
         }
 
-  defstruct [
-    :MD,
-    :PaReq,
-    :PaRes,
-    :authorization_token,
-    :billingToken,
-    :"cupsecureplus.smscode",
-    :facilitatorAccessToken,
-    :oneTimePasscode,
-    :orderID,
-    :payerID,
-    :payload,
-    :paymentID,
-    :paymentStatus,
-    :redirectResult,
-    :resultCode,
-    :returnUrlQueryString,
-    :threeDSResult,
-    :"threeds2.challengeResult",
-    :"threeds2.fingerprint",
-    :vaultToken
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :MD,
+      :PaReq,
+      :PaRes,
+      :authorization_token,
+      :billingToken,
+      :"cupsecureplus.smscode",
+      :facilitatorAccessToken,
+      :oneTimePasscode,
+      :orderID,
+      :payerID,
+      :payload,
+      :paymentID,
+      :paymentStatus,
+      :redirectResult,
+      :resultCode,
+      :returnUrlQueryString,
+      :threeDSResult,
+      :"threeds2.challengeResult",
+      :"threeds2.fingerprint",
+      :vaultToken
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

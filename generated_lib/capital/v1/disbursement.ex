@@ -15,17 +15,20 @@ defmodule Adyen.Capital.V1.Disbursement do
           repayment: Adyen.Capital.V1.DisbursementRepayment.t()
         }
 
-  defstruct [
-    :accountHolderId,
-    :amount,
-    :balanceAccountId,
-    :balances,
-    :fee,
-    :fundsCollections,
-    :grantId,
-    :id,
-    :repayment
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountHolderId,
+      :amount,
+      :balanceAccountId,
+      :balances,
+      :fee,
+      :fundsCollections,
+      :grantId,
+      :id,
+      :repayment
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

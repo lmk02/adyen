@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V70.ScreenDimensions do
 
   @type t :: %__MODULE__{height: integer | nil, width: integer | nil}
 
-  defstruct [:height, :width]
+  (
+    @derive Jason.Encoder
+    defstruct [:height, :width]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.Transfer.V4.CapitalGrants do
 
   @type t :: %__MODULE__{grants: [Adyen.Transfer.V4.CapitalGrant.t()]}
 
-  defstruct [:grants]
+  (
+    @derive Jason.Encoder
+    defstruct [:grants]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

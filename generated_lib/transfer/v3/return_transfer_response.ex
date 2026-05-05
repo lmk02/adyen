@@ -10,7 +10,10 @@ defmodule Adyen.Transfer.V3.ReturnTransferResponse do
           transferId: String.t() | nil
         }
 
-  defstruct [:id, :reference, :status, :transferId]
+  (
+    @derive Jason.Encoder
+    defstruct [:id, :reference, :status, :transferId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

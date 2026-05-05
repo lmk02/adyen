@@ -12,14 +12,17 @@ defmodule Adyen.Hop.V5.CollectInformation do
           shareholderDetails: boolean | nil
         }
 
-  defstruct [
-    :bankDetails,
-    :businessDetails,
-    :individualDetails,
-    :legalArrangementDetails,
-    :pciQuestionnaire,
-    :shareholderDetails
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :bankDetails,
+      :businessDetails,
+      :individualDetails,
+      :legalArrangementDetails,
+      :pciQuestionnaire,
+      :shareholderDetails
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

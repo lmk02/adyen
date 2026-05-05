@@ -22,24 +22,27 @@ defmodule Adyen.Management.V3.ReceiptPrinting do
           shopperVoid: boolean | nil
         }
 
-  defstruct [
-    :merchantApproved,
-    :merchantCancelled,
-    :merchantCaptureApproved,
-    :merchantCaptureRefused,
-    :merchantRefundApproved,
-    :merchantRefundRefused,
-    :merchantRefused,
-    :merchantVoid,
-    :shopperApproved,
-    :shopperCancelled,
-    :shopperCaptureApproved,
-    :shopperCaptureRefused,
-    :shopperRefundApproved,
-    :shopperRefundRefused,
-    :shopperRefused,
-    :shopperVoid
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :merchantApproved,
+      :merchantCancelled,
+      :merchantCaptureApproved,
+      :merchantCaptureRefused,
+      :merchantRefundApproved,
+      :merchantRefundRefused,
+      :merchantRefused,
+      :merchantVoid,
+      :shopperApproved,
+      :shopperCancelled,
+      :shopperCaptureApproved,
+      :shopperCaptureRefused,
+      :shopperRefundApproved,
+      :shopperRefundRefused,
+      :shopperRefused,
+      :shopperVoid
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

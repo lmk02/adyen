@@ -19,21 +19,24 @@ defmodule Adyen.Management.V1.Store do
           status: String.t() | nil
         }
 
-  defstruct [
-    :_links,
-    :address,
-    :businessLineIds,
-    :description,
-    :externalReferenceId,
-    :id,
-    :localizedInformation,
-    :merchantId,
-    :phoneNumber,
-    :reference,
-    :shopperStatement,
-    :splitConfiguration,
-    :status
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :_links,
+      :address,
+      :businessLineIds,
+      :description,
+      :externalReferenceId,
+      :id,
+      :localizedInformation,
+      :merchantId,
+      :phoneNumber,
+      :reference,
+      :shopperStatement,
+      :splitConfiguration,
+      :status
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

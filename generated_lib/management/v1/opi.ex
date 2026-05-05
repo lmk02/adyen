@@ -9,7 +9,10 @@ defmodule Adyen.Management.V1.Opi do
           payAtTableURL: String.t() | nil
         }
 
-  defstruct [:enablePayAtTable, :payAtTableStoreNumber, :payAtTableURL]
+  (
+    @derive Jason.Encoder
+    defstruct [:enablePayAtTable, :payAtTableStoreNumber, :payAtTableURL]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

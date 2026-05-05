@@ -12,14 +12,17 @@ defmodule Adyen.TerminalAPI.V1.AmountsResp do
           TotalRebatesAmount: number | nil
         }
 
-  defstruct [
-    :AuthorizedAmount,
-    :CashBackAmount,
-    :Currency,
-    :TipAmount,
-    :TotalFeesAmount,
-    :TotalRebatesAmount
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :AuthorizedAmount,
+      :CashBackAmount,
+      :Currency,
+      :TipAmount,
+      :TotalFeesAmount,
+      :TotalRebatesAmount
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

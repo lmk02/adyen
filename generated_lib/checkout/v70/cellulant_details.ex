@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V70.CellulantDetails do
           type: String.t() | nil
         }
 
-  defstruct [:checkoutAttemptId, :issuer, :sdkData, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:checkoutAttemptId, :issuer, :sdkData, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

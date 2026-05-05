@@ -12,7 +12,10 @@ defmodule Adyen.Checkout.V40.EcontextVoucherDetails do
           type: String.t()
         }
 
-  defstruct [:checkoutAttemptId, :firstName, :lastName, :shopperEmail, :telephoneNumber, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:checkoutAttemptId, :firstName, :lastName, :shopperEmail, :telephoneNumber, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

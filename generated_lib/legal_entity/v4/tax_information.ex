@@ -10,7 +10,10 @@ defmodule Adyen.LegalEntity.V4.TaxInformation do
           type: String.t() | nil
         }
 
-  defstruct [:country, :number, :numberAbsent, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:country, :number, :numberAbsent, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

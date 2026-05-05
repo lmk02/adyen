@@ -24,26 +24,29 @@ defmodule Adyen.Checkout.V71.LineItem do
           upc: String.t() | nil
         }
 
-  defstruct [
-    :amountExcludingTax,
-    :amountIncludingTax,
-    :brand,
-    :color,
-    :description,
-    :id,
-    :imageUrl,
-    :itemCategory,
-    :manufacturer,
-    :marketplaceSellerId,
-    :productUrl,
-    :quantity,
-    :receiverEmail,
-    :size,
-    :sku,
-    :taxAmount,
-    :taxPercentage,
-    :upc
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amountExcludingTax,
+      :amountIncludingTax,
+      :brand,
+      :color,
+      :description,
+      :id,
+      :imageUrl,
+      :itemCategory,
+      :manufacturer,
+      :marketplaceSellerId,
+      :productUrl,
+      :quantity,
+      :receiverEmail,
+      :size,
+      :sku,
+      :taxAmount,
+      :taxPercentage,
+      :upc
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

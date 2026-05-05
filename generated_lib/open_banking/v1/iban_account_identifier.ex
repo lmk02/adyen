@@ -5,7 +5,10 @@ defmodule Adyen.OpenBanking.V1.IBANAccountIdentifier do
 
   @type t :: %__MODULE__{bban: String.t(), bic: String.t(), iban: String.t()}
 
-  defstruct [:bban, :bic, :iban]
+  (
+    @derive Jason.Encoder
+    defstruct [:bban, :bic, :iban]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

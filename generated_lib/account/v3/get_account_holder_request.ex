@@ -5,7 +5,10 @@ defmodule Adyen.Account.V3.GetAccountHolderRequest do
 
   @type t :: %__MODULE__{accountCode: String.t() | nil, accountHolderCode: String.t() | nil}
 
-  defstruct [:accountCode, :accountHolderCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountCode, :accountHolderCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

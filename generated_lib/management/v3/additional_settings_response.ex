@@ -9,7 +9,10 @@ defmodule Adyen.Management.V3.AdditionalSettingsResponse do
           properties: map | nil
         }
 
-  defstruct [:excludeEventCodes, :includeEventCodes, :properties]
+  (
+    @derive Jason.Encoder
+    defstruct [:excludeEventCodes, :includeEventCodes, :properties]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

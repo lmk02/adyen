@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.Links do
 
   @type t :: %__MODULE__{self: Adyen.Management.V1.LinksElement.t()}
 
-  defstruct [:self]
+  (
+    @derive Jason.Encoder
+    defstruct [:self]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

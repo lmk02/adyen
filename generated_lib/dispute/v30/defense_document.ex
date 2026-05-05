@@ -9,7 +9,10 @@ defmodule Adyen.Dispute.V30.DefenseDocument do
           defenseDocumentTypeCode: String.t()
         }
 
-  defstruct [:content, :contentType, :defenseDocumentTypeCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:content, :contentType, :defenseDocumentTypeCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

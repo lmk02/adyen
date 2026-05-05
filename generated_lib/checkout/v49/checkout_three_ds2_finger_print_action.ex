@@ -11,7 +11,10 @@ defmodule Adyen.Checkout.V49.CheckoutThreeDs2FingerPrintAction do
           url: String.t() | nil
         }
 
-  defstruct [:paymentData, :paymentMethodType, :token, :type, :url]
+  (
+    @derive Jason.Encoder
+    defstruct [:paymentData, :paymentMethodType, :token, :type, :url]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

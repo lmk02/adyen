@@ -10,7 +10,10 @@ defmodule Adyen.Management.V3.Passcodes do
           txMenuPin: String.t() | nil
         }
 
-  defstruct [:adminMenuPin, :refundPin, :screenLockPin, :txMenuPin]
+  (
+    @derive Jason.Encoder
+    defstruct [:adminMenuPin, :refundPin, :screenLockPin, :txMenuPin]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

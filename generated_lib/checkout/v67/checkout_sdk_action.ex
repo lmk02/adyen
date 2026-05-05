@@ -11,7 +11,10 @@ defmodule Adyen.Checkout.V67.CheckoutSDKAction do
           url: String.t() | nil
         }
 
-  defstruct [:paymentData, :paymentMethodType, :sdkData, :type, :url]
+  (
+    @derive Jason.Encoder
+    defstruct [:paymentData, :paymentMethodType, :sdkData, :type, :url]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

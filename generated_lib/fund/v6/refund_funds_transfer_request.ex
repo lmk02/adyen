@@ -9,7 +9,10 @@ defmodule Adyen.Fund.V6.RefundFundsTransferRequest do
           originalReference: String.t()
         }
 
-  defstruct [:amount, :merchantReference, :originalReference]
+  (
+    @derive Jason.Encoder
+    defstruct [:amount, :merchantReference, :originalReference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

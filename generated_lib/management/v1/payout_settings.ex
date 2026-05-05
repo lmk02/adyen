@@ -13,15 +13,18 @@ defmodule Adyen.Management.V1.PayoutSettings do
           verificationStatus: String.t() | nil
         }
 
-  defstruct [
-    :allowed,
-    :enabled,
-    :enabledFromDate,
-    :id,
-    :priority,
-    :transferInstrumentId,
-    :verificationStatus
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :allowed,
+      :enabled,
+      :enabledFromDate,
+      :id,
+      :priority,
+      :transferInstrumentId,
+      :verificationStatus
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

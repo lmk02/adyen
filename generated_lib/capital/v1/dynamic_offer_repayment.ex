@@ -5,7 +5,10 @@ defmodule Adyen.Capital.V1.DynamicOfferRepayment do
 
   @type t :: %__MODULE__{term: Adyen.Capital.V1.RepaymentTerm.t()}
 
-  defstruct [:term]
+  (
+    @derive Jason.Encoder
+    defstruct [:term]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

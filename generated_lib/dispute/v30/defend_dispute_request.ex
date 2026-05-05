@@ -9,7 +9,10 @@ defmodule Adyen.Dispute.V30.DefendDisputeRequest do
           merchantAccountCode: String.t()
         }
 
-  defstruct [:defenseReasonCode, :disputePspReference, :merchantAccountCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:defenseReasonCode, :disputePspReference, :merchantAccountCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

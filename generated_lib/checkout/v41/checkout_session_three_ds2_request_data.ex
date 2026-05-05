@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V41.CheckoutSessionThreeDs2RequestData do
           workPhone: Adyen.Checkout.V41.Phone.t() | nil
         }
 
-  defstruct [:homePhone, :mobilePhone, :threeDSRequestorChallengeInd, :workPhone]
+  (
+    @derive Jason.Encoder
+    defstruct [:homePhone, :mobilePhone, :threeDSRequestorChallengeInd, :workPhone]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

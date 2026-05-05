@@ -93,7 +93,8 @@ defmodule Adyen.Generator do
         base_module: base_module,
         location: location,
         default_client: Adyen.Client
-      ]
+      ],
+      renderer: Adyen.Renderer
     )
 
     OpenAPI.run(to_string(profile_name), [spec_path])

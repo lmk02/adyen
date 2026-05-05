@@ -11,7 +11,10 @@ defmodule Adyen.Checkout.V71.CheckoutForwardRequestOptions do
           tokenize: boolean | nil
         }
 
-  defstruct [:accountUpdate, :dryRun, :networkToken, :networkTxReferencePaths, :tokenize]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountUpdate, :dryRun, :networkToken, :networkTxReferencePaths, :tokenize]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

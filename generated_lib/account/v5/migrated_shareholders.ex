@@ -5,7 +5,10 @@ defmodule Adyen.Account.V5.MigratedShareholders do
 
   @type t :: %__MODULE__{legalEntityCode: String.t() | nil, shareholderCode: String.t() | nil}
 
-  defstruct [:legalEntityCode, :shareholderCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:legalEntityCode, :shareholderCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

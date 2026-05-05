@@ -11,7 +11,16 @@ defmodule Adyen.Account.V5.GetAccountHolderStatusResponse do
           resultCode: String.t() | nil
         }
 
-  defstruct [:accountHolderCode, :accountHolderStatus, :invalidFields, :pspReference, :resultCode]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountHolderCode,
+      :accountHolderStatus,
+      :invalidFields,
+      :pspReference,
+      :resultCode
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

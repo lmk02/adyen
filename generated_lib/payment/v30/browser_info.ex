@@ -5,7 +5,10 @@ defmodule Adyen.Payment.V30.BrowserInfo do
 
   @type t :: %__MODULE__{acceptHeader: String.t(), userAgent: String.t()}
 
-  defstruct [:acceptHeader, :userAgent]
+  (
+    @derive Jason.Encoder
+    defstruct [:acceptHeader, :userAgent]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

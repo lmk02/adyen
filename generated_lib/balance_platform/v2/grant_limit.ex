@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.GrantLimit do
 
   @type t :: %__MODULE__{amount: Adyen.BalancePlatform.V2.Amount.t() | nil}
 
-  defstruct [:amount]
+  (
+    @derive Jason.Encoder
+    defstruct [:amount]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -11,7 +11,10 @@ defmodule Adyen.Management.V1.Nexo do
           notification: Adyen.Management.V1.Notification.t() | nil
         }
 
-  defstruct [:displayUrls, :encryptionKey, :eventUrls, :nexoEventUrls, :notification]
+  (
+    @derive Jason.Encoder
+    defstruct [:displayUrls, :encryptionKey, :eventUrls, :nexoEventUrls, :notification]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.TerminalAPI.V1.TransactionIDType do
 
   @type t :: %__MODULE__{TimeStamp: DateTime.t(), TransactionID: String.t()}
 
-  defstruct [:TimeStamp, :TransactionID]
+  (
+    @derive Jason.Encoder
+    defstruct [:TimeStamp, :TransactionID]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

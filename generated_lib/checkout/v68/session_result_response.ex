@@ -11,7 +11,10 @@ defmodule Adyen.Checkout.V68.SessionResultResponse do
           status: String.t() | nil
         }
 
-  defstruct [:additionalData, :id, :payments, :reference, :status]
+  (
+    @derive Jason.Encoder
+    defstruct [:additionalData, :id, :payments, :reference, :status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -11,7 +11,10 @@ defmodule Adyen.TerminalAPI.V1.MessageReference do
           ServiceID: String.t() | nil
         }
 
-  defstruct [:DeviceID, :MessageCategory, :POIID, :SaleID, :ServiceID]
+  (
+    @derive Jason.Encoder
+    defstruct [:DeviceID, :MessageCategory, :POIID, :SaleID, :ServiceID]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

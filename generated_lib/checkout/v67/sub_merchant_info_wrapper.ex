@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V67.SubMerchantInfoWrapper do
 
   @type t :: %__MODULE__{SubMerchant: Adyen.Checkout.V67.SubMerchantInfo.t() | nil}
 
-  defstruct [:SubMerchant]
+  (
+    @derive Jason.Encoder
+    defstruct [:SubMerchant]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

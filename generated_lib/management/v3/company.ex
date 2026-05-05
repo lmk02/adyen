@@ -13,7 +13,10 @@ defmodule Adyen.Management.V3.Company do
           status: String.t() | nil
         }
 
-  defstruct [:_links, :dataCenters, :description, :id, :name, :reference, :status]
+  (
+    @derive Jason.Encoder
+    defstruct [:_links, :dataCenters, :description, :id, :name, :reference, :status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

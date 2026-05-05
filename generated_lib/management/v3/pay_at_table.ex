@@ -9,7 +9,10 @@ defmodule Adyen.Management.V3.PayAtTable do
           paymentInstrument: String.t() | nil
         }
 
-  defstruct [:authenticationMethod, :enablePayAtTable, :paymentInstrument]
+  (
+    @derive Jason.Encoder
+    defstruct [:authenticationMethod, :enablePayAtTable, :paymentInstrument]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

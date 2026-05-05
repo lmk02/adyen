@@ -9,7 +9,10 @@ defmodule Adyen.Management.V3.AdditionalCommission do
           variablePercentage: integer | nil
         }
 
-  defstruct [:balanceAccountId, :fixedAmount, :variablePercentage]
+  (
+    @derive Jason.Encoder
+    defstruct [:balanceAccountId, :fixedAmount, :variablePercentage]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

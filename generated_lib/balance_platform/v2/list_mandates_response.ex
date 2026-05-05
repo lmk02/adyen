@@ -8,7 +8,10 @@ defmodule Adyen.BalancePlatform.V2.ListMandatesResponse do
           mandates: [Adyen.BalancePlatform.V2.Mandate.t()]
         }
 
-  defstruct [:link, :mandates]
+  (
+    @derive Jason.Encoder
+    defstruct [:link, :mandates]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

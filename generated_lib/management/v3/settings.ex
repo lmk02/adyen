@@ -5,7 +5,10 @@ defmodule Adyen.Management.V3.Settings do
 
   @type t :: %__MODULE__{band: String.t() | nil, roaming: boolean | nil, timeout: integer | nil}
 
-  defstruct [:band, :roaming, :timeout]
+  (
+    @derive Jason.Encoder
+    defstruct [:band, :roaming, :timeout]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

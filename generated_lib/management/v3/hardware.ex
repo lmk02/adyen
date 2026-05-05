@@ -9,7 +9,10 @@ defmodule Adyen.Management.V3.Hardware do
           restartHour: integer | nil
         }
 
-  defstruct [:displayMaximumBackLight, :resetTotalsHour, :restartHour]
+  (
+    @derive Jason.Encoder
+    defstruct [:displayMaximumBackLight, :resetTotalsHour, :restartHour]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

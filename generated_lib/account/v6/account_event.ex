@@ -9,7 +9,10 @@ defmodule Adyen.Account.V6.AccountEvent do
           reason: String.t() | nil
         }
 
-  defstruct [:event, :executionDate, :reason]
+  (
+    @derive Jason.Encoder
+    defstruct [:event, :executionDate, :reason]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

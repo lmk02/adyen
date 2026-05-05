@@ -9,7 +9,10 @@ defmodule Adyen.TfmAPI.V1.GetTerminalsUnderAccountResponse do
           merchantAccounts: [Adyen.TfmAPI.V1.MerchantAccount.t()] | nil
         }
 
-  defstruct [:companyAccount, :inventoryTerminals, :merchantAccounts]
+  (
+    @derive Jason.Encoder
+    defstruct [:companyAccount, :inventoryTerminals, :merchantAccounts]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

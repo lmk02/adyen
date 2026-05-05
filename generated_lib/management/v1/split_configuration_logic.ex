@@ -23,25 +23,28 @@ defmodule Adyen.Management.V1.SplitConfigurationLogic do
           tip: String.t() | nil
         }
 
-  defstruct [
-    :acquiringFees,
-    :additionalCommission,
-    :adyenCommission,
-    :adyenFees,
-    :adyenMarkup,
-    :chargeback,
-    :chargebackCostAllocation,
-    :commission,
-    :interchange,
-    :paymentFee,
-    :refund,
-    :refundCostAllocation,
-    :remainder,
-    :schemeFee,
-    :splitLogicId,
-    :surcharge,
-    :tip
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :acquiringFees,
+      :additionalCommission,
+      :adyenCommission,
+      :adyenFees,
+      :adyenMarkup,
+      :chargeback,
+      :chargebackCostAllocation,
+      :commission,
+      :interchange,
+      :paymentFee,
+      :refund,
+      :refundCostAllocation,
+      :remainder,
+      :schemeFee,
+      :splitLogicId,
+      :surcharge,
+      :tip
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

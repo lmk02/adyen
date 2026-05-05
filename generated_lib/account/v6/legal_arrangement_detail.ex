@@ -15,17 +15,20 @@ defmodule Adyen.Account.V6.LegalArrangementDetail do
           type: String.t()
         }
 
-  defstruct [
-    :address,
-    :legalArrangementCode,
-    :legalArrangementEntities,
-    :legalArrangementReference,
-    :legalForm,
-    :name,
-    :registrationNumber,
-    :taxNumber,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :address,
+      :legalArrangementCode,
+      :legalArrangementEntities,
+      :legalArrangementReference,
+      :legalForm,
+      :name,
+      :registrationNumber,
+      :taxNumber,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

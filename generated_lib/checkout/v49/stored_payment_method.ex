@@ -18,20 +18,23 @@ defmodule Adyen.Checkout.V49.StoredPaymentMethod do
           type: String.t() | nil
         }
 
-  defstruct [
-    :bankAccountNumber,
-    :bankLocationId,
-    :brand,
-    :expiryMonth,
-    :expiryYear,
-    :holderName,
-    :id,
-    :lastFour,
-    :name,
-    :shopperEmail,
-    :supportedShopperInteractions,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :bankAccountNumber,
+      :bankLocationId,
+      :brand,
+      :expiryMonth,
+      :expiryYear,
+      :holderName,
+      :id,
+      :lastFour,
+      :name,
+      :shopperEmail,
+      :supportedShopperInteractions,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

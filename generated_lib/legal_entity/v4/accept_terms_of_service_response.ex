@@ -12,7 +12,10 @@ defmodule Adyen.LegalEntity.V4.AcceptTermsOfServiceResponse do
           type: String.t() | nil
         }
 
-  defstruct [:acceptedBy, :id, :ipAddress, :language, :termsOfServiceDocumentId, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:acceptedBy, :id, :ipAddress, :language, :termsOfServiceDocumentId, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

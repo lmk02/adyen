@@ -12,14 +12,17 @@ defmodule Adyen.Fund.V3.RefundFundsTransferResponse do
           submittedAsync: boolean | nil
         }
 
-  defstruct [
-    :merchantReference,
-    :message,
-    :originalReference,
-    :pspReference,
-    :resultCode,
-    :submittedAsync
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :merchantReference,
+      :message,
+      :originalReference,
+      :pspReference,
+      :resultCode,
+      :submittedAsync
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

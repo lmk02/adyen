@@ -10,7 +10,10 @@ defmodule Adyen.BalancePlatform.V2.PinChangeRequest do
           token: String.t()
         }
 
-  defstruct [:encryptedKey, :encryptedPinBlock, :paymentInstrumentId, :token]
+  (
+    @derive Jason.Encoder
+    defstruct [:encryptedKey, :encryptedPinBlock, :paymentInstrumentId, :token]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -9,7 +9,10 @@ defmodule Adyen.Checkout.V40.StoredDetails do
           emailAddress: String.t() | nil
         }
 
-  defstruct [:bank, :card, :emailAddress]
+  (
+    @derive Jason.Encoder
+    defstruct [:bank, :card, :emailAddress]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.Account.V3.GetTaxFormRequest do
 
   @type t :: %__MODULE__{accountHolderCode: String.t(), formType: String.t(), year: integer}
 
-  defstruct [:accountHolderCode, :formType, :year]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountHolderCode, :formType, :year]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

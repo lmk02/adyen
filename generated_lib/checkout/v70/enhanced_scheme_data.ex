@@ -8,7 +8,10 @@ defmodule Adyen.Checkout.V70.EnhancedSchemeData do
           levelTwoThree: Adyen.Checkout.V70.LevelTwoThree.t() | nil
         }
 
-  defstruct [:airline, :levelTwoThree]
+  (
+    @derive Jason.Encoder
+    defstruct [:airline, :levelTwoThree]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

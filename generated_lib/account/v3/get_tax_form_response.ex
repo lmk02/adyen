@@ -11,7 +11,10 @@ defmodule Adyen.Account.V3.GetTaxFormResponse do
           submittedAsync: boolean | nil
         }
 
-  defstruct [:content, :contentType, :pspReference, :resultCode, :submittedAsync]
+  (
+    @derive Jason.Encoder
+    defstruct [:content, :contentType, :pspReference, :resultCode, :submittedAsync]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

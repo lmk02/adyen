@@ -5,7 +5,10 @@ defmodule Adyen.OpenBanking.V1.BSBAccountIdentifier do
 
   @type t :: %__MODULE__{accountNumber: String.t(), bsbCode: String.t()}
 
-  defstruct [:accountNumber, :bsbCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountNumber, :bsbCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -9,7 +9,10 @@ defmodule Adyen.TerminalAPI.V1.LoyaltyResult do
           LoyaltyAcquirerData: Adyen.TerminalAPI.V1.LoyaltyAcquirerData.t() | nil
         }
 
-  defstruct [:CurrentBalance, :LoyaltyAccount, :LoyaltyAcquirerData]
+  (
+    @derive Jason.Encoder
+    defstruct [:CurrentBalance, :LoyaltyAccount, :LoyaltyAcquirerData]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

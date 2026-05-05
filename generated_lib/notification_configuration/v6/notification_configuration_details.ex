@@ -17,18 +17,21 @@ defmodule Adyen.NotificationConfiguration.V6.NotificationConfigurationDetails do
           sslProtocol: String.t() | nil
         }
 
-  defstruct [
-    :active,
-    :apiVersion,
-    :description,
-    :eventConfigs,
-    :hmacSignatureKey,
-    :notificationId,
-    :notifyPassword,
-    :notifyURL,
-    :notifyUsername,
-    :sslProtocol
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :active,
+      :apiVersion,
+      :description,
+      :eventConfigs,
+      :hmacSignatureKey,
+      :notificationId,
+      :notifyPassword,
+      :notifyURL,
+      :notifyUsername,
+      :sslProtocol
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V40.CheckoutNetworkTokenOption do
 
   @type t :: %__MODULE__{includeCryptogram: boolean | nil, useNetworkToken: boolean | nil}
 
-  defstruct [:includeCryptogram, :useNetworkToken]
+  (
+    @derive Jason.Encoder
+    defstruct [:includeCryptogram, :useNetworkToken]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

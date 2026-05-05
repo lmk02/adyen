@@ -5,7 +5,10 @@ defmodule Adyen.Management.V3.AfterpayTouchInfo do
 
   @type t :: %__MODULE__{supportEmail: String.t() | nil, supportUrl: String.t()}
 
-  defstruct [:supportEmail, :supportUrl]
+  (
+    @derive Jason.Encoder
+    defstruct [:supportEmail, :supportUrl]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

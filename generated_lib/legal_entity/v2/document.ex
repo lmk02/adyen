@@ -19,21 +19,24 @@ defmodule Adyen.LegalEntity.V2.Document do
           type: String.t()
         }
 
-  defstruct [
-    :attachment,
-    :attachments,
-    :creationDate,
-    :description,
-    :expiryDate,
-    :fileName,
-    :id,
-    :issuerCountry,
-    :issuerState,
-    :modificationDate,
-    :number,
-    :owner,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :attachment,
+      :attachments,
+      :creationDate,
+      :description,
+      :expiryDate,
+      :fileName,
+      :id,
+      :issuerCountry,
+      :issuerState,
+      :modificationDate,
+      :number,
+      :owner,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

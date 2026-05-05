@@ -26,28 +26,31 @@ defmodule Adyen.Checkout.V71.TokenMandate do
           txVariant: String.t()
         }
 
-  defstruct [
-    :accountIdType,
-    :amount,
-    :amountRule,
-    :billingAttemptsRule,
-    :billingDay,
-    :count,
-    :currency,
-    :endsAt,
-    :frequency,
-    :mandateId,
-    :maskedAccountId,
-    :minAmount,
-    :providerId,
-    :recurringAmount,
-    :recurringStatement,
-    :remarks,
-    :retryPolicy,
-    :startsAt,
-    :status,
-    :txVariant
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountIdType,
+      :amount,
+      :amountRule,
+      :billingAttemptsRule,
+      :billingDay,
+      :count,
+      :currency,
+      :endsAt,
+      :frequency,
+      :mandateId,
+      :maskedAccountId,
+      :minAmount,
+      :providerId,
+      :recurringAmount,
+      :recurringStatement,
+      :remarks,
+      :retryPolicy,
+      :startsAt,
+      :status,
+      :txVariant
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

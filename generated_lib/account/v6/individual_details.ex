@@ -8,7 +8,10 @@ defmodule Adyen.Account.V6.IndividualDetails do
           personalData: Adyen.Account.V6.ViasPersonalData.t() | nil
         }
 
-  defstruct [:name, :personalData]
+  (
+    @derive Jason.Encoder
+    defstruct [:name, :personalData]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

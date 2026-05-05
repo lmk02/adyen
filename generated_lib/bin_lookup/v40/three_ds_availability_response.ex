@@ -10,7 +10,10 @@ defmodule Adyen.BinLookup.V40.ThreeDSAvailabilityResponse do
           threeDS2supported: boolean | nil
         }
 
-  defstruct [:dsPublicKeys, :threeDS1Supported, :threeDS2CardRangeDetails, :threeDS2supported]
+  (
+    @derive Jason.Encoder
+    defstruct [:dsPublicKeys, :threeDS1Supported, :threeDS2CardRangeDetails, :threeDS2supported]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

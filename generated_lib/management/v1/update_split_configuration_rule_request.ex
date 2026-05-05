@@ -10,7 +10,10 @@ defmodule Adyen.Management.V1.UpdateSplitConfigurationRuleRequest do
           shopperInteraction: String.t()
         }
 
-  defstruct [:currency, :fundingSource, :paymentMethod, :shopperInteraction]
+  (
+    @derive Jason.Encoder
+    defstruct [:currency, :fundingSource, :paymentMethod, :shopperInteraction]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

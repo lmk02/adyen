@@ -9,7 +9,10 @@ defmodule Adyen.BalancePlatform.V1.PersonalData do
           nationality: String.t() | nil
         }
 
-  defstruct [:dateOfBirth, :idNumber, :nationality]
+  (
+    @derive Jason.Encoder
+    defstruct [:dateOfBirth, :idNumber, :nationality]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

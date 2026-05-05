@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.Name2 do
 
   @type t :: %__MODULE__{firstName: String.t() | nil, lastName: String.t() | nil}
 
-  defstruct [:firstName, :lastName]
+  (
+    @derive Jason.Encoder
+    defstruct [:firstName, :lastName]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

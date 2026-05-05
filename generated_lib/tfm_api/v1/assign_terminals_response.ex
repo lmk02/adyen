@@ -5,7 +5,10 @@ defmodule Adyen.TfmAPI.V1.AssignTerminalsResponse do
 
   @type t :: %__MODULE__{results: map}
 
-  defstruct [:results]
+  (
+    @derive Jason.Encoder
+    defstruct [:results]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.Payment.V68.AuthenticationResultRequest do
 
   @type t :: %__MODULE__{merchantAccount: String.t(), pspReference: String.t()}
 
-  defstruct [:merchantAccount, :pspReference]
+  (
+    @derive Jason.Encoder
+    defstruct [:merchantAccount, :pspReference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

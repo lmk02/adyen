@@ -8,7 +8,10 @@ defmodule Adyen.Management.V1.Refunds do
           unreferenced: Adyen.Management.V1.Unreferenced.t() | nil
         }
 
-  defstruct [:referenced, :unreferenced]
+  (
+    @derive Jason.Encoder
+    defstruct [:referenced, :unreferenced]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V46.Redirect do
 
   @type t :: %__MODULE__{data: map | nil, method: String.t() | nil, url: String.t() | nil}
 
-  defstruct [:data, :method, :url]
+  (
+    @derive Jason.Encoder
+    defstruct [:data, :method, :url]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

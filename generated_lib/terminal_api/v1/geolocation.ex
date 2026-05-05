@@ -8,7 +8,10 @@ defmodule Adyen.TerminalAPI.V1.Geolocation do
           UTMCoordinates: Adyen.TerminalAPI.V1.UTMCoordinates.t() | nil
         }
 
-  defstruct [:GeographicCoordinates, :UTMCoordinates]
+  (
+    @derive Jason.Encoder
+    defstruct [:GeographicCoordinates, :UTMCoordinates]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

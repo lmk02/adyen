@@ -5,7 +5,10 @@ defmodule Adyen.Account.V5.KYCCheckSummary do
 
   @type t :: %__MODULE__{kycCheckCode: integer | nil, kycCheckDescription: String.t() | nil}
 
-  defstruct [:kycCheckCode, :kycCheckDescription]
+  (
+    @derive Jason.Encoder
+    defstruct [:kycCheckCode, :kycCheckDescription]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

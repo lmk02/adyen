@@ -10,7 +10,10 @@ defmodule Adyen.Management.V1.DinersInfo do
           transactionDescription: Adyen.Management.V1.TransactionDescriptionInfo.t() | nil
         }
 
-  defstruct [:midNumber, :reuseMidNumber, :serviceLevel, :transactionDescription]
+  (
+    @derive Jason.Encoder
+    defstruct [:midNumber, :reuseMidNumber, :serviceLevel, :transactionDescription]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -11,7 +11,10 @@ defmodule Adyen.Checkout.V40.CheckoutOutgoingForwardRequest do
           urlSuffix: String.t() | nil
         }
 
-  defstruct [:body, :credentials, :headers, :httpMethod, :urlSuffix]
+  (
+    @derive Jason.Encoder
+    defstruct [:body, :credentials, :headers, :httpMethod, :urlSuffix]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

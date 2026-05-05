@@ -18,20 +18,23 @@ defmodule Adyen.LegalEntity.V2.BankAccountInfo do
           trustedSource: boolean | nil
         }
 
-  defstruct [
-    :accountNumber,
-    :accountType,
-    :bankBicSwift,
-    :bankCity,
-    :bankCode,
-    :bankName,
-    :branchCode,
-    :checkCode,
-    :countryCode,
-    :currencyCode,
-    :iban,
-    :trustedSource
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountNumber,
+      :accountType,
+      :bankBicSwift,
+      :bankCity,
+      :bankCode,
+      :bankName,
+      :branchCode,
+      :checkCode,
+      :countryCode,
+      :currencyCode,
+      :iban,
+      :trustedSource
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

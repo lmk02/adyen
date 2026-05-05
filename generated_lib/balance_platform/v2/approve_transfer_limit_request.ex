@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.ApproveTransferLimitRequest do
 
   @type t :: %__MODULE__{transferLimitIds: [String.t()]}
 
-  defstruct [:transferLimitIds]
+  (
+    @derive Jason.Encoder
+    defstruct [:transferLimitIds]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

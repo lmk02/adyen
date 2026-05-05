@@ -24,26 +24,29 @@ defmodule Adyen.Checkout.V49.AccountInfo do
           workPhone: String.t() | nil
         }
 
-  defstruct [
-    :accountAgeIndicator,
-    :accountChangeDate,
-    :accountChangeIndicator,
-    :accountCreationDate,
-    :addCardAttemptsDay,
-    :deliveryAddressUsageDate,
-    :deliveryAddressUsageIndicator,
-    :homePhone,
-    :mobilePhone,
-    :passwordChangeDate,
-    :passwordChangeIndicator,
-    :pastTransactionsDay,
-    :pastTransactionsYear,
-    :paymentAccountAge,
-    :paymentAccountIndicator,
-    :purchasesLast6Months,
-    :suspiciousActivity,
-    :workPhone
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountAgeIndicator,
+      :accountChangeDate,
+      :accountChangeIndicator,
+      :accountCreationDate,
+      :addCardAttemptsDay,
+      :deliveryAddressUsageDate,
+      :deliveryAddressUsageIndicator,
+      :homePhone,
+      :mobilePhone,
+      :passwordChangeDate,
+      :passwordChangeIndicator,
+      :pastTransactionsDay,
+      :pastTransactionsYear,
+      :paymentAccountAge,
+      :paymentAccountIndicator,
+      :purchasesLast6Months,
+      :suspiciousActivity,
+      :workPhone
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

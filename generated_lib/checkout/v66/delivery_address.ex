@@ -14,16 +14,19 @@ defmodule Adyen.Checkout.V66.DeliveryAddress do
           street: String.t()
         }
 
-  defstruct [
-    :city,
-    :country,
-    :firstName,
-    :houseNumberOrName,
-    :lastName,
-    :postalCode,
-    :stateOrProvince,
-    :street
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :city,
+      :country,
+      :firstName,
+      :houseNumberOrName,
+      :lastName,
+      :postalCode,
+      :stateOrProvince,
+      :street
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

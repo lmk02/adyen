@@ -20,22 +20,25 @@ defmodule Adyen.Checkout.V71.MerchantRiskIndicator do
           shipIndicator: String.t() | nil
         }
 
-  defstruct [
-    :addressMatch,
-    :deliveryAddressIndicator,
-    :deliveryEmail,
-    :deliveryEmailAddress,
-    :deliveryTimeframe,
-    :giftCardAmount,
-    :giftCardCount,
-    :giftCardCurr,
-    :preOrderDate,
-    :preOrderPurchase,
-    :preOrderPurchaseInd,
-    :reorderItems,
-    :reorderItemsInd,
-    :shipIndicator
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :addressMatch,
+      :deliveryAddressIndicator,
+      :deliveryEmail,
+      :deliveryEmailAddress,
+      :deliveryTimeframe,
+      :giftCardAmount,
+      :giftCardCount,
+      :giftCardCurr,
+      :preOrderDate,
+      :preOrderPurchase,
+      :preOrderPurchaseInd,
+      :reorderItems,
+      :reorderItemsInd,
+      :shipIndicator
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

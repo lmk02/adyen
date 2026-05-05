@@ -15,17 +15,20 @@ defmodule Adyen.TerminalAPI.V1.OutputText do
           Text: String.t()
         }
 
-  defstruct [
-    :Alignment,
-    :CharacterHeight,
-    :CharacterSet,
-    :CharacterStyle,
-    :CharacterWidth,
-    :EndOfLineFlag,
-    :StartColumn,
-    :StartRow,
-    :Text
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :Alignment,
+      :CharacterHeight,
+      :CharacterSet,
+      :CharacterStyle,
+      :CharacterWidth,
+      :EndOfLineFlag,
+      :StartColumn,
+      :StartRow,
+      :Text
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

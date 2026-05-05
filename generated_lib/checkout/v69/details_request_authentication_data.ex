@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V69.DetailsRequestAuthenticationData do
 
   @type t :: %__MODULE__{authenticationOnly: boolean | nil}
 
-  defstruct [:authenticationOnly]
+  (
+    @derive Jason.Encoder
+    defstruct [:authenticationOnly]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

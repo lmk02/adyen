@@ -9,7 +9,10 @@ defmodule Adyen.Recurring.V67.RecurringDetailsRequest do
           shopperReference: String.t()
         }
 
-  defstruct [:merchantAccount, :recurring, :shopperReference]
+  (
+    @derive Jason.Encoder
+    defstruct [:merchantAccount, :recurring, :shopperReference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

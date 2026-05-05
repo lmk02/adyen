@@ -13,15 +13,18 @@ defmodule Adyen.BalancePlatform.V1.CardInfo do
           formFactor: String.t()
         }
 
-  defstruct [
-    :authentication,
-    :brand,
-    :brandVariant,
-    :cardholderName,
-    :configuration,
-    :deliveryContact,
-    :formFactor
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :authentication,
+      :brand,
+      :brandVariant,
+      :cardholderName,
+      :configuration,
+      :deliveryContact,
+      :formFactor
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

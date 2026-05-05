@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V53.CheckoutForwardResponseFromUrl do
 
   @type t :: %__MODULE__{body: String.t() | nil, headers: map | nil, status: integer | nil}
 
-  defstruct [:body, :headers, :status]
+  (
+    @derive Jason.Encoder
+    defstruct [:body, :headers, :status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -13,15 +13,18 @@ defmodule Adyen.Account.V5.DocumentDetail do
           signatoryCode: String.t() | nil
         }
 
-  defstruct [
-    :accountHolderCode,
-    :bankAccountUUID,
-    :description,
-    :documentType,
-    :filename,
-    :shareholderCode,
-    :signatoryCode
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountHolderCode,
+      :bankAccountUUID,
+      :description,
+      :documentType,
+      :filename,
+      :shareholderCode,
+      :signatoryCode
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

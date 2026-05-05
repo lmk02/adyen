@@ -14,16 +14,19 @@ defmodule Adyen.BalancePlatform.V2.Mandate do
           updatedAt: DateTime.t() | nil
         }
 
-  defstruct [
-    :balanceAccountId,
-    :counterparty,
-    :createdAt,
-    :id,
-    :paymentInstrumentId,
-    :status,
-    :type,
-    :updatedAt
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :balanceAccountId,
+      :counterparty,
+      :createdAt,
+      :id,
+      :paymentInstrumentId,
+      :status,
+      :type,
+      :updatedAt
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

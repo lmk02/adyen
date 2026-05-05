@@ -11,7 +11,10 @@ defmodule Adyen.LegalEntity.V1.OnboardingTheme do
           updatedAt: DateTime.t() | nil
         }
 
-  defstruct [:createdAt, :description, :id, :properties, :updatedAt]
+  (
+    @derive Jason.Encoder
+    defstruct [:createdAt, :description, :id, :properties, :updatedAt]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

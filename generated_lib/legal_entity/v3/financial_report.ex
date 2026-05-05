@@ -12,14 +12,17 @@ defmodule Adyen.LegalEntity.V3.FinancialReport do
           netAssets: String.t() | nil
         }
 
-  defstruct [
-    :annualTurnover,
-    :balanceSheetTotal,
-    :currencyOfFinancialData,
-    :dateOfFinancialData,
-    :employeeCount,
-    :netAssets
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :annualTurnover,
+      :balanceSheetTotal,
+      :currencyOfFinancialData,
+      :dateOfFinancialData,
+      :employeeCount,
+      :netAssets
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -12,7 +12,10 @@ defmodule Adyen.Capital.V1.Grant do
           status: Adyen.Capital.V1.Status.t()
         }
 
-  defstruct [:balances, :counterparty, :grantAccountId, :grantOfferId, :id, :status]
+  (
+    @derive Jason.Encoder
+    defstruct [:balances, :counterparty, :grantAccountId, :grantOfferId, :id, :status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

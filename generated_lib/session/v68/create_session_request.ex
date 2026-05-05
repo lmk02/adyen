@@ -9,7 +9,10 @@ defmodule Adyen.Session.V68.CreateSessionRequest do
           store: String.t() | nil
         }
 
-  defstruct [:merchantAccount, :setupToken, :store]
+  (
+    @derive Jason.Encoder
+    defstruct [:merchantAccount, :setupToken, :store]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

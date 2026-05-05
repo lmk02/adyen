@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V70.Amounts do
 
   @type t :: %__MODULE__{currency: String.t(), values: [integer]}
 
-  defstruct [:currency, :values]
+  (
+    @derive Jason.Encoder
+    defstruct [:currency, :values]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

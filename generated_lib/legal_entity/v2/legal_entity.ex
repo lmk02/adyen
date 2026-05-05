@@ -20,22 +20,25 @@ defmodule Adyen.LegalEntity.V2.LegalEntity do
           verificationPlan: String.t() | nil
         }
 
-  defstruct [
-    :capabilities,
-    :documentDetails,
-    :documents,
-    :entityAssociations,
-    :id,
-    :individual,
-    :organization,
-    :reference,
-    :soleProprietorship,
-    :transferInstruments,
-    :trust,
-    :type,
-    :unincorporatedPartnership,
-    :verificationPlan
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :capabilities,
+      :documentDetails,
+      :documents,
+      :entityAssociations,
+      :id,
+      :individual,
+      :organization,
+      :reference,
+      :soleProprietorship,
+      :transferInstruments,
+      :trust,
+      :type,
+      :unincorporatedPartnership,
+      :verificationPlan
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

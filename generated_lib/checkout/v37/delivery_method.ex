@@ -11,7 +11,10 @@ defmodule Adyen.Checkout.V37.DeliveryMethod do
           type: String.t() | nil
         }
 
-  defstruct [:amount, :description, :reference, :selected, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:amount, :description, :reference, :selected, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

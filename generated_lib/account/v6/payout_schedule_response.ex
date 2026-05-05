@@ -5,7 +5,10 @@ defmodule Adyen.Account.V6.PayoutScheduleResponse do
 
   @type t :: %__MODULE__{nextScheduledPayout: DateTime.t() | nil, schedule: String.t() | nil}
 
-  defstruct [:nextScheduledPayout, :schedule]
+  (
+    @derive Jason.Encoder
+    defstruct [:nextScheduledPayout, :schedule]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

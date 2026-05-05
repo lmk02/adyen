@@ -5,7 +5,10 @@ defmodule Adyen.Transfer.V4.IssuingTransactionData do
 
   @type t :: %__MODULE__{captureCycleId: String.t() | nil, type: String.t()}
 
-  defstruct [:captureCycleId, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:captureCycleId, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

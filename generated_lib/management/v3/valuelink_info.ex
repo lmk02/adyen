@@ -10,7 +10,10 @@ defmodule Adyen.Management.V3.ValuelinkInfo do
           terminalId: String.t() | nil
         }
 
-  defstruct [:authorisationMid, :pinSupport, :submitterId, :terminalId]
+  (
+    @derive Jason.Encoder
+    defstruct [:authorisationMid, :pinSupport, :submitterId, :terminalId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

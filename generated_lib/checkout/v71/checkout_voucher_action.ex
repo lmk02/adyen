@@ -27,29 +27,32 @@ defmodule Adyen.Checkout.V71.CheckoutVoucherAction do
           url: String.t() | nil
         }
 
-  defstruct [
-    :alternativeReference,
-    :collectionInstitutionNumber,
-    :downloadUrl,
-    :entity,
-    :expiresAt,
-    :initialAmount,
-    :instructionsUrl,
-    :issuer,
-    :maskedTelephoneNumber,
-    :merchantName,
-    :merchantReference,
-    :passCreationToken,
-    :paymentData,
-    :paymentMethodType,
-    :reference,
-    :shopperEmail,
-    :shopperName,
-    :surcharge,
-    :totalAmount,
-    :type,
-    :url
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :alternativeReference,
+      :collectionInstitutionNumber,
+      :downloadUrl,
+      :entity,
+      :expiresAt,
+      :initialAmount,
+      :instructionsUrl,
+      :issuer,
+      :maskedTelephoneNumber,
+      :merchantName,
+      :merchantReference,
+      :passCreationToken,
+      :paymentData,
+      :paymentMethodType,
+      :reference,
+      :shopperEmail,
+      :shopperName,
+      :surcharge,
+      :totalAmount,
+      :type,
+      :url
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

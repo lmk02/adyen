@@ -5,7 +5,10 @@ defmodule Adyen.Management.V3.ReprocessAndroidAppResponse do
 
   @type t :: %__MODULE__{Message: String.t() | nil}
 
-  defstruct [:Message]
+  (
+    @derive Jason.Encoder
+    defstruct [:Message]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

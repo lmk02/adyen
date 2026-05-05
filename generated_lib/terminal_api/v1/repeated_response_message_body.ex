@@ -12,14 +12,17 @@ defmodule Adyen.TerminalAPI.V1.RepeatedResponseMessageBody do
           StoredValueResponse: Adyen.TerminalAPI.V1.StoredValueResponse.t() | nil
         }
 
-  defstruct [
-    :CardAcquisitionResponse,
-    :CardReaderAPDUResponse,
-    :LoyaltyResponse,
-    :PaymentResponse,
-    :ReversalResponse,
-    :StoredValueResponse
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :CardAcquisitionResponse,
+      :CardReaderAPDUResponse,
+      :LoyaltyResponse,
+      :PaymentResponse,
+      :ReversalResponse,
+      :StoredValueResponse
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

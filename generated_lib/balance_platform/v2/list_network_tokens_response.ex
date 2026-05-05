@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.ListNetworkTokensResponse do
 
   @type t :: %__MODULE__{networkTokens: [Adyen.BalancePlatform.V2.NetworkToken.t()] | nil}
 
-  defstruct [:networkTokens]
+  (
+    @derive Jason.Encoder
+    defstruct [:networkTokens]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

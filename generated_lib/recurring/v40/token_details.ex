@@ -5,7 +5,10 @@ defmodule Adyen.Recurring.V40.TokenDetails do
 
   @type t :: %__MODULE__{tokenData: map | nil, tokenDataType: String.t() | nil}
 
-  defstruct [:tokenData, :tokenDataType]
+  (
+    @derive Jason.Encoder
+    defstruct [:tokenData, :tokenDataType]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

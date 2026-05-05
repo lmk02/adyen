@@ -7,7 +7,10 @@ defmodule Adyen.Fund.V3.TransactionListForAccountWrapper do
           TransactionListForAccount: Adyen.Fund.V3.TransactionListForAccount.t() | nil
         }
 
-  defstruct [:TransactionListForAccount]
+  (
+    @derive Jason.Encoder
+    defstruct [:TransactionListForAccount]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

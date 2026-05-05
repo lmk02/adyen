@@ -13,7 +13,10 @@ defmodule Adyen.Management.V3.CreateMerchantUserRequest do
           username: String.t()
         }
 
-  defstruct [:accountGroups, :email, :loginMethod, :name, :roles, :timeZoneCode, :username]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountGroups, :email, :loginMethod, :name, :roles, :timeZoneCode, :username]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

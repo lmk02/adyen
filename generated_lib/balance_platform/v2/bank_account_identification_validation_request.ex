@@ -23,7 +23,10 @@ defmodule Adyen.BalancePlatform.V2.BankAccountIdentificationValidationRequest do
             | Adyen.BalancePlatform.V2.USLocalAccountIdentification.t()
         }
 
-  defstruct [:accountIdentification]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountIdentification]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

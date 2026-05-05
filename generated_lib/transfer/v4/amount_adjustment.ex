@@ -9,7 +9,10 @@ defmodule Adyen.Transfer.V4.AmountAdjustment do
           basepoints: integer | nil
         }
 
-  defstruct [:amount, :amountAdjustmentType, :basepoints]
+  (
+    @derive Jason.Encoder
+    defstruct [:amount, :amountAdjustmentType, :basepoints]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

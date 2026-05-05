@@ -12,7 +12,10 @@ defmodule Adyen.Checkout.V69.SubInputDetail do
           value: String.t() | nil
         }
 
-  defstruct [:configuration, :items, :key, :optional, :type, :value]
+  (
+    @derive Jason.Encoder
+    defstruct [:configuration, :items, :key, :optional, :type, :value]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

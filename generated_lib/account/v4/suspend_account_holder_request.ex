@@ -5,7 +5,10 @@ defmodule Adyen.Account.V4.SuspendAccountHolderRequest do
 
   @type t :: %__MODULE__{accountHolderCode: String.t()}
 
-  defstruct [:accountHolderCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountHolderCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

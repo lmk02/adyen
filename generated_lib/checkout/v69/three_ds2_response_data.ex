@@ -25,27 +25,30 @@ defmodule Adyen.Checkout.V69.ThreeDs2ResponseData do
           transStatusReason: String.t() | nil
         }
 
-  defstruct [
-    :acsChallengeMandated,
-    :acsOperatorID,
-    :acsReferenceNumber,
-    :acsSignedContent,
-    :acsTransID,
-    :acsURL,
-    :authenticationType,
-    :cardHolderInfo,
-    :cavvAlgorithm,
-    :challengeIndicator,
-    :dsReferenceNumber,
-    :dsTransID,
-    :exemptionIndicator,
-    :messageVersion,
-    :riskScore,
-    :sdkEphemPubKey,
-    :threeDSServerTransID,
-    :transStatus,
-    :transStatusReason
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :acsChallengeMandated,
+      :acsOperatorID,
+      :acsReferenceNumber,
+      :acsSignedContent,
+      :acsTransID,
+      :acsURL,
+      :authenticationType,
+      :cardHolderInfo,
+      :cavvAlgorithm,
+      :challengeIndicator,
+      :dsReferenceNumber,
+      :dsTransID,
+      :exemptionIndicator,
+      :messageVersion,
+      :riskScore,
+      :sdkEphemPubKey,
+      :threeDSServerTransID,
+      :transStatus,
+      :transStatusReason
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

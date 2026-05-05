@@ -14,16 +14,19 @@ defmodule Adyen.TerminalAPI.V1.MessageHeader do
           ServiceID: String.t() | nil
         }
 
-  defstruct [
-    :DeviceID,
-    :MessageCategory,
-    :MessageClass,
-    :MessageType,
-    :POIID,
-    :ProtocolVersion,
-    :SaleID,
-    :ServiceID
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :DeviceID,
+      :MessageCategory,
+      :MessageClass,
+      :MessageType,
+      :POIID,
+      :ProtocolVersion,
+      :SaleID,
+      :ServiceID
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

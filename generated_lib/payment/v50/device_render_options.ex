@@ -5,7 +5,10 @@ defmodule Adyen.Payment.V50.DeviceRenderOptions do
 
   @type t :: %__MODULE__{sdkInterface: String.t() | nil, sdkUiType: [String.t()] | nil}
 
-  defstruct [:sdkInterface, :sdkUiType]
+  (
+    @derive Jason.Encoder
+    defstruct [:sdkInterface, :sdkUiType]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

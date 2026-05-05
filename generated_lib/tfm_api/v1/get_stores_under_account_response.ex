@@ -5,7 +5,10 @@ defmodule Adyen.TfmAPI.V1.GetStoresUnderAccountResponse do
 
   @type t :: %__MODULE__{stores: [Adyen.TfmAPI.V1.Store.t()] | nil}
 
-  defstruct [:stores]
+  (
+    @derive Jason.Encoder
+    defstruct [:stores]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

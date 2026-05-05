@@ -5,7 +5,10 @@ defmodule Adyen.Fund.V3.RefundNotPaidOutTransfersRequest do
 
   @type t :: %__MODULE__{accountCode: String.t(), accountHolderCode: String.t()}
 
-  defstruct [:accountCode, :accountHolderCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountCode, :accountHolderCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

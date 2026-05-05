@@ -10,7 +10,10 @@ defmodule Adyen.BalancePlatform.V1.Balance do
           reserved: integer
         }
 
-  defstruct [:available, :balance, :currency, :reserved]
+  (
+    @derive Jason.Encoder
+    defstruct [:available, :balance, :currency, :reserved]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

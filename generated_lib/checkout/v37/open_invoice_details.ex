@@ -12,14 +12,17 @@ defmodule Adyen.Checkout.V37.OpenInvoiceDetails do
           type: String.t() | nil
         }
 
-  defstruct [
-    :billingAddress,
-    :checkoutAttemptId,
-    :deliveryAddress,
-    :personalDetails,
-    :recurringDetailReference,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :billingAddress,
+      :checkoutAttemptId,
+      :deliveryAddress,
+      :personalDetails,
+      :recurringDetailReference,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

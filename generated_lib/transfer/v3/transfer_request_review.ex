@@ -5,7 +5,10 @@ defmodule Adyen.Transfer.V3.TransferRequestReview do
 
   @type t :: %__MODULE__{numberOfApprovalsRequired: integer | nil, scaOnApproval: boolean | nil}
 
-  defstruct [:numberOfApprovalsRequired, :scaOnApproval]
+  (
+    @derive Jason.Encoder
+    defstruct [:numberOfApprovalsRequired, :scaOnApproval]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

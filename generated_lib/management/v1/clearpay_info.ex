@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.ClearpayInfo do
 
   @type t :: %__MODULE__{supportUrl: String.t()}
 
-  defstruct [:supportUrl]
+  (
+    @derive Jason.Encoder
+    defstruct [:supportUrl]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

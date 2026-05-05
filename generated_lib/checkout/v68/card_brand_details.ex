@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V68.CardBrandDetails do
 
   @type t :: %__MODULE__{supported: boolean | nil, type: String.t() | nil}
 
-  defstruct [:supported, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:supported, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

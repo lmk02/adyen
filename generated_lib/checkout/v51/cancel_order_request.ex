@@ -8,7 +8,10 @@ defmodule Adyen.Checkout.V51.CancelOrderRequest do
           order: Adyen.Checkout.V51.EncryptedOrderData.t()
         }
 
-  defstruct [:merchantAccount, :order]
+  (
+    @derive Jason.Encoder
+    defstruct [:merchantAccount, :order]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

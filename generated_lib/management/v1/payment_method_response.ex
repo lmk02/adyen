@@ -11,7 +11,10 @@ defmodule Adyen.Management.V1.PaymentMethodResponse do
           typesWithErrors: [String.t()] | nil
         }
 
-  defstruct [:_links, :data, :itemsTotal, :pagesTotal, :typesWithErrors]
+  (
+    @derive Jason.Encoder
+    defstruct [:_links, :data, :itemsTotal, :pagesTotal, :typesWithErrors]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -37,17 +40,6 @@ defmodule Adyen.Management.V1.PaymentMethodResponse do
           "alipay",
           "alipay_hk",
           "alipay_plus",
-          "alipay_plus_alipay_cn",
-          "alipay_plus_alipay_hk",
-          "alipay_plus_dana",
-          "alipay_plus_gcash",
-          "alipay_plus_kakaopay",
-          "alipay_plus_kplus",
-          "alipay_plus_naverpay",
-          "alipay_plus_rabbitlinepay",
-          "alipay_plus_tosspay",
-          "alipay_plus_touchngo",
-          "alipay_plus_truemoney",
           "alipay_wap",
           "amex",
           "applepay",
@@ -62,7 +54,6 @@ defmodule Adyen.Management.V1.PaymentMethodResponse do
           "blik",
           "blik_pos",
           "br_schemes",
-          "carnet",
           "cartebancaire",
           "clearpay",
           "clicktopay",

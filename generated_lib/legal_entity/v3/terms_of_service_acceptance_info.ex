@@ -12,7 +12,10 @@ defmodule Adyen.LegalEntity.V3.TermsOfServiceAcceptanceInfo do
           validTo: DateTime.t() | nil
         }
 
-  defstruct [:acceptedBy, :acceptedFor, :createdAt, :id, :type, :validTo]
+  (
+    @derive Jason.Encoder
+    defstruct [:acceptedBy, :acceptedFor, :createdAt, :id, :type, :validTo]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

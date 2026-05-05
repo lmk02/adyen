@@ -13,15 +13,18 @@ defmodule Adyen.Management.V1.SplitConfigurationRule do
           splitLogic: Adyen.Management.V1.SplitConfigurationLogic.t()
         }
 
-  defstruct [
-    :cardRegion,
-    :currency,
-    :fundingSource,
-    :paymentMethod,
-    :ruleId,
-    :shopperInteraction,
-    :splitLogic
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :cardRegion,
+      :currency,
+      :fundingSource,
+      :paymentMethod,
+      :ruleId,
+      :shopperInteraction,
+      :splitLogic
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -29,9 +32,7 @@ defmodule Adyen.Management.V1.SplitConfigurationRule do
 
   def __fields__(:t) do
     [
-      cardRegion:
-        {:enum,
-         ["international", "intraEEA", "intraRegional", "interRegional", "domestic", "ANY"]},
+      cardRegion: {:enum, ["international", "intraRegional", "interRegional", "domestic", "ANY"]},
       currency: :string,
       fundingSource: {:enum, ["charged", "credit", "debit", "deferred_debit", "prepaid", "ANY"]},
       paymentMethod: :string,

@@ -5,7 +5,10 @@ defmodule Adyen.NotificationConfiguration.V3.TestNotificationConfigurationReques
 
   @type t :: %__MODULE__{eventTypes: [String.t()] | nil, notificationId: integer}
 
-  defstruct [:eventTypes, :notificationId]
+  (
+    @derive Jason.Encoder
+    defstruct [:eventTypes, :notificationId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

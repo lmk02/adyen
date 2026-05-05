@@ -10,7 +10,10 @@ defmodule Adyen.TerminalAPI.V1.SensitiveCardData do
           TrackData: [Adyen.TerminalAPI.V1.TrackData.t()] | nil
         }
 
-  defstruct [:CardSeqNumb, :ExpiryDate, :PAN, :TrackData]
+  (
+    @derive Jason.Encoder
+    defstruct [:CardSeqNumb, :ExpiryDate, :PAN, :TrackData]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

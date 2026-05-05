@@ -11,7 +11,10 @@ defmodule Adyen.Management.V3.PaginationLinks do
           self: Adyen.Management.V3.LinksElement.t()
         }
 
-  defstruct [:first, :last, :next, :prev, :self]
+  (
+    @derive Jason.Encoder
+    defstruct [:first, :last, :next, :prev, :self]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

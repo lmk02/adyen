@@ -13,7 +13,10 @@ defmodule Adyen.BalancePlatform.V2.DeliveryContact do
           webAddress: String.t() | nil
         }
 
-  defstruct [:address, :company, :email, :fullPhoneNumber, :name, :phoneNumber, :webAddress]
+  (
+    @derive Jason.Encoder
+    defstruct [:address, :company, :email, :fullPhoneNumber, :name, :phoneNumber, :webAddress]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

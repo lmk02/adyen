@@ -18,20 +18,23 @@ defmodule Adyen.Transfer.V2.Transfer do
           status: String.t()
         }
 
-  defstruct [
-    :amount,
-    :balanceAccountId,
-    :bank,
-    :counterparty,
-    :description,
-    :direction,
-    :id,
-    :paymentInstrumentId,
-    :reason,
-    :reference,
-    :referenceForBeneficiary,
-    :status
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amount,
+      :balanceAccountId,
+      :bank,
+      :counterparty,
+      :description,
+      :direction,
+      :id,
+      :paymentInstrumentId,
+      :reason,
+      :reference,
+      :referenceForBeneficiary,
+      :status
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

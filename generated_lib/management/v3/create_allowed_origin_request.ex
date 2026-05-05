@@ -9,7 +9,10 @@ defmodule Adyen.Management.V3.CreateAllowedOriginRequest do
           id: String.t() | nil
         }
 
-  defstruct [:_links, :domain, :id]
+  (
+    @derive Jason.Encoder
+    defstruct [:_links, :domain, :id]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

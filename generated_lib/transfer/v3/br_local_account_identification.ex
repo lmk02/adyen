@@ -11,7 +11,10 @@ defmodule Adyen.Transfer.V3.BRLocalAccountIdentification do
           type: String.t()
         }
 
-  defstruct [:accountNumber, :bankCode, :branchNumber, :ispb, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountNumber, :bankCode, :branchNumber, :ispb, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

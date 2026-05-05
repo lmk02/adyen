@@ -14,16 +14,19 @@ defmodule Adyen.NotificationConfiguration.V5.TestNotificationConfigurationRespon
           resultCode: String.t() | nil
         }
 
-  defstruct [
-    :errorMessages,
-    :eventTypes,
-    :exchangeMessages,
-    :invalidFields,
-    :notificationId,
-    :okMessages,
-    :pspReference,
-    :resultCode
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :errorMessages,
+      :eventTypes,
+      :exchangeMessages,
+      :invalidFields,
+      :notificationId,
+      :okMessages,
+      :pspReference,
+      :resultCode
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

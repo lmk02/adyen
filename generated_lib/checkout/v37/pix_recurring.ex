@@ -16,18 +16,21 @@ defmodule Adyen.Checkout.V37.PixRecurring do
           startsAt: String.t() | nil
         }
 
-  defstruct [
-    :billingDate,
-    :businessDayOnly,
-    :endsAt,
-    :frequency,
-    :minAmount,
-    :originalPspReference,
-    :recurringAmount,
-    :recurringStatement,
-    :retryPolicy,
-    :startsAt
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :billingDate,
+      :businessDayOnly,
+      :endsAt,
+      :frequency,
+      :minAmount,
+      :originalPspReference,
+      :recurringAmount,
+      :recurringStatement,
+      :retryPolicy,
+      :startsAt
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

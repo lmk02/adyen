@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.UpdateNetworkTokenRequest do
 
   @type t :: %__MODULE__{status: String.t() | nil}
 
-  defstruct [:status]
+  (
+    @derive Jason.Encoder
+    defstruct [:status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

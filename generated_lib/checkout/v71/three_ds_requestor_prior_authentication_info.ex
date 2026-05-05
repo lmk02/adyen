@@ -10,12 +10,15 @@ defmodule Adyen.Checkout.V71.ThreeDSRequestorPriorAuthenticationInfo do
           threeDSReqPriorRef: String.t() | nil
         }
 
-  defstruct [
-    :threeDSReqPriorAuthData,
-    :threeDSReqPriorAuthMethod,
-    :threeDSReqPriorAuthTimestamp,
-    :threeDSReqPriorRef
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :threeDSReqPriorAuthData,
+      :threeDSReqPriorAuthMethod,
+      :threeDSReqPriorAuthTimestamp,
+      :threeDSReqPriorRef
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

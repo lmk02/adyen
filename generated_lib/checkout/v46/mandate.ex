@@ -15,17 +15,20 @@ defmodule Adyen.Checkout.V46.Mandate do
           startsAt: String.t() | nil
         }
 
-  defstruct [
-    :amount,
-    :amountRule,
-    :billingAttemptsRule,
-    :billingDay,
-    :count,
-    :endsAt,
-    :frequency,
-    :remarks,
-    :startsAt
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amount,
+      :amountRule,
+      :billingAttemptsRule,
+      :billingDay,
+      :count,
+      :endsAt,
+      :frequency,
+      :remarks,
+      :startsAt
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

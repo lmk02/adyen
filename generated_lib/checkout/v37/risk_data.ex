@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V37.RiskData do
 
   @type t :: %__MODULE__{clientData: String.t() | nil}
 
-  defstruct [:clientData]
+  (
+    @derive Jason.Encoder
+    defstruct [:clientData]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

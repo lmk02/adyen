@@ -9,7 +9,10 @@ defmodule Adyen.Management.V1.Surcharge do
           excludeGratuityFromSurcharge: boolean | nil
         }
 
-  defstruct [:askConfirmation, :configurations, :excludeGratuityFromSurcharge]
+  (
+    @derive Jason.Encoder
+    defstruct [:askConfirmation, :configurations, :excludeGratuityFromSurcharge]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

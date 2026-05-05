@@ -9,7 +9,10 @@ defmodule Adyen.BalancePlatform.V2.AdditionalBankIdentificationRequirement do
           type: String.t()
         }
 
-  defstruct [:additionalBankIdentificationType, :description, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:additionalBankIdentificationType, :description, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

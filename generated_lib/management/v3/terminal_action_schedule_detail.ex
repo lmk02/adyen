@@ -5,7 +5,10 @@ defmodule Adyen.Management.V3.TerminalActionScheduleDetail do
 
   @type t :: %__MODULE__{id: String.t() | nil, terminalId: String.t() | nil}
 
-  defstruct [:id, :terminalId]
+  (
+    @derive Jason.Encoder
+    defstruct [:id, :terminalId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

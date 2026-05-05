@@ -5,7 +5,10 @@ defmodule Adyen.Account.V4.DocumentDetailWrapper do
 
   @type t :: %__MODULE__{DocumentDetail: Adyen.Account.V4.DocumentDetail.t() | nil}
 
-  defstruct [:DocumentDetail]
+  (
+    @derive Jason.Encoder
+    defstruct [:DocumentDetail]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -10,7 +10,10 @@ defmodule Adyen.Transfer.V4.PaymentInstrument do
           tokenType: String.t() | nil
         }
 
-  defstruct [:description, :id, :reference, :tokenType]
+  (
+    @derive Jason.Encoder
+    defstruct [:description, :id, :reference, :tokenType]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

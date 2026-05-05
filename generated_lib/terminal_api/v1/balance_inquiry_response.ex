@@ -9,7 +9,10 @@ defmodule Adyen.TerminalAPI.V1.BalanceInquiryResponse do
           Response: Adyen.TerminalAPI.V1.Response.t()
         }
 
-  defstruct [:PaymentAccountStatus, :PaymentReceipt, :Response]
+  (
+    @derive Jason.Encoder
+    defstruct [:PaymentAccountStatus, :PaymentReceipt, :Response]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -13,15 +13,18 @@ defmodule Adyen.TerminalAPI.V1.StoredValueAccountID do
           StoredValueProvider: String.t() | nil
         }
 
-  defstruct [
-    :EntryMode,
-    :ExpiryDate,
-    :IdentificationType,
-    :OwnerName,
-    :StoredValueAccountType,
-    :StoredValueID,
-    :StoredValueProvider
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :EntryMode,
+      :ExpiryDate,
+      :IdentificationType,
+      :OwnerName,
+      :StoredValueAccountType,
+      :StoredValueID,
+      :StoredValueProvider
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

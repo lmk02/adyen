@@ -7,7 +7,10 @@ defmodule Adyen.NotificationConfiguration.V4.ExchangeMessageWrapper do
           ExchangeMessage: Adyen.NotificationConfiguration.V4.ExchangeMessage.t() | nil
         }
 
-  defstruct [:ExchangeMessage]
+  (
+    @derive Jason.Encoder
+    defstruct [:ExchangeMessage]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -10,7 +10,10 @@ defmodule Adyen.OpenBanking.V1.AccountVerificationRoutesRequest do
           state: String.t() | nil
         }
 
-  defstruct [:country, :locale, :redirectUrl, :state]
+  (
+    @derive Jason.Encoder
+    defstruct [:country, :locale, :redirectUrl, :state]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

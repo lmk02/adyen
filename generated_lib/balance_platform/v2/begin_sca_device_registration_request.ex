@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.BeginScaDeviceRegistrationRequest do
 
   @type t :: %__MODULE__{name: String.t(), sdkOutput: String.t()}
 
-  defstruct [:name, :sdkOutput]
+  (
+    @derive Jason.Encoder
+    defstruct [:name, :sdkOutput]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

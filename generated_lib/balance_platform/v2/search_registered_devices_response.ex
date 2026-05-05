@@ -10,7 +10,10 @@ defmodule Adyen.BalancePlatform.V2.SearchRegisteredDevicesResponse do
           pagesTotal: integer | nil
         }
 
-  defstruct [:data, :itemsTotal, :link, :pagesTotal]
+  (
+    @derive Jason.Encoder
+    defstruct [:data, :itemsTotal, :link, :pagesTotal]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

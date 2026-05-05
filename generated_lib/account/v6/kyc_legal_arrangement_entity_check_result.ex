@@ -9,7 +9,10 @@ defmodule Adyen.Account.V6.KYCLegalArrangementEntityCheckResult do
           legalArrangementEntityCode: String.t() | nil
         }
 
-  defstruct [:checks, :legalArrangementCode, :legalArrangementEntityCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:checks, :legalArrangementCode, :legalArrangementEntityCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

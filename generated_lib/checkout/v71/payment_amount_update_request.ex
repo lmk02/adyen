@@ -14,16 +14,19 @@ defmodule Adyen.Checkout.V71.PaymentAmountUpdateRequest do
           splits: [Adyen.Checkout.V71.Split.t()] | nil
         }
 
-  defstruct [
-    :amount,
-    :applicationInfo,
-    :enhancedSchemeData,
-    :industryUsage,
-    :lineItems,
-    :merchantAccount,
-    :reference,
-    :splits
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amount,
+      :applicationInfo,
+      :enhancedSchemeData,
+      :industryUsage,
+      :lineItems,
+      :merchantAccount,
+      :reference,
+      :splits
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

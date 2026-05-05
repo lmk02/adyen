@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.TransferLimitListResponse do
 
   @type t :: %__MODULE__{transferLimits: [Adyen.BalancePlatform.V2.TransferLimit.t()]}
 
-  defstruct [:transferLimits]
+  (
+    @derive Jason.Encoder
+    defstruct [:transferLimits]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

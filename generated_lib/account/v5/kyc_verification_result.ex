@@ -11,7 +11,10 @@ defmodule Adyen.Account.V5.KYCVerificationResult do
           signatories: [Adyen.Account.V5.KYCSignatoryCheckResult.t()] | nil
         }
 
-  defstruct [:accountHolder, :bankAccounts, :cards, :shareholders, :signatories]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountHolder, :bankAccounts, :cards, :shareholders, :signatories]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

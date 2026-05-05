@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.PlatformPaymentConfiguration do
 
   @type t :: %__MODULE__{salesDayClosingTime: Time.t() | nil, settlementDelayDays: integer | nil}
 
-  defstruct [:salesDayClosingTime, :settlementDelayDays]
+  (
+    @derive Jason.Encoder
+    defstruct [:salesDayClosingTime, :settlementDelayDays]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

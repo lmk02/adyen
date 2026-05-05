@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.SodexoInfo do
 
   @type t :: %__MODULE__{merchantContactPhone: String.t()}
 
-  defstruct [:merchantContactPhone]
+  (
+    @derive Jason.Encoder
+    defstruct [:merchantContactPhone]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

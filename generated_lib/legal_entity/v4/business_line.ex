@@ -6,7 +6,6 @@ defmodule Adyen.LegalEntity.V4.BusinessLine do
   @type t :: %__MODULE__{
           id: String.t(),
           industryCode: String.t(),
-          industryCodeDescription: String.t() | nil,
           legalEntityId: String.t(),
           problems: [Adyen.LegalEntity.V4.CapabilityProblem.t()] | nil,
           salesChannels: [String.t()] | nil,
@@ -16,18 +15,20 @@ defmodule Adyen.LegalEntity.V4.BusinessLine do
           webDataExemption: Adyen.LegalEntity.V4.WebDataExemption.t() | nil
         }
 
-  defstruct [
-    :id,
-    :industryCode,
-    :industryCodeDescription,
-    :legalEntityId,
-    :problems,
-    :salesChannels,
-    :service,
-    :sourceOfFunds,
-    :webData,
-    :webDataExemption
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :id,
+      :industryCode,
+      :legalEntityId,
+      :problems,
+      :salesChannels,
+      :service,
+      :sourceOfFunds,
+      :webData,
+      :webDataExemption
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -37,7 +38,6 @@ defmodule Adyen.LegalEntity.V4.BusinessLine do
     [
       id: :string,
       industryCode: :string,
-      industryCodeDescription: :string,
       legalEntityId: :string,
       problems: [{Adyen.LegalEntity.V4.CapabilityProblem, :t}],
       salesChannels: [:string],

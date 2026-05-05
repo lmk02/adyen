@@ -9,7 +9,10 @@ defmodule Adyen.TerminalAPI.V1.TransactionStatusResponse do
           Response: Adyen.TerminalAPI.V1.Response.t()
         }
 
-  defstruct [:MessageReference, :RepeatedMessageResponse, :Response]
+  (
+    @derive Jason.Encoder
+    defstruct [:MessageReference, :RepeatedMessageResponse, :Response]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

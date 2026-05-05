@@ -12,7 +12,10 @@ defmodule Adyen.Checkout.V51.CheckoutQrCodeAction do
           url: String.t() | nil
         }
 
-  defstruct [:expiresAt, :paymentData, :paymentMethodType, :qrCodeData, :type, :url]
+  (
+    @derive Jason.Encoder
+    defstruct [:expiresAt, :paymentData, :paymentMethodType, :qrCodeData, :type, :url]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

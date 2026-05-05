@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.SourceAccountTypesRestriction do
 
   @type t :: %__MODULE__{operation: String.t(), value: [String.t()] | nil}
 
-  defstruct [:operation, :value]
+  (
+    @derive Jason.Encoder
+    defstruct [:operation, :value]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

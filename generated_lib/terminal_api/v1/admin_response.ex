@@ -5,7 +5,10 @@ defmodule Adyen.TerminalAPI.V1.AdminResponse do
 
   @type t :: %__MODULE__{Response: Adyen.TerminalAPI.V1.Response.t()}
 
-  defstruct [:Response]
+  (
+    @derive Jason.Encoder
+    defstruct [:Response]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

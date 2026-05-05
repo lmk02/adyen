@@ -9,7 +9,10 @@ defmodule Adyen.Transfer.V4.InterchangeData do
           type: String.t()
         }
 
-  defstruct [:interchangeAmount, :interchangeRateIndicator, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:interchangeAmount, :interchangeRateIndicator, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V46.FastlaneDetails do
           type: String.t()
         }
 
-  defstruct [:checkoutAttemptId, :fastlaneData, :recurringDetailReference, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:checkoutAttemptId, :fastlaneData, :recurringDetailReference, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

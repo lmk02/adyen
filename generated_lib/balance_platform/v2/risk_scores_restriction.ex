@@ -8,7 +8,10 @@ defmodule Adyen.BalancePlatform.V2.RiskScoresRestriction do
           value: Adyen.BalancePlatform.V2.RiskScores.t() | nil
         }
 
-  defstruct [:operation, :value]
+  (
+    @derive Jason.Encoder
+    defstruct [:operation, :value]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

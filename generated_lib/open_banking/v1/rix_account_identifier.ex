@@ -5,7 +5,10 @@ defmodule Adyen.OpenBanking.V1.RIXAccountIdentifier do
 
   @type t :: %__MODULE__{accountNumber: String.t(), clearingNumber: String.t()}
 
-  defstruct [:accountNumber, :clearingNumber]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountNumber, :clearingNumber]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

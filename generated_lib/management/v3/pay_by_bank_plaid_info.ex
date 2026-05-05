@@ -8,7 +8,10 @@ defmodule Adyen.Management.V3.PayByBankPlaidInfo do
           transactionDescription: Adyen.Management.V3.TransactionDescriptionInfo.t() | nil
         }
 
-  defstruct [:logo, :transactionDescription]
+  (
+    @derive Jason.Encoder
+    defstruct [:logo, :transactionDescription]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

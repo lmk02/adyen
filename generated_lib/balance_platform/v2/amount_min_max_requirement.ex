@@ -10,7 +10,10 @@ defmodule Adyen.BalancePlatform.V2.AmountMinMaxRequirement do
           type: String.t()
         }
 
-  defstruct [:description, :max, :min, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:description, :max, :min, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

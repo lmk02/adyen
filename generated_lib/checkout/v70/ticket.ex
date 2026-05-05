@@ -9,7 +9,10 @@ defmodule Adyen.Checkout.V70.Ticket do
           number: String.t() | nil
         }
 
-  defstruct [:issueAddress, :issueDate, :number]
+  (
+    @derive Jason.Encoder
+    defstruct [:issueAddress, :issueDate, :number]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

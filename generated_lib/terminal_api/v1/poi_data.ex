@@ -8,7 +8,10 @@ defmodule Adyen.TerminalAPI.V1.POIData do
           POITransactionID: Adyen.TerminalAPI.V1.TransactionIDType.t()
         }
 
-  defstruct [:POIReconciliationID, :POITransactionID]
+  (
+    @derive Jason.Encoder
+    defstruct [:POIReconciliationID, :POITransactionID]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

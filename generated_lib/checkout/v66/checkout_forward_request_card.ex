@@ -16,18 +16,21 @@ defmodule Adyen.Checkout.V66.CheckoutForwardRequestCard do
           type: String.t() | nil
         }
 
-  defstruct [
-    :cvc,
-    :encryptedCardNumber,
-    :encryptedExpiryMonth,
-    :encryptedExpiryYear,
-    :encryptedSecurityCode,
-    :expiryMonth,
-    :expiryYear,
-    :holderName,
-    :number,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :cvc,
+      :encryptedCardNumber,
+      :encryptedExpiryMonth,
+      :encryptedExpiryYear,
+      :encryptedSecurityCode,
+      :expiryMonth,
+      :expiryYear,
+      :holderName,
+      :number,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

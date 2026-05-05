@@ -10,7 +10,10 @@ defmodule Adyen.Recurring.V68.CreatePermitRequest do
           shopperReference: String.t()
         }
 
-  defstruct [:merchantAccount, :permits, :recurringDetailReference, :shopperReference]
+  (
+    @derive Jason.Encoder
+    defstruct [:merchantAccount, :permits, :recurringDetailReference, :shopperReference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

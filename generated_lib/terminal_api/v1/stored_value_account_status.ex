@@ -8,7 +8,10 @@ defmodule Adyen.TerminalAPI.V1.StoredValueAccountStatus do
           StoredValueAccountID: Adyen.TerminalAPI.V1.StoredValueAccountID.t()
         }
 
-  defstruct [:CurrentBalance, :StoredValueAccountID]
+  (
+    @derive Jason.Encoder
+    defstruct [:CurrentBalance, :StoredValueAccountID]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

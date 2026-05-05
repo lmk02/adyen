@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V71.CheckoutForwardResponse do
           storedPaymentMethodId: String.t() | nil
         }
 
-  defstruct [:merchantReference, :pspReference, :response, :storedPaymentMethodId]
+  (
+    @derive Jason.Encoder
+    defstruct [:merchantReference, :pspReference, :response, :storedPaymentMethodId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

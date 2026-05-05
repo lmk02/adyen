@@ -10,7 +10,10 @@ defmodule Adyen.Fund.V3.AccountHolderTransactionListResponse do
           submittedAsync: boolean | nil
         }
 
-  defstruct [:accountTransactionLists, :pspReference, :resultCode, :submittedAsync]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountTransactionLists, :pspReference, :resultCode, :submittedAsync]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

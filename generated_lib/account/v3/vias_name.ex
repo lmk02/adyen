@@ -10,7 +10,10 @@ defmodule Adyen.Account.V3.ViasName do
           lastName: String.t() | nil
         }
 
-  defstruct [:firstName, :gender, :infix, :lastName]
+  (
+    @derive Jason.Encoder
+    defstruct [:firstName, :gender, :infix, :lastName]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

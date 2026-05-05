@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.USInternationalAchPriorityRequirement do
 
   @type t :: %__MODULE__{description: String.t() | nil, type: String.t()}
 
-  defstruct [:description, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:description, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -12,14 +12,17 @@ defmodule Adyen.Checkout.V41.PixPayByBankDetails do
           type: String.t() | nil
         }
 
-  defstruct [
-    :checkoutAttemptId,
-    :deviceId,
-    :issuer,
-    :recurringDetailReference,
-    :riskSignals,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :checkoutAttemptId,
+      :deviceId,
+      :issuer,
+      :recurringDetailReference,
+      :riskSignals,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

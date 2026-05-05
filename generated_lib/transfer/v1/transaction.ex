@@ -25,27 +25,30 @@ defmodule Adyen.Transfer.V1.Transaction do
           valueDate: DateTime.t()
         }
 
-  defstruct [
-    :accountHolderId,
-    :amount,
-    :balanceAccountId,
-    :balancePlatform,
-    :bookingDate,
-    :category,
-    :counterparty,
-    :createdAt,
-    :creationDate,
-    :description,
-    :id,
-    :instructedAmount,
-    :paymentInstrumentId,
-    :reference,
-    :referenceForBeneficiary,
-    :status,
-    :transferId,
-    :type,
-    :valueDate
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountHolderId,
+      :amount,
+      :balanceAccountId,
+      :balancePlatform,
+      :bookingDate,
+      :category,
+      :counterparty,
+      :createdAt,
+      :creationDate,
+      :description,
+      :id,
+      :instructedAmount,
+      :paymentInstrumentId,
+      :reference,
+      :referenceForBeneficiary,
+      :status,
+      :transferId,
+      :type,
+      :valueDate
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

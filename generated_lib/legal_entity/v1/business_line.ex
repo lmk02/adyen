@@ -7,7 +7,6 @@ defmodule Adyen.LegalEntity.V1.BusinessLine do
           capability: String.t(),
           id: String.t(),
           industryCode: String.t(),
-          industryCodeDescription: String.t() | nil,
           legalEntityId: String.t(),
           salesChannels: [String.t()] | nil,
           sourceOfFunds: Adyen.LegalEntity.V1.SourceOfFunds.t() | nil,
@@ -15,17 +14,19 @@ defmodule Adyen.LegalEntity.V1.BusinessLine do
           webDataExemption: Adyen.LegalEntity.V1.WebDataExemption.t() | nil
         }
 
-  defstruct [
-    :capability,
-    :id,
-    :industryCode,
-    :industryCodeDescription,
-    :legalEntityId,
-    :salesChannels,
-    :sourceOfFunds,
-    :webData,
-    :webDataExemption
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :capability,
+      :id,
+      :industryCode,
+      :legalEntityId,
+      :salesChannels,
+      :sourceOfFunds,
+      :webData,
+      :webDataExemption
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -36,7 +37,6 @@ defmodule Adyen.LegalEntity.V1.BusinessLine do
       capability: {:enum, ["receivePayments", "receiveFromPlatformPayments", "issueBankAccount"]},
       id: :string,
       industryCode: :string,
-      industryCodeDescription: :string,
       legalEntityId: :string,
       salesChannels: [:string],
       sourceOfFunds: {Adyen.LegalEntity.V1.SourceOfFunds, :t},

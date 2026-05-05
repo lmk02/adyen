@@ -5,7 +5,10 @@ defmodule Adyen.TerminalAPI.V1.HostStatus do
 
   @type t :: %__MODULE__{AcquirerID: integer, IsReachableFlag: boolean | nil}
 
-  defstruct [:AcquirerID, :IsReachableFlag]
+  (
+    @derive Jason.Encoder
+    defstruct [:AcquirerID, :IsReachableFlag]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

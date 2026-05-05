@@ -21,23 +21,26 @@ defmodule Adyen.Account.V5.StoreDetail do
           webAddress: String.t() | nil
         }
 
-  defstruct [
-    :address,
-    :fullPhoneNumber,
-    :logo,
-    :merchantAccount,
-    :merchantCategoryCode,
-    :merchantHouseNumber,
-    :phoneNumber,
-    :shopperInteraction,
-    :splitConfigurationUUID,
-    :status,
-    :store,
-    :storeName,
-    :storeReference,
-    :virtualAccount,
-    :webAddress
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :address,
+      :fullPhoneNumber,
+      :logo,
+      :merchantAccount,
+      :merchantCategoryCode,
+      :merchantHouseNumber,
+      :phoneNumber,
+      :shopperInteraction,
+      :splitConfigurationUUID,
+      :status,
+      :store,
+      :storeName,
+      :storeReference,
+      :virtualAccount,
+      :webAddress
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -10,7 +10,10 @@ defmodule Adyen.Management.V3.CreateCompanyApiCredentialRequest do
           roles: [String.t()] | nil
         }
 
-  defstruct [:allowedOrigins, :associatedMerchantAccounts, :description, :roles]
+  (
+    @derive Jason.Encoder
+    defstruct [:allowedOrigins, :associatedMerchantAccounts, :description, :roles]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -12,14 +12,17 @@ defmodule Adyen.Fund.V6.RefundFundsTransferResponse do
           resultCode: String.t() | nil
         }
 
-  defstruct [
-    :invalidFields,
-    :merchantReference,
-    :message,
-    :originalReference,
-    :pspReference,
-    :resultCode
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :invalidFields,
+      :merchantReference,
+      :message,
+      :originalReference,
+      :pspReference,
+      :resultCode
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

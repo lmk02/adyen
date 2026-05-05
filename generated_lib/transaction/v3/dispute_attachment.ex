@@ -10,7 +10,10 @@ defmodule Adyen.Transaction.V3.DisputeAttachment do
           id: String.t() | nil
         }
 
-  defstruct [:attachmentType, :content, :fileName, :id]
+  (
+    @derive Jason.Encoder
+    defstruct [:attachmentType, :content, :fileName, :id]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

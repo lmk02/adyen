@@ -9,7 +9,10 @@ defmodule Adyen.BalancePlatform.V2.PhoneInfo do
           number: String.t() | nil
         }
 
-  defstruct [:hashedNumber, :lastFourDigits, :number]
+  (
+    @derive Jason.Encoder
+    defstruct [:hashedNumber, :lastFourDigits, :number]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

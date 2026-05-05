@@ -9,7 +9,10 @@ defmodule Adyen.TerminalAPI.V1.DiagnosisRequest do
           POIID: String.t() | nil
         }
 
-  defstruct [:AcquirerID, :HostDiagnosisFlag, :POIID]
+  (
+    @derive Jason.Encoder
+    defstruct [:AcquirerID, :HostDiagnosisFlag, :POIID]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -13,15 +13,18 @@ defmodule Adyen.Checkout.V66.BalanceCheckResponse do
           transactionLimit: Adyen.Checkout.V66.Amount.t() | nil
         }
 
-  defstruct [
-    :additionalData,
-    :balance,
-    :fraudResult,
-    :pspReference,
-    :refusalReason,
-    :resultCode,
-    :transactionLimit
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :additionalData,
+      :balance,
+      :fraudResult,
+      :pspReference,
+      :refusalReason,
+      :resultCode,
+      :transactionLimit
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

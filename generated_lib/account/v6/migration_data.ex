@@ -13,15 +13,18 @@ defmodule Adyen.Account.V6.MigrationData do
           migrationDate: DateTime.t() | nil
         }
 
-  defstruct [
-    :accountHolderId,
-    :balancePlatform,
-    :migrated,
-    :migratedAccounts,
-    :migratedShareholders,
-    :migratedStores,
-    :migrationDate
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountHolderId,
+      :balancePlatform,
+      :migrated,
+      :migratedAccounts,
+      :migratedShareholders,
+      :migratedStores,
+      :migrationDate
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

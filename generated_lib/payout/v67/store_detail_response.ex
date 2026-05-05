@@ -10,7 +10,10 @@ defmodule Adyen.Payout.V67.StoreDetailResponse do
           resultCode: String.t()
         }
 
-  defstruct [:additionalData, :pspReference, :recurringDetailReference, :resultCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:additionalData, :pspReference, :recurringDetailReference, :resultCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V50.PayPayDetails do
           type: String.t() | nil
         }
 
-  defstruct [:checkoutAttemptId, :recurringDetailReference, :storedPaymentMethodId, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:checkoutAttemptId, :recurringDetailReference, :storedPaymentMethodId, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

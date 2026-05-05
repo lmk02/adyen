@@ -12,7 +12,10 @@ defmodule Adyen.Checkout.V41.Company do
           type: String.t() | nil
         }
 
-  defstruct [:homepage, :name, :registrationNumber, :registryLocation, :taxId, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:homepage, :name, :registrationNumber, :registryLocation, :taxId, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

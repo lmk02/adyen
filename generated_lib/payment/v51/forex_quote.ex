@@ -18,20 +18,23 @@ defmodule Adyen.Payment.V51.ForexQuote do
           validTill: DateTime.t()
         }
 
-  defstruct [
-    :account,
-    :accountType,
-    :baseAmount,
-    :basePoints,
-    :buy,
-    :interbank,
-    :reference,
-    :sell,
-    :signature,
-    :source,
-    :type,
-    :validTill
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :account,
+      :accountType,
+      :baseAmount,
+      :basePoints,
+      :buy,
+      :interbank,
+      :reference,
+      :sell,
+      :signature,
+      :source,
+      :type,
+      :validTill
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

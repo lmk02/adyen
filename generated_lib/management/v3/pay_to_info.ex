@@ -5,7 +5,10 @@ defmodule Adyen.Management.V3.PayToInfo do
 
   @type t :: %__MODULE__{merchantName: String.t(), payToPurpose: String.t()}
 
-  defstruct [:merchantName, :payToPurpose]
+  (
+    @derive Jason.Encoder
+    defstruct [:merchantName, :payToPurpose]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

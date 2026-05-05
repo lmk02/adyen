@@ -9,7 +9,10 @@ defmodule Adyen.Transaction.V4.PatchableDuplicateInfo do
           sameIssuer: boolean | nil
         }
 
-  defstruct [:duplicateTransactionId, :sameCard, :sameIssuer]
+  (
+    @derive Jason.Encoder
+    defstruct [:duplicateTransactionId, :sameCard, :sameIssuer]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

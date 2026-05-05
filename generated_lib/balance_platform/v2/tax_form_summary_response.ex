@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.TaxFormSummaryResponse do
 
   @type t :: %__MODULE__{data: [Adyen.BalancePlatform.V2.Summary.t()]}
 
-  defstruct [:data]
+  (
+    @derive Jason.Encoder
+    defstruct [:data]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

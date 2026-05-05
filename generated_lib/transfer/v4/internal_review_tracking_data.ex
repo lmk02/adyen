@@ -5,7 +5,10 @@ defmodule Adyen.Transfer.V4.InternalReviewTrackingData do
 
   @type t :: %__MODULE__{reason: String.t() | nil, status: String.t(), type: String.t()}
 
-  defstruct [:reason, :status, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:reason, :status, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

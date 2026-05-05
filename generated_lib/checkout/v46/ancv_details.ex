@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V46.AncvDetails do
           type: String.t() | nil
         }
 
-  defstruct [:beneficiaryId, :checkoutAttemptId, :recurringDetailReference, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:beneficiaryId, :checkoutAttemptId, :recurringDetailReference, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

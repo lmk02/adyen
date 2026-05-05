@@ -11,7 +11,10 @@ defmodule Adyen.BalancePlatform.V1.PaymentInstrumentGroupInfo do
           txVariant: String.t()
         }
 
-  defstruct [:balancePlatform, :description, :properties, :reference, :txVariant]
+  (
+    @derive Jason.Encoder
+    defstruct [:balancePlatform, :description, :properties, :reference, :txVariant]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

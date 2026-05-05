@@ -11,13 +11,16 @@ defmodule Adyen.TerminalAPI.V1.PrintOutput do
           ResponseMode: String.t()
         }
 
-  defstruct [
-    :DocumentQualifier,
-    :IntegratedPrintFlag,
-    :OutputContent,
-    :RequiredSignatureFlag,
-    :ResponseMode
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :DocumentQualifier,
+      :IntegratedPrintFlag,
+      :OutputContent,
+      :RequiredSignatureFlag,
+      :ResponseMode
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

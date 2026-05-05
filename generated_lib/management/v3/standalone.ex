@@ -9,7 +9,10 @@ defmodule Adyen.Management.V3.Standalone do
           enableStandalone: boolean | nil
         }
 
-  defstruct [:currencyCode, :enableGratuities, :enableStandalone]
+  (
+    @derive Jason.Encoder
+    defstruct [:currencyCode, :enableGratuities, :enableStandalone]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

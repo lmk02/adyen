@@ -12,14 +12,17 @@ defmodule Adyen.Management.V1.TerminalOrderRequest do
           taxId: String.t() | nil
         }
 
-  defstruct [
-    :billingEntityId,
-    :customerOrderReference,
-    :items,
-    :orderType,
-    :shippingLocationId,
-    :taxId
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :billingEntityId,
+      :customerOrderReference,
+      :items,
+      :orderType,
+      :shippingLocationId,
+      :taxId
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

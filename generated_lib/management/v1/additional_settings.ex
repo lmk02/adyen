@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.AdditionalSettings do
 
   @type t :: %__MODULE__{includeEventCodes: [String.t()] | nil, properties: map | nil}
 
-  defstruct [:includeEventCodes, :properties]
+  (
+    @derive Jason.Encoder
+    defstruct [:includeEventCodes, :properties]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

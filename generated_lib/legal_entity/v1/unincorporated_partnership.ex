@@ -15,17 +15,20 @@ defmodule Adyen.LegalEntity.V1.UnincorporatedPartnership do
           vatNumber: String.t() | nil
         }
 
-  defstruct [
-    :countryOfGoverningLaw,
-    :doingBusinessAs,
-    :name,
-    :principalPlaceOfBusiness,
-    :registeredAddress,
-    :registrationNumber,
-    :type,
-    :vatAbsenceReason,
-    :vatNumber
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :countryOfGoverningLaw,
+      :doingBusinessAs,
+      :name,
+      :principalPlaceOfBusiness,
+      :registeredAddress,
+      :registrationNumber,
+      :type,
+      :vatAbsenceReason,
+      :vatNumber
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

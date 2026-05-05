@@ -18,20 +18,23 @@ defmodule Adyen.Checkout.V37.FundRecipient do
           walletPurpose: String.t() | nil
         }
 
-  defstruct [
-    :IBAN,
-    :billingAddress,
-    :paymentMethod,
-    :shopperEmail,
-    :shopperName,
-    :shopperReference,
-    :storedPaymentMethodId,
-    :subMerchant,
-    :telephoneNumber,
-    :walletIdentifier,
-    :walletOwnerTaxId,
-    :walletPurpose
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :IBAN,
+      :billingAddress,
+      :paymentMethod,
+      :shopperEmail,
+      :shopperName,
+      :shopperReference,
+      :storedPaymentMethodId,
+      :subMerchant,
+      :telephoneNumber,
+      :walletIdentifier,
+      :walletOwnerTaxId,
+      :walletPurpose
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.Transfer.V4.ExecutionDate do
 
   @type t :: %__MODULE__{date: Date.t() | nil, timezone: String.t() | nil}
 
-  defstruct [:date, :timezone]
+  (
+    @derive Jason.Encoder
+    defstruct [:date, :timezone]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

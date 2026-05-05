@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.SvsInfo do
 
   @type t :: %__MODULE__{authorisationMid: String.t(), currencyCode: String.t()}
 
-  defstruct [:authorisationMid, :currencyCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:authorisationMid, :currencyCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

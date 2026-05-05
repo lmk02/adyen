@@ -9,7 +9,10 @@ defmodule Adyen.LegalEntity.V2.PciDocumentInfo do
           validUntil: DateTime.t() | nil
         }
 
-  defstruct [:createdAt, :id, :validUntil]
+  (
+    @derive Jason.Encoder
+    defstruct [:createdAt, :id, :validUntil]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

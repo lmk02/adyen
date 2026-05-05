@@ -10,7 +10,10 @@ defmodule Adyen.Transfer.V4.DirectDebitInformation do
           sequenceType: String.t() | nil
         }
 
-  defstruct [:dateOfSignature, :dueDate, :mandateId, :sequenceType]
+  (
+    @derive Jason.Encoder
+    defstruct [:dateOfSignature, :dueDate, :mandateId, :sequenceType]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

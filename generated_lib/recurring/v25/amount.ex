@@ -5,7 +5,10 @@ defmodule Adyen.Recurring.V25.Amount do
 
   @type t :: %__MODULE__{currency: String.t(), value: integer}
 
-  defstruct [:currency, :value]
+  (
+    @derive Jason.Encoder
+    defstruct [:currency, :value]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

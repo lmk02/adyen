@@ -12,7 +12,10 @@ defmodule Adyen.Management.V1.ApiCredentialLinks do
           self: Adyen.Management.V1.LinksElement.t()
         }
 
-  defstruct [:allowedOrigins, :company, :generateApiKey, :generateClientKey, :merchant, :self]
+  (
+    @derive Jason.Encoder
+    defstruct [:allowedOrigins, :company, :generateApiKey, :generateClientKey, :merchant, :self]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

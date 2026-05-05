@@ -13,15 +13,18 @@ defmodule Adyen.TerminalAPI.V1.StoredValueResult do
           StoredValueTransactionType: String.t()
         }
 
-  defstruct [
-    :Currency,
-    :EanUpc,
-    :HostTransactionID,
-    :ItemAmount,
-    :ProductCode,
-    :StoredValueAccountStatus,
-    :StoredValueTransactionType
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :Currency,
+      :EanUpc,
+      :HostTransactionID,
+      :ItemAmount,
+      :ProductCode,
+      :StoredValueAccountStatus,
+      :StoredValueTransactionType
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

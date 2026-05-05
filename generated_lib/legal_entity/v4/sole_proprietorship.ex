@@ -19,21 +19,24 @@ defmodule Adyen.LegalEntity.V4.SoleProprietorship do
           vatNumber: String.t() | nil
         }
 
-  defstruct [
-    :countryOfGoverningLaw,
-    :dateOfIncorporation,
-    :doingBusinessAs,
-    :doingBusinessAsAbsent,
-    :financialReports,
-    :name,
-    :principalPlaceOfBusiness,
-    :registeredAddress,
-    :registrationNumber,
-    :taxAbsent,
-    :taxInformation,
-    :vatAbsenceReason,
-    :vatNumber
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :countryOfGoverningLaw,
+      :dateOfIncorporation,
+      :doingBusinessAs,
+      :doingBusinessAsAbsent,
+      :financialReports,
+      :name,
+      :principalPlaceOfBusiness,
+      :registeredAddress,
+      :registrationNumber,
+      :taxAbsent,
+      :taxInformation,
+      :vatAbsenceReason,
+      :vatNumber
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

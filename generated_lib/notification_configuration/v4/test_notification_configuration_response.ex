@@ -14,16 +14,19 @@ defmodule Adyen.NotificationConfiguration.V4.TestNotificationConfigurationRespon
           submittedAsync: boolean | nil
         }
 
-  defstruct [
-    :errorMessages,
-    :eventTypes,
-    :exchangeMessages,
-    :notificationId,
-    :okMessages,
-    :pspReference,
-    :resultCode,
-    :submittedAsync
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :errorMessages,
+      :eventTypes,
+      :exchangeMessages,
+      :notificationId,
+      :okMessages,
+      :pspReference,
+      :resultCode,
+      :submittedAsync
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

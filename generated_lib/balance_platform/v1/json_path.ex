@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V1.JSONPath do
 
   @type t :: %__MODULE__{content: [String.t()] | nil}
 
-  defstruct [:content]
+  (
+    @derive Jason.Encoder
+    defstruct [:content]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -9,7 +9,10 @@ defmodule Adyen.Checkout.V51.BillDeskDetails do
           type: String.t()
         }
 
-  defstruct [:checkoutAttemptId, :issuer, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:checkoutAttemptId, :issuer, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

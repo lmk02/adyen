@@ -13,15 +13,18 @@ defmodule Adyen.TerminalAPI.V1.POIStatus do
           SecurityOKFlag: boolean | nil
         }
 
-  defstruct [
-    :CardReaderOKFlag,
-    :CommunicationOKFlag,
-    :FraudPreventionFlag,
-    :GlobalStatus,
-    :PEDOKFlag,
-    :PrinterStatus,
-    :SecurityOKFlag
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :CardReaderOKFlag,
+      :CommunicationOKFlag,
+      :FraudPreventionFlag,
+      :GlobalStatus,
+      :PEDOKFlag,
+      :PrinterStatus,
+      :SecurityOKFlag
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

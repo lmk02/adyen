@@ -11,13 +11,16 @@ defmodule Adyen.Payout.V64.Recurring do
           tokenService: String.t() | nil
         }
 
-  defstruct [
-    :contract,
-    :recurringDetailName,
-    :recurringExpiry,
-    :recurringFrequency,
-    :tokenService
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :contract,
+      :recurringDetailName,
+      :recurringExpiry,
+      :recurringFrequency,
+      :tokenService
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

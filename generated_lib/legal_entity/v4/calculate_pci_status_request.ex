@@ -5,7 +5,10 @@ defmodule Adyen.LegalEntity.V4.CalculatePciStatusRequest do
 
   @type t :: %__MODULE__{additionalSalesChannels: [String.t()] | nil}
 
-  defstruct [:additionalSalesChannels]
+  (
+    @derive Jason.Encoder
+    defstruct [:additionalSalesChannels]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

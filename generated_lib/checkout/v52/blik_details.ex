@@ -11,13 +11,16 @@ defmodule Adyen.Checkout.V52.BlikDetails do
           type: String.t() | nil
         }
 
-  defstruct [
-    :blikCode,
-    :checkoutAttemptId,
-    :recurringDetailReference,
-    :storedPaymentMethodId,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :blikCode,
+      :checkoutAttemptId,
+      :recurringDetailReference,
+      :storedPaymentMethodId,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

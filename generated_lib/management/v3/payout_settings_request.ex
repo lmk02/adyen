@@ -9,7 +9,10 @@ defmodule Adyen.Management.V3.PayoutSettingsRequest do
           transferInstrumentId: String.t()
         }
 
-  defstruct [:enabled, :enabledFromDate, :transferInstrumentId]
+  (
+    @derive Jason.Encoder
+    defstruct [:enabled, :enabledFromDate, :transferInstrumentId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -12,14 +12,17 @@ defmodule Adyen.Checkout.V52.WeChatPayMiniProgramDetails do
           type: String.t() | nil
         }
 
-  defstruct [
-    :appId,
-    :checkoutAttemptId,
-    :openid,
-    :recurringDetailReference,
-    :storedPaymentMethodId,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :appId,
+      :checkoutAttemptId,
+      :openid,
+      :recurringDetailReference,
+      :storedPaymentMethodId,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

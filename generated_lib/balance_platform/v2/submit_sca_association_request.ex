@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.SubmitScaAssociationRequest do
 
   @type t :: %__MODULE__{entities: [Adyen.BalancePlatform.V2.ScaEntity.t()]}
 
-  defstruct [:entities]
+  (
+    @derive Jason.Encoder
+    defstruct [:entities]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -11,7 +11,10 @@ defmodule Adyen.Management.V1.SupportedCardTypes do
           unknown: boolean | nil
         }
 
-  defstruct [:credit, :debit, :deferredDebit, :prepaid, :unknown]
+  (
+    @derive Jason.Encoder
+    defstruct [:credit, :debit, :deferredDebit, :prepaid, :unknown]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

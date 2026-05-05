@@ -10,7 +10,10 @@ defmodule Adyen.Management.V3.ListTerminalsResponse do
           pagesTotal: integer
         }
 
-  defstruct [:_links, :data, :itemsTotal, :pagesTotal]
+  (
+    @derive Jason.Encoder
+    defstruct [:_links, :data, :itemsTotal, :pagesTotal]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

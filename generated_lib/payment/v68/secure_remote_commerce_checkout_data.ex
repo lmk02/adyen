@@ -12,7 +12,10 @@ defmodule Adyen.Payment.V68.SecureRemoteCommerceCheckoutData do
           tokenReference: String.t() | nil
         }
 
-  defstruct [:checkoutPayload, :correlationId, :cvc, :digitalCardId, :scheme, :tokenReference]
+  (
+    @derive Jason.Encoder
+    defstruct [:checkoutPayload, :correlationId, :cvc, :digitalCardId, :scheme, :tokenReference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

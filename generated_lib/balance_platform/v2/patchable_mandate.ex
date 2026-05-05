@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.PatchableMandate do
 
   @type t :: %__MODULE__{paymentInstrumentId: String.t() | nil}
 
-  defstruct [:paymentInstrumentId]
+  (
+    @derive Jason.Encoder
+    defstruct [:paymentInstrumentId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

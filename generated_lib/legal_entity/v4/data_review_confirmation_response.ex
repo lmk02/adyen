@@ -5,7 +5,10 @@ defmodule Adyen.LegalEntity.V4.DataReviewConfirmationResponse do
 
   @type t :: %__MODULE__{dataReviewedAt: String.t() | nil}
 
-  defstruct [:dataReviewedAt]
+  (
+    @derive Jason.Encoder
+    defstruct [:dataReviewedAt]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

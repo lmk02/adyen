@@ -10,7 +10,10 @@ defmodule Adyen.BalancePlatform.V1.Attachment do
           pageType: String.t() | nil
         }
 
-  defstruct [:content, :contentType, :filename, :pageType]
+  (
+    @derive Jason.Encoder
+    defstruct [:content, :contentType, :filename, :pageType]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

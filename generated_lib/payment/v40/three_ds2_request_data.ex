@@ -23,25 +23,28 @@ defmodule Adyen.Payment.V40.ThreeDs2RequestData do
           threeDSRequestorURL: String.t() | nil
         }
 
-  defstruct [
-    :authenticationOnly,
-    :challengeIndicator,
-    :deviceChannel,
-    :deviceRenderOptions,
-    :messageVersion,
-    :notificationURL,
-    :sdkAppID,
-    :sdkEncData,
-    :sdkEphemPubKey,
-    :sdkMaxTimeout,
-    :sdkReferenceNumber,
-    :sdkTransID,
-    :sdkVersion,
-    :threeDSCompInd,
-    :threeDSRequestorID,
-    :threeDSRequestorName,
-    :threeDSRequestorURL
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :authenticationOnly,
+      :challengeIndicator,
+      :deviceChannel,
+      :deviceRenderOptions,
+      :messageVersion,
+      :notificationURL,
+      :sdkAppID,
+      :sdkEncData,
+      :sdkEphemPubKey,
+      :sdkMaxTimeout,
+      :sdkReferenceNumber,
+      :sdkTransID,
+      :sdkVersion,
+      :threeDSCompInd,
+      :threeDSRequestorID,
+      :threeDSRequestorName,
+      :threeDSRequestorURL
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

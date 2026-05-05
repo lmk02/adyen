@@ -5,7 +5,10 @@ defmodule Adyen.TerminalAPI.V1.PredefinedContent do
 
   @type t :: %__MODULE__{Language: String.t() | nil, ReferenceID: String.t()}
 
-  defstruct [:Language, :ReferenceID]
+  (
+    @derive Jason.Encoder
+    defstruct [:Language, :ReferenceID]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

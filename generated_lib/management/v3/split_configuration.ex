@@ -9,7 +9,10 @@ defmodule Adyen.Management.V3.SplitConfiguration do
           splitConfigurationId: String.t() | nil
         }
 
-  defstruct [:description, :rules, :splitConfigurationId]
+  (
+    @derive Jason.Encoder
+    defstruct [:description, :rules, :splitConfigurationId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

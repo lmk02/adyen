@@ -10,7 +10,10 @@ defmodule Adyen.Recurring.V68.DisableRequest do
           shopperReference: String.t()
         }
 
-  defstruct [:contract, :merchantAccount, :recurringDetailReference, :shopperReference]
+  (
+    @derive Jason.Encoder
+    defstruct [:contract, :merchantAccount, :recurringDetailReference, :shopperReference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

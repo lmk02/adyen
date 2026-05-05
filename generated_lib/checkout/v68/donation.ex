@@ -11,7 +11,10 @@ defmodule Adyen.Checkout.V68.Donation do
           values: [integer] | nil
         }
 
-  defstruct [:currency, :donationType, :maxRoundupAmount, :type, :values]
+  (
+    @derive Jason.Encoder
+    defstruct [:currency, :donationType, :maxRoundupAmount, :type, :values]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

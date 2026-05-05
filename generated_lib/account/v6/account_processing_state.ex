@@ -11,7 +11,10 @@ defmodule Adyen.Account.V6.AccountProcessingState do
           tierNumber: integer | nil
         }
 
-  defstruct [:disableReason, :disabled, :processedFrom, :processedTo, :tierNumber]
+  (
+    @derive Jason.Encoder
+    defstruct [:disableReason, :disabled, :processedFrom, :processedTo, :tierNumber]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

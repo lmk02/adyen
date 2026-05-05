@@ -23,25 +23,28 @@ defmodule Adyen.LegalEntity.V2.Organization do
           webData: Adyen.LegalEntity.V2.WebData.t() | nil
         }
 
-  defstruct [
-    :countryOfGoverningLaw,
-    :dateOfIncorporation,
-    :description,
-    :doingBusinessAs,
-    :email,
-    :legalName,
-    :phone,
-    :principalPlaceOfBusiness,
-    :registeredAddress,
-    :registrationNumber,
-    :stockData,
-    :taxInformation,
-    :taxReportingClassification,
-    :type,
-    :vatAbsenceReason,
-    :vatNumber,
-    :webData
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :countryOfGoverningLaw,
+      :dateOfIncorporation,
+      :description,
+      :doingBusinessAs,
+      :email,
+      :legalName,
+      :phone,
+      :principalPlaceOfBusiness,
+      :registeredAddress,
+      :registrationNumber,
+      :stockData,
+      :taxInformation,
+      :taxReportingClassification,
+      :type,
+      :vatAbsenceReason,
+      :vatNumber,
+      :webData
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

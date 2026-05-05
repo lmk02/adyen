@@ -8,7 +8,10 @@ defmodule Adyen.Account.V6.UploadDocumentRequest do
           documentDetail: Adyen.Account.V6.DocumentDetail.t()
         }
 
-  defstruct [:documentContent, :documentDetail]
+  (
+    @derive Jason.Encoder
+    defstruct [:documentContent, :documentDetail]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -9,7 +9,10 @@ defmodule Adyen.LegalEntity.V1.TransferInstrumentInfo do
           type: String.t()
         }
 
-  defstruct [:bankAccount, :legalEntityId, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:bankAccount, :legalEntityId, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

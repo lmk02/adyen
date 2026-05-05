@@ -11,7 +11,10 @@ defmodule Adyen.BalancePlatform.V2.BalanceWebhookSettingInfo do
           type: String.t()
         }
 
-  defstruct [:conditions, :currency, :status, :target, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:conditions, :currency, :status, :target, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

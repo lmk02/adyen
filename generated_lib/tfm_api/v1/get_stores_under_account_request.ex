@@ -5,7 +5,10 @@ defmodule Adyen.TfmAPI.V1.GetStoresUnderAccountRequest do
 
   @type t :: %__MODULE__{companyAccount: String.t(), merchantAccount: String.t() | nil}
 
-  defstruct [:companyAccount, :merchantAccount]
+  (
+    @derive Jason.Encoder
+    defstruct [:companyAccount, :merchantAccount]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

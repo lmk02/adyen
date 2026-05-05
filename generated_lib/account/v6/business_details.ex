@@ -16,18 +16,21 @@ defmodule Adyen.Account.V6.BusinessDetails do
           taxId: String.t() | nil
         }
 
-  defstruct [
-    :doingBusinessAs,
-    :legalBusinessName,
-    :listedUltimateParentCompany,
-    :registrationNumber,
-    :shareholders,
-    :signatories,
-    :stockExchange,
-    :stockNumber,
-    :stockTicker,
-    :taxId
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :doingBusinessAs,
+      :legalBusinessName,
+      :listedUltimateParentCompany,
+      :registrationNumber,
+      :shareholders,
+      :signatories,
+      :stockExchange,
+      :stockNumber,
+      :stockTicker,
+      :taxId
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

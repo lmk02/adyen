@@ -5,7 +5,10 @@ defmodule Adyen.TerminalAPI.V1.SaleToIssuerData do
 
   @type t :: %__MODULE__{StatementReference: String.t() | nil}
 
-  defstruct [:StatementReference]
+  (
+    @derive Jason.Encoder
+    defstruct [:StatementReference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

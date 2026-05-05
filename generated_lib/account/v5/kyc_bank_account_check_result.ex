@@ -8,7 +8,10 @@ defmodule Adyen.Account.V5.KYCBankAccountCheckResult do
           checks: [Adyen.Account.V5.KYCCheckStatusData.t()] | nil
         }
 
-  defstruct [:bankAccountUUID, :checks]
+  (
+    @derive Jason.Encoder
+    defstruct [:bankAccountUUID, :checks]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

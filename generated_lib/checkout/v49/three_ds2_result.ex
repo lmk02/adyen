@@ -15,17 +15,20 @@ defmodule Adyen.Checkout.V49.ThreeDs2Result do
           whiteListStatus: String.t() | nil
         }
 
-  defstruct [
-    :authenticationValue,
-    :dsTransID,
-    :eci,
-    :messageVersion,
-    :threeDSServerTransID,
-    :timestamp,
-    :transStatus,
-    :transStatusReason,
-    :whiteListStatus
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :authenticationValue,
+      :dsTransID,
+      :eci,
+      :messageVersion,
+      :threeDSServerTransID,
+      :timestamp,
+      :transStatus,
+      :transStatusReason,
+      :whiteListStatus
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -14,16 +14,19 @@ defmodule Adyen.Hop.V6.GetOnboardingUrlRequest do
           showPages: Adyen.Hop.V6.ShowPages.t() | nil
         }
 
-  defstruct [
-    :accountHolderCode,
-    :collectInformation,
-    :editMode,
-    :mobileOAuthCallbackUrl,
-    :platformName,
-    :returnUrl,
-    :shopperLocale,
-    :showPages
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountHolderCode,
+      :collectInformation,
+      :editMode,
+      :mobileOAuthCallbackUrl,
+      :platformName,
+      :returnUrl,
+      :shopperLocale,
+      :showPages
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

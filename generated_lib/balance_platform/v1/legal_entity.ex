@@ -15,17 +15,20 @@ defmodule Adyen.BalancePlatform.V1.LegalEntity do
           type: String.t() | nil
         }
 
-  defstruct [
-    :capabilities,
-    :documents,
-    :entityAssociations,
-    :id,
-    :individual,
-    :organization,
-    :reference,
-    :transferInstruments,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :capabilities,
+      :documents,
+      :entityAssociations,
+      :id,
+      :individual,
+      :organization,
+      :reference,
+      :transferInstruments,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

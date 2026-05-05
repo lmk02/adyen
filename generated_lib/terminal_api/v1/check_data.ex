@@ -13,15 +13,18 @@ defmodule Adyen.TerminalAPI.V1.CheckData do
           TypeCode: String.t() | nil
         }
 
-  defstruct [
-    :AccountNumber,
-    :BankID,
-    :CheckCardNumber,
-    :CheckNumber,
-    :Country,
-    :TrackData,
-    :TypeCode
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :AccountNumber,
+      :BankID,
+      :CheckCardNumber,
+      :CheckNumber,
+      :Country,
+      :TrackData,
+      :TypeCode
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

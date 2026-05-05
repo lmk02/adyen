@@ -5,7 +5,10 @@ defmodule Adyen.Transfer.V4.ThreeDSecure do
 
   @type t :: %__MODULE__{acsTransactionId: String.t() | nil}
 
-  defstruct [:acsTransactionId]
+  (
+    @derive Jason.Encoder
+    defstruct [:acsTransactionId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

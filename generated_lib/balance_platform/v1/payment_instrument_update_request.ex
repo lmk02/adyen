@@ -10,7 +10,10 @@ defmodule Adyen.BalancePlatform.V1.PaymentInstrumentUpdateRequest do
           statusComment: String.t() | nil
         }
 
-  defstruct [:balanceAccountId, :card, :status, :statusComment]
+  (
+    @derive Jason.Encoder
+    defstruct [:balanceAccountId, :card, :status, :statusComment]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

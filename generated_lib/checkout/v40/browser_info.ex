@@ -15,17 +15,20 @@ defmodule Adyen.Checkout.V40.BrowserInfo do
           userAgent: String.t()
         }
 
-  defstruct [
-    :acceptHeader,
-    :colorDepth,
-    :javaEnabled,
-    :javaScriptEnabled,
-    :language,
-    :screenHeight,
-    :screenWidth,
-    :timeZoneOffset,
-    :userAgent
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :acceptHeader,
+      :colorDepth,
+      :javaEnabled,
+      :javaScriptEnabled,
+      :language,
+      :screenHeight,
+      :screenWidth,
+      :timeZoneOffset,
+      :userAgent
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

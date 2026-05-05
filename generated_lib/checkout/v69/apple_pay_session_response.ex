@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V69.ApplePaySessionResponse do
 
   @type t :: %__MODULE__{data: String.t()}
 
-  defstruct [:data]
+  (
+    @derive Jason.Encoder
+    defstruct [:data]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

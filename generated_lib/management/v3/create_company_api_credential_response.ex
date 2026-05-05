@@ -15,25 +15,26 @@ defmodule Adyen.Management.V3.CreateCompanyApiCredentialResponse do
           id: String.t(),
           password: String.t(),
           roles: [String.t()],
-          subjectDN: String.t() | nil,
           username: String.t()
         }
 
-  defstruct [
-    :_links,
-    :active,
-    :allowedIpAddresses,
-    :allowedOrigins,
-    :apiKey,
-    :associatedMerchantAccounts,
-    :clientKey,
-    :description,
-    :id,
-    :password,
-    :roles,
-    :subjectDN,
-    :username
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :_links,
+      :active,
+      :allowedIpAddresses,
+      :allowedOrigins,
+      :apiKey,
+      :associatedMerchantAccounts,
+      :clientKey,
+      :description,
+      :id,
+      :password,
+      :roles,
+      :username
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -52,7 +53,6 @@ defmodule Adyen.Management.V3.CreateCompanyApiCredentialResponse do
       id: :string,
       password: :string,
       roles: [:string],
-      subjectDN: :string,
       username: :string
     ]
   end

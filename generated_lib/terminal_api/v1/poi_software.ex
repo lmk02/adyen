@@ -10,7 +10,10 @@ defmodule Adyen.TerminalAPI.V1.POISoftware do
           SoftwareVersion: String.t()
         }
 
-  defstruct [:ApplicationName, :CertificationCode, :ManufacturerID, :SoftwareVersion]
+  (
+    @derive Jason.Encoder
+    defstruct [:ApplicationName, :CertificationCode, :ManufacturerID, :SoftwareVersion]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

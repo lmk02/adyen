@@ -9,7 +9,10 @@ defmodule Adyen.Fund.V3.RefundNotPaidOutTransfersResponse do
           submittedAsync: boolean | nil
         }
 
-  defstruct [:pspReference, :resultCode, :submittedAsync]
+  (
+    @derive Jason.Encoder
+    defstruct [:pspReference, :resultCode, :submittedAsync]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -8,7 +8,10 @@ defmodule Adyen.Management.V1.OfflineProcessing do
           offlineSwipeLimits: [Adyen.Management.V1.MinorUnitsMonetaryValue.t()] | nil
         }
 
-  defstruct [:chipFloorLimit, :offlineSwipeLimits]
+  (
+    @derive Jason.Encoder
+    defstruct [:chipFloorLimit, :offlineSwipeLimits]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

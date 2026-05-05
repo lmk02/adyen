@@ -14,16 +14,19 @@ defmodule Adyen.BalancePlatform.V2.CardOrderItem do
           shippingMethod: String.t() | nil
         }
 
-  defstruct [
-    :balancePlatform,
-    :card,
-    :cardOrderItemId,
-    :creationDate,
-    :id,
-    :paymentInstrumentId,
-    :pin,
-    :shippingMethod
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :balancePlatform,
+      :card,
+      :cardOrderItemId,
+      :creationDate,
+      :id,
+      :paymentInstrumentId,
+      :pin,
+      :shippingMethod
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.LegalEntity.V3.WebData do
 
   @type t :: %__MODULE__{webAddress: String.t() | nil, webAddressId: String.t() | nil}
 
-  defstruct [:webAddress, :webAddressId]
+  (
+    @derive Jason.Encoder
+    defstruct [:webAddress, :webAddressId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

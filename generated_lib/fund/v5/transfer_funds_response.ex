@@ -10,7 +10,10 @@ defmodule Adyen.Fund.V5.TransferFundsResponse do
           resultCode: String.t() | nil
         }
 
-  defstruct [:invalidFields, :merchantReference, :pspReference, :resultCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:invalidFields, :merchantReference, :pspReference, :resultCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

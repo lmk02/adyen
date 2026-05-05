@@ -8,7 +8,10 @@ defmodule Adyen.Management.V3.Payment do
           hideMinorUnitsInCurrencies: [String.t()] | nil
         }
 
-  defstruct [:contactlessCurrency, :hideMinorUnitsInCurrencies]
+  (
+    @derive Jason.Encoder
+    defstruct [:contactlessCurrency, :hideMinorUnitsInCurrencies]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

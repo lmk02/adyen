@@ -5,7 +5,10 @@ defmodule Adyen.Management.V3.ApplePayInfo do
 
   @type t :: %__MODULE__{domains: [String.t()]}
 
-  defstruct [:domains]
+  (
+    @derive Jason.Encoder
+    defstruct [:domains]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

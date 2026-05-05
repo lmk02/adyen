@@ -5,7 +5,10 @@ defmodule Adyen.Account.V4.UltimateParentCompanyWrapper do
 
   @type t :: %__MODULE__{UltimateParentCompany: Adyen.Account.V4.UltimateParentCompany.t() | nil}
 
-  defstruct [:UltimateParentCompany]
+  (
+    @derive Jason.Encoder
+    defstruct [:UltimateParentCompany]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

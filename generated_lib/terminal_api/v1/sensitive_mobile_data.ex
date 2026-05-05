@@ -5,7 +5,10 @@ defmodule Adyen.TerminalAPI.V1.SensitiveMobileData do
 
   @type t :: %__MODULE__{IMEI: integer | nil, IMSI: integer | nil, MSISDN: integer}
 
-  defstruct [:IMEI, :IMSI, :MSISDN]
+  (
+    @derive Jason.Encoder
+    defstruct [:IMEI, :IMSI, :MSISDN]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

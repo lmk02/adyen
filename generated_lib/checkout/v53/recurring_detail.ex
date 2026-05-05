@@ -19,21 +19,24 @@ defmodule Adyen.Checkout.V53.RecurringDetail do
           type: String.t() | nil
         }
 
-  defstruct [
-    :apps,
-    :brands,
-    :configuration,
-    :details,
-    :fundingSource,
-    :group,
-    :inputDetails,
-    :name,
-    :promoted,
-    :recurringDetailReference,
-    :storedDetails,
-    :supportsRecurring,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :apps,
+      :brands,
+      :configuration,
+      :details,
+      :fundingSource,
+      :group,
+      :inputDetails,
+      :name,
+      :promoted,
+      :recurringDetailReference,
+      :storedDetails,
+      :supportsRecurring,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

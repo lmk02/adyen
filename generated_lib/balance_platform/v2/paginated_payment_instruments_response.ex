@@ -9,7 +9,10 @@ defmodule Adyen.BalancePlatform.V2.PaginatedPaymentInstrumentsResponse do
           paymentInstruments: [Adyen.BalancePlatform.V2.PaymentInstrument.t()]
         }
 
-  defstruct [:hasNext, :hasPrevious, :paymentInstruments]
+  (
+    @derive Jason.Encoder
+    defstruct [:hasNext, :hasPrevious, :paymentInstruments]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

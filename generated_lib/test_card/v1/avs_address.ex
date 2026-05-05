@@ -5,7 +5,10 @@ defmodule Adyen.TestCard.V1.AvsAddress do
 
   @type t :: %__MODULE__{streetAddress: String.t(), zip: String.t() | nil}
 
-  defstruct [:streetAddress, :zip]
+  (
+    @derive Jason.Encoder
+    defstruct [:streetAddress, :zip]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V1.TransferInstrumentReference do
 
   @type t :: %__MODULE__{accountIdentifier: String.t(), id: String.t()}
 
-  defstruct [:accountIdentifier, :id]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountIdentifier, :id]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

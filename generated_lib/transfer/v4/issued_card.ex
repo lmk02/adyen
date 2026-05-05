@@ -15,17 +15,20 @@ defmodule Adyen.Transfer.V4.IssuedCard do
           validationFacts: [Adyen.Transfer.V4.TransferNotificationValidationFact.t()] | nil
         }
 
-  defstruct [
-    :authorisationType,
-    :panEntryMode,
-    :processingType,
-    :relayedAuthorisationData,
-    :schemeTraceId,
-    :schemeUniqueTransactionId,
-    :threeDSecure,
-    :type,
-    :validationFacts
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :authorisationType,
+      :panEntryMode,
+      :processingType,
+      :relayedAuthorisationData,
+      :schemeTraceId,
+      :schemeUniqueTransactionId,
+      :threeDSecure,
+      :type,
+      :validationFacts
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -15,17 +15,20 @@ defmodule Adyen.Capital.V1.DynamicOffer do
           startsAt: DateTime.t()
         }
 
-  defstruct [
-    :accountHolderId,
-    :contractType,
-    :expiresAt,
-    :financingType,
-    :id,
-    :maximumAmount,
-    :minimumAmount,
-    :repayment,
-    :startsAt
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountHolderId,
+      :contractType,
+      :expiresAt,
+      :financingType,
+      :id,
+      :maximumAmount,
+      :minimumAmount,
+      :repayment,
+      :startsAt
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

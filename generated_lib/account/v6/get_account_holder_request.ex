@@ -9,7 +9,10 @@ defmodule Adyen.Account.V6.GetAccountHolderRequest do
           showDetails: boolean | nil
         }
 
-  defstruct [:accountCode, :accountHolderCode, :showDetails]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountCode, :accountHolderCode, :showDetails]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

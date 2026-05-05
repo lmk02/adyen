@@ -22,24 +22,27 @@ defmodule Adyen.Checkout.V71.AcctInfo do
           txnActivityYear: String.t() | nil
         }
 
-  defstruct [
-    :chAccAgeInd,
-    :chAccChange,
-    :chAccChangeInd,
-    :chAccPwChange,
-    :chAccPwChangeInd,
-    :chAccString,
-    :nbPurchaseAccount,
-    :paymentAccAge,
-    :paymentAccInd,
-    :provisionAttemptsDay,
-    :shipAddressUsage,
-    :shipAddressUsageInd,
-    :shipNameIndicator,
-    :suspiciousAccActivity,
-    :txnActivityDay,
-    :txnActivityYear
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :chAccAgeInd,
+      :chAccChange,
+      :chAccChangeInd,
+      :chAccPwChange,
+      :chAccPwChangeInd,
+      :chAccString,
+      :nbPurchaseAccount,
+      :paymentAccAge,
+      :paymentAccInd,
+      :provisionAttemptsDay,
+      :shipAddressUsage,
+      :shipAddressUsageInd,
+      :shipNameIndicator,
+      :suspiciousAccActivity,
+      :txnActivityDay,
+      :txnActivityYear
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

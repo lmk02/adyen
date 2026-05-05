@@ -11,7 +11,10 @@ defmodule Adyen.Management.V3.ListWebhooksResponse do
           pagesTotal: integer
         }
 
-  defstruct [:_links, :accountReference, :data, :itemsTotal, :pagesTotal]
+  (
+    @derive Jason.Encoder
+    defstruct [:_links, :accountReference, :data, :itemsTotal, :pagesTotal]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

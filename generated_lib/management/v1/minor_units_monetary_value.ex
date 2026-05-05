@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.MinorUnitsMonetaryValue do
 
   @type t :: %__MODULE__{amount: integer | nil, currencyCode: String.t() | nil}
 
-  defstruct [:amount, :currencyCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:amount, :currencyCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

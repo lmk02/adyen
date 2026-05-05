@@ -9,7 +9,10 @@ defmodule Adyen.TerminalAPI.V1.POISystemData do
           POIStatus: Adyen.TerminalAPI.V1.POIStatus.t() | nil
         }
 
-  defstruct [:DateTime, :POISoftware, :POIStatus]
+  (
+    @derive Jason.Encoder
+    defstruct [:DateTime, :POISoftware, :POIStatus]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -10,7 +10,10 @@ defmodule Adyen.Transfer.V1.Name do
           lastName: String.t() | nil
         }
 
-  defstruct [:firstName, :fullName, :infix, :lastName]
+  (
+    @derive Jason.Encoder
+    defstruct [:firstName, :fullName, :infix, :lastName]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

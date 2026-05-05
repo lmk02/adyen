@@ -7,7 +7,10 @@ defmodule Adyen.TestCard.V1.CreateTestCardRangesResult do
           rangeCreationResults: [Adyen.TestCard.V1.TestCardRangeCreationResult.t()]
         }
 
-  defstruct [:rangeCreationResults]
+  (
+    @derive Jason.Encoder
+    defstruct [:rangeCreationResults]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

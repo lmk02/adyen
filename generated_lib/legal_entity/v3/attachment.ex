@@ -11,7 +11,10 @@ defmodule Adyen.LegalEntity.V3.Attachment do
           pageType: String.t() | nil
         }
 
-  defstruct [:content, :contentType, :filename, :pageName, :pageType]
+  (
+    @derive Jason.Encoder
+    defstruct [:content, :contentType, :filename, :pageName, :pageType]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

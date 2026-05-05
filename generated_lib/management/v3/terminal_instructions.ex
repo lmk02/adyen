@@ -5,7 +5,10 @@ defmodule Adyen.Management.V3.TerminalInstructions do
 
   @type t :: %__MODULE__{adyenAppRestart: boolean | nil}
 
-  defstruct [:adyenAppRestart]
+  (
+    @derive Jason.Encoder
+    defstruct [:adyenAppRestart]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.Account.V5.MigratedAccounts do
 
   @type t :: %__MODULE__{accountCode: String.t() | nil, balanceAccountId: String.t() | nil}
 
-  defstruct [:accountCode, :balanceAccountId]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountCode, :balanceAccountId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

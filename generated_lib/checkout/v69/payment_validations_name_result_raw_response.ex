@@ -11,7 +11,10 @@ defmodule Adyen.Checkout.V69.PaymentValidationsNameResultRawResponse do
           status: String.t() | nil
         }
 
-  defstruct [:firstName, :fullName, :lastName, :middleName, :status]
+  (
+    @derive Jason.Encoder
+    defstruct [:firstName, :fullName, :lastName, :middleName, :status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

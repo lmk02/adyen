@@ -9,7 +9,10 @@ defmodule Adyen.OpenBanking.V1.AccountVerificationReportResponse do
           id: String.t()
         }
 
-  defstruct [:accounts, :country, :id]
+  (
+    @derive Jason.Encoder
+    defstruct [:accounts, :country, :id]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

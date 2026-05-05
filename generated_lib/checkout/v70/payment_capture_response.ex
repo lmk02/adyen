@@ -16,18 +16,21 @@ defmodule Adyen.Checkout.V70.PaymentCaptureResponse do
           subMerchants: [Adyen.Checkout.V70.SubMerchantInfo.t()] | nil
         }
 
-  defstruct [
-    :amount,
-    :lineItems,
-    :merchantAccount,
-    :paymentPspReference,
-    :platformChargebackLogic,
-    :pspReference,
-    :reference,
-    :splits,
-    :status,
-    :subMerchants
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amount,
+      :lineItems,
+      :merchantAccount,
+      :paymentPspReference,
+      :platformChargebackLogic,
+      :pspReference,
+      :reference,
+      :splits,
+      :status,
+      :subMerchants
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

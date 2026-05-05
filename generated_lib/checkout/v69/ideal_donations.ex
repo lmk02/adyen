@@ -12,14 +12,17 @@ defmodule Adyen.Checkout.V69.IdealDonations do
           type: String.t() | nil
         }
 
-  defstruct [
-    :checkoutAttemptId,
-    :issuer,
-    :recurringDetailReference,
-    :sdkData,
-    :storedPaymentMethodId,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :checkoutAttemptId,
+      :issuer,
+      :recurringDetailReference,
+      :sdkData,
+      :storedPaymentMethodId,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

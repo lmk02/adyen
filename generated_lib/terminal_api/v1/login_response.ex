@@ -9,7 +9,10 @@ defmodule Adyen.TerminalAPI.V1.LoginResponse do
           TokenRequestStatus: boolean | nil
         }
 
-  defstruct [:POISystemData, :Response, :TokenRequestStatus]
+  (
+    @derive Jason.Encoder
+    defstruct [:POISystemData, :Response, :TokenRequestStatus]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

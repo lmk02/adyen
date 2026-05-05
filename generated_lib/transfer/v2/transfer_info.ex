@@ -14,16 +14,19 @@ defmodule Adyen.Transfer.V2.TransferInfo do
           referenceForBeneficiary: String.t() | nil
         }
 
-  defstruct [
-    :amount,
-    :balanceAccountId,
-    :bank,
-    :counterparty,
-    :description,
-    :paymentInstrumentId,
-    :reference,
-    :referenceForBeneficiary
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amount,
+      :balanceAccountId,
+      :bank,
+      :counterparty,
+      :description,
+      :paymentInstrumentId,
+      :reference,
+      :referenceForBeneficiary
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

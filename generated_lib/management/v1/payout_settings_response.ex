@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.PayoutSettingsResponse do
 
   @type t :: %__MODULE__{data: [Adyen.Management.V1.PayoutSettings.t()] | nil}
 
-  defstruct [:data]
+  (
+    @derive Jason.Encoder
+    defstruct [:data]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

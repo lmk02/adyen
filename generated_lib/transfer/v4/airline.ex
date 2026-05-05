@@ -5,7 +5,10 @@ defmodule Adyen.Transfer.V4.Airline do
 
   @type t :: %__MODULE__{legs: [Adyen.Transfer.V4.Leg.t()] | nil, ticketNumber: String.t() | nil}
 
-  defstruct [:legs, :ticketNumber]
+  (
+    @derive Jason.Encoder
+    defstruct [:legs, :ticketNumber]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

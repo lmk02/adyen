@@ -9,7 +9,10 @@ defmodule Adyen.Payment.V49.ModificationResult do
           response: String.t()
         }
 
-  defstruct [:additionalData, :pspReference, :response]
+  (
+    @derive Jason.Encoder
+    defstruct [:additionalData, :pspReference, :response]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

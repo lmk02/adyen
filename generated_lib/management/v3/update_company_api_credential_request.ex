@@ -8,18 +8,13 @@ defmodule Adyen.Management.V3.UpdateCompanyApiCredentialRequest do
           allowedOrigins: [String.t()] | nil,
           associatedMerchantAccounts: [String.t()] | nil,
           description: String.t() | nil,
-          roles: [String.t()] | nil,
-          subjectDN: String.t() | nil
+          roles: [String.t()] | nil
         }
 
-  defstruct [
-    :active,
-    :allowedOrigins,
-    :associatedMerchantAccounts,
-    :description,
-    :roles,
-    :subjectDN
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [:active, :allowedOrigins, :associatedMerchantAccounts, :description, :roles]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -31,8 +26,7 @@ defmodule Adyen.Management.V3.UpdateCompanyApiCredentialRequest do
       allowedOrigins: [:string],
       associatedMerchantAccounts: [:string],
       description: :string,
-      roles: [:string],
-      subjectDN: :string
+      roles: [:string]
     ]
   end
 end

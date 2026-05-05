@@ -12,14 +12,17 @@ defmodule Adyen.Checkout.V52.ApplePayDonations do
           type: String.t() | nil
         }
 
-  defstruct [
-    :applePayToken,
-    :checkoutAttemptId,
-    :fundingSource,
-    :recurringDetailReference,
-    :storedPaymentMethodId,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :applePayToken,
+      :checkoutAttemptId,
+      :fundingSource,
+      :recurringDetailReference,
+      :storedPaymentMethodId,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

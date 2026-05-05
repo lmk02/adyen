@@ -7,7 +7,10 @@ defmodule Adyen.Management.V3.GenericPmWithTdiInfo do
           transactionDescription: Adyen.Management.V3.TransactionDescriptionInfo.t() | nil
         }
 
-  defstruct [:transactionDescription]
+  (
+    @derive Jason.Encoder
+    defstruct [:transactionDescription]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

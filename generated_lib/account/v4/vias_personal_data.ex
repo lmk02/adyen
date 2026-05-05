@@ -10,7 +10,10 @@ defmodule Adyen.Account.V4.ViasPersonalData do
           nationality: String.t() | nil
         }
 
-  defstruct [:dateOfBirth, :documentData, :idNumber, :nationality]
+  (
+    @derive Jason.Encoder
+    defstruct [:dateOfBirth, :documentData, :idNumber, :nationality]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

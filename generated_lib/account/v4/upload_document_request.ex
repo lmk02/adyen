@@ -11,13 +11,16 @@ defmodule Adyen.Account.V4.UploadDocumentRequest do
           shareholderCode: String.t() | nil
         }
 
-  defstruct [
-    :accountHolderCode,
-    :bankAccountUUID,
-    :documentContent,
-    :documentDetail,
-    :shareholderCode
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountHolderCode,
+      :bankAccountUUID,
+      :documentContent,
+      :documentDetail,
+      :shareholderCode
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -10,7 +10,10 @@ defmodule Adyen.BalancePlatform.V2.AssociationFinaliseRequest do
           type: String.t()
         }
 
-  defstruct [:ids, :strongCustomerAuthentication, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:ids, :strongCustomerAuthentication, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

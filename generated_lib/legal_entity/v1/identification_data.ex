@@ -13,15 +13,18 @@ defmodule Adyen.LegalEntity.V1.IdentificationData do
           type: String.t()
         }
 
-  defstruct [
-    :cardNumber,
-    :expiryDate,
-    :issuerCountry,
-    :issuerState,
-    :nationalIdExempt,
-    :number,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :cardNumber,
+      :expiryDate,
+      :issuerCountry,
+      :issuerState,
+      :nationalIdExempt,
+      :number,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

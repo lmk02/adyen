@@ -13,15 +13,18 @@ defmodule Adyen.BalancePlatform.V1.AccountHolderInfo do
           timeZone: String.t() | nil
         }
 
-  defstruct [
-    :balancePlatform,
-    :capabilities,
-    :contactDetails,
-    :description,
-    :legalEntityId,
-    :reference,
-    :timeZone
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :balancePlatform,
+      :capabilities,
+      :contactDetails,
+      :description,
+      :legalEntityId,
+      :reference,
+      :timeZone
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

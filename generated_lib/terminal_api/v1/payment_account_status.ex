@@ -10,7 +10,10 @@ defmodule Adyen.TerminalAPI.V1.PaymentAccountStatus do
           PaymentInstrumentData: Adyen.TerminalAPI.V1.PaymentInstrumentData.t() | nil
         }
 
-  defstruct [:Currency, :CurrentBalance, :PaymentAcquirerData, :PaymentInstrumentData]
+  (
+    @derive Jason.Encoder
+    defstruct [:Currency, :CurrentBalance, :PaymentAcquirerData, :PaymentInstrumentData]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

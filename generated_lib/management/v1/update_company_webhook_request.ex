@@ -21,23 +21,26 @@ defmodule Adyen.Management.V1.UpdateCompanyWebhookRequest do
           username: String.t() | nil
         }
 
-  defstruct [
-    :acceptsExpiredCertificate,
-    :acceptsSelfSignedCertificate,
-    :acceptsUntrustedRootCertificate,
-    :active,
-    :additionalSettings,
-    :communicationFormat,
-    :description,
-    :filterMerchantAccountType,
-    :filterMerchantAccounts,
-    :networkType,
-    :password,
-    :populateSoapActionHeader,
-    :sslVersion,
-    :url,
-    :username
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :acceptsExpiredCertificate,
+      :acceptsSelfSignedCertificate,
+      :acceptsUntrustedRootCertificate,
+      :active,
+      :additionalSettings,
+      :communicationFormat,
+      :description,
+      :filterMerchantAccountType,
+      :filterMerchantAccounts,
+      :networkType,
+      :password,
+      :populateSoapActionHeader,
+      :sslVersion,
+      :url,
+      :username
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

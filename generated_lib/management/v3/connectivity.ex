@@ -8,7 +8,10 @@ defmodule Adyen.Management.V3.Connectivity do
           terminalIPAddressURL: Adyen.Management.V3.EventUrl.t() | nil
         }
 
-  defstruct [:simcardStatus, :terminalIPAddressURL]
+  (
+    @derive Jason.Encoder
+    defstruct [:simcardStatus, :terminalIPAddressURL]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

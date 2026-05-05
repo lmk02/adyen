@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V71.DonationCampaignsRequest do
           store: String.t() | nil
         }
 
-  defstruct [:currency, :locale, :merchantAccount, :store]
+  (
+    @derive Jason.Encoder
+    defstruct [:currency, :locale, :merchantAccount, :store]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

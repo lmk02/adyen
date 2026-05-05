@@ -17,19 +17,22 @@ defmodule Adyen.Account.V4.CreateAccountHolderResponse do
           verification: Adyen.Account.V4.KYCVerificationResult.t() | nil
         }
 
-  defstruct [
-    :accountCode,
-    :accountHolderCode,
-    :accountHolderDetails,
-    :accountHolderStatus,
-    :description,
-    :invalidFields,
-    :legalEntity,
-    :pspReference,
-    :resultCode,
-    :submittedAsync,
-    :verification
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountCode,
+      :accountHolderCode,
+      :accountHolderDetails,
+      :accountHolderStatus,
+      :description,
+      :invalidFields,
+      :legalEntity,
+      :pspReference,
+      :resultCode,
+      :submittedAsync,
+      :verification
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

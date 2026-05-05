@@ -5,7 +5,10 @@ defmodule Adyen.LegalEntity.V2.CalculatePciStatusResponse do
 
   @type t :: %__MODULE__{signingRequired: boolean | nil}
 
-  defstruct [:signingRequired]
+  (
+    @derive Jason.Encoder
+    defstruct [:signingRequired]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

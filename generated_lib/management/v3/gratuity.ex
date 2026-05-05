@@ -10,7 +10,10 @@ defmodule Adyen.Management.V3.Gratuity do
           usePredefinedTipEntries: boolean | nil
         }
 
-  defstruct [:allowCustomAmount, :currency, :predefinedTipEntries, :usePredefinedTipEntries]
+  (
+    @derive Jason.Encoder
+    defstruct [:allowCustomAmount, :currency, :predefinedTipEntries, :usePredefinedTipEntries]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

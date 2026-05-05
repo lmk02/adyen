@@ -9,7 +9,10 @@ defmodule Adyen.Management.V3.TerminalConnectivityEthernet do
           macAddress: String.t() | nil
         }
 
-  defstruct [:ipAddress, :linkNegotiation, :macAddress]
+  (
+    @derive Jason.Encoder
+    defstruct [:ipAddress, :linkNegotiation, :macAddress]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

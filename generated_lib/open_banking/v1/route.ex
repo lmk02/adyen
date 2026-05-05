@@ -5,7 +5,10 @@ defmodule Adyen.OpenBanking.V1.Route do
 
   @type t :: %__MODULE__{link: String.t(), provider: Adyen.OpenBanking.V1.Provider.t()}
 
-  defstruct [:link, :provider]
+  (
+    @derive Jason.Encoder
+    defstruct [:link, :provider]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

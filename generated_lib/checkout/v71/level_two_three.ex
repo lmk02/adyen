@@ -14,16 +14,19 @@ defmodule Adyen.Checkout.V71.LevelTwoThree do
           totalTaxAmount: integer | nil
         }
 
-  defstruct [
-    :customerReferenceNumber,
-    :destination,
-    :dutyAmount,
-    :freightAmount,
-    :itemDetailLines,
-    :orderDate,
-    :shipFromPostalCode,
-    :totalTaxAmount
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :customerReferenceNumber,
+      :destination,
+      :dutyAmount,
+      :freightAmount,
+      :itemDetailLines,
+      :orderDate,
+      :shipFromPostalCode,
+      :totalTaxAmount
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

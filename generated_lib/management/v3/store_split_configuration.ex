@@ -8,7 +8,10 @@ defmodule Adyen.Management.V3.StoreSplitConfiguration do
           splitConfigurationId: String.t() | nil
         }
 
-  defstruct [:balanceAccountId, :splitConfigurationId]
+  (
+    @derive Jason.Encoder
+    defstruct [:balanceAccountId, :splitConfigurationId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

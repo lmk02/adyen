@@ -11,7 +11,16 @@ defmodule Adyen.Account.V4.UltimateParentCompanyBusinessDetails do
           stockTicker: String.t() | nil
         }
 
-  defstruct [:legalBusinessName, :registrationNumber, :stockExchange, :stockNumber, :stockTicker]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :legalBusinessName,
+      :registrationNumber,
+      :stockExchange,
+      :stockNumber,
+      :stockTicker
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

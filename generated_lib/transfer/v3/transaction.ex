@@ -26,28 +26,31 @@ defmodule Adyen.Transfer.V3.Transaction do
           valueDate: DateTime.t()
         }
 
-  defstruct [
-    :accountHolderId,
-    :amount,
-    :balanceAccountId,
-    :balancePlatform,
-    :bookingDate,
-    :category,
-    :counterparty,
-    :createdAt,
-    :creationDate,
-    :description,
-    :eventId,
-    :id,
-    :instructedAmount,
-    :paymentInstrumentId,
-    :reference,
-    :referenceForBeneficiary,
-    :status,
-    :transferId,
-    :type,
-    :valueDate
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountHolderId,
+      :amount,
+      :balanceAccountId,
+      :balancePlatform,
+      :bookingDate,
+      :category,
+      :counterparty,
+      :createdAt,
+      :creationDate,
+      :description,
+      :eventId,
+      :id,
+      :instructedAmount,
+      :paymentInstrumentId,
+      :reference,
+      :referenceForBeneficiary,
+      :status,
+      :transferId,
+      :type,
+      :valueDate
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -129,8 +132,7 @@ defmodule Adyen.Transfer.V3.Transaction do
            "repayment",
            "reserveAdjustment",
            "secondChargeback",
-           "secondChargebackCorrection",
-           "subsidization"
+           "secondChargebackCorrection"
          ]},
       valueDate: {:string, "date-time"}
     ]

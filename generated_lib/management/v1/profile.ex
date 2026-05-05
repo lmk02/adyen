@@ -25,27 +25,30 @@ defmodule Adyen.Management.V1.Profile do
           wsec: String.t()
         }
 
-  defstruct [
-    :authType,
-    :autoWifi,
-    :bssType,
-    :channel,
-    :defaultProfile,
-    :domainSuffix,
-    :eap,
-    :eapCaCert,
-    :eapClientCert,
-    :eapClientKey,
-    :eapClientPwd,
-    :eapIdentity,
-    :eapIntermediateCert,
-    :eapPwd,
-    :hiddenSsid,
-    :name,
-    :psk,
-    :ssid,
-    :wsec
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :authType,
+      :autoWifi,
+      :bssType,
+      :channel,
+      :defaultProfile,
+      :domainSuffix,
+      :eap,
+      :eapCaCert,
+      :eapClientCert,
+      :eapClientKey,
+      :eapClientPwd,
+      :eapIdentity,
+      :eapIntermediateCert,
+      :eapPwd,
+      :hiddenSsid,
+      :name,
+      :psk,
+      :ssid,
+      :wsec
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

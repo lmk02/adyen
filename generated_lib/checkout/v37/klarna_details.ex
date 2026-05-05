@@ -13,15 +13,18 @@ defmodule Adyen.Checkout.V37.KlarnaDetails do
           type: String.t()
         }
 
-  defstruct [
-    :billingAddress,
-    :checkoutAttemptId,
-    :deliveryAddress,
-    :personalDetails,
-    :recurringDetailReference,
-    :subtype,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :billingAddress,
+      :checkoutAttemptId,
+      :deliveryAddress,
+      :personalDetails,
+      :recurringDetailReference,
+      :subtype,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

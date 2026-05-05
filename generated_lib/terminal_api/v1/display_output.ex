@@ -13,15 +13,18 @@ defmodule Adyen.TerminalAPI.V1.DisplayOutput do
           ResponseRequiredFlag: boolean | nil
         }
 
-  defstruct [
-    :Device,
-    :InfoQualify,
-    :MenuEntry,
-    :MinimumDisplayTime,
-    :OutputContent,
-    :OutputSignature,
-    :ResponseRequiredFlag
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :Device,
+      :InfoQualify,
+      :MenuEntry,
+      :MinimumDisplayTime,
+      :OutputContent,
+      :OutputSignature,
+      :ResponseRequiredFlag
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

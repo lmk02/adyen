@@ -9,7 +9,10 @@ defmodule Adyen.Management.V3.InstalledAPKs do
           versionName: String.t() | nil
         }
 
-  defstruct [:confirmationDate, :packageName, :versionName]
+  (
+    @derive Jason.Encoder
+    defstruct [:confirmationDate, :packageName, :versionName]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

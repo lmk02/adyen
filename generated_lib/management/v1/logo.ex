@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.Logo do
 
   @type t :: %__MODULE__{data: String.t() | nil}
 
-  defstruct [:data]
+  (
+    @derive Jason.Encoder
+    defstruct [:data]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

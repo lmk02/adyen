@@ -14,16 +14,19 @@ defmodule Adyen.Management.V1.AndroidApp do
           versionName: String.t() | nil
         }
 
-  defstruct [
-    :description,
-    :errorCode,
-    :id,
-    :label,
-    :packageName,
-    :status,
-    :versionCode,
-    :versionName
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :description,
+      :errorCode,
+      :id,
+      :label,
+      :packageName,
+      :status,
+      :versionCode,
+      :versionName
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

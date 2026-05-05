@@ -16,18 +16,21 @@ defmodule Adyen.Payment.V67.FundDestination do
           walletPurpose: String.t() | nil
         }
 
-  defstruct [
-    :additionalData,
-    :billingAddress,
-    :card,
-    :selectedRecurringDetailReference,
-    :shopperEmail,
-    :shopperName,
-    :shopperReference,
-    :subMerchant,
-    :telephoneNumber,
-    :walletPurpose
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :additionalData,
+      :billingAddress,
+      :card,
+      :selectedRecurringDetailReference,
+      :shopperEmail,
+      :shopperName,
+      :shopperReference,
+      :subMerchant,
+      :telephoneNumber,
+      :walletPurpose
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

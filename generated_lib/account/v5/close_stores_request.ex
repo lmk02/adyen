@@ -5,7 +5,10 @@ defmodule Adyen.Account.V5.CloseStoresRequest do
 
   @type t :: %__MODULE__{accountHolderCode: String.t(), stores: [String.t()]}
 
-  defstruct [:accountHolderCode, :stores]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountHolderCode, :stores]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

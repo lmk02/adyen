@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.DelegatedAuthenticationData do
 
   @type t :: %__MODULE__{sdkOutput: String.t()}
 
-  defstruct [:sdkOutput]
+  (
+    @derive Jason.Encoder
+    defstruct [:sdkOutput]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

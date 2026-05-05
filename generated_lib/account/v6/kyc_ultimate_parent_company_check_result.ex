@@ -8,7 +8,10 @@ defmodule Adyen.Account.V6.KYCUltimateParentCompanyCheckResult do
           ultimateParentCompanyCode: String.t() | nil
         }
 
-  defstruct [:checks, :ultimateParentCompanyCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:checks, :ultimateParentCompanyCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

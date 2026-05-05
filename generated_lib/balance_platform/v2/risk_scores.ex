@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.RiskScores do
 
   @type t :: %__MODULE__{mastercard: integer | nil, visa: integer | nil}
 
-  defstruct [:mastercard, :visa]
+  (
+    @derive Jason.Encoder
+    defstruct [:mastercard, :visa]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

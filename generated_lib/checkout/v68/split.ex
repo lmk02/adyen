@@ -11,7 +11,10 @@ defmodule Adyen.Checkout.V68.Split do
           type: String.t()
         }
 
-  defstruct [:account, :amount, :description, :reference, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:account, :amount, :description, :reference, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

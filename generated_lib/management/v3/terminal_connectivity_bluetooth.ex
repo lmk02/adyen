@@ -5,7 +5,10 @@ defmodule Adyen.Management.V3.TerminalConnectivityBluetooth do
 
   @type t :: %__MODULE__{ipAddress: String.t() | nil, macAddress: String.t() | nil}
 
-  defstruct [:ipAddress, :macAddress]
+  (
+    @derive Jason.Encoder
+    defstruct [:ipAddress, :macAddress]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

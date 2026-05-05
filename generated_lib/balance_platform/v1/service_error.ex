@@ -11,7 +11,10 @@ defmodule Adyen.BalancePlatform.V1.ServiceError do
           status: integer | nil
         }
 
-  defstruct [:errorCode, :errorType, :message, :pspReference, :status]
+  (
+    @derive Jason.Encoder
+    defstruct [:errorCode, :errorType, :message, :pspReference, :status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.Management.V3.PayMeInfo do
 
   @type t :: %__MODULE__{displayName: String.t(), logo: String.t(), supportEmail: String.t()}
 
-  defstruct [:displayName, :logo, :supportEmail]
+  (
+    @derive Jason.Encoder
+    defstruct [:displayName, :logo, :supportEmail]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

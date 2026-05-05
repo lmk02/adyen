@@ -14,16 +14,19 @@ defmodule Adyen.Checkout.V69.UpiCollectDetails do
           virtualPaymentAddress: String.t() | nil
         }
 
-  defstruct [
-    :billingSequenceNumber,
-    :checkoutAttemptId,
-    :recurringDetailReference,
-    :sdkData,
-    :shopperNotificationReference,
-    :storedPaymentMethodId,
-    :type,
-    :virtualPaymentAddress
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :billingSequenceNumber,
+      :checkoutAttemptId,
+      :recurringDetailReference,
+      :sdkData,
+      :shopperNotificationReference,
+      :storedPaymentMethodId,
+      :type,
+      :virtualPaymentAddress
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

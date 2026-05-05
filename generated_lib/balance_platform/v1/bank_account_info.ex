@@ -17,19 +17,22 @@ defmodule Adyen.BalancePlatform.V1.BankAccountInfo do
           iban: String.t() | nil
         }
 
-  defstruct [
-    :accountNumber,
-    :accountType,
-    :bankBicSwift,
-    :bankCity,
-    :bankCode,
-    :bankName,
-    :branchCode,
-    :checkCode,
-    :countryCode,
-    :currencyCode,
-    :iban
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountNumber,
+      :accountType,
+      :bankBicSwift,
+      :bankCity,
+      :bankCode,
+      :bankName,
+      :branchCode,
+      :checkCode,
+      :countryCode,
+      :currencyCode,
+      :iban
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

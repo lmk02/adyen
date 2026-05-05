@@ -11,7 +11,10 @@ defmodule Adyen.Management.V3.Contact do
           phoneNumber: String.t() | nil
         }
 
-  defstruct [:email, :firstName, :infix, :lastName, :phoneNumber]
+  (
+    @derive Jason.Encoder
+    defstruct [:email, :firstName, :infix, :lastName, :phoneNumber]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

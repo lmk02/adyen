@@ -5,7 +5,10 @@ defmodule Adyen.Transaction.V4.AttachDocumentResponse do
 
   @type t :: %__MODULE__{attachmentId: String.t() | nil}
 
-  defstruct [:attachmentId]
+  (
+    @derive Jason.Encoder
+    defstruct [:attachmentId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V69.ValidateShopperIdResponse do
 
   @type t :: %__MODULE__{reason: String.t() | nil, result: String.t() | nil}
 
-  defstruct [:reason, :result]
+  (
+    @derive Jason.Encoder
+    defstruct [:reason, :result]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

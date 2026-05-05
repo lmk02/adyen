@@ -5,7 +5,10 @@ defmodule Adyen.PaymentsApp.V1.BoardingTokenRequest do
 
   @type t :: %__MODULE__{boardingRequestToken: String.t()}
 
-  defstruct [:boardingRequestToken]
+  (
+    @derive Jason.Encoder
+    defstruct [:boardingRequestToken]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -32,34 +32,37 @@ defmodule Adyen.Account.V6.BankAccountDetail do
           urlForVerification: String.t() | nil
         }
 
-  defstruct [
-    :accountNumber,
-    :accountType,
-    :bankAccountName,
-    :bankAccountReference,
-    :bankAccountUUID,
-    :bankBicSwift,
-    :bankCity,
-    :bankCode,
-    :bankName,
-    :branchCode,
-    :checkCode,
-    :countryCode,
-    :currencyCode,
-    :iban,
-    :ownerCity,
-    :ownerCountryCode,
-    :ownerDateOfBirth,
-    :ownerHouseNumberOrName,
-    :ownerName,
-    :ownerNationality,
-    :ownerPostalCode,
-    :ownerState,
-    :ownerStreet,
-    :primaryAccount,
-    :taxId,
-    :urlForVerification
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountNumber,
+      :accountType,
+      :bankAccountName,
+      :bankAccountReference,
+      :bankAccountUUID,
+      :bankBicSwift,
+      :bankCity,
+      :bankCode,
+      :bankName,
+      :branchCode,
+      :checkCode,
+      :countryCode,
+      :currencyCode,
+      :iban,
+      :ownerCity,
+      :ownerCountryCode,
+      :ownerDateOfBirth,
+      :ownerHouseNumberOrName,
+      :ownerName,
+      :ownerNationality,
+      :ownerPostalCode,
+      :ownerState,
+      :ownerStreet,
+      :primaryAccount,
+      :taxId,
+      :urlForVerification
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

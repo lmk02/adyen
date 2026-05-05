@@ -8,7 +8,10 @@ defmodule Adyen.Transfer.V4.TransferReview do
           scaOnApproval: String.t() | nil
         }
 
-  defstruct [:numberOfApprovalsRequired, :scaOnApproval]
+  (
+    @derive Jason.Encoder
+    defstruct [:numberOfApprovalsRequired, :scaOnApproval]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

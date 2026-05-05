@@ -22,24 +22,27 @@ defmodule Adyen.Payout.V52.StoreDetailRequest do
           telephoneNumber: String.t() | nil
         }
 
-  defstruct [
-    :additionalData,
-    :bank,
-    :billingAddress,
-    :card,
-    :dateOfBirth,
-    :entityType,
-    :fraudOffset,
-    :merchantAccount,
-    :nationality,
-    :recurring,
-    :selectedBrand,
-    :shopperEmail,
-    :shopperName,
-    :shopperReference,
-    :socialSecurityNumber,
-    :telephoneNumber
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :additionalData,
+      :bank,
+      :billingAddress,
+      :card,
+      :dateOfBirth,
+      :entityType,
+      :fraudOffset,
+      :merchantAccount,
+      :nationality,
+      :recurring,
+      :selectedBrand,
+      :shopperEmail,
+      :shopperName,
+      :shopperReference,
+      :socialSecurityNumber,
+      :telephoneNumber
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

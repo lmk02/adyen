@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V66.CreateOrderRequest do
           reference: String.t()
         }
 
-  defstruct [:amount, :expiresAt, :merchantAccount, :reference]
+  (
+    @derive Jason.Encoder
+    defstruct [:amount, :expiresAt, :merchantAccount, :reference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

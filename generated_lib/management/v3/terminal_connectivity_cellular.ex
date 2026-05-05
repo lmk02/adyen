@@ -9,7 +9,10 @@ defmodule Adyen.Management.V3.TerminalConnectivityCellular do
           status: String.t() | nil
         }
 
-  defstruct [:iccid, :iccid2, :status]
+  (
+    @derive Jason.Encoder
+    defstruct [:iccid, :iccid2, :status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

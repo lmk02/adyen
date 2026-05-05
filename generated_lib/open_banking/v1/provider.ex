@@ -5,7 +5,10 @@ defmodule Adyen.OpenBanking.V1.Provider do
 
   @type t :: %__MODULE__{logoURL: String.t(), name: String.t()}
 
-  defstruct [:logoURL, :name]
+  (
+    @derive Jason.Encoder
+    defstruct [:logoURL, :name]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

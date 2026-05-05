@@ -8,7 +8,10 @@ defmodule Adyen.BalancePlatform.V2.BeginScaDeviceRegistrationResponse do
           sdkInput: String.t() | nil
         }
 
-  defstruct [:scaDevice, :sdkInput]
+  (
+    @derive Jason.Encoder
+    defstruct [:scaDevice, :sdkInput]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

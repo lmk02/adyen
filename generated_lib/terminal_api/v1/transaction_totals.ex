@@ -17,19 +17,22 @@ defmodule Adyen.TerminalAPI.V1.TransactionTotals do
           TotalsGroupID: String.t() | nil
         }
 
-  defstruct [
-    :AcquirerID,
-    :CardBrand,
-    :HostReconciliationID,
-    :OperatorID,
-    :POIID,
-    :PaymentCurrency,
-    :PaymentInstrumentType,
-    :PaymentTotals,
-    :SaleID,
-    :ShiftNumber,
-    :TotalsGroupID
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :AcquirerID,
+      :CardBrand,
+      :HostReconciliationID,
+      :OperatorID,
+      :POIID,
+      :PaymentCurrency,
+      :PaymentInstrumentType,
+      :PaymentTotals,
+      :SaleID,
+      :ShiftNumber,
+      :TotalsGroupID
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

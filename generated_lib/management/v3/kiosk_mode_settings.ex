@@ -8,7 +8,10 @@ defmodule Adyen.Management.V3.KioskModeSettings do
           kioskAppOnStartup: String.t() | nil
         }
 
-  defstruct [:allowedAppsInKioskMode, :kioskAppOnStartup]
+  (
+    @derive Jason.Encoder
+    defstruct [:allowedAppsInKioskMode, :kioskAppOnStartup]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

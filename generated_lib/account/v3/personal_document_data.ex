@@ -11,7 +11,10 @@ defmodule Adyen.Account.V3.PersonalDocumentData do
           type: String.t()
         }
 
-  defstruct [:expirationDate, :issuerCountry, :issuerState, :number, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:expirationDate, :issuerCountry, :issuerState, :number, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

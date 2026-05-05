@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.UninstallAndroidAppDetails do
 
   @type t :: %__MODULE__{appId: String.t() | nil, type: String.t() | nil}
 
-  defstruct [:appId, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:appId, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

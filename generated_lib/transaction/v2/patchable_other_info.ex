@@ -9,7 +9,10 @@ defmodule Adyen.Transaction.V2.PatchableOtherInfo do
           whatWasPurchased: String.t() | nil
         }
 
-  defstruct [:descriptionOfIssue, :subType, :whatWasPurchased]
+  (
+    @derive Jason.Encoder
+    defstruct [:descriptionOfIssue, :subType, :whatWasPurchased]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

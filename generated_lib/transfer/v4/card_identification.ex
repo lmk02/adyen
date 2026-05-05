@@ -13,15 +13,18 @@ defmodule Adyen.Transfer.V4.CardIdentification do
           storedPaymentMethodId: String.t() | nil
         }
 
-  defstruct [
-    :expiryMonth,
-    :expiryYear,
-    :issueNumber,
-    :number,
-    :startMonth,
-    :startYear,
-    :storedPaymentMethodId
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :expiryMonth,
+      :expiryYear,
+      :issueNumber,
+      :number,
+      :startMonth,
+      :startYear,
+      :storedPaymentMethodId
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -10,7 +10,10 @@ defmodule Adyen.Transfer.V4.TransactionRulesResult do
           triggeredTransactionRules: [Adyen.Transfer.V4.TransactionEventViolation.t()] | nil
         }
 
-  defstruct [:advice, :allHardBlockRulesPassed, :score, :triggeredTransactionRules]
+  (
+    @derive Jason.Encoder
+    defstruct [:advice, :allHardBlockRulesPassed, :score, :triggeredTransactionRules]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

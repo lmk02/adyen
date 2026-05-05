@@ -11,7 +11,10 @@ defmodule Adyen.Recurring.V40.Permit do
           validTillDate: DateTime.t() | nil
         }
 
-  defstruct [:partnerId, :profileReference, :restriction, :resultKey, :validTillDate]
+  (
+    @derive Jason.Encoder
+    defstruct [:partnerId, :profileReference, :restriction, :resultKey, :validTillDate]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

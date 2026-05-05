@@ -10,7 +10,10 @@ defmodule Adyen.LegalEntity.V1.TransferInstrumentReference do
           trustedSource: boolean | nil
         }
 
-  defstruct [:accountIdentifier, :id, :realLastFour, :trustedSource]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountIdentifier, :id, :realLastFour, :trustedSource]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

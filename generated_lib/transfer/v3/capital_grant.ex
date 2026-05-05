@@ -15,17 +15,20 @@ defmodule Adyen.Transfer.V3.CapitalGrant do
           status: String.t()
         }
 
-  defstruct [
-    :amount,
-    :balances,
-    :counterparty,
-    :fee,
-    :grantAccountId,
-    :grantOfferId,
-    :id,
-    :repayment,
-    :status
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amount,
+      :balances,
+      :counterparty,
+      :fee,
+      :grantAccountId,
+      :grantOfferId,
+      :id,
+      :repayment,
+      :status
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

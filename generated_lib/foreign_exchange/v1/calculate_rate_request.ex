@@ -7,7 +7,10 @@ defmodule Adyen.ForeignExchange.V1.CalculateRateRequest do
           exchangeCalculations: [Adyen.ForeignExchange.V1.CalculateRateRequestItem.t()]
         }
 
-  defstruct [:exchangeCalculations]
+  (
+    @derive Jason.Encoder
+    defstruct [:exchangeCalculations]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

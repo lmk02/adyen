@@ -15,17 +15,20 @@ defmodule Adyen.StoredValue.V46.StoredValueLoadRequest do
           store: String.t() | nil
         }
 
-  defstruct [
-    :amount,
-    :loadType,
-    :merchantAccount,
-    :paymentMethod,
-    :recurringDetailReference,
-    :reference,
-    :shopperInteraction,
-    :shopperReference,
-    :store
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amount,
+      :loadType,
+      :merchantAccount,
+      :paymentMethod,
+      :recurringDetailReference,
+      :reference,
+      :shopperInteraction,
+      :shopperReference,
+      :store
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

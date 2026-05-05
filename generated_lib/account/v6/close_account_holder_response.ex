@@ -10,7 +10,10 @@ defmodule Adyen.Account.V6.CloseAccountHolderResponse do
           resultCode: String.t() | nil
         }
 
-  defstruct [:accountHolderStatus, :invalidFields, :pspReference, :resultCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountHolderStatus, :invalidFields, :pspReference, :resultCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

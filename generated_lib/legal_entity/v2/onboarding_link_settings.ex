@@ -23,25 +23,28 @@ defmodule Adyen.LegalEntity.V2.OnboardingLinkSettings do
           transferInstrumentLimit: integer | nil
         }
 
-  defstruct [
-    :acceptedCountries,
-    :allowBankAccountFormatSelection,
-    :allowDebugUi,
-    :allowIntraRegionCrossBorderPayout,
-    :changeLegalEntityType,
-    :editPrefilledCountry,
-    :enforceLegalAge,
-    :hideOnboardingIntroductionIndividual,
-    :hideOnboardingIntroductionOrganization,
-    :hideOnboardingIntroductionSoleProprietor,
-    :hideOnboardingIntroductionTrust,
-    :instantBankVerification,
-    :requirePciSignEcomMoto,
-    :requirePciSignEcommerce,
-    :requirePciSignPos,
-    :requirePciSignPosMoto,
-    :transferInstrumentLimit
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :acceptedCountries,
+      :allowBankAccountFormatSelection,
+      :allowDebugUi,
+      :allowIntraRegionCrossBorderPayout,
+      :changeLegalEntityType,
+      :editPrefilledCountry,
+      :enforceLegalAge,
+      :hideOnboardingIntroductionIndividual,
+      :hideOnboardingIntroductionOrganization,
+      :hideOnboardingIntroductionSoleProprietor,
+      :hideOnboardingIntroductionTrust,
+      :instantBankVerification,
+      :requirePciSignEcomMoto,
+      :requirePciSignEcommerce,
+      :requirePciSignPos,
+      :requirePciSignPosMoto,
+      :transferInstrumentLimit
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

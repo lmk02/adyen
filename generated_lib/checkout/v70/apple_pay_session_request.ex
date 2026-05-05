@@ -9,7 +9,10 @@ defmodule Adyen.Checkout.V70.ApplePaySessionRequest do
           merchantIdentifier: String.t()
         }
 
-  defstruct [:displayName, :domainName, :merchantIdentifier]
+  (
+    @derive Jason.Encoder
+    defstruct [:displayName, :domainName, :merchantIdentifier]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -11,13 +11,16 @@ defmodule Adyen.Fund.V6.TransferFundsRequest do
           transferCode: String.t()
         }
 
-  defstruct [
-    :amount,
-    :destinationAccountCode,
-    :merchantReference,
-    :sourceAccountCode,
-    :transferCode
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amount,
+      :destinationAccountCode,
+      :merchantReference,
+      :sourceAccountCode,
+      :transferCode
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -10,7 +10,10 @@ defmodule Adyen.Hop.V6.GetPciUrlResponse do
           resultCode: String.t() | nil
         }
 
-  defstruct [:invalidFields, :pspReference, :redirectUrl, :resultCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:invalidFields, :pspReference, :redirectUrl, :resultCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

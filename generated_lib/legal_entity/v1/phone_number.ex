@@ -5,7 +5,10 @@ defmodule Adyen.LegalEntity.V1.PhoneNumber do
 
   @type t :: %__MODULE__{countryCode: String.t() | nil, number: String.t(), type: String.t()}
 
-  defstruct [:countryCode, :number, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:countryCode, :number, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

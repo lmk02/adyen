@@ -8,7 +8,10 @@ defmodule Adyen.Account.V4.KYCSignatoryCheckResult do
           signatoryCode: String.t() | nil
         }
 
-  defstruct [:checks, :signatoryCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:checks, :signatoryCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

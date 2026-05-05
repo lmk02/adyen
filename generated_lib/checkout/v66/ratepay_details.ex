@@ -13,15 +13,18 @@ defmodule Adyen.Checkout.V66.RatepayDetails do
           type: String.t()
         }
 
-  defstruct [
-    :billingAddress,
-    :checkoutAttemptId,
-    :deliveryAddress,
-    :personalDetails,
-    :recurringDetailReference,
-    :storedPaymentMethodId,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :billingAddress,
+      :checkoutAttemptId,
+      :deliveryAddress,
+      :personalDetails,
+      :recurringDetailReference,
+      :storedPaymentMethodId,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

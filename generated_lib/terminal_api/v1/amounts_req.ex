@@ -14,16 +14,19 @@ defmodule Adyen.TerminalAPI.V1.AmountsReq do
           TipAmount: number | nil
         }
 
-  defstruct [
-    :CashBackAmount,
-    :Currency,
-    :MaximumCashBackAmount,
-    :MinimumAmountToDeliver,
-    :MinimumSplitAmount,
-    :PaidAmount,
-    :RequestedAmount,
-    :TipAmount
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :CashBackAmount,
+      :Currency,
+      :MaximumCashBackAmount,
+      :MinimumAmountToDeliver,
+      :MinimumSplitAmount,
+      :PaidAmount,
+      :RequestedAmount,
+      :TipAmount
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -13,15 +13,18 @@ defmodule Adyen.TerminalAPI.V1.Input do
           TextInput: String.t() | nil
         }
 
-  defstruct [
-    :ConfirmedFlag,
-    :DigitInput,
-    :FunctionKey,
-    :InputCommand,
-    :MenuEntryNumber,
-    :Password,
-    :TextInput
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :ConfirmedFlag,
+      :DigitInput,
+      :FunctionKey,
+      :InputCommand,
+      :MenuEntryNumber,
+      :Password,
+      :TextInput
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

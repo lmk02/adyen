@@ -14,16 +14,19 @@ defmodule Adyen.Account.V5.CreateAccountRequest do
           payoutSpeed: String.t() | nil
         }
 
-  defstruct [
-    :accountHolderCode,
-    :bankAccountUUID,
-    :description,
-    :metadata,
-    :payoutMethodCode,
-    :payoutSchedule,
-    :payoutScheduleReason,
-    :payoutSpeed
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountHolderCode,
+      :bankAccountUUID,
+      :description,
+      :metadata,
+      :payoutMethodCode,
+      :payoutSchedule,
+      :payoutScheduleReason,
+      :payoutSpeed
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

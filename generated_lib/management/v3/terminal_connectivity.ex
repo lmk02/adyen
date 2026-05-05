@@ -10,7 +10,10 @@ defmodule Adyen.Management.V3.TerminalConnectivity do
           wifi: Adyen.Management.V3.TerminalConnectivityWifi.t() | nil
         }
 
-  defstruct [:bluetooth, :cellular, :ethernet, :wifi]
+  (
+    @derive Jason.Encoder
+    defstruct [:bluetooth, :cellular, :ethernet, :wifi]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

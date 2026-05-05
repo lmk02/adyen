@@ -7,7 +7,10 @@ defmodule Adyen.Account.V3.LegalArrangementRequestWrapper do
           LegalArrangementRequest: Adyen.Account.V3.LegalArrangementRequest.t() | nil
         }
 
-  defstruct [:LegalArrangementRequest]
+  (
+    @derive Jason.Encoder
+    defstruct [:LegalArrangementRequest]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

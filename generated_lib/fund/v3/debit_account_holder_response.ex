@@ -12,14 +12,17 @@ defmodule Adyen.Fund.V3.DebitAccountHolderResponse do
           submittedAsync: boolean | nil
         }
 
-  defstruct [
-    :accountHolderCode,
-    :bankAccountUUID,
-    :merchantReferences,
-    :pspReference,
-    :resultCode,
-    :submittedAsync
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountHolderCode,
+      :bankAccountUUID,
+      :merchantReferences,
+      :pspReference,
+      :resultCode,
+      :submittedAsync
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

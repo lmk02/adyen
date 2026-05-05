@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V70.DonationCampaignsResponse do
 
   @type t :: %__MODULE__{donationCampaigns: [Adyen.Checkout.V70.DonationCampaign.t()] | nil}
 
-  defstruct [:donationCampaigns]
+  (
+    @derive Jason.Encoder
+    defstruct [:donationCampaigns]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

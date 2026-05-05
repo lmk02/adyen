@@ -14,16 +14,19 @@ defmodule Adyen.Management.V1.CreateCompanyUserRequest do
           username: String.t()
         }
 
-  defstruct [
-    :accountGroups,
-    :associatedMerchantAccounts,
-    :email,
-    :loginMethod,
-    :name,
-    :roles,
-    :timeZoneCode,
-    :username
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountGroups,
+      :associatedMerchantAccounts,
+      :email,
+      :loginMethod,
+      :name,
+      :roles,
+      :timeZoneCode,
+      :username
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

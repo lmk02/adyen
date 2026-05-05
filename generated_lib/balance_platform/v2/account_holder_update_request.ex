@@ -17,19 +17,22 @@ defmodule Adyen.BalancePlatform.V2.AccountHolderUpdateRequest do
           verificationDeadlines: [Adyen.BalancePlatform.V2.VerificationDeadline.t()] | nil
         }
 
-  defstruct [
-    :balancePlatform,
-    :capabilities,
-    :contactDetails,
-    :description,
-    :metadata,
-    :migratedAccountHolderCode,
-    :primaryBalanceAccount,
-    :reference,
-    :status,
-    :timeZone,
-    :verificationDeadlines
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :balancePlatform,
+      :capabilities,
+      :contactDetails,
+      :description,
+      :metadata,
+      :migratedAccountHolderCode,
+      :primaryBalanceAccount,
+      :reference,
+      :status,
+      :timeZone,
+      :verificationDeadlines
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

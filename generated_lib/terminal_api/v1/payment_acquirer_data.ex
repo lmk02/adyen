@@ -12,14 +12,17 @@ defmodule Adyen.TerminalAPI.V1.PaymentAcquirerData do
           MerchantID: String.t()
         }
 
-  defstruct [
-    :AcquirerID,
-    :AcquirerPOIID,
-    :AcquirerTransactionID,
-    :ApprovalCode,
-    :HostReconciliationID,
-    :MerchantID
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :AcquirerID,
+      :AcquirerPOIID,
+      :AcquirerTransactionID,
+      :ApprovalCode,
+      :HostReconciliationID,
+      :MerchantID
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

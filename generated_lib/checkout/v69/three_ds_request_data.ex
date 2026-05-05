@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V69.ThreeDSRequestData do
           threeDSVersion: String.t() | nil
         }
 
-  defstruct [:challengeWindowSize, :dataOnly, :nativeThreeDS, :threeDSVersion]
+  (
+    @derive Jason.Encoder
+    defstruct [:challengeWindowSize, :dataOnly, :nativeThreeDS, :threeDSVersion]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.SofortInfo do
 
   @type t :: %__MODULE__{currencyCode: String.t(), logo: String.t()}
 
-  defstruct [:currencyCode, :logo]
+  (
+    @derive Jason.Encoder
+    defstruct [:currencyCode, :logo]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

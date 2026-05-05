@@ -9,7 +9,10 @@ defmodule Adyen.SessionAuthentication.V1.AuthenticationSessionRequest do
           product: String.t()
         }
 
-  defstruct [:allowOrigin, :policy, :product]
+  (
+    @derive Jason.Encoder
+    defstruct [:allowOrigin, :policy, :product]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

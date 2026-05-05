@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V71.TravelAgency do
 
   @type t :: %__MODULE__{code: String.t() | nil, name: String.t() | nil}
 
-  defstruct [:code, :name]
+  (
+    @derive Jason.Encoder
+    defstruct [:code, :name]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

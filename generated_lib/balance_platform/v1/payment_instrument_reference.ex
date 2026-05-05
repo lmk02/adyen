@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V1.PaymentInstrumentReference do
 
   @type t :: %__MODULE__{id: String.t()}
 
-  defstruct [:id]
+  (
+    @derive Jason.Encoder
+    defstruct [:id]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

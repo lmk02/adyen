@@ -14,16 +14,19 @@ defmodule Adyen.TerminalAPI.V1.OriginalPOITransaction do
           SaleID: String.t() | nil
         }
 
-  defstruct [
-    :AcquirerID,
-    :AmountValue,
-    :ApprovalCode,
-    :HostTransactionID,
-    :POIID,
-    :POITransactionID,
-    :ReuseCardDataFlag,
-    :SaleID
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :AcquirerID,
+      :AmountValue,
+      :ApprovalCode,
+      :HostTransactionID,
+      :POIID,
+      :POITransactionID,
+      :ReuseCardDataFlag,
+      :SaleID
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

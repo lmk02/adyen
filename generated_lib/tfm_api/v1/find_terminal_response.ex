@@ -11,7 +11,10 @@ defmodule Adyen.TfmAPI.V1.FindTerminalResponse do
           terminal: String.t()
         }
 
-  defstruct [:companyAccount, :merchantAccount, :merchantInventory, :store, :terminal]
+  (
+    @derive Jason.Encoder
+    defstruct [:companyAccount, :merchantAccount, :merchantInventory, :store, :terminal]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

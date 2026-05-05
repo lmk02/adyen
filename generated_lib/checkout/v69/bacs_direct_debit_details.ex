@@ -15,17 +15,20 @@ defmodule Adyen.Checkout.V69.BacsDirectDebitDetails do
           type: String.t() | nil
         }
 
-  defstruct [
-    :bankAccountNumber,
-    :bankLocationId,
-    :checkoutAttemptId,
-    :holderName,
-    :recurringDetailReference,
-    :sdkData,
-    :storedPaymentMethodId,
-    :transferInstrumentId,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :bankAccountNumber,
+      :bankLocationId,
+      :checkoutAttemptId,
+      :holderName,
+      :recurringDetailReference,
+      :sdkData,
+      :storedPaymentMethodId,
+      :transferInstrumentId,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

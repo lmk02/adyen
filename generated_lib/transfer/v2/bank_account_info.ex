@@ -9,7 +9,10 @@ defmodule Adyen.Transfer.V2.BankAccountInfo do
           ownerName: Adyen.Transfer.V2.Name.t() | nil
         }
 
-  defstruct [:address, :iban, :ownerName]
+  (
+    @derive Jason.Encoder
+    defstruct [:address, :iban, :ownerName]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

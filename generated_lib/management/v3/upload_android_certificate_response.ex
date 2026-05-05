@@ -5,7 +5,10 @@ defmodule Adyen.Management.V3.UploadAndroidCertificateResponse do
 
   @type t :: %__MODULE__{id: String.t() | nil}
 
-  defstruct [:id]
+  (
+    @derive Jason.Encoder
+    defstruct [:id]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

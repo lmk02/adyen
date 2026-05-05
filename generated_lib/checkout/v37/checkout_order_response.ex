@@ -12,7 +12,10 @@ defmodule Adyen.Checkout.V37.CheckoutOrderResponse do
           remainingAmount: Adyen.Checkout.V37.Amount.t() | nil
         }
 
-  defstruct [:amount, :expiresAt, :orderData, :pspReference, :reference, :remainingAmount]
+  (
+    @derive Jason.Encoder
+    defstruct [:amount, :expiresAt, :orderData, :pspReference, :reference, :remainingAmount]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

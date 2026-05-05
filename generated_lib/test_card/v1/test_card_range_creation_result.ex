@@ -10,7 +10,10 @@ defmodule Adyen.TestCard.V1.TestCardRangeCreationResult do
           message: String.t() | nil
         }
 
-  defstruct [:cardNumberRangeEnd, :cardNumberRangeStart, :creationResultCode, :message]
+  (
+    @derive Jason.Encoder
+    defstruct [:cardNumberRangeEnd, :cardNumberRangeStart, :creationResultCode, :message]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

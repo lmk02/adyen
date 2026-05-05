@@ -5,7 +5,10 @@ defmodule Adyen.NotificationConfiguration.V2.ExchangeMessage do
 
   @type t :: %__MODULE__{messageCode: String.t() | nil, messageDescription: String.t() | nil}
 
-  defstruct [:messageCode, :messageDescription]
+  (
+    @derive Jason.Encoder
+    defstruct [:messageCode, :messageDescription]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

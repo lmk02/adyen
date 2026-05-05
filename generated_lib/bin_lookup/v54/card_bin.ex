@@ -17,19 +17,22 @@ defmodule Adyen.BinLookup.V54.CardBin do
           summary: String.t() | nil
         }
 
-  defstruct [
-    :bin,
-    :commercial,
-    :fundingSource,
-    :fundsAvailability,
-    :issuerBin,
-    :issuingBank,
-    :issuingCountry,
-    :issuingCurrency,
-    :paymentMethod,
-    :payoutEligible,
-    :summary
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :bin,
+      :commercial,
+      :fundingSource,
+      :fundsAvailability,
+      :issuerBin,
+      :issuingBank,
+      :issuingCountry,
+      :issuingCurrency,
+      :paymentMethod,
+      :payoutEligible,
+      :summary
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -20,22 +20,25 @@ defmodule Adyen.Management.V1.Merchant do
           status: String.t() | nil
         }
 
-  defstruct [
-    :_links,
-    :captureDelay,
-    :companyId,
-    :dataCenters,
-    :defaultShopperInteraction,
-    :description,
-    :id,
-    :merchantCity,
-    :name,
-    :pricingPlan,
-    :primarySettlementCurrency,
-    :reference,
-    :shopWebAddress,
-    :status
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :_links,
+      :captureDelay,
+      :companyId,
+      :dataCenters,
+      :defaultShopperInteraction,
+      :description,
+      :id,
+      :merchantCity,
+      :name,
+      :pricingPlan,
+      :primarySettlementCurrency,
+      :reference,
+      :shopWebAddress,
+      :status
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

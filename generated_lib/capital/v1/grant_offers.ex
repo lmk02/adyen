@@ -64,7 +64,10 @@ defmodule Adyen.Capital.V1.GrantOffers do
 
   @type t :: %__MODULE__{grantOffers: [Adyen.Capital.V1.GrantOffer.t()]}
 
-  defstruct [:grantOffers]
+  (
+    @derive Jason.Encoder
+    defstruct [:grantOffers]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

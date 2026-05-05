@@ -10,7 +10,10 @@ defmodule Adyen.Account.V5.UpdateAccountHolderStateRequest do
           stateType: String.t()
         }
 
-  defstruct [:accountHolderCode, :disable, :reason, :stateType]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountHolderCode, :disable, :reason, :stateType]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

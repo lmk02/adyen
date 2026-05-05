@@ -5,7 +5,10 @@ defmodule Adyen.LegalEntity.V3.VerificationErrors do
 
   @type t :: %__MODULE__{problems: [Adyen.LegalEntity.V3.CapabilityProblem.t()] | nil}
 
-  defstruct [:problems]
+  (
+    @derive Jason.Encoder
+    defstruct [:problems]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

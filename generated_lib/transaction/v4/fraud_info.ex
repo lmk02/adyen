@@ -10,12 +10,15 @@ defmodule Adyen.Transaction.V4.FraudInfo do
           reportOnly: boolean | nil
         }
 
-  defstruct [
-    :cardDoesNotBelongToCardholder,
-    :cardWasCounterfeited,
-    :descriptionOfIssue,
-    :reportOnly
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :cardDoesNotBelongToCardholder,
+      :cardWasCounterfeited,
+      :descriptionOfIssue,
+      :reportOnly
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

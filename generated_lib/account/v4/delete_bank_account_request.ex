@@ -5,7 +5,10 @@ defmodule Adyen.Account.V4.DeleteBankAccountRequest do
 
   @type t :: %__MODULE__{accountHolderCode: String.t(), bankAccountUUIDs: [String.t()]}
 
-  defstruct [:accountHolderCode, :bankAccountUUIDs]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountHolderCode, :bankAccountUUIDs]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

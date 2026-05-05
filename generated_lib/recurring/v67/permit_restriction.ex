@@ -9,7 +9,10 @@ defmodule Adyen.Recurring.V67.PermitRestriction do
           singleUse: boolean | nil
         }
 
-  defstruct [:maxAmount, :singleTransactionLimit, :singleUse]
+  (
+    @derive Jason.Encoder
+    defstruct [:maxAmount, :singleTransactionLimit, :singleUse]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

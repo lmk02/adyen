@@ -15,17 +15,20 @@ defmodule Adyen.BalancePlatform.V2.TransferLimit do
           transferType: String.t()
         }
 
-  defstruct [
-    :amount,
-    :endsAt,
-    :id,
-    :limitStatus,
-    :reference,
-    :scaInformation,
-    :scope,
-    :startsAt,
-    :transferType
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amount,
+      :endsAt,
+      :id,
+      :limitStatus,
+      :reference,
+      :scaInformation,
+      :scope,
+      :startsAt,
+      :transferType
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

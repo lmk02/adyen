@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.PublicKeyResponse do
 
   @type t :: %__MODULE__{publicKey: String.t(), publicKeyExpiryDate: String.t()}
 
-  defstruct [:publicKey, :publicKeyExpiryDate]
+  (
+    @derive Jason.Encoder
+    defstruct [:publicKey, :publicKeyExpiryDate]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

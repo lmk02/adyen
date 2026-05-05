@@ -11,7 +11,10 @@ defmodule Adyen.NotificationConfiguration.V5.GetNotificationConfigurationRespons
           resultCode: String.t() | nil
         }
 
-  defstruct [:configurationDetails, :invalidFields, :pspReference, :resultCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:configurationDetails, :invalidFields, :pspReference, :resultCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

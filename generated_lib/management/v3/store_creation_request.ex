@@ -16,18 +16,21 @@ defmodule Adyen.Management.V3.StoreCreationRequest do
           subMerchantData: Adyen.Management.V3.SubMerchantData.t() | nil
         }
 
-  defstruct [
-    :address,
-    :businessLineIds,
-    :description,
-    :externalReferenceId,
-    :localizedInformation,
-    :phoneNumber,
-    :reference,
-    :shopperStatement,
-    :splitConfiguration,
-    :subMerchantData
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :address,
+      :businessLineIds,
+      :description,
+      :externalReferenceId,
+      :localizedInformation,
+      :phoneNumber,
+      :reference,
+      :shopperStatement,
+      :splitConfiguration,
+      :subMerchantData
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

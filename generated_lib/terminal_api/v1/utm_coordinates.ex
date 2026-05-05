@@ -5,7 +5,10 @@ defmodule Adyen.TerminalAPI.V1.UTMCoordinates do
 
   @type t :: %__MODULE__{UTMEastward: String.t(), UTMNorthward: String.t(), UTMZone: String.t()}
 
-  defstruct [:UTMEastward, :UTMNorthward, :UTMZone]
+  (
+    @derive Jason.Encoder
+    defstruct [:UTMEastward, :UTMNorthward, :UTMZone]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -9,7 +9,10 @@ defmodule Adyen.Checkout.V67.PaymentDetailsRequest do
           threeDSAuthenticationOnly: boolean | nil
         }
 
-  defstruct [:details, :paymentData, :threeDSAuthenticationOnly]
+  (
+    @derive Jason.Encoder
+    defstruct [:details, :paymentData, :threeDSAuthenticationOnly]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

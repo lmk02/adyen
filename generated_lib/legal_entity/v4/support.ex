@@ -8,7 +8,10 @@ defmodule Adyen.LegalEntity.V4.Support do
           phone: Adyen.LegalEntity.V4.PhoneNumber.t() | nil
         }
 
-  defstruct [:email, :phone]
+  (
+    @derive Jason.Encoder
+    defstruct [:email, :phone]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

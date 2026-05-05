@@ -9,7 +9,10 @@ defmodule Adyen.Payment.V51.ExternalPlatform do
           version: String.t() | nil
         }
 
-  defstruct [:integrator, :name, :version]
+  (
+    @derive Jason.Encoder
+    defstruct [:integrator, :name, :version]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

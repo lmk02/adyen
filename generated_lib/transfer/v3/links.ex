@@ -8,7 +8,10 @@ defmodule Adyen.Transfer.V3.Links do
           prev: Adyen.Transfer.V3.Link.t() | nil
         }
 
-  defstruct [:next, :prev]
+  (
+    @derive Jason.Encoder
+    defstruct [:next, :prev]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

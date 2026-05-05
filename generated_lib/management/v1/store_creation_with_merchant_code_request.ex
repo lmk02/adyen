@@ -16,18 +16,21 @@ defmodule Adyen.Management.V1.StoreCreationWithMerchantCodeRequest do
           splitConfiguration: Adyen.Management.V1.StoreSplitConfiguration.t() | nil
         }
 
-  defstruct [
-    :address,
-    :businessLineIds,
-    :description,
-    :externalReferenceId,
-    :localizedInformation,
-    :merchantId,
-    :phoneNumber,
-    :reference,
-    :shopperStatement,
-    :splitConfiguration
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :address,
+      :businessLineIds,
+      :description,
+      :externalReferenceId,
+      :localizedInformation,
+      :merchantId,
+      :phoneNumber,
+      :reference,
+      :shopperStatement,
+      :splitConfiguration
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

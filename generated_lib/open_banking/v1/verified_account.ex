@@ -14,16 +14,19 @@ defmodule Adyen.OpenBanking.V1.VerifiedAccount do
           parties: [Adyen.OpenBanking.V1.AccountParty.t()]
         }
 
-  defstruct [
-    :accountId,
-    :accountName,
-    :accountNumber,
-    :accountType,
-    :bankName,
-    :currency,
-    :identifiers,
-    :parties
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountId,
+      :accountName,
+      :accountNumber,
+      :accountType,
+      :bankName,
+      :currency,
+      :identifiers,
+      :parties
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

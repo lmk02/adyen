@@ -9,7 +9,10 @@ defmodule Adyen.BalancePlatform.V2.AddressRequirement do
           type: String.t()
         }
 
-  defstruct [:description, :requiredAddressFields, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:description, :requiredAddressFields, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

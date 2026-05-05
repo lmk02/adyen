@@ -9,7 +9,10 @@ defmodule Adyen.TerminalAPI.V1.EnableServiceRequest do
           TransactionAction: String.t()
         }
 
-  defstruct [:DisplayOutput, :ServicesEnabled, :TransactionAction]
+  (
+    @derive Jason.Encoder
+    defstruct [:DisplayOutput, :ServicesEnabled, :TransactionAction]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.Account.V6.DeletePayoutMethodRequest do
 
   @type t :: %__MODULE__{accountHolderCode: String.t(), payoutMethodCodes: [String.t()]}
 
-  defstruct [:accountHolderCode, :payoutMethodCodes]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountHolderCode, :payoutMethodCodes]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

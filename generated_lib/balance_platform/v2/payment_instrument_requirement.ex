@@ -12,14 +12,17 @@ defmodule Adyen.BalancePlatform.V2.PaymentInstrumentRequirement do
           type: String.t()
         }
 
-  defstruct [
-    :description,
-    :issuingCountryCode,
-    :issuingCountryCodes,
-    :onlyForCrossBalancePlatform,
-    :paymentInstrumentType,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :description,
+      :issuingCountryCode,
+      :issuingCountryCodes,
+      :onlyForCrossBalancePlatform,
+      :paymentInstrumentType,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

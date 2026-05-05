@@ -9,7 +9,10 @@ defmodule Adyen.BalancePlatform.V2.BalanceSweepConfigurationsResponse do
           sweeps: [Adyen.BalancePlatform.V2.SweepConfigurationV2.t()]
         }
 
-  defstruct [:hasNext, :hasPrevious, :sweeps]
+  (
+    @derive Jason.Encoder
+    defstruct [:hasNext, :hasPrevious, :sweeps]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -8,7 +8,10 @@ defmodule Adyen.Account.V3.KYCShareholderCheckResult do
           shareholderCode: String.t() | nil
         }
 
-  defstruct [:checks, :shareholderCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:checks, :shareholderCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

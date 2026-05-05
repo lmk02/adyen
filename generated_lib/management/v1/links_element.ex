@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.LinksElement do
 
   @type t :: %__MODULE__{href: String.t() | nil}
 
-  defstruct [:href]
+  (
+    @derive Jason.Encoder
+    defstruct [:href]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

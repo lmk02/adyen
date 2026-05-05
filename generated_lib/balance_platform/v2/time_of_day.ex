@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.TimeOfDay do
 
   @type t :: %__MODULE__{endTime: String.t() | nil, startTime: String.t() | nil}
 
-  defstruct [:endTime, :startTime]
+  (
+    @derive Jason.Encoder
+    defstruct [:endTime, :startTime]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

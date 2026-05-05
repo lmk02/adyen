@@ -9,7 +9,10 @@ defmodule Adyen.Checkout.V64.PaymentCancelRequest do
           reference: String.t() | nil
         }
 
-  defstruct [:applicationInfo, :merchantAccount, :reference]
+  (
+    @derive Jason.Encoder
+    defstruct [:applicationInfo, :merchantAccount, :reference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

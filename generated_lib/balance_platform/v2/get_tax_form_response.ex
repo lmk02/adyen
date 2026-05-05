@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.GetTaxFormResponse do
 
   @type t :: %__MODULE__{content: String.t(), contentType: String.t() | nil}
 
-  defstruct [:content, :contentType]
+  (
+    @derive Jason.Encoder
+    defstruct [:content, :contentType]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

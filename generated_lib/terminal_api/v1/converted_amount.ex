@@ -5,7 +5,10 @@ defmodule Adyen.TerminalAPI.V1.ConvertedAmount do
 
   @type t :: %__MODULE__{AmountValue: number, Currency: String.t()}
 
-  defstruct [:AmountValue, :Currency]
+  (
+    @derive Jason.Encoder
+    defstruct [:AmountValue, :Currency]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

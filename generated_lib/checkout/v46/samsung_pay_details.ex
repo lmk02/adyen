@@ -11,13 +11,16 @@ defmodule Adyen.Checkout.V46.SamsungPayDetails do
           type: String.t() | nil
         }
 
-  defstruct [
-    :checkoutAttemptId,
-    :fundingSource,
-    :recurringDetailReference,
-    :samsungPayToken,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :checkoutAttemptId,
+      :fundingSource,
+      :recurringDetailReference,
+      :samsungPayToken,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

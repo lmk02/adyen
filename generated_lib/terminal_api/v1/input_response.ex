@@ -8,7 +8,10 @@ defmodule Adyen.TerminalAPI.V1.InputResponse do
           OutputResult: Adyen.TerminalAPI.V1.OutputResult.t() | nil
         }
 
-  defstruct [:InputResult, :OutputResult]
+  (
+    @derive Jason.Encoder
+    defstruct [:InputResult, :OutputResult]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -21,23 +21,26 @@ defmodule Adyen.Checkout.V67.PaymentDetailsResponse do
           threeDSPaymentData: String.t() | nil
         }
 
-  defstruct [
-    :action,
-    :additionalData,
-    :amount,
-    :donationToken,
-    :fraudResult,
-    :merchantReference,
-    :order,
-    :pspReference,
-    :refusalReason,
-    :refusalReasonCode,
-    :resultCode,
-    :shopperLocale,
-    :threeDS2ResponseData,
-    :threeDS2Result,
-    :threeDSPaymentData
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :action,
+      :additionalData,
+      :amount,
+      :donationToken,
+      :fraudResult,
+      :merchantReference,
+      :order,
+      :pspReference,
+      :refusalReason,
+      :refusalReasonCode,
+      :resultCode,
+      :shopperLocale,
+      :threeDS2ResponseData,
+      :threeDS2Result,
+      :threeDSPaymentData
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

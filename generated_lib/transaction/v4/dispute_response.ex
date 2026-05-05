@@ -17,19 +17,22 @@ defmodule Adyen.Transaction.V4.DisputeResponse do
           type: String.t()
         }
 
-  defstruct [
-    :arn,
-    :description,
-    :disputedAmount,
-    :duplicateInfo,
-    :fraudInfo,
-    :id,
-    :notDeliveredInfo,
-    :otherInfo,
-    :status,
-    :transactionId,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :arn,
+      :description,
+      :disputedAmount,
+      :duplicateInfo,
+      :fraudInfo,
+      :id,
+      :notDeliveredInfo,
+      :otherInfo,
+      :status,
+      :transactionId,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

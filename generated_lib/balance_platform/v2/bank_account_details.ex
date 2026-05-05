@@ -14,16 +14,19 @@ defmodule Adyen.BalancePlatform.V2.BankAccountDetails do
           type: String.t()
         }
 
-  defstruct [
-    :accountNumber,
-    :accountType,
-    :branchNumber,
-    :formFactor,
-    :iban,
-    :routingNumber,
-    :sortCode,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountNumber,
+      :accountType,
+      :branchNumber,
+      :formFactor,
+      :iban,
+      :routingNumber,
+      :sortCode,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

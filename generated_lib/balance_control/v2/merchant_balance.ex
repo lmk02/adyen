@@ -12,7 +12,10 @@ defmodule Adyen.BalanceControl.V2.MerchantBalance do
           reserve: Adyen.BalanceControl.V2.Amount.t() | nil
         }
 
-  defstruct [:availableFund, :deposit, :merchantAccount, :nextPayout, :pendingBalance, :reserve]
+  (
+    @derive Jason.Encoder
+    defstruct [:availableFund, :deposit, :merchantAccount, :nextPayout, :pendingBalance, :reserve]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V53.DragonpayDetails do
           type: String.t()
         }
 
-  defstruct [:checkoutAttemptId, :issuer, :shopperEmail, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:checkoutAttemptId, :issuer, :shopperEmail, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

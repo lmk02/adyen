@@ -9,7 +9,10 @@ defmodule Adyen.TerminalAPI.V1.DiagnosisResponse do
           Response: Adyen.TerminalAPI.V1.Response.t()
         }
 
-  defstruct [:HostStatus, :POIStatus, :Response]
+  (
+    @derive Jason.Encoder
+    defstruct [:HostStatus, :POIStatus, :Response]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

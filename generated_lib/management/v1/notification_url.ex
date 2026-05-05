@@ -8,7 +8,10 @@ defmodule Adyen.Management.V1.NotificationUrl do
           publicUrls: [Adyen.Management.V1.Url.t()] | nil
         }
 
-  defstruct [:localUrls, :publicUrls]
+  (
+    @derive Jason.Encoder
+    defstruct [:localUrls, :publicUrls]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

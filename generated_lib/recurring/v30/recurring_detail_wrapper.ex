@@ -5,7 +5,10 @@ defmodule Adyen.Recurring.V30.RecurringDetailWrapper do
 
   @type t :: %__MODULE__{RecurringDetail: Adyen.Recurring.V30.RecurringDetail.t() | nil}
 
-  defstruct [:RecurringDetail]
+  (
+    @derive Jason.Encoder
+    defstruct [:RecurringDetail]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

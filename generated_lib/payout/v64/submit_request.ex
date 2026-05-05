@@ -21,23 +21,26 @@ defmodule Adyen.Payout.V64.SubmitRequest do
           socialSecurityNumber: String.t() | nil
         }
 
-  defstruct [
-    :additionalData,
-    :amount,
-    :dateOfBirth,
-    :entityType,
-    :fraudOffset,
-    :merchantAccount,
-    :nationality,
-    :recurring,
-    :reference,
-    :selectedRecurringDetailReference,
-    :shopperEmail,
-    :shopperName,
-    :shopperReference,
-    :shopperStatement,
-    :socialSecurityNumber
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :additionalData,
+      :amount,
+      :dateOfBirth,
+      :entityType,
+      :fraudOffset,
+      :merchantAccount,
+      :nationality,
+      :recurring,
+      :reference,
+      :selectedRecurringDetailReference,
+      :shopperEmail,
+      :shopperName,
+      :shopperReference,
+      :shopperStatement,
+      :socialSecurityNumber
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

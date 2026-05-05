@@ -12,14 +12,17 @@ defmodule Adyen.Fund.V6.PayoutAccountHolderResponse do
           resultCode: String.t() | nil
         }
 
-  defstruct [
-    :bankAccountUUID,
-    :invalidFields,
-    :merchantReference,
-    :payoutSpeed,
-    :pspReference,
-    :resultCode
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :bankAccountUUID,
+      :invalidFields,
+      :merchantReference,
+      :payoutSpeed,
+      :pspReference,
+      :resultCode
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -9,7 +9,10 @@ defmodule Adyen.Payout.V40.ModifyRequest do
           originalReference: String.t()
         }
 
-  defstruct [:additionalData, :merchantAccount, :originalReference]
+  (
+    @derive Jason.Encoder
+    defstruct [:additionalData, :merchantAccount, :originalReference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -10,7 +10,10 @@ defmodule Adyen.TerminalAPI.V1.ReversalRequest do
           SaleData: Adyen.TerminalAPI.V1.SaleData.t() | nil
         }
 
-  defstruct [:OriginalPOITransaction, :ReversalReason, :ReversedAmount, :SaleData]
+  (
+    @derive Jason.Encoder
+    defstruct [:OriginalPOITransaction, :ReversalReason, :ReversedAmount, :SaleData]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.TransactionRuleResponse do
 
   @type t :: %__MODULE__{transactionRule: Adyen.BalancePlatform.V2.TransactionRule.t() | nil}
 
-  defstruct [:transactionRule]
+  (
+    @derive Jason.Encoder
+    defstruct [:transactionRule]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

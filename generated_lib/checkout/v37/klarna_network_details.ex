@@ -9,7 +9,10 @@ defmodule Adyen.Checkout.V37.KlarnaNetworkDetails do
           type: String.t()
         }
 
-  defstruct [:checkoutAttemptId, :klarnaNetworkData, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:checkoutAttemptId, :klarnaNetworkData, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

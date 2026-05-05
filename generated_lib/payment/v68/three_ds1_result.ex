@@ -12,14 +12,17 @@ defmodule Adyen.Payment.V68.ThreeDs1Result do
           xid: String.t() | nil
         }
 
-  defstruct [
-    :cavv,
-    :cavvAlgorithm,
-    :eci,
-    :threeDAuthenticatedResponse,
-    :threeDOfferedResponse,
-    :xid
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :cavv,
+      :cavvAlgorithm,
+      :eci,
+      :threeDAuthenticatedResponse,
+      :threeDOfferedResponse,
+      :xid
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

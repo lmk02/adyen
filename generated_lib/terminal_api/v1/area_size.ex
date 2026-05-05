@@ -5,7 +5,10 @@ defmodule Adyen.TerminalAPI.V1.AreaSize do
 
   @type t :: %__MODULE__{X: String.t(), Y: String.t()}
 
-  defstruct [:X, :Y]
+  (
+    @derive Jason.Encoder
+    defstruct [:X, :Y]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

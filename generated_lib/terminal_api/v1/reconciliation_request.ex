@@ -9,7 +9,10 @@ defmodule Adyen.TerminalAPI.V1.ReconciliationRequest do
           ReconciliationType: String.t()
         }
 
-  defstruct [:AcquirerID, :POIReconciliationID, :ReconciliationType]
+  (
+    @derive Jason.Encoder
+    defstruct [:AcquirerID, :POIReconciliationID, :ReconciliationType]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

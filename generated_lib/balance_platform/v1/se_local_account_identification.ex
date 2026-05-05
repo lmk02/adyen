@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V1.SELocalAccountIdentification do
 
   @type t :: %__MODULE__{accountNumber: String.t(), clearingNumber: String.t(), type: String.t()}
 
-  defstruct [:accountNumber, :clearingNumber, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountNumber, :clearingNumber, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

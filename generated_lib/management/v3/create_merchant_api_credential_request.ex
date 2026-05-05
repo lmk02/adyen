@@ -9,7 +9,10 @@ defmodule Adyen.Management.V3.CreateMerchantApiCredentialRequest do
           roles: [String.t()] | nil
         }
 
-  defstruct [:allowedOrigins, :description, :roles]
+  (
+    @derive Jason.Encoder
+    defstruct [:allowedOrigins, :description, :roles]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

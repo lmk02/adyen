@@ -11,7 +11,10 @@ defmodule Adyen.Transfer.V4.Modification do
           type: String.t() | nil
         }
 
-  defstruct [:direction, :id, :reference, :status, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:direction, :id, :reference, :status, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -77,7 +80,6 @@ defmodule Adyen.Transfer.V4.Modification do
            "miscCostPending",
            "paymentCost",
            "paymentCostPending",
-           "pending",
            "pendingApproval",
            "pendingExecution",
            "received",
@@ -91,7 +93,6 @@ defmodule Adyen.Transfer.V4.Modification do
            "reserveAdjustment",
            "reserveAdjustmentPending",
            "returned",
-           "reversed",
            "secondChargeback",
            "secondChargebackPending",
            "undefined"

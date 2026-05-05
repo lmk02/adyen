@@ -20,22 +20,25 @@ defmodule Adyen.Transfer.V4.TransferInfo do
           ultimateParty: Adyen.Transfer.V4.UltimatePartyIdentification.t() | nil
         }
 
-  defstruct [
-    :amount,
-    :balanceAccountId,
-    :category,
-    :counterparty,
-    :description,
-    :executionDate,
-    :paymentInstrumentId,
-    :priorities,
-    :priority,
-    :reference,
-    :referenceForBeneficiary,
-    :review,
-    :type,
-    :ultimateParty
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amount,
+      :balanceAccountId,
+      :category,
+      :counterparty,
+      :description,
+      :executionDate,
+      :paymentInstrumentId,
+      :priorities,
+      :priority,
+      :reference,
+      :referenceForBeneficiary,
+      :review,
+      :type,
+      :ultimateParty
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -10,7 +10,10 @@ defmodule Adyen.LegalEntity.V3.GetAcceptedTermsOfServiceDocumentResponse do
           termsOfServiceDocumentFormat: String.t() | nil
         }
 
-  defstruct [:document, :id, :termsOfServiceAcceptanceReference, :termsOfServiceDocumentFormat]
+  (
+    @derive Jason.Encoder
+    defstruct [:document, :id, :termsOfServiceAcceptanceReference, :termsOfServiceDocumentFormat]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

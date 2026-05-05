@@ -9,7 +9,10 @@ defmodule Adyen.BalancePlatform.V2.BankAccountIdentificationTypeRequirement do
           type: String.t()
         }
 
-  defstruct [:bankAccountIdentificationTypes, :description, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:bankAccountIdentificationTypes, :description, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -27,11 +30,7 @@ defmodule Adyen.BalancePlatform.V2.BankAccountIdentificationTypeRequirement do
           "hkLocal",
           "huLocal",
           "iban",
-          "inLocal",
-          "jpLocal",
           "legacy",
-          "mxLocal",
-          "myLocal",
           "noLocal",
           "numberAndBic",
           "nzLocal",

@@ -5,7 +5,10 @@ defmodule Adyen.Capital.V1.Disbursements do
 
   @type t :: %__MODULE__{disbursements: [Adyen.Capital.V1.Disbursement.t()]}
 
-  defstruct [:disbursements]
+  (
+    @derive Jason.Encoder
+    defstruct [:disbursements]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.AssociationInitiateRequest do
 
   @type t :: %__MODULE__{ids: [String.t()], type: String.t()}
 
-  defstruct [:ids, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:ids, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

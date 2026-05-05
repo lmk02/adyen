@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V71.AlmaDetails do
           type: String.t() | nil
         }
 
-  defstruct [:checkoutAttemptId, :feeType, :sdkData, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:checkoutAttemptId, :feeType, :sdkData, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

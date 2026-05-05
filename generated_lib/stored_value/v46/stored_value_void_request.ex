@@ -12,14 +12,17 @@ defmodule Adyen.StoredValue.V46.StoredValueVoidRequest do
           uniqueTerminalId: String.t() | nil
         }
 
-  defstruct [
-    :merchantAccount,
-    :originalReference,
-    :reference,
-    :store,
-    :tenderReference,
-    :uniqueTerminalId
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :merchantAccount,
+      :originalReference,
+      :reference,
+      :store,
+      :tenderReference,
+      :uniqueTerminalId
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

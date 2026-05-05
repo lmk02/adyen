@@ -17,19 +17,22 @@ defmodule Adyen.Checkout.V37.AchDetails do
           type: String.t() | nil
         }
 
-  defstruct [
-    :accountHolderType,
-    :bankAccountNumber,
-    :bankAccountType,
-    :bankLocationId,
-    :checkoutAttemptId,
-    :encryptedBankAccountNumber,
-    :encryptedBankLocationId,
-    :ownerName,
-    :recurringDetailReference,
-    :transferInstrumentId,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountHolderType,
+      :bankAccountNumber,
+      :bankAccountType,
+      :bankLocationId,
+      :checkoutAttemptId,
+      :encryptedBankAccountNumber,
+      :encryptedBankLocationId,
+      :ownerName,
+      :recurringDetailReference,
+      :transferInstrumentId,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

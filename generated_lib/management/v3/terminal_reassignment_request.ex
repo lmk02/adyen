@@ -10,7 +10,10 @@ defmodule Adyen.Management.V3.TerminalReassignmentRequest do
           storeId: String.t() | nil
         }
 
-  defstruct [:companyId, :inventory, :merchantId, :storeId]
+  (
+    @derive Jason.Encoder
+    defstruct [:companyId, :inventory, :merchantId, :storeId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

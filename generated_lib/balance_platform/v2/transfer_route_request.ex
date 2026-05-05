@@ -13,15 +13,18 @@ defmodule Adyen.BalancePlatform.V2.TransferRouteRequest do
           priorities: [String.t()] | nil
         }
 
-  defstruct [
-    :balanceAccountId,
-    :balancePlatform,
-    :category,
-    :counterparty,
-    :country,
-    :currency,
-    :priorities
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :balanceAccountId,
+      :balancePlatform,
+      :category,
+      :counterparty,
+      :country,
+      :currency,
+      :priorities
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

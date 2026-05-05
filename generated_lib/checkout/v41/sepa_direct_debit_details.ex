@@ -13,15 +13,18 @@ defmodule Adyen.Checkout.V41.SepaDirectDebitDetails do
           type: String.t() | nil
         }
 
-  defstruct [
-    :checkoutAttemptId,
-    :dueDate,
-    :iban,
-    :ownerName,
-    :recurringDetailReference,
-    :transferInstrumentId,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :checkoutAttemptId,
+      :dueDate,
+      :iban,
+      :ownerName,
+      :recurringDetailReference,
+      :transferInstrumentId,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

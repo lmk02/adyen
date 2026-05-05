@@ -10,7 +10,10 @@ defmodule Adyen.Account.V4.CloseAccountHolderResponse do
           submittedAsync: boolean | nil
         }
 
-  defstruct [:accountHolderStatus, :pspReference, :resultCode, :submittedAsync]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountHolderStatus, :pspReference, :resultCode, :submittedAsync]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

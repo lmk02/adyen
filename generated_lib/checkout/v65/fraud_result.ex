@@ -8,7 +8,10 @@ defmodule Adyen.Checkout.V65.FraudResult do
           results: [Adyen.Checkout.V65.FraudCheckResultWrapper.t()] | nil
         }
 
-  defstruct [:accountScore, :results]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountScore, :results]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V71.UtilityRequest do
 
   @type t :: %__MODULE__{originDomains: [String.t()]}
 
-  defstruct [:originDomains]
+  (
+    @derive Jason.Encoder
+    defstruct [:originDomains]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

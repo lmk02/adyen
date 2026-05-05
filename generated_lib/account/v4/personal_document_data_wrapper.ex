@@ -5,7 +5,10 @@ defmodule Adyen.Account.V4.PersonalDocumentDataWrapper do
 
   @type t :: %__MODULE__{PersonalDocumentData: Adyen.Account.V4.PersonalDocumentData.t() | nil}
 
-  defstruct [:PersonalDocumentData]
+  (
+    @derive Jason.Encoder
+    defstruct [:PersonalDocumentData]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

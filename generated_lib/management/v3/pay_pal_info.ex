@@ -5,7 +5,10 @@ defmodule Adyen.Management.V3.PayPalInfo do
 
   @type t :: %__MODULE__{directCapture: boolean | nil, payerId: String.t(), subject: String.t()}
 
-  defstruct [:directCapture, :payerId, :subject]
+  (
+    @derive Jason.Encoder
+    defstruct [:directCapture, :payerId, :subject]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

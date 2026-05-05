@@ -12,7 +12,10 @@ defmodule Adyen.Checkout.V37.ThreeDSecureData do
           xid: String.t() | nil
         }
 
-  defstruct [:authenticationResponse, :cavv, :cavvAlgorithm, :directoryResponse, :eci, :xid]
+  (
+    @derive Jason.Encoder
+    defstruct [:authenticationResponse, :cavv, :cavvAlgorithm, :directoryResponse, :eci, :xid]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

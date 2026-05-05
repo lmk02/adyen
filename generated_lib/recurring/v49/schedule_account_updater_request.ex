@@ -12,14 +12,17 @@ defmodule Adyen.Recurring.V49.ScheduleAccountUpdaterRequest do
           shopperReference: String.t() | nil
         }
 
-  defstruct [
-    :additionalData,
-    :card,
-    :merchantAccount,
-    :reference,
-    :selectedRecurringDetailReference,
-    :shopperReference
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :additionalData,
+      :card,
+      :merchantAccount,
+      :reference,
+      :selectedRecurringDetailReference,
+      :shopperReference
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

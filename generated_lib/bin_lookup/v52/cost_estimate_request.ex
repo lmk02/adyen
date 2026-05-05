@@ -16,18 +16,21 @@ defmodule Adyen.BinLookup.V52.CostEstimateRequest do
           shopperReference: String.t() | nil
         }
 
-  defstruct [
-    :amount,
-    :assumptions,
-    :cardNumber,
-    :encryptedCardNumber,
-    :merchantAccount,
-    :merchantDetails,
-    :recurring,
-    :selectedRecurringDetailReference,
-    :shopperInteraction,
-    :shopperReference
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amount,
+      :assumptions,
+      :cardNumber,
+      :encryptedCardNumber,
+      :merchantAccount,
+      :merchantDetails,
+      :recurring,
+      :selectedRecurringDetailReference,
+      :shopperInteraction,
+      :shopperReference
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

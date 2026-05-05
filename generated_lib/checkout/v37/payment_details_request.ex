@@ -8,7 +8,10 @@ defmodule Adyen.Checkout.V37.PaymentDetailsRequest do
           paymentData: String.t() | nil
         }
 
-  defstruct [:details, :paymentData]
+  (
+    @derive Jason.Encoder
+    defstruct [:details, :paymentData]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

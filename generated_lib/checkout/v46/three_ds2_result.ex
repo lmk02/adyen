@@ -13,15 +13,18 @@ defmodule Adyen.Checkout.V46.ThreeDs2Result do
           transStatusReason: String.t() | nil
         }
 
-  defstruct [
-    :authenticationValue,
-    :dsTransID,
-    :eci,
-    :threeDSServerTransID,
-    :timestamp,
-    :transStatus,
-    :transStatusReason
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :authenticationValue,
+      :dsTransID,
+      :eci,
+      :threeDSServerTransID,
+      :timestamp,
+      :transStatus,
+      :transStatusReason
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

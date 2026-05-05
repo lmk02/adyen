@@ -9,7 +9,10 @@ defmodule Adyen.Checkout.V71.ThreeDSRequestorAuthenticationInfo do
           threeDSReqAuthTimestamp: String.t() | nil
         }
 
-  defstruct [:threeDSReqAuthData, :threeDSReqAuthMethod, :threeDSReqAuthTimestamp]
+  (
+    @derive Jason.Encoder
+    defstruct [:threeDSReqAuthData, :threeDSReqAuthMethod, :threeDSReqAuthTimestamp]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

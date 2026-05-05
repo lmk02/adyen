@@ -9,7 +9,10 @@ defmodule Adyen.Checkout.V70.AuthenticationData do
           threeDSRequestData: Adyen.Checkout.V70.ThreeDSRequestData.t() | nil
         }
 
-  defstruct [:attemptAuthentication, :authenticationOnly, :threeDSRequestData]
+  (
+    @derive Jason.Encoder
+    defstruct [:attemptAuthentication, :authenticationOnly, :threeDSRequestData]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

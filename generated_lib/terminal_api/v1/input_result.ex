@@ -10,7 +10,10 @@ defmodule Adyen.TerminalAPI.V1.InputResult do
           Response: Adyen.TerminalAPI.V1.Response.t()
         }
 
-  defstruct [:Device, :InfoQualify, :Input, :Response]
+  (
+    @derive Jason.Encoder
+    defstruct [:Device, :InfoQualify, :Input, :Response]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

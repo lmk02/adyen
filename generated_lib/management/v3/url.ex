@@ -10,7 +10,10 @@ defmodule Adyen.Management.V3.Url do
           username: String.t() | nil
         }
 
-  defstruct [:encrypted, :password, :url, :username]
+  (
+    @derive Jason.Encoder
+    defstruct [:encrypted, :password, :url, :username]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -8,7 +8,10 @@ defmodule Adyen.Management.V3.WifiProfiles do
           settings: Adyen.Management.V3.Settings.t() | nil
         }
 
-  defstruct [:profiles, :settings]
+  (
+    @derive Jason.Encoder
+    defstruct [:profiles, :settings]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

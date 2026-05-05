@@ -19,21 +19,24 @@ defmodule Adyen.TerminalAPI.V1.PaymentResult do
           ValidityDate: Date.t() | nil
         }
 
-  defstruct [
-    :AmountsResp,
-    :AuthenticationMethod,
-    :CapturedSignature,
-    :CurrencyConversion,
-    :CustomerLanguage,
-    :Instalment,
-    :MerchantOverrideFlag,
-    :OnlineFlag,
-    :PaymentAcquirerData,
-    :PaymentInstrumentData,
-    :PaymentType,
-    :ProtectedSignature,
-    :ValidityDate
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :AmountsResp,
+      :AuthenticationMethod,
+      :CapturedSignature,
+      :CurrencyConversion,
+      :CustomerLanguage,
+      :Instalment,
+      :MerchantOverrideFlag,
+      :OnlineFlag,
+      :PaymentAcquirerData,
+      :PaymentInstrumentData,
+      :PaymentType,
+      :ProtectedSignature,
+      :ValidityDate
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

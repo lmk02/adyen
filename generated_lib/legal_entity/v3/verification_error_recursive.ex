@@ -11,7 +11,10 @@ defmodule Adyen.LegalEntity.V3.VerificationErrorRecursive do
           type: String.t() | nil
         }
 
-  defstruct [:capabilities, :code, :message, :remediatingActions, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:capabilities, :code, :message, :remediatingActions, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

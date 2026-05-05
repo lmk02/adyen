@@ -38,40 +38,43 @@ defmodule Adyen.Checkout.V52.PaymentLinkRequest do
           threeDS2RequestData: Adyen.Checkout.V52.CheckoutSessionThreeDs2RequestData.t() | nil
         }
 
-  defstruct [
-    :allowedPaymentMethods,
-    :amount,
-    :applicationInfo,
-    :billingAddress,
-    :blockedPaymentMethods,
-    :countryCode,
-    :deliverAt,
-    :deliveryAddress,
-    :description,
-    :expiresAt,
-    :fundOrigin,
-    :fundRecipient,
-    :installmentOptions,
-    :lineItems,
-    :manualCapture,
-    :merchantAccount,
-    :merchantOrderReference,
-    :metadata,
-    :platformChargebackLogic,
-    :recurringProcessingModel,
-    :reference,
-    :returnUrl,
-    :reusable,
-    :shopperEmail,
-    :shopperLocale,
-    :shopperName,
-    :shopperReference,
-    :showRemovePaymentMethodButton,
-    :splits,
-    :store,
-    :storePaymentMethod,
-    :threeDS2RequestData
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :allowedPaymentMethods,
+      :amount,
+      :applicationInfo,
+      :billingAddress,
+      :blockedPaymentMethods,
+      :countryCode,
+      :deliverAt,
+      :deliveryAddress,
+      :description,
+      :expiresAt,
+      :fundOrigin,
+      :fundRecipient,
+      :installmentOptions,
+      :lineItems,
+      :manualCapture,
+      :merchantAccount,
+      :merchantOrderReference,
+      :metadata,
+      :platformChargebackLogic,
+      :recurringProcessingModel,
+      :reference,
+      :returnUrl,
+      :reusable,
+      :shopperEmail,
+      :shopperLocale,
+      :shopperName,
+      :shopperReference,
+      :showRemovePaymentMethodButton,
+      :splits,
+      :store,
+      :storePaymentMethod,
+      :threeDS2RequestData
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

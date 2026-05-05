@@ -9,7 +9,10 @@ defmodule Adyen.TestCard.V1.CreateTestCardRangesRequest do
           testCardRanges: [Adyen.TestCard.V1.TestCardRange.t()]
         }
 
-  defstruct [:accountCode, :accountTypeCode, :testCardRanges]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountCode, :accountTypeCode, :testCardRanges]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -10,7 +10,10 @@ defmodule Adyen.Management.V1.OrderItem do
           quantity: integer | nil
         }
 
-  defstruct [:id, :installments, :name, :quantity]
+  (
+    @derive Jason.Encoder
+    defstruct [:id, :installments, :name, :quantity]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

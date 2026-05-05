@@ -9,7 +9,10 @@ defmodule Adyen.Transfer.V4.TransactionEventViolation do
           transactionRuleSource: Adyen.Transfer.V4.TransactionRuleSource.t() | nil
         }
 
-  defstruct [:reason, :transactionRule, :transactionRuleSource]
+  (
+    @derive Jason.Encoder
+    defstruct [:reason, :transactionRule, :transactionRuleSource]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

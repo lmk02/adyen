@@ -21,23 +21,26 @@ defmodule Adyen.Checkout.V69.CheckoutBankTransferAction do
           url: String.t() | nil
         }
 
-  defstruct [
-    :accountNumber,
-    :bankCode,
-    :beneficiary,
-    :bic,
-    :branchCode,
-    :downloadUrl,
-    :iban,
-    :paymentMethodType,
-    :reference,
-    :routingNumber,
-    :shopperEmail,
-    :sortCode,
-    :totalAmount,
-    :type,
-    :url
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountNumber,
+      :bankCode,
+      :beneficiary,
+      :bic,
+      :branchCode,
+      :downloadUrl,
+      :iban,
+      :paymentMethodType,
+      :reference,
+      :routingNumber,
+      :shopperEmail,
+      :sortCode,
+      :totalAmount,
+      :type,
+      :url
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

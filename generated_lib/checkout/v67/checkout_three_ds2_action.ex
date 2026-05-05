@@ -13,7 +13,18 @@ defmodule Adyen.Checkout.V67.CheckoutThreeDs2Action do
           url: String.t() | nil
         }
 
-  defstruct [:authorisationToken, :paymentData, :paymentMethodType, :subtype, :token, :type, :url]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :authorisationToken,
+      :paymentData,
+      :paymentMethodType,
+      :subtype,
+      :token,
+      :type,
+      :url
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

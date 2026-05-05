@@ -5,7 +5,10 @@ defmodule Adyen.Capital.V1.DisbursementRepayment do
 
   @type t :: %__MODULE__{basisPoints: integer, updateDescription: String.t()}
 
-  defstruct [:basisPoints, :updateDescription]
+  (
+    @derive Jason.Encoder
+    defstruct [:basisPoints, :updateDescription]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.LegalEntity.V1.PciSigningResponse do
 
   @type t :: %__MODULE__{pciQuestionnaireIds: [String.t()] | nil, signedBy: String.t() | nil}
 
-  defstruct [:pciQuestionnaireIds, :signedBy]
+  (
+    @derive Jason.Encoder
+    defstruct [:pciQuestionnaireIds, :signedBy]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

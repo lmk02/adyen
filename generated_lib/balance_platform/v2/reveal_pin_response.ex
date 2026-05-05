@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.RevealPinResponse do
 
   @type t :: %__MODULE__{encryptedPinBlock: String.t(), token: String.t()}
 
-  defstruct [:encryptedPinBlock, :token]
+  (
+    @derive Jason.Encoder
+    defstruct [:encryptedPinBlock, :token]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

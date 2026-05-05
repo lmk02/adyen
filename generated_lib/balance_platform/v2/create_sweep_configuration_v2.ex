@@ -21,23 +21,26 @@ defmodule Adyen.BalancePlatform.V2.CreateSweepConfigurationV2 do
           type: String.t() | nil
         }
 
-  defstruct [
-    :category,
-    :counterparty,
-    :currency,
-    :description,
-    :priorities,
-    :reason,
-    :reasonDetail,
-    :reference,
-    :referenceForBeneficiary,
-    :schedule,
-    :status,
-    :sweepAmount,
-    :targetAmount,
-    :triggerAmount,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :category,
+      :counterparty,
+      :currency,
+      :description,
+      :priorities,
+      :reason,
+      :reasonDetail,
+      :reference,
+      :referenceForBeneficiary,
+      :schedule,
+      :status,
+      :sweepAmount,
+      :targetAmount,
+      :triggerAmount,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

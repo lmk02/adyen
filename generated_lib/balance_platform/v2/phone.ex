@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.Phone do
 
   @type t :: %__MODULE__{number: String.t(), type: String.t()}
 
-  defstruct [:number, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:number, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

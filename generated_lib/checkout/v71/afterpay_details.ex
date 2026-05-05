@@ -14,16 +14,19 @@ defmodule Adyen.Checkout.V71.AfterpayDetails do
           type: String.t()
         }
 
-  defstruct [
-    :billingAddress,
-    :checkoutAttemptId,
-    :deliveryAddress,
-    :personalDetails,
-    :recurringDetailReference,
-    :sdkData,
-    :storedPaymentMethodId,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :billingAddress,
+      :checkoutAttemptId,
+      :deliveryAddress,
+      :personalDetails,
+      :recurringDetailReference,
+      :sdkData,
+      :storedPaymentMethodId,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

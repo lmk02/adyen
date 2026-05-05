@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V71.Surcharge do
 
   @type t :: %__MODULE__{value: integer}
 
-  defstruct [:value]
+  (
+    @derive Jason.Encoder
+    defstruct [:value]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

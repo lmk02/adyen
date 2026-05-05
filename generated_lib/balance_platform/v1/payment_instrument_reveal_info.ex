@@ -9,7 +9,10 @@ defmodule Adyen.BalancePlatform.V1.PaymentInstrumentRevealInfo do
           pan: String.t()
         }
 
-  defstruct [:cvc, :expiration, :pan]
+  (
+    @derive Jason.Encoder
+    defstruct [:cvc, :expiration, :pan]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

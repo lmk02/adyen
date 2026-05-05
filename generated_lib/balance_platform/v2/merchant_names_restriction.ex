@@ -8,7 +8,10 @@ defmodule Adyen.BalancePlatform.V2.MerchantNamesRestriction do
           value: [Adyen.BalancePlatform.V2.StringMatch.t()] | nil
         }
 
-  defstruct [:operation, :value]
+  (
+    @derive Jason.Encoder
+    defstruct [:operation, :value]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

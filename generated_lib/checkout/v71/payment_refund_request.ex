@@ -16,18 +16,21 @@ defmodule Adyen.Checkout.V71.PaymentRefundRequest do
           store: String.t() | nil
         }
 
-  defstruct [
-    :amount,
-    :applicationInfo,
-    :capturePspReference,
-    :enhancedSchemeData,
-    :lineItems,
-    :merchantAccount,
-    :merchantRefundReason,
-    :reference,
-    :splits,
-    :store
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amount,
+      :applicationInfo,
+      :capturePspReference,
+      :enhancedSchemeData,
+      :lineItems,
+      :merchantAccount,
+      :merchantRefundReason,
+      :reference,
+      :splits,
+      :store
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

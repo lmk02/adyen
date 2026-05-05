@@ -14,16 +14,19 @@ defmodule Adyen.Management.V3.TerminalOrder do
           trackingUrl: String.t() | nil
         }
 
-  defstruct [
-    :billingEntity,
-    :customerOrderReference,
-    :id,
-    :items,
-    :orderDate,
-    :shippingLocation,
-    :status,
-    :trackingUrl
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :billingEntity,
+      :customerOrderReference,
+      :id,
+      :items,
+      :orderDate,
+      :shippingLocation,
+      :status,
+      :trackingUrl
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

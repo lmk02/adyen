@@ -21,23 +21,26 @@ defmodule Adyen.Account.V5.AccountHolderDetails do
           webAddress: String.t() | nil
         }
 
-  defstruct [
-    :address,
-    :bankAccountDetails,
-    :bankAggregatorDataReference,
-    :businessDetails,
-    :email,
-    :fullPhoneNumber,
-    :individualDetails,
-    :lastReviewDate,
-    :merchantCategoryCode,
-    :metadata,
-    :payoutMethods,
-    :phoneNumber,
-    :principalBusinessAddress,
-    :storeDetails,
-    :webAddress
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :address,
+      :bankAccountDetails,
+      :bankAggregatorDataReference,
+      :businessDetails,
+      :email,
+      :fullPhoneNumber,
+      :individualDetails,
+      :lastReviewDate,
+      :merchantCategoryCode,
+      :metadata,
+      :payoutMethods,
+      :phoneNumber,
+      :principalBusinessAddress,
+      :storeDetails,
+      :webAddress
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

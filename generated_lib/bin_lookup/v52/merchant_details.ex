@@ -9,7 +9,10 @@ defmodule Adyen.BinLookup.V52.MerchantDetails do
           mcc: String.t() | nil
         }
 
-  defstruct [:countryCode, :enrolledIn3DSecure, :mcc]
+  (
+    @derive Jason.Encoder
+    defstruct [:countryCode, :enrolledIn3DSecure, :mcc]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

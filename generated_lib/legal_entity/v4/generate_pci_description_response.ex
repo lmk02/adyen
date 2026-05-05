@@ -9,7 +9,10 @@ defmodule Adyen.LegalEntity.V4.GeneratePciDescriptionResponse do
           pciTemplateReferences: [String.t()] | nil
         }
 
-  defstruct [:content, :language, :pciTemplateReferences]
+  (
+    @derive Jason.Encoder
+    defstruct [:content, :language, :pciTemplateReferences]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

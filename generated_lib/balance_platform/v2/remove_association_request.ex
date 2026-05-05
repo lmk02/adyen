@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.RemoveAssociationRequest do
 
   @type t :: %__MODULE__{entityId: String.t(), entityType: String.t(), scaDeviceIds: [String.t()]}
 
-  defstruct [:entityId, :entityType, :scaDeviceIds]
+  (
+    @derive Jason.Encoder
+    defstruct [:entityId, :entityType, :scaDeviceIds]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -14,7 +17,7 @@ defmodule Adyen.BalancePlatform.V2.RemoveAssociationRequest do
   def __fields__(:t) do
     [
       entityId: :string,
-      entityType: {:enum, ["accountHolder", "legalEntity", "paymentInstrument"]},
+      entityType: {:enum, ["accountHolder", "paymentInstrument"]},
       scaDeviceIds: [:string]
     ]
   end

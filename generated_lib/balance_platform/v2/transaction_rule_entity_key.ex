@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.TransactionRuleEntityKey do
 
   @type t :: %__MODULE__{entityReference: String.t() | nil, entityType: String.t() | nil}
 
-  defstruct [:entityReference, :entityType]
+  (
+    @derive Jason.Encoder
+    defstruct [:entityReference, :entityType]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

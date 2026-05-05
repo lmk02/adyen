@@ -15,17 +15,20 @@ defmodule Adyen.BalancePlatform.V2.NetworkToken do
           type: String.t() | nil
         }
 
-  defstruct [
-    :brandVariant,
-    :creationDate,
-    :device,
-    :id,
-    :paymentInstrumentId,
-    :status,
-    :tokenLastFour,
-    :tokenRequestor,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :brandVariant,
+      :creationDate,
+      :device,
+      :id,
+      :paymentInstrumentId,
+      :status,
+      :tokenLastFour,
+      :tokenRequestor,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

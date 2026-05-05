@@ -5,7 +5,10 @@ defmodule Adyen.Transfer.V4.ReturnTransferRequest do
 
   @type t :: %__MODULE__{amount: Adyen.Transfer.V4.Amount.t(), reference: String.t() | nil}
 
-  defstruct [:amount, :reference]
+  (
+    @derive Jason.Encoder
+    defstruct [:amount, :reference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

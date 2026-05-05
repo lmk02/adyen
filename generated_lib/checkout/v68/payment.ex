@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V68.Payment do
           resultCode: String.t() | nil
         }
 
-  defstruct [:amount, :paymentMethod, :pspReference, :resultCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:amount, :paymentMethod, :pspReference, :resultCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

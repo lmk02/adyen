@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.AdditionalBankIdentification do
 
   @type t :: %__MODULE__{code: String.t() | nil, type: String.t() | nil}
 
-  defstruct [:code, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:code, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

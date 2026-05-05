@@ -5,7 +5,10 @@ defmodule Adyen.Account.V3.DeleteSignatoriesRequest do
 
   @type t :: %__MODULE__{accountHolderCode: String.t(), signatoryCodes: [String.t()]}
 
-  defstruct [:accountHolderCode, :signatoryCodes]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountHolderCode, :signatoryCodes]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

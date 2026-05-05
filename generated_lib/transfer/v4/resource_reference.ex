@@ -9,7 +9,10 @@ defmodule Adyen.Transfer.V4.ResourceReference do
           reference: String.t() | nil
         }
 
-  defstruct [:description, :id, :reference]
+  (
+    @derive Jason.Encoder
+    defstruct [:description, :id, :reference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

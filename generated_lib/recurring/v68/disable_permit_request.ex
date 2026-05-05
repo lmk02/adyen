@@ -5,7 +5,10 @@ defmodule Adyen.Recurring.V68.DisablePermitRequest do
 
   @type t :: %__MODULE__{merchantAccount: String.t(), token: String.t()}
 
-  defstruct [:merchantAccount, :token]
+  (
+    @derive Jason.Encoder
+    defstruct [:merchantAccount, :token]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

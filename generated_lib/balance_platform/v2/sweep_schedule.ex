@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.SweepSchedule do
 
   @type t :: %__MODULE__{cronExpression: String.t() | nil, type: String.t()}
 
-  defstruct [:cronExpression, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:cronExpression, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

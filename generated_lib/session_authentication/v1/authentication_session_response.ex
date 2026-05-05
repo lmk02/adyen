@@ -5,7 +5,10 @@ defmodule Adyen.SessionAuthentication.V1.AuthenticationSessionResponse do
 
   @type t :: %__MODULE__{id: String.t() | nil, token: String.t() | nil}
 
-  defstruct [:id, :token]
+  (
+    @derive Jason.Encoder
+    defstruct [:id, :token]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

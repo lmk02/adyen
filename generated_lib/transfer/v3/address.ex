@@ -12,7 +12,10 @@ defmodule Adyen.Transfer.V3.Address do
           stateOrProvince: String.t() | nil
         }
 
-  defstruct [:city, :country, :line1, :line2, :postalCode, :stateOrProvince]
+  (
+    @derive Jason.Encoder
+    defstruct [:city, :country, :line1, :line2, :postalCode, :stateOrProvince]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

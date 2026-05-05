@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V37.FraudCheckResult do
 
   @type t :: %__MODULE__{accountScore: integer, checkId: integer, name: String.t()}
 
-  defstruct [:accountScore, :checkId, :name]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountScore, :checkId, :name]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

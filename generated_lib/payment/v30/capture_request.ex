@@ -14,16 +14,19 @@ defmodule Adyen.Payment.V30.CaptureRequest do
           uniqueTerminalId: String.t() | nil
         }
 
-  defstruct [
-    :additionalData,
-    :merchantAccount,
-    :modificationAmount,
-    :originalMerchantReference,
-    :originalReference,
-    :reference,
-    :tenderReference,
-    :uniqueTerminalId
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :additionalData,
+      :merchantAccount,
+      :modificationAmount,
+      :originalMerchantReference,
+      :originalReference,
+      :reference,
+      :tenderReference,
+      :uniqueTerminalId
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

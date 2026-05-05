@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.StringMatch do
 
   @type t :: %__MODULE__{operation: String.t() | nil, value: String.t() | nil}
 
-  defstruct [:operation, :value]
+  (
+    @derive Jason.Encoder
+    defstruct [:operation, :value]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

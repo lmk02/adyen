@@ -12,7 +12,10 @@ defmodule Adyen.BalancePlatform.V2.TransactionRuleInterval do
           type: String.t()
         }
 
-  defstruct [:dayOfMonth, :dayOfWeek, :duration, :timeOfDay, :timeZone, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:dayOfMonth, :dayOfWeek, :duration, :timeOfDay, :timeZone, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

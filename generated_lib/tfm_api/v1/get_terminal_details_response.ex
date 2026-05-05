@@ -31,33 +31,36 @@ defmodule Adyen.TfmAPI.V1.GetTerminalDetailsResponse do
           wifiMac: String.t() | nil
         }
 
-  defstruct [
-    :bluetoothIp,
-    :bluetoothMac,
-    :companyAccount,
-    :country,
-    :deviceModel,
-    :dhcpEnabled,
-    :displayLabel,
-    :ethernetIp,
-    :ethernetMac,
-    :firmwareVersion,
-    :iccid,
-    :lastActivityDateTime,
-    :lastTransactionDateTime,
-    :linkNegotiation,
-    :merchantAccount,
-    :merchantInventory,
-    :permanentTerminalId,
-    :serialNumber,
-    :simStatus,
-    :store,
-    :storeDetails,
-    :terminal,
-    :terminalStatus,
-    :wifiIp,
-    :wifiMac
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :bluetoothIp,
+      :bluetoothMac,
+      :companyAccount,
+      :country,
+      :deviceModel,
+      :dhcpEnabled,
+      :displayLabel,
+      :ethernetIp,
+      :ethernetMac,
+      :firmwareVersion,
+      :iccid,
+      :lastActivityDateTime,
+      :lastTransactionDateTime,
+      :linkNegotiation,
+      :merchantAccount,
+      :merchantInventory,
+      :permanentTerminalId,
+      :serialNumber,
+      :simStatus,
+      :store,
+      :storeDetails,
+      :terminal,
+      :terminalStatus,
+      :wifiIp,
+      :wifiMac
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

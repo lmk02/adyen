@@ -11,7 +11,10 @@ defmodule Adyen.Management.V3.Configuration do
           sources: [String.t()] | nil
         }
 
-  defstruct [:brand, :commercial, :country, :currencies, :sources]
+  (
+    @derive Jason.Encoder
+    defstruct [:brand, :commercial, :country, :currencies, :sources]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

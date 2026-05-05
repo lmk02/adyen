@@ -13,15 +13,18 @@ defmodule Adyen.Checkout.V50.PayWithGoogleDonations do
           type: String.t() | nil
         }
 
-  defstruct [
-    :checkoutAttemptId,
-    :fundingSource,
-    :googlePayToken,
-    :recurringDetailReference,
-    :storedPaymentMethodId,
-    :threeDS2SdkVersion,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :checkoutAttemptId,
+      :fundingSource,
+      :googlePayToken,
+      :recurringDetailReference,
+      :storedPaymentMethodId,
+      :threeDS2SdkVersion,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

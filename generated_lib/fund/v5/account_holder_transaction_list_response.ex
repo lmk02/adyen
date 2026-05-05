@@ -10,7 +10,10 @@ defmodule Adyen.Fund.V5.AccountHolderTransactionListResponse do
           resultCode: String.t() | nil
         }
 
-  defstruct [:accountTransactionLists, :invalidFields, :pspReference, :resultCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountTransactionLists, :invalidFields, :pspReference, :resultCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V68.Phone do
 
   @type t :: %__MODULE__{cc: String.t() | nil, subscriber: String.t() | nil}
 
-  defstruct [:cc, :subscriber]
+  (
+    @derive Jason.Encoder
+    defstruct [:cc, :subscriber]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

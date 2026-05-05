@@ -8,7 +8,10 @@ defmodule Adyen.TerminalAPI.V1.LoyaltyData do
           LoyaltyAccountID: Adyen.TerminalAPI.V1.LoyaltyAccountID.t() | nil
         }
 
-  defstruct [:CardAcquisitionReference, :LoyaltyAccountID]
+  (
+    @derive Jason.Encoder
+    defstruct [:CardAcquisitionReference, :LoyaltyAccountID]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

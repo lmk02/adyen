@@ -11,7 +11,10 @@ defmodule Adyen.Transfer.V4.TransactionRuleReference do
           score: integer | nil
         }
 
-  defstruct [:description, :id, :outcomeType, :reference, :score]
+  (
+    @derive Jason.Encoder
+    defstruct [:description, :id, :outcomeType, :reference, :score]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

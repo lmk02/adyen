@@ -11,7 +11,10 @@ defmodule Adyen.TerminalAPI.V1.TotalFilter do
           TotalsGroupID: String.t() | nil
         }
 
-  defstruct [:OperatorID, :POIID, :SaleID, :ShiftNumber, :TotalsGroupID]
+  (
+    @derive Jason.Encoder
+    defstruct [:OperatorID, :POIID, :SaleID, :ShiftNumber, :TotalsGroupID]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -65,7 +65,10 @@ defmodule Adyen.Checkout.V37.Recurring do
           tokenService: String.t() | nil
         }
 
-  defstruct [:contract, :recurringDetailName, :tokenService]
+  (
+    @derive Jason.Encoder
+    defstruct [:contract, :recurringDetailName, :tokenService]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

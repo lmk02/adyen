@@ -9,7 +9,10 @@ defmodule Adyen.TerminalAPI.V1.Response do
           Result: String.t()
         }
 
-  defstruct [:AdditionalResponse, :ErrorCondition, :Result]
+  (
+    @derive Jason.Encoder
+    defstruct [:AdditionalResponse, :ErrorCondition, :Result]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

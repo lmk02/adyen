@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.TwintInfo do
 
   @type t :: %__MODULE__{logo: String.t()}
 
-  defstruct [:logo]
+  (
+    @derive Jason.Encoder
+    defstruct [:logo]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

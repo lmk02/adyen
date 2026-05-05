@@ -12,14 +12,17 @@ defmodule Adyen.Fund.V3.PayoutAccountHolderRequest do
           merchantReference: String.t() | nil
         }
 
-  defstruct [
-    :accountCode,
-    :accountHolderCode,
-    :amount,
-    :bankAccountUUID,
-    :description,
-    :merchantReference
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountCode,
+      :accountHolderCode,
+      :amount,
+      :bankAccountUUID,
+      :description,
+      :merchantReference
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

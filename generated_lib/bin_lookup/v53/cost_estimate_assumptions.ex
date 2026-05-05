@@ -9,7 +9,10 @@ defmodule Adyen.BinLookup.V53.CostEstimateAssumptions do
           installments: integer | nil
         }
 
-  defstruct [:assume3DSecureAuthenticated, :assumeLevel3Data, :installments]
+  (
+    @derive Jason.Encoder
+    defstruct [:assume3DSecureAuthenticated, :assumeLevel3Data, :installments]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

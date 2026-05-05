@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V52.PaypalUpdateOrderResponse do
 
   @type t :: %__MODULE__{paymentData: String.t(), status: String.t()}
 
-  defstruct [:paymentData, :status]
+  (
+    @derive Jason.Encoder
+    defstruct [:paymentData, :status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

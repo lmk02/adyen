@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.TransferRouteResponse do
 
   @type t :: %__MODULE__{transferRoutes: [Adyen.BalancePlatform.V2.TransferRoute.t()] | nil}
 
-  defstruct [:transferRoutes]
+  (
+    @derive Jason.Encoder
+    defstruct [:transferRoutes]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

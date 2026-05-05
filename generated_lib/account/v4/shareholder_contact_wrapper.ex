@@ -5,7 +5,10 @@ defmodule Adyen.Account.V4.ShareholderContactWrapper do
 
   @type t :: %__MODULE__{ShareholderContact: Adyen.Account.V4.ShareholderContact.t() | nil}
 
-  defstruct [:ShareholderContact]
+  (
+    @derive Jason.Encoder
+    defstruct [:ShareholderContact]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

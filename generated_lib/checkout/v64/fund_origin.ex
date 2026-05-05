@@ -11,7 +11,10 @@ defmodule Adyen.Checkout.V64.FundOrigin do
           walletIdentifier: String.t() | nil
         }
 
-  defstruct [:billingAddress, :shopperEmail, :shopperName, :telephoneNumber, :walletIdentifier]
+  (
+    @derive Jason.Encoder
+    defstruct [:billingAddress, :shopperEmail, :shopperName, :telephoneNumber, :walletIdentifier]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

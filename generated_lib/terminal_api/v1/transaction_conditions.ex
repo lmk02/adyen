@@ -15,17 +15,20 @@ defmodule Adyen.TerminalAPI.V1.TransactionConditions do
           MerchantCategoryCode: String.t() | nil
         }
 
-  defstruct [
-    :AcquirerID,
-    :AllowedLoyaltyBrand,
-    :AllowedPaymentBrand,
-    :CustomerLanguage,
-    :DebitPreferredFlag,
-    :ForceEntryMode,
-    :ForceOnlineFlag,
-    :LoyaltyHandling,
-    :MerchantCategoryCode
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :AcquirerID,
+      :AllowedLoyaltyBrand,
+      :AllowedPaymentBrand,
+      :CustomerLanguage,
+      :DebitPreferredFlag,
+      :ForceEntryMode,
+      :ForceOnlineFlag,
+      :LoyaltyHandling,
+      :MerchantCategoryCode
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

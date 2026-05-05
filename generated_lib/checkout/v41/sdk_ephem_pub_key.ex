@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V41.SDKEphemPubKey do
           y: String.t() | nil
         }
 
-  defstruct [:crv, :kty, :x, :y]
+  (
+    @derive Jason.Encoder
+    defstruct [:crv, :kty, :x, :y]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

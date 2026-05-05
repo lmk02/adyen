@@ -10,7 +10,10 @@ defmodule Adyen.Management.V1.CompanyLinks do
           webhooks: Adyen.Management.V1.LinksElement.t() | nil
         }
 
-  defstruct [:apiCredentials, :self, :users, :webhooks]
+  (
+    @derive Jason.Encoder
+    defstruct [:apiCredentials, :self, :users, :webhooks]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

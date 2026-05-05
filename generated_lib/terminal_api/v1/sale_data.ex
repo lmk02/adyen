@@ -18,20 +18,23 @@ defmodule Adyen.TerminalAPI.V1.SaleData do
           TokenRequestedType: String.t() | nil
         }
 
-  defstruct [
-    :CustomerOrderID,
-    :CustomerOrderReq,
-    :OperatorID,
-    :OperatorLanguage,
-    :SaleReferenceID,
-    :SaleTerminalData,
-    :SaleToAcquirerData,
-    :SaleToIssuerData,
-    :SaleToPOIData,
-    :SaleTransactionID,
-    :ShiftNumber,
-    :TokenRequestedType
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :CustomerOrderID,
+      :CustomerOrderReq,
+      :OperatorID,
+      :OperatorLanguage,
+      :SaleReferenceID,
+      :SaleTerminalData,
+      :SaleToAcquirerData,
+      :SaleToIssuerData,
+      :SaleToPOIData,
+      :SaleTransactionID,
+      :ShiftNumber,
+      :TokenRequestedType
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

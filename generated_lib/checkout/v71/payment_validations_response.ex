@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V71.PaymentValidationsResponse do
 
   @type t :: %__MODULE__{name: Adyen.Checkout.V71.PaymentValidationsNameResponse.t() | nil}
 
-  defstruct [:name]
+  (
+    @derive Jason.Encoder
+    defstruct [:name]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

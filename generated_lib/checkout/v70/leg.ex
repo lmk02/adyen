@@ -15,17 +15,20 @@ defmodule Adyen.Checkout.V70.Leg do
           stopOverCode: String.t() | nil
         }
 
-  defstruct [
-    :carrierCode,
-    :classOfTravel,
-    :dateOfTravel,
-    :departureAirportCode,
-    :departureTax,
-    :destinationAirportCode,
-    :fareBasisCode,
-    :flightNumber,
-    :stopOverCode
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :carrierCode,
+      :classOfTravel,
+      :dateOfTravel,
+      :departureAirportCode,
+      :departureTax,
+      :destinationAirportCode,
+      :fareBasisCode,
+      :flightNumber,
+      :stopOverCode
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

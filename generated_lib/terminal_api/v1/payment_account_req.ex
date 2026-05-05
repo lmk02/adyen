@@ -9,7 +9,10 @@ defmodule Adyen.TerminalAPI.V1.PaymentAccountReq do
           PaymentInstrumentData: Adyen.TerminalAPI.V1.PaymentInstrumentData.t() | nil
         }
 
-  defstruct [:AccountType, :CardAcquisitionReference, :PaymentInstrumentData]
+  (
+    @derive Jason.Encoder
+    defstruct [:AccountType, :CardAcquisitionReference, :PaymentInstrumentData]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

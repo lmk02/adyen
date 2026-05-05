@@ -9,7 +9,10 @@ defmodule Adyen.LegalEntity.V2.OnboardingThemes do
           themes: [Adyen.LegalEntity.V2.OnboardingTheme.t()]
         }
 
-  defstruct [:next, :previous, :themes]
+  (
+    @derive Jason.Encoder
+    defstruct [:next, :previous, :themes]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

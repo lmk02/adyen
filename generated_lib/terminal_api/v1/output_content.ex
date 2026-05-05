@@ -11,7 +11,10 @@ defmodule Adyen.TerminalAPI.V1.OutputContent do
           PredefinedContent: Adyen.TerminalAPI.V1.PredefinedContent.t() | nil
         }
 
-  defstruct [:OutputBarcode, :OutputFormat, :OutputText, :OutputXHTML, :PredefinedContent]
+  (
+    @derive Jason.Encoder
+    defstruct [:OutputBarcode, :OutputFormat, :OutputText, :OutputXHTML, :PredefinedContent]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

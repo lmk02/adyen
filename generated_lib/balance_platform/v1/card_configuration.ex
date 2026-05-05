@@ -20,22 +20,25 @@ defmodule Adyen.BalancePlatform.V1.CardConfiguration do
           shipmentMethod: String.t() | nil
         }
 
-  defstruct [
-    :activation,
-    :activationUrl,
-    :bulkAddress,
-    :cardImageId,
-    :carrier,
-    :carrierImageId,
-    :configurationProfileId,
-    :currency,
-    :envelope,
-    :insert,
-    :language,
-    :logoImageId,
-    :pinMailer,
-    :shipmentMethod
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :activation,
+      :activationUrl,
+      :bulkAddress,
+      :cardImageId,
+      :carrier,
+      :carrierImageId,
+      :configurationProfileId,
+      :currency,
+      :envelope,
+      :insert,
+      :language,
+      :logoImageId,
+      :pinMailer,
+      :shipmentMethod
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

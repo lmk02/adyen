@@ -15,17 +15,20 @@ defmodule Adyen.Checkout.V52.BankAccount do
           taxId: String.t() | nil
         }
 
-  defstruct [
-    :bankAccountNumber,
-    :bankCity,
-    :bankLocationId,
-    :bankName,
-    :bic,
-    :countryCode,
-    :iban,
-    :ownerName,
-    :taxId
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :bankAccountNumber,
+      :bankCity,
+      :bankLocationId,
+      :bankName,
+      :bic,
+      :countryCode,
+      :iban,
+      :ownerName,
+      :taxId
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

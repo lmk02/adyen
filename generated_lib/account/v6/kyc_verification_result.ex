@@ -14,15 +14,18 @@ defmodule Adyen.Account.V6.KYCVerificationResult do
           ultimateParentCompany: [Adyen.Account.V6.KYCUltimateParentCompanyCheckResult.t()] | nil
         }
 
-  defstruct [
-    :accountHolder,
-    :legalArrangements,
-    :legalArrangementsEntities,
-    :payoutMethods,
-    :shareholders,
-    :signatories,
-    :ultimateParentCompany
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountHolder,
+      :legalArrangements,
+      :legalArrangementsEntities,
+      :payoutMethods,
+      :shareholders,
+      :signatories,
+      :ultimateParentCompany
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

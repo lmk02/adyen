@@ -9,7 +9,10 @@ defmodule Adyen.Account.V3.UltimateParentCompany do
           ultimateParentCompanyCode: String.t() | nil
         }
 
-  defstruct [:address, :businessDetails, :ultimateParentCompanyCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:address, :businessDetails, :ultimateParentCompanyCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

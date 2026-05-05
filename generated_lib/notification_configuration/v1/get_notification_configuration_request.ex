@@ -5,7 +5,10 @@ defmodule Adyen.NotificationConfiguration.V1.GetNotificationConfigurationRequest
 
   @type t :: %__MODULE__{notificationId: integer}
 
-  defstruct [:notificationId]
+  (
+    @derive Jason.Encoder
+    defstruct [:notificationId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.DataProtection.V1.SubjectErasureResponse do
 
   @type t :: %__MODULE__{result: String.t() | nil}
 
-  defstruct [:result]
+  (
+    @derive Jason.Encoder
+    defstruct [:result]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

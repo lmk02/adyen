@@ -17,27 +17,28 @@ defmodule Adyen.BalancePlatform.V2.CardConfiguration do
           language: String.t() | nil,
           logoImageId: String.t() | nil,
           pinMailer: String.t() | nil,
-          printLine: String.t() | nil,
           shipmentMethod: String.t() | nil
         }
 
-  defstruct [
-    :activation,
-    :activationUrl,
-    :bulkAddress,
-    :cardImageId,
-    :carrier,
-    :carrierImageId,
-    :configurationProfileId,
-    :currency,
-    :envelope,
-    :insert,
-    :language,
-    :logoImageId,
-    :pinMailer,
-    :printLine,
-    :shipmentMethod
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :activation,
+      :activationUrl,
+      :bulkAddress,
+      :cardImageId,
+      :carrier,
+      :carrierImageId,
+      :configurationProfileId,
+      :currency,
+      :envelope,
+      :insert,
+      :language,
+      :logoImageId,
+      :pinMailer,
+      :shipmentMethod
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -58,7 +59,6 @@ defmodule Adyen.BalancePlatform.V2.CardConfiguration do
       language: :string,
       logoImageId: :string,
       pinMailer: :string,
-      printLine: :string,
       shipmentMethod: :string
     ]
   end

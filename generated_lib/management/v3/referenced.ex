@@ -5,7 +5,10 @@ defmodule Adyen.Management.V3.Referenced do
 
   @type t :: %__MODULE__{enableStandaloneRefunds: boolean | nil}
 
-  defstruct [:enableStandaloneRefunds]
+  (
+    @derive Jason.Encoder
+    defstruct [:enableStandaloneRefunds]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -13,7 +13,10 @@ defmodule Adyen.LegalEntity.V2.DocumentReference do
           type: String.t() | nil
         }
 
-  defstruct [:active, :description, :fileName, :id, :modificationDate, :pages, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:active, :description, :fileName, :id, :modificationDate, :pages, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.Transfer.V4.BankCategoryData do
 
   @type t :: %__MODULE__{priority: String.t() | nil, type: String.t() | nil}
 
-  defstruct [:priority, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:priority, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

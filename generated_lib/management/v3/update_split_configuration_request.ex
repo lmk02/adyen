@@ -5,7 +5,10 @@ defmodule Adyen.Management.V3.UpdateSplitConfigurationRequest do
 
   @type t :: %__MODULE__{description: String.t()}
 
-  defstruct [:description]
+  (
+    @derive Jason.Encoder
+    defstruct [:description]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -11,13 +11,16 @@ defmodule Adyen.Checkout.V50.FastlaneDetails do
           type: String.t()
         }
 
-  defstruct [
-    :checkoutAttemptId,
-    :fastlaneData,
-    :recurringDetailReference,
-    :storedPaymentMethodId,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :checkoutAttemptId,
+      :fastlaneData,
+      :recurringDetailReference,
+      :storedPaymentMethodId,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

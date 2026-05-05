@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.DifferentCurrenciesRestriction do
 
   @type t :: %__MODULE__{operation: String.t(), value: boolean | nil}
 
-  defstruct [:operation, :value]
+  (
+    @derive Jason.Encoder
+    defstruct [:operation, :value]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

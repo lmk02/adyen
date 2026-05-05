@@ -10,7 +10,10 @@ defmodule Adyen.LegalEntity.V4.Financier do
           location: String.t()
         }
 
-  defstruct [:amount, :firstName, :lastName, :location]
+  (
+    @derive Jason.Encoder
+    defstruct [:amount, :firstName, :lastName, :location]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

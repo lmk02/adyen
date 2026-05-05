@@ -5,7 +5,10 @@ defmodule Adyen.Management.V3.AndroidAppError do
 
   @type t :: %__MODULE__{errorCode: String.t() | nil, terminalModels: [String.t()] | nil}
 
-  defstruct [:errorCode, :terminalModels]
+  (
+    @derive Jason.Encoder
+    defstruct [:errorCode, :terminalModels]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

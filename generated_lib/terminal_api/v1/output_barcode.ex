@@ -5,7 +5,10 @@ defmodule Adyen.TerminalAPI.V1.OutputBarcode do
 
   @type t :: %__MODULE__{BarcodeValue: String.t()}
 
-  defstruct [:BarcodeValue]
+  (
+    @derive Jason.Encoder
+    defstruct [:BarcodeValue]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

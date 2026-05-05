@@ -11,7 +11,10 @@ defmodule Adyen.Checkout.V71.Passenger do
           travellerType: String.t() | nil
         }
 
-  defstruct [:dateOfBirth, :firstName, :lastName, :phoneNumber, :travellerType]
+  (
+    @derive Jason.Encoder
+    defstruct [:dateOfBirth, :firstName, :lastName, :phoneNumber, :travellerType]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

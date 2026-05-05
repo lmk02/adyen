@@ -22,24 +22,27 @@ defmodule Adyen.Recurring.V25.RecurringDetail do
           variant: String.t()
         }
 
-  defstruct [
-    :additionalData,
-    :alias,
-    :aliasType,
-    :bank,
-    :billingAddress,
-    :card,
-    :contractTypes,
-    :creationDate,
-    :firstPspReference,
-    :name,
-    :paymentMethodVariant,
-    :recurringDetailReference,
-    :shopperName,
-    :socialSecurityNumber,
-    :tokenDetails,
-    :variant
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :additionalData,
+      :alias,
+      :aliasType,
+      :bank,
+      :billingAddress,
+      :card,
+      :contractTypes,
+      :creationDate,
+      :firstPspReference,
+      :name,
+      :paymentMethodVariant,
+      :recurringDetailReference,
+      :shopperName,
+      :socialSecurityNumber,
+      :tokenDetails,
+      :variant
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

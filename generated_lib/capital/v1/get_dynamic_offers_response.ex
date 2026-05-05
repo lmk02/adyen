@@ -5,7 +5,10 @@ defmodule Adyen.Capital.V1.GetDynamicOffersResponse do
 
   @type t :: %__MODULE__{dynamicOffers: [Adyen.Capital.V1.DynamicOffer.t()]}
 
-  defstruct [:dynamicOffers]
+  (
+    @derive Jason.Encoder
+    defstruct [:dynamicOffers]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

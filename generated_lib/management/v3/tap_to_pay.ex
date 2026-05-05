@@ -5,7 +5,10 @@ defmodule Adyen.Management.V3.TapToPay do
 
   @type t :: %__MODULE__{merchantDisplayName: String.t() | nil}
 
-  defstruct [:merchantDisplayName]
+  (
+    @derive Jason.Encoder
+    defstruct [:merchantDisplayName]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -11,7 +11,10 @@ defmodule Adyen.Checkout.V66.DokuDetails do
           type: String.t()
         }
 
-  defstruct [:checkoutAttemptId, :firstName, :lastName, :shopperEmail, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:checkoutAttemptId, :firstName, :lastName, :shopperEmail, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

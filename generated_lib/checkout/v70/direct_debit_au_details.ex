@@ -13,15 +13,18 @@ defmodule Adyen.Checkout.V70.DirectDebitAuDetails do
           type: String.t() | nil
         }
 
-  defstruct [
-    :bankAccountNumber,
-    :bankBranchCode,
-    :checkoutAttemptId,
-    :recurringDetailReference,
-    :sdkData,
-    :storedPaymentMethodId,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :bankAccountNumber,
+      :bankBranchCode,
+      :checkoutAttemptId,
+      :recurringDetailReference,
+      :sdkData,
+      :storedPaymentMethodId,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

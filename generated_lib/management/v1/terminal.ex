@@ -28,30 +28,33 @@ defmodule Adyen.Management.V1.Terminal do
           wifiSsid: String.t() | nil
         }
 
-  defstruct [
-    :assigned,
-    :bluetoothIp,
-    :bluetoothMac,
-    :city,
-    :companyAccount,
-    :countryCode,
-    :deviceModel,
-    :ethernetIp,
-    :ethernetMac,
-    :firmwareVersion,
-    :iccid,
-    :id,
-    :lastActivityDateTime,
-    :lastTransactionDateTime,
-    :linkNegotiation,
-    :serialNumber,
-    :simStatus,
-    :status,
-    :storeStatus,
-    :wifiIp,
-    :wifiMac,
-    :wifiSsid
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :assigned,
+      :bluetoothIp,
+      :bluetoothMac,
+      :city,
+      :companyAccount,
+      :countryCode,
+      :deviceModel,
+      :ethernetIp,
+      :ethernetMac,
+      :firmwareVersion,
+      :iccid,
+      :id,
+      :lastActivityDateTime,
+      :lastTransactionDateTime,
+      :linkNegotiation,
+      :serialNumber,
+      :simStatus,
+      :status,
+      :storeStatus,
+      :wifiIp,
+      :wifiMac,
+      :wifiSsid
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

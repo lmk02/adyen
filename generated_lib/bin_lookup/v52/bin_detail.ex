@@ -5,7 +5,10 @@ defmodule Adyen.BinLookup.V52.BinDetail do
 
   @type t :: %__MODULE__{issuerCountry: String.t() | nil}
 
-  defstruct [:issuerCountry]
+  (
+    @derive Jason.Encoder
+    defstruct [:issuerCountry]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

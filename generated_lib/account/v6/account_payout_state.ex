@@ -12,14 +12,17 @@ defmodule Adyen.Account.V6.AccountPayoutState do
           tierNumber: integer | nil
         }
 
-  defstruct [
-    :allowPayout,
-    :disableReason,
-    :disabled,
-    :notAllowedReason,
-    :payoutLimit,
-    :tierNumber
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :allowPayout,
+      :disableReason,
+      :disabled,
+      :notAllowedReason,
+      :payoutLimit,
+      :tierNumber
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

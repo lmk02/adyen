@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.MerchantAcquirerPair do
 
   @type t :: %__MODULE__{acquirerId: String.t() | nil, merchantId: String.t() | nil}
 
-  defstruct [:acquirerId, :merchantId]
+  (
+    @derive Jason.Encoder
+    defstruct [:acquirerId, :merchantId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

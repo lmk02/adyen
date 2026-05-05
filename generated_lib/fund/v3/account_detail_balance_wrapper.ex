@@ -5,7 +5,10 @@ defmodule Adyen.Fund.V3.AccountDetailBalanceWrapper do
 
   @type t :: %__MODULE__{AccountDetailBalance: Adyen.Fund.V3.AccountDetailBalance.t() | nil}
 
-  defstruct [:AccountDetailBalance]
+  (
+    @derive Jason.Encoder
+    defstruct [:AccountDetailBalance]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

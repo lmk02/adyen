@@ -14,16 +14,19 @@ defmodule Adyen.TerminalAPI.V1.CardData do
           SensitiveCardData: Adyen.TerminalAPI.V1.SensitiveCardData.t() | nil
         }
 
-  defstruct [
-    :CardCountryCode,
-    :EntryMode,
-    :MaskedPan,
-    :PaymentAccountRef,
-    :PaymentBrand,
-    :PaymentToken,
-    :ProtectedCardData,
-    :SensitiveCardData
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :CardCountryCode,
+      :EntryMode,
+      :MaskedPan,
+      :PaymentAccountRef,
+      :PaymentBrand,
+      :PaymentToken,
+      :ProtectedCardData,
+      :SensitiveCardData
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

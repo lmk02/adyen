@@ -5,7 +5,10 @@ defmodule Adyen.LegalEntity.V1.SetTaxElectronicDeliveryConsentRequest do
 
   @type t :: %__MODULE__{US1099k: boolean | nil}
 
-  defstruct [:US1099k]
+  (
+    @derive Jason.Encoder
+    defstruct [:US1099k]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

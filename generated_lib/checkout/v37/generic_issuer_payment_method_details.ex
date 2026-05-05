@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V37.GenericIssuerPaymentMethodDetails do
           type: String.t()
         }
 
-  defstruct [:checkoutAttemptId, :issuer, :recurringDetailReference, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:checkoutAttemptId, :issuer, :recurringDetailReference, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

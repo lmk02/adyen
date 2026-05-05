@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.Summary do
 
   @type t :: %__MODULE__{legalEntityId: String.t(), taxYears: [integer]}
 
-  defstruct [:legalEntityId, :taxYears]
+  (
+    @derive Jason.Encoder
+    defstruct [:legalEntityId, :taxYears]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

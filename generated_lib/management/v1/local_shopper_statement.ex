@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.LocalShopperStatement do
 
   @type t :: %__MODULE__{script: String.t(), value: String.t()}
 
-  defstruct [:script, :value]
+  (
+    @derive Jason.Encoder
+    defstruct [:script, :value]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

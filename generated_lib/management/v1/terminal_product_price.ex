@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.TerminalProductPrice do
 
   @type t :: %__MODULE__{currency: String.t() | nil, value: number | nil}
 
-  defstruct [:currency, :value]
+  (
+    @derive Jason.Encoder
+    defstruct [:currency, :value]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V1.TransactionRuleInterval do
 
   @type t :: %__MODULE__{type: String.t()}
 
-  defstruct [:type]
+  (
+    @derive Jason.Encoder
+    defstruct [:type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

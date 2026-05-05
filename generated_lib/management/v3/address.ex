@@ -13,15 +13,18 @@ defmodule Adyen.Management.V3.Address do
           streetAddress2: String.t() | nil
         }
 
-  defstruct [
-    :city,
-    :companyName,
-    :country,
-    :postalCode,
-    :stateOrProvince,
-    :streetAddress,
-    :streetAddress2
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :city,
+      :companyName,
+      :country,
+      :postalCode,
+      :stateOrProvince,
+      :streetAddress,
+      :streetAddress2
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

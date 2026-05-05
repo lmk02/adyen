@@ -11,7 +11,10 @@ defmodule Adyen.Management.V3.WebhookLinks do
           testWebhook: Adyen.Management.V3.LinksElement.t()
         }
 
-  defstruct [:company, :generateHmac, :merchant, :self, :testWebhook]
+  (
+    @derive Jason.Encoder
+    defstruct [:company, :generateHmac, :merchant, :self, :testWebhook]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

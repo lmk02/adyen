@@ -11,13 +11,16 @@ defmodule Adyen.Checkout.V52.VippsDetails do
           type: String.t() | nil
         }
 
-  defstruct [
-    :checkoutAttemptId,
-    :recurringDetailReference,
-    :storedPaymentMethodId,
-    :telephoneNumber,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :checkoutAttemptId,
+      :recurringDetailReference,
+      :storedPaymentMethodId,
+      :telephoneNumber,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

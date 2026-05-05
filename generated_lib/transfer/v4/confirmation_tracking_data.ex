@@ -5,7 +5,10 @@ defmodule Adyen.Transfer.V4.ConfirmationTrackingData do
 
   @type t :: %__MODULE__{status: String.t(), type: String.t()}
 
-  defstruct [:status, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:status, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

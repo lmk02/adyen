@@ -12,14 +12,17 @@ defmodule Adyen.Transfer.V4.PlatformPayment do
           type: String.t() | nil
         }
 
-  defstruct [
-    :modificationMerchantReference,
-    :modificationPspReference,
-    :paymentMerchantReference,
-    :platformPaymentType,
-    :pspPaymentReference,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :modificationMerchantReference,
+      :modificationPspReference,
+      :paymentMerchantReference,
+      :platformPaymentType,
+      :pspPaymentReference,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -12,7 +12,17 @@ defmodule Adyen.BinLookup.V52.ThreeDs2CardRangeDetail do
           threeDSMethodURL: String.t() | nil
         }
 
-  defstruct [:acsInfoInd, :brandCode, :endRange, :startRange, :threeDS2Version, :threeDSMethodURL]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :acsInfoInd,
+      :brandCode,
+      :endRange,
+      :startRange,
+      :threeDS2Version,
+      :threeDSMethodURL
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -12,14 +12,17 @@ defmodule Adyen.Payout.V67.FundSource do
           telephoneNumber: String.t() | nil
         }
 
-  defstruct [
-    :additionalData,
-    :billingAddress,
-    :card,
-    :shopperEmail,
-    :shopperName,
-    :telephoneNumber
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :additionalData,
+      :billingAddress,
+      :card,
+      :shopperEmail,
+      :shopperName,
+      :telephoneNumber
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

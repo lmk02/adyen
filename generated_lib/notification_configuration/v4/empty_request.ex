@@ -5,7 +5,10 @@ defmodule Adyen.NotificationConfiguration.V4.EmptyRequest do
 
   @type t :: %__MODULE__{}
 
-  defstruct []
+  (
+    @derive Jason.Encoder
+    defstruct []
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

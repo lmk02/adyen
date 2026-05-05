@@ -5,7 +5,10 @@ defmodule Adyen.Payment.V46.ThreeDs2ResultResponse do
 
   @type t :: %__MODULE__{threeDS2Result: Adyen.Payment.V46.ThreeDs2Result.t() | nil}
 
-  defstruct [:threeDS2Result]
+  (
+    @derive Jason.Encoder
+    defstruct [:threeDS2Result]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

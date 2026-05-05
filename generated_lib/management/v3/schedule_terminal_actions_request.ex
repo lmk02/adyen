@@ -17,7 +17,10 @@ defmodule Adyen.Management.V3.ScheduleTerminalActionsRequest do
           terminalIds: [String.t()] | nil
         }
 
-  defstruct [:actionDetails, :scheduledAt, :storeId, :terminalIds]
+  (
+    @derive Jason.Encoder
+    defstruct [:actionDetails, :scheduledAt, :storeId, :terminalIds]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

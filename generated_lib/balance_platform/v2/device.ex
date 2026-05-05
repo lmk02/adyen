@@ -10,7 +10,10 @@ defmodule Adyen.BalancePlatform.V2.Device do
           type: String.t() | nil
         }
 
-  defstruct [:id, :name, :paymentInstrumentId, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:id, :name, :paymentInstrumentId, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V51.UtilityResponse do
 
   @type t :: %__MODULE__{originKeys: map | nil}
 
-  defstruct [:originKeys]
+  (
+    @derive Jason.Encoder
+    defstruct [:originKeys]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

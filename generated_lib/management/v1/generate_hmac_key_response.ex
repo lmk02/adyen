@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.GenerateHmacKeyResponse do
 
   @type t :: %__MODULE__{hmacKey: String.t()}
 
-  defstruct [:hmacKey]
+  (
+    @derive Jason.Encoder
+    defstruct [:hmacKey]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.TransactionDescriptionInfo do
 
   @type t :: %__MODULE__{doingBusinessAsName: String.t() | nil, type: String.t() | nil}
 
-  defstruct [:doingBusinessAsName, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:doingBusinessAsName, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

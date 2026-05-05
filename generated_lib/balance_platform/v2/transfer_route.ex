@@ -24,7 +24,10 @@ defmodule Adyen.BalancePlatform.V2.TransferRoute do
             | nil
         }
 
-  defstruct [:category, :country, :currency, :priority, :requirements]
+  (
+    @derive Jason.Encoder
+    defstruct [:category, :country, :currency, :priority, :requirements]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

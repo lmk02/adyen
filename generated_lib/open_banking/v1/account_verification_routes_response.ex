@@ -5,7 +5,10 @@ defmodule Adyen.OpenBanking.V1.AccountVerificationRoutesResponse do
 
   @type t :: %__MODULE__{routes: [Adyen.OpenBanking.V1.Route.t()]}
 
-  defstruct [:routes]
+  (
+    @derive Jason.Encoder
+    defstruct [:routes]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

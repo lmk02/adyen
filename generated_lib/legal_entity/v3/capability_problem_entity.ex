@@ -10,7 +10,10 @@ defmodule Adyen.LegalEntity.V3.CapabilityProblemEntity do
           type: String.t() | nil
         }
 
-  defstruct [:documents, :id, :owner, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:documents, :id, :owner, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

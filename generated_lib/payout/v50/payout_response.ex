@@ -17,19 +17,22 @@ defmodule Adyen.Payout.V50.PayoutResponse do
           resultCode: String.t() | nil
         }
 
-  defstruct [
-    :additionalData,
-    :authCode,
-    :dccAmount,
-    :dccSignature,
-    :fraudResult,
-    :issuerUrl,
-    :md,
-    :paRequest,
-    :pspReference,
-    :refusalReason,
-    :resultCode
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :additionalData,
+      :authCode,
+      :dccAmount,
+      :dccSignature,
+      :fraudResult,
+      :issuerUrl,
+      :md,
+      :paRequest,
+      :pspReference,
+      :refusalReason,
+      :resultCode
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

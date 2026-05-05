@@ -5,7 +5,10 @@ defmodule Adyen.Capital.V1.GrantOfferFee do
 
   @type t :: %__MODULE__{amount: Adyen.Capital.V1.Amount.t(), aprBasisPoints: integer | nil}
 
-  defstruct [:amount, :aprBasisPoints]
+  (
+    @derive Jason.Encoder
+    defstruct [:amount, :aprBasisPoints]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

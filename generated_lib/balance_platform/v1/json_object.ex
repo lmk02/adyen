@@ -8,7 +8,10 @@ defmodule Adyen.BalancePlatform.V1.JSONObject do
           rootPath: Adyen.BalancePlatform.V1.JSONPath.t() | nil
         }
 
-  defstruct [:paths, :rootPath]
+  (
+    @derive Jason.Encoder
+    defstruct [:paths, :rootPath]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -9,7 +9,10 @@ defmodule Adyen.Checkout.V49.ShopperInteractionDevice do
           osVersion: String.t() | nil
         }
 
-  defstruct [:locale, :os, :osVersion]
+  (
+    @derive Jason.Encoder
+    defstruct [:locale, :os, :osVersion]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -9,7 +9,10 @@ defmodule Adyen.DataProtection.V1.SubjectErasureByPspReferenceRequest do
           pspReference: String.t() | nil
         }
 
-  defstruct [:forceErasure, :merchantAccount, :pspReference]
+  (
+    @derive Jason.Encoder
+    defstruct [:forceErasure, :merchantAccount, :pspReference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

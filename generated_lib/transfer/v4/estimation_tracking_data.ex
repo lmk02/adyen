@@ -5,7 +5,10 @@ defmodule Adyen.Transfer.V4.EstimationTrackingData do
 
   @type t :: %__MODULE__{estimatedArrivalTime: DateTime.t(), type: String.t()}
 
-  defstruct [:estimatedArrivalTime, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:estimatedArrivalTime, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

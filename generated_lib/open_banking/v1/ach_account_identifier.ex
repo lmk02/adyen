@@ -10,7 +10,10 @@ defmodule Adyen.OpenBanking.V1.ACHAccountIdentifier do
           routingNumber: String.t()
         }
 
-  defstruct [:accountLastDigits, :accountNumber, :isTokenized, :routingNumber]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountLastDigits, :accountNumber, :isTokenized, :routingNumber]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

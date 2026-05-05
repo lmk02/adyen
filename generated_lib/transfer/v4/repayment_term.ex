@@ -5,7 +5,10 @@ defmodule Adyen.Transfer.V4.RepaymentTerm do
 
   @type t :: %__MODULE__{estimatedDays: integer, maximumDays: integer | nil}
 
-  defstruct [:estimatedDays, :maximumDays]
+  (
+    @derive Jason.Encoder
+    defstruct [:estimatedDays, :maximumDays]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

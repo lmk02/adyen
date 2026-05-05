@@ -11,7 +11,10 @@ defmodule Adyen.Checkout.V70.MbwayDetails do
           type: String.t() | nil
         }
 
-  defstruct [:checkoutAttemptId, :sdkData, :shopperEmail, :telephoneNumber, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:checkoutAttemptId, :sdkData, :shopperEmail, :telephoneNumber, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

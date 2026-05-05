@@ -13,15 +13,18 @@ defmodule Adyen.Account.V5.UpdateAccountRequest do
           payoutSpeed: String.t() | nil
         }
 
-  defstruct [
-    :accountCode,
-    :bankAccountUUID,
-    :description,
-    :metadata,
-    :payoutMethodCode,
-    :payoutSchedule,
-    :payoutSpeed
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountCode,
+      :bankAccountUUID,
+      :description,
+      :metadata,
+      :payoutMethodCode,
+      :payoutSchedule,
+      :payoutSpeed
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

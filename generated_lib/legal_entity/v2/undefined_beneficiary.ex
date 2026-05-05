@@ -5,7 +5,10 @@ defmodule Adyen.LegalEntity.V2.UndefinedBeneficiary do
 
   @type t :: %__MODULE__{description: String.t() | nil, reference: String.t() | nil}
 
-  defstruct [:description, :reference]
+  (
+    @derive Jason.Encoder
+    defstruct [:description, :reference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

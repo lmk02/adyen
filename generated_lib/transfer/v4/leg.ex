@@ -12,14 +12,17 @@ defmodule Adyen.Transfer.V4.Leg do
           flightNumber: String.t() | nil
         }
 
-  defstruct [
-    :arrivalAirportCode,
-    :basicFareCode,
-    :carrierCode,
-    :departureAirportCode,
-    :departureDate,
-    :flightNumber
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :arrivalAirportCode,
+      :basicFareCode,
+      :carrierCode,
+      :departureAirportCode,
+      :departureDate,
+      :flightNumber
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

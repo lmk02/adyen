@@ -5,7 +5,10 @@ defmodule Adyen.Transfer.V3.ApproveTransfersRequest do
 
   @type t :: %__MODULE__{transferIds: [String.t()] | nil}
 
-  defstruct [:transferIds]
+  (
+    @derive Jason.Encoder
+    defstruct [:transferIds]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

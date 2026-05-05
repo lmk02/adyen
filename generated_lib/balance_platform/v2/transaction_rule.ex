@@ -21,23 +21,26 @@ defmodule Adyen.BalancePlatform.V2.TransactionRule do
           type: String.t()
         }
 
-  defstruct [
-    :aggregationLevel,
-    :description,
-    :endDate,
-    :entityKey,
-    :id,
-    :interval,
-    :outcomeType,
-    :purpose,
-    :reference,
-    :requestType,
-    :ruleRestrictions,
-    :score,
-    :startDate,
-    :status,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :aggregationLevel,
+      :description,
+      :endDate,
+      :entityKey,
+      :id,
+      :interval,
+      :outcomeType,
+      :purpose,
+      :reference,
+      :requestType,
+      :ruleRestrictions,
+      :score,
+      :startDate,
+      :status,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

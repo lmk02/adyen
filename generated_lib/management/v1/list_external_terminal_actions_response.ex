@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.ListExternalTerminalActionsResponse do
 
   @type t :: %__MODULE__{data: [Adyen.Management.V1.ExternalTerminalAction.t()] | nil}
 
-  defstruct [:data]
+  (
+    @derive Jason.Encoder
+    defstruct [:data]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

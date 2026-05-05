@@ -10,7 +10,10 @@ defmodule Adyen.Management.V1.ShippingLocation do
           name: String.t() | nil
         }
 
-  defstruct [:address, :contact, :id, :name]
+  (
+    @derive Jason.Encoder
+    defstruct [:address, :contact, :id, :name]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -16,18 +16,21 @@ defmodule Adyen.Account.V5.UpdateAccountResponse do
           resultCode: String.t() | nil
         }
 
-  defstruct [
-    :accountCode,
-    :bankAccountUUID,
-    :description,
-    :invalidFields,
-    :metadata,
-    :payoutMethodCode,
-    :payoutSchedule,
-    :payoutSpeed,
-    :pspReference,
-    :resultCode
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountCode,
+      :bankAccountUUID,
+      :description,
+      :invalidFields,
+      :metadata,
+      :payoutMethodCode,
+      :payoutSchedule,
+      :payoutSpeed,
+      :pspReference,
+      :resultCode
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

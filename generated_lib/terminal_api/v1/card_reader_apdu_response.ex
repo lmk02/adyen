@@ -9,7 +9,10 @@ defmodule Adyen.TerminalAPI.V1.CardReaderAPDUResponse do
           Response: Adyen.TerminalAPI.V1.Response.t()
         }
 
-  defstruct [:APDUData, :CardStatusWords, :Response]
+  (
+    @derive Jason.Encoder
+    defstruct [:APDUData, :CardStatusWords, :Response]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

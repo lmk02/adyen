@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.GenerateClientKeyResponse do
 
   @type t :: %__MODULE__{clientKey: String.t()}
 
-  defstruct [:clientKey]
+  (
+    @derive Jason.Encoder
+    defstruct [:clientKey]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

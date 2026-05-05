@@ -10,7 +10,10 @@ defmodule Adyen.Management.V1.Currency do
           percentage: number | nil
         }
 
-  defstruct [:amount, :currencyCode, :maxAmount, :percentage]
+  (
+    @derive Jason.Encoder
+    defstruct [:amount, :currencyCode, :maxAmount, :percentage]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

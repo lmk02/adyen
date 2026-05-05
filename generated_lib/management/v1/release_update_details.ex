@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.ReleaseUpdateDetails do
 
   @type t :: %__MODULE__{type: String.t() | nil, updateAtFirstMaintenanceCall: boolean | nil}
 
-  defstruct [:type, :updateAtFirstMaintenanceCall]
+  (
+    @derive Jason.Encoder
+    defstruct [:type, :updateAtFirstMaintenanceCall]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

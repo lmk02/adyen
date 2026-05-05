@@ -10,7 +10,10 @@ defmodule Adyen.BalancePlatform.V2.Association do
           status: String.t()
         }
 
-  defstruct [:entityId, :entityType, :scaDeviceId, :status]
+  (
+    @derive Jason.Encoder
+    defstruct [:entityId, :entityType, :scaDeviceId, :status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -19,7 +22,7 @@ defmodule Adyen.BalancePlatform.V2.Association do
   def __fields__(:t) do
     [
       entityId: :string,
-      entityType: {:enum, ["accountHolder", "legalEntity", "paymentInstrument"]},
+      entityType: {:enum, ["accountHolder", "paymentInstrument"]},
       scaDeviceId: :string,
       status: {:enum, ["pendingApproval", "active"]}
     ]

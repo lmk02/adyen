@@ -9,7 +9,10 @@ defmodule Adyen.Management.V3.TestCompanyWebhookRequest do
           types: [String.t()] | nil
         }
 
-  defstruct [:merchantIds, :notification, :types]
+  (
+    @derive Jason.Encoder
+    defstruct [:merchantIds, :notification, :types]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

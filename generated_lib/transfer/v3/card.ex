@@ -8,7 +8,10 @@ defmodule Adyen.Transfer.V3.Card do
           cardIdentification: Adyen.Transfer.V3.CardIdentification.t()
         }
 
-  defstruct [:cardHolder, :cardIdentification]
+  (
+    @derive Jason.Encoder
+    defstruct [:cardHolder, :cardIdentification]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

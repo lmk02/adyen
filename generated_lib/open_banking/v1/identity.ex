@@ -5,7 +5,10 @@ defmodule Adyen.OpenBanking.V1.Identity do
 
   @type t :: %__MODULE__{fullLegalName: String.t(), name: String.t()}
 
-  defstruct [:fullLegalName, :name]
+  (
+    @derive Jason.Encoder
+    defstruct [:fullLegalName, :name]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

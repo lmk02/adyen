@@ -9,7 +9,10 @@ defmodule Adyen.TerminalAPI.V1.TrackData do
           TrackValue: String.t()
         }
 
-  defstruct [:TrackFormat, :TrackNumb, :TrackValue]
+  (
+    @derive Jason.Encoder
+    defstruct [:TrackFormat, :TrackNumb, :TrackValue]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

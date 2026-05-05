@@ -14,16 +14,19 @@ defmodule Adyen.Checkout.V46.PixPayByBankRiskSignals do
           userTimeZoneOffset: integer | nil
         }
 
-  defstruct [
-    :confidenceScore,
-    :elapsedTimeSinceBoot,
-    :isRootedDevice,
-    :language,
-    :osVersion,
-    :screenBrightness,
-    :screenDimensions,
-    :userTimeZoneOffset
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :confidenceScore,
+      :elapsedTimeSinceBoot,
+      :isRootedDevice,
+      :language,
+      :osVersion,
+      :screenBrightness,
+      :screenDimensions,
+      :userTimeZoneOffset
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -16,18 +16,21 @@ defmodule Adyen.LegalEntity.V4.LegalEntityInfoRequiredType do
           verificationPlan: String.t() | nil
         }
 
-  defstruct [
-    :capabilities,
-    :entityAssociations,
-    :individual,
-    :organization,
-    :reference,
-    :soleProprietorship,
-    :trust,
-    :type,
-    :unincorporatedPartnership,
-    :verificationPlan
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :capabilities,
+      :entityAssociations,
+      :individual,
+      :organization,
+      :reference,
+      :soleProprietorship,
+      :trust,
+      :type,
+      :unincorporatedPartnership,
+      :verificationPlan
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

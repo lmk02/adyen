@@ -5,7 +5,10 @@ defmodule Adyen.LegalEntity.V4.AcceptTermsOfServiceRequest do
 
   @type t :: %__MODULE__{acceptedBy: String.t(), ipAddress: String.t() | nil}
 
-  defstruct [:acceptedBy, :ipAddress]
+  (
+    @derive Jason.Encoder
+    defstruct [:acceptedBy, :ipAddress]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

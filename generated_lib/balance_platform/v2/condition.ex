@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.Condition do
 
   @type t :: %__MODULE__{balanceType: String.t(), conditionType: String.t(), value: integer}
 
-  defstruct [:balanceType, :conditionType, :value]
+  (
+    @derive Jason.Encoder
+    defstruct [:balanceType, :conditionType, :value]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V69.UpdatePaymentLinkRequest do
 
   @type t :: %__MODULE__{status: String.t()}
 
-  defstruct [:status]
+  (
+    @derive Jason.Encoder
+    defstruct [:status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

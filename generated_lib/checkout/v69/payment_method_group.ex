@@ -9,7 +9,10 @@ defmodule Adyen.Checkout.V69.PaymentMethodGroup do
           type: String.t() | nil
         }
 
-  defstruct [:name, :paymentMethodData, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:name, :paymentMethodData, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

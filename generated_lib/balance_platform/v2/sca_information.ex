@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.ScaInformation do
 
   @type t :: %__MODULE__{exemption: String.t() | nil, status: String.t()}
 
-  defstruct [:exemption, :status]
+  (
+    @derive Jason.Encoder
+    defstruct [:exemption, :status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

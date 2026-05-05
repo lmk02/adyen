@@ -11,7 +11,10 @@ defmodule Adyen.ForeignExchange.V1.CalculateRateResponseItem do
           type: String.t() | nil
         }
 
-  defstruct [:appliedExchangeRate, :exchangeSide, :sourceAmount, :targetAmount, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:appliedExchangeRate, :exchangeSide, :sourceAmount, :targetAmount, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

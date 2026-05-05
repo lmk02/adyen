@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.UpdatePayoutSettingsRequest do
 
   @type t :: %__MODULE__{enabled: boolean | nil}
 
-  defstruct [:enabled]
+  (
+    @derive Jason.Encoder
+    defstruct [:enabled]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

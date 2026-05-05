@@ -8,7 +8,10 @@ defmodule Adyen.Management.V1.CartesBancairesInfo do
           transactionDescription: Adyen.Management.V1.TransactionDescriptionInfo.t() | nil
         }
 
-  defstruct [:siret, :transactionDescription]
+  (
+    @derive Jason.Encoder
+    defstruct [:siret, :transactionDescription]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

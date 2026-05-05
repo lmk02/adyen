@@ -18,20 +18,23 @@ defmodule Adyen.Account.V5.CreateAccountResponse do
           status: String.t() | nil
         }
 
-  defstruct [
-    :accountCode,
-    :accountHolderCode,
-    :bankAccountUUID,
-    :description,
-    :invalidFields,
-    :metadata,
-    :payoutMethodCode,
-    :payoutSchedule,
-    :payoutSpeed,
-    :pspReference,
-    :resultCode,
-    :status
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountCode,
+      :accountHolderCode,
+      :bankAccountUUID,
+      :description,
+      :invalidFields,
+      :metadata,
+      :payoutMethodCode,
+      :payoutSchedule,
+      :payoutSpeed,
+      :pspReference,
+      :resultCode,
+      :status
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

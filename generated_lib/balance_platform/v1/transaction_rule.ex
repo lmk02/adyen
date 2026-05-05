@@ -23,25 +23,28 @@ defmodule Adyen.BalancePlatform.V1.TransactionRule do
           type: String.t()
         }
 
-  defstruct [
-    :amount,
-    :balancePlatformId,
-    :countries,
-    :description,
-    :endDate,
-    :entryModes,
-    :id,
-    :interval,
-    :maxTransactions,
-    :mccs,
-    :paymentInstrumentGroupId,
-    :paymentInstrumentId,
-    :processingTypes,
-    :reference,
-    :startDate,
-    :status,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amount,
+      :balancePlatformId,
+      :countries,
+      :description,
+      :endDate,
+      :entryModes,
+      :id,
+      :interval,
+      :maxTransactions,
+      :mccs,
+      :paymentInstrumentGroupId,
+      :paymentInstrumentId,
+      :processingTypes,
+      :reference,
+      :startDate,
+      :status,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -17,19 +17,22 @@ defmodule Adyen.Transaction.V1.NotDeliveredInfo do
           whoCancelled: String.t() | nil
         }
 
-  defstruct [
-    :agreedDeliveryLocation,
-    :dateOfCancellation,
-    :deliveredToWrongLocation,
-    :descriptionOfIssue,
-    :didCardholderReturn,
-    :isDeliveryLate,
-    :isMerchantBankrupt,
-    :isNonFiatOrNft,
-    :lastExpectedDate,
-    :whatWasNotDelivered,
-    :whoCancelled
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :agreedDeliveryLocation,
+      :dateOfCancellation,
+      :deliveredToWrongLocation,
+      :descriptionOfIssue,
+      :didCardholderReturn,
+      :isDeliveryLate,
+      :isMerchantBankrupt,
+      :isNonFiatOrNft,
+      :lastExpectedDate,
+      :whatWasNotDelivered,
+      :whoCancelled
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

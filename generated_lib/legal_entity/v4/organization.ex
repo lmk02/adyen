@@ -34,36 +34,39 @@ defmodule Adyen.LegalEntity.V4.Organization do
           webData: Adyen.LegalEntity.V4.WebData.t() | nil
         }
 
-  defstruct [
-    :countryOfGoverningLaw,
-    :dateOfIncorporation,
-    :dateOfInitiationOfLegalProceeding,
-    :description,
-    :doingBusinessAs,
-    :doingBusinessAsAbsent,
-    :economicSector,
-    :email,
-    :financialReports,
-    :globalLegalEntityIdentifier,
-    :headOfficeIndicator,
-    :institutionalSector,
-    :legalForm,
-    :legalName,
-    :phone,
-    :principalPlaceOfBusiness,
-    :registeredAddress,
-    :registrationNumber,
-    :registrationNumberAbsent,
-    :statusOfLegalProceeding,
-    :stockData,
-    :support,
-    :taxInformation,
-    :taxReportingClassification,
-    :type,
-    :vatAbsenceReason,
-    :vatNumber,
-    :webData
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :countryOfGoverningLaw,
+      :dateOfIncorporation,
+      :dateOfInitiationOfLegalProceeding,
+      :description,
+      :doingBusinessAs,
+      :doingBusinessAsAbsent,
+      :economicSector,
+      :email,
+      :financialReports,
+      :globalLegalEntityIdentifier,
+      :headOfficeIndicator,
+      :institutionalSector,
+      :legalForm,
+      :legalName,
+      :phone,
+      :principalPlaceOfBusiness,
+      :registeredAddress,
+      :registrationNumber,
+      :registrationNumberAbsent,
+      :statusOfLegalProceeding,
+      :stockData,
+      :support,
+      :taxInformation,
+      :taxReportingClassification,
+      :type,
+      :vatAbsenceReason,
+      :vatNumber,
+      :webData
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

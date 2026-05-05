@@ -5,7 +5,10 @@ defmodule Adyen.Payout.V30.Name do
 
   @type t :: %__MODULE__{firstName: String.t(), lastName: String.t()}
 
-  defstruct [:firstName, :lastName]
+  (
+    @derive Jason.Encoder
+    defstruct [:firstName, :lastName]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

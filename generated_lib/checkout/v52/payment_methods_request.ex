@@ -23,25 +23,28 @@ defmodule Adyen.Checkout.V52.PaymentMethodsRequest do
           telephoneNumber: String.t() | nil
         }
 
-  defstruct [
-    :additionalData,
-    :allowedPaymentMethods,
-    :amount,
-    :blockedPaymentMethods,
-    :browserInfo,
-    :channel,
-    :countryCode,
-    :enableRealTimeUpdate,
-    :merchantAccount,
-    :shopperConversionId,
-    :shopperEmail,
-    :shopperIP,
-    :shopperLocale,
-    :shopperReference,
-    :store,
-    :storeFiltrationMode,
-    :telephoneNumber
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :additionalData,
+      :allowedPaymentMethods,
+      :amount,
+      :blockedPaymentMethods,
+      :browserInfo,
+      :channel,
+      :countryCode,
+      :enableRealTimeUpdate,
+      :merchantAccount,
+      :shopperConversionId,
+      :shopperEmail,
+      :shopperIP,
+      :shopperLocale,
+      :shopperReference,
+      :store,
+      :storeFiltrationMode,
+      :telephoneNumber
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

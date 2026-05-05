@@ -14,16 +14,19 @@ defmodule Adyen.BalancePlatform.V2.CardOrder do
           status: String.t() | nil
         }
 
-  defstruct [
-    :beginDate,
-    :cardManufacturingProfileId,
-    :closedDate,
-    :endDate,
-    :id,
-    :lockDate,
-    :serviceCenter,
-    :status
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :beginDate,
+      :cardManufacturingProfileId,
+      :closedDate,
+      :endDate,
+      :id,
+      :lockDate,
+      :serviceCenter,
+      :status
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -9,7 +9,10 @@ defmodule Adyen.TerminalAPI.V1.TransactionStatusRequest do
           ReceiptReprintFlag: boolean | nil
         }
 
-  defstruct [:DocumentQualifier, :MessageReference, :ReceiptReprintFlag]
+  (
+    @derive Jason.Encoder
+    defstruct [:DocumentQualifier, :MessageReference, :ReceiptReprintFlag]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

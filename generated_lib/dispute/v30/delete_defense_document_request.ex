@@ -9,7 +9,10 @@ defmodule Adyen.Dispute.V30.DeleteDefenseDocumentRequest do
           merchantAccountCode: String.t()
         }
 
-  defstruct [:defenseDocumentType, :disputePspReference, :merchantAccountCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:defenseDocumentType, :disputePspReference, :merchantAccountCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

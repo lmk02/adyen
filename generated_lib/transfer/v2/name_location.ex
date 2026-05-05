@@ -12,7 +12,10 @@ defmodule Adyen.Transfer.V2.NameLocation do
           state: String.t() | nil
         }
 
-  defstruct [:city, :country, :countryOfOrigin, :name, :rawData, :state]
+  (
+    @derive Jason.Encoder
+    defstruct [:city, :country, :countryOfOrigin, :name, :rawData, :state]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.Account.V4.AccountEventWrapper do
 
   @type t :: %__MODULE__{AccountEvent: Adyen.Account.V4.AccountEvent.t() | nil}
 
-  defstruct [:AccountEvent]
+  (
+    @derive Jason.Encoder
+    defstruct [:AccountEvent]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

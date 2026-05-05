@@ -27,29 +27,32 @@ defmodule Adyen.TerminalAPI.V1.InputData do
           WaitUserValidationFlag: boolean | nil
         }
 
-  defstruct [
-    :BeepKeyFlag,
-    :DefaultInputString,
-    :DefaultLayoutString,
-    :Device,
-    :DisableCancelFlag,
-    :DisableCorrectFlag,
-    :DisableValidFlag,
-    :FromRightToLeftFlag,
-    :GlobalCorrectionFlag,
-    :ImmediateResponseFlag,
-    :InfoQualify,
-    :InputCommand,
-    :MaskCharactersFlag,
-    :MaxDecimalLength,
-    :MaxInputTime,
-    :MaxLength,
-    :MenuBackFlag,
-    :MinLength,
-    :NotifyCardInputFlag,
-    :StringMask,
-    :WaitUserValidationFlag
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :BeepKeyFlag,
+      :DefaultInputString,
+      :DefaultLayoutString,
+      :Device,
+      :DisableCancelFlag,
+      :DisableCorrectFlag,
+      :DisableValidFlag,
+      :FromRightToLeftFlag,
+      :GlobalCorrectionFlag,
+      :ImmediateResponseFlag,
+      :InfoQualify,
+      :InputCommand,
+      :MaskCharactersFlag,
+      :MaxDecimalLength,
+      :MaxInputTime,
+      :MaxLength,
+      :MenuBackFlag,
+      :MinLength,
+      :NotifyCardInputFlag,
+      :StringMask,
+      :WaitUserValidationFlag
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

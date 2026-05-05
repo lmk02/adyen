@@ -12,7 +12,17 @@ defmodule Adyen.Checkout.V53.BalanceCheckResponse do
           resultCode: String.t()
         }
 
-  defstruct [:additionalData, :balance, :fraudResult, :pspReference, :refusalReason, :resultCode]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :additionalData,
+      :balance,
+      :fraudResult,
+      :pspReference,
+      :refusalReason,
+      :resultCode
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

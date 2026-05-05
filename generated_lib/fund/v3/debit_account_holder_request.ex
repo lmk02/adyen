@@ -12,14 +12,17 @@ defmodule Adyen.Fund.V3.DebitAccountHolderRequest do
           splits: [Adyen.Fund.V3.Split.t()]
         }
 
-  defstruct [
-    :accountHolderCode,
-    :amount,
-    :bankAccountUUID,
-    :description,
-    :merchantAccount,
-    :splits
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountHolderCode,
+      :amount,
+      :bankAccountUUID,
+      :description,
+      :merchantAccount,
+      :splits
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

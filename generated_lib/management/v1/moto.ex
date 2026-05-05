@@ -5,7 +5,10 @@ defmodule Adyen.Management.V1.Moto do
 
   @type t :: %__MODULE__{enableMoto: boolean | nil, maxAmount: integer | nil}
 
-  defstruct [:enableMoto, :maxAmount]
+  (
+    @derive Jason.Encoder
+    defstruct [:enableMoto, :maxAmount]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

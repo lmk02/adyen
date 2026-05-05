@@ -9,7 +9,10 @@ defmodule Adyen.Transfer.V4.MerchantPurchaseData do
           type: String.t()
         }
 
-  defstruct [:airline, :lodging, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:airline, :lodging, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

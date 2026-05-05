@@ -8,7 +8,10 @@ defmodule Adyen.Checkout.V67.PaymentMethodsResponse do
           storedPaymentMethods: [Adyen.Checkout.V67.StoredPaymentMethod.t()] | nil
         }
 
-  defstruct [:paymentMethods, :storedPaymentMethods]
+  (
+    @derive Jason.Encoder
+    defstruct [:paymentMethods, :storedPaymentMethods]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

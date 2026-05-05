@@ -15,17 +15,20 @@ defmodule Adyen.Checkout.V46.RivertyDetails do
           type: String.t()
         }
 
-  defstruct [
-    :billingAddress,
-    :checkoutAttemptId,
-    :deliveryAddress,
-    :deviceFingerprint,
-    :iban,
-    :personalDetails,
-    :recurringDetailReference,
-    :subtype,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :billingAddress,
+      :checkoutAttemptId,
+      :deliveryAddress,
+      :deviceFingerprint,
+      :iban,
+      :personalDetails,
+      :recurringDetailReference,
+      :subtype,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

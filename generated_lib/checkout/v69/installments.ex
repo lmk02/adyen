@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V69.Installments do
 
   @type t :: %__MODULE__{extra: integer | nil, plan: String.t() | nil, value: integer}
 
-  defstruct [:extra, :plan, :value]
+  (
+    @derive Jason.Encoder
+    defstruct [:extra, :plan, :value]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

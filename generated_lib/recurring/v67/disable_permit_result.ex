@@ -5,7 +5,10 @@ defmodule Adyen.Recurring.V67.DisablePermitResult do
 
   @type t :: %__MODULE__{pspReference: String.t() | nil, status: String.t() | nil}
 
-  defstruct [:pspReference, :status]
+  (
+    @derive Jason.Encoder
+    defstruct [:pspReference, :status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

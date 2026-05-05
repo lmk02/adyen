@@ -10,7 +10,10 @@ defmodule Adyen.Transfer.V4.RoutingDetails do
           title: String.t() | nil
         }
 
-  defstruct [:detail, :errorCode, :priority, :title]
+  (
+    @derive Jason.Encoder
+    defstruct [:detail, :errorCode, :priority, :title]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

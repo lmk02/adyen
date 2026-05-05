@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V37.BlikDetails do
           type: String.t() | nil
         }
 
-  defstruct [:blikCode, :checkoutAttemptId, :recurringDetailReference, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:blikCode, :checkoutAttemptId, :recurringDetailReference, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

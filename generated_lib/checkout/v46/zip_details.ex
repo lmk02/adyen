@@ -10,7 +10,10 @@ defmodule Adyen.Checkout.V46.ZipDetails do
           type: String.t() | nil
         }
 
-  defstruct [:checkoutAttemptId, :clickAndCollect, :recurringDetailReference, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:checkoutAttemptId, :clickAndCollect, :recurringDetailReference, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -8,7 +8,10 @@ defmodule Adyen.Transfer.V1.InternalPartyIdentification do
           paymentInstrumentId: String.t() | nil
         }
 
-  defstruct [:balanceAccountId, :paymentInstrumentId]
+  (
+    @derive Jason.Encoder
+    defstruct [:balanceAccountId, :paymentInstrumentId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

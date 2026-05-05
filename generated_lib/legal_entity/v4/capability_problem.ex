@@ -8,7 +8,10 @@ defmodule Adyen.LegalEntity.V4.CapabilityProblem do
           verificationErrors: [Adyen.LegalEntity.V4.VerificationError.t()] | nil
         }
 
-  defstruct [:entity, :verificationErrors]
+  (
+    @derive Jason.Encoder
+    defstruct [:entity, :verificationErrors]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

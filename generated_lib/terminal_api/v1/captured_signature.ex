@@ -8,7 +8,10 @@ defmodule Adyen.TerminalAPI.V1.CapturedSignature do
           SignaturePoint: [Adyen.TerminalAPI.V1.Point.t()] | nil
         }
 
-  defstruct [:AreaSize, :SignaturePoint]
+  (
+    @derive Jason.Encoder
+    defstruct [:AreaSize, :SignaturePoint]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

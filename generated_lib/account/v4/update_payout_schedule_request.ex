@@ -5,7 +5,10 @@ defmodule Adyen.Account.V4.UpdatePayoutScheduleRequest do
 
   @type t :: %__MODULE__{action: String.t() | nil, reason: String.t() | nil, schedule: String.t()}
 
-  defstruct [:action, :reason, :schedule]
+  (
+    @derive Jason.Encoder
+    defstruct [:action, :reason, :schedule]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

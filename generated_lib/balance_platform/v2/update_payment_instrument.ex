@@ -22,23 +22,26 @@ defmodule Adyen.BalancePlatform.V2.UpdatePaymentInstrument do
           type: String.t()
         }
 
-  defstruct [
-    :additionalBankAccountIdentifications,
-    :balanceAccountId,
-    :bankAccount,
-    :card,
-    :description,
-    :id,
-    :issuingCountryCode,
-    :paymentInstrumentGroupId,
-    :reference,
-    :replacedById,
-    :replacementOfId,
-    :status,
-    :statusComment,
-    :statusReason,
-    :type
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :additionalBankAccountIdentifications,
+      :balanceAccountId,
+      :bankAccount,
+      :card,
+      :description,
+      :id,
+      :issuingCountryCode,
+      :paymentInstrumentGroupId,
+      :reference,
+      :replacedById,
+      :replacementOfId,
+      :status,
+      :statusComment,
+      :statusReason,
+      :type
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

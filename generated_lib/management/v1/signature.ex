@@ -10,7 +10,10 @@ defmodule Adyen.Management.V1.Signature do
           skipSignature: boolean | nil
         }
 
-  defstruct [:askSignatureOnScreen, :deviceName, :deviceSlogan, :skipSignature]
+  (
+    @derive Jason.Encoder
+    defstruct [:askSignatureOnScreen, :deviceName, :deviceSlogan, :skipSignature]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -9,7 +9,10 @@ defmodule Adyen.Fund.V5.DetailBalance do
           pendingBalance: [Adyen.Fund.V5.Amount.t()] | nil
         }
 
-  defstruct [:balance, :onHoldBalance, :pendingBalance]
+  (
+    @derive Jason.Encoder
+    defstruct [:balance, :onHoldBalance, :pendingBalance]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

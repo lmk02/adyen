@@ -10,7 +10,10 @@ defmodule Adyen.Transfer.V3.FundingInstrument do
           sourceOfFunds: String.t() | nil
         }
 
-  defstruct [:cardIdentification, :networkPaymentReference, :reference, :sourceOfFunds]
+  (
+    @derive Jason.Encoder
+    defstruct [:cardIdentification, :networkPaymentReference, :reference, :sourceOfFunds]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

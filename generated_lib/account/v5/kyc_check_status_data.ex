@@ -10,7 +10,10 @@ defmodule Adyen.Account.V5.KYCCheckStatusData do
           type: String.t()
         }
 
-  defstruct [:requiredFields, :status, :summary, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:requiredFields, :status, :summary, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

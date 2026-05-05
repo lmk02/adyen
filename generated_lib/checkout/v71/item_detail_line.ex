@@ -14,16 +14,19 @@ defmodule Adyen.Checkout.V71.ItemDetailLine do
           unitPrice: integer | nil
         }
 
-  defstruct [
-    :commodityCode,
-    :description,
-    :discountAmount,
-    :productCode,
-    :quantity,
-    :totalAmount,
-    :unitOfMeasure,
-    :unitPrice
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :commodityCode,
+      :description,
+      :discountAmount,
+      :productCode,
+      :quantity,
+      :totalAmount,
+      :unitOfMeasure,
+      :unitPrice
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

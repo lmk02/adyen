@@ -11,7 +11,10 @@ defmodule Adyen.BalancePlatform.V1.NumberAndBicAccountIdentification do
           type: String.t()
         }
 
-  defstruct [:accountNumber, :additionalBankIdentification, :bic, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountNumber, :additionalBankIdentification, :bic, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -9,7 +9,10 @@ defmodule Adyen.Transfer.V4.Repayment do
           threshold: Adyen.Transfer.V4.ThresholdRepayment.t() | nil
         }
 
-  defstruct [:basisPoints, :term, :threshold]
+  (
+    @derive Jason.Encoder
+    defstruct [:basisPoints, :term, :threshold]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

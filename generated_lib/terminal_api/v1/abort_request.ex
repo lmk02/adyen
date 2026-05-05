@@ -9,7 +9,10 @@ defmodule Adyen.TerminalAPI.V1.AbortRequest do
           MessageReference: Adyen.TerminalAPI.V1.MessageReference.t()
         }
 
-  defstruct [:AbortReason, :DisplayOutput, :MessageReference]
+  (
+    @derive Jason.Encoder
+    defstruct [:AbortReason, :DisplayOutput, :MessageReference]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

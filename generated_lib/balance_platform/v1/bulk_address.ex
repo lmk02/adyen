@@ -15,17 +15,20 @@ defmodule Adyen.BalancePlatform.V1.BulkAddress do
           street: String.t() | nil
         }
 
-  defstruct [
-    :city,
-    :company,
-    :country,
-    :email,
-    :houseNumberOrName,
-    :mobile,
-    :postalCode,
-    :stateOrProvince,
-    :street
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :city,
+      :company,
+      :country,
+      :email,
+      :houseNumberOrName,
+      :mobile,
+      :postalCode,
+      :stateOrProvince,
+      :street
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

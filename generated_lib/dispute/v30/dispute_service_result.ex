@@ -5,7 +5,10 @@ defmodule Adyen.Dispute.V30.DisputeServiceResult do
 
   @type t :: %__MODULE__{errorMessage: String.t() | nil, success: boolean}
 
-  defstruct [:errorMessage, :success]
+  (
+    @derive Jason.Encoder
+    defstruct [:errorMessage, :success]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

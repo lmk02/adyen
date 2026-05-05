@@ -10,7 +10,10 @@ defmodule Adyen.LegalEntity.V3.OnboardingLinkInfo do
           themeId: String.t() | nil
         }
 
-  defstruct [:locale, :redirectUrl, :settings, :themeId]
+  (
+    @derive Jason.Encoder
+    defstruct [:locale, :redirectUrl, :settings, :themeId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

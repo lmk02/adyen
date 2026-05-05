@@ -11,7 +11,10 @@ defmodule Adyen.Checkout.V71.MasterpassDetails do
           type: String.t() | nil
         }
 
-  defstruct [:checkoutAttemptId, :fundingSource, :masterpassTransactionId, :sdkData, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:checkoutAttemptId, :fundingSource, :masterpassTransactionId, :sdkData, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

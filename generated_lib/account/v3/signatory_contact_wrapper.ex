@@ -5,7 +5,10 @@ defmodule Adyen.Account.V3.SignatoryContactWrapper do
 
   @type t :: %__MODULE__{SignatoryContact: Adyen.Account.V3.SignatoryContact.t() | nil}
 
-  defstruct [:SignatoryContact]
+  (
+    @derive Jason.Encoder
+    defstruct [:SignatoryContact]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

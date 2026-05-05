@@ -16,18 +16,21 @@ defmodule Adyen.TerminalAPI.V1.LoginRequest do
           TrainingModeFlag: boolean | nil
         }
 
-  defstruct [
-    :CustomerOrderReq,
-    :DateTime,
-    :OperatorID,
-    :OperatorLanguage,
-    :POISerialNumber,
-    :SaleSoftware,
-    :SaleTerminalData,
-    :ShiftNumber,
-    :TokenRequestedType,
-    :TrainingModeFlag
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :CustomerOrderReq,
+      :DateTime,
+      :OperatorID,
+      :OperatorLanguage,
+      :POISerialNumber,
+      :SaleSoftware,
+      :SaleTerminalData,
+      :ShiftNumber,
+      :TokenRequestedType,
+      :TrainingModeFlag
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

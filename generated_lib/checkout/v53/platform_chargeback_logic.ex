@@ -9,7 +9,10 @@ defmodule Adyen.Checkout.V53.PlatformChargebackLogic do
           targetAccount: String.t() | nil
         }
 
-  defstruct [:behavior, :costAllocationAccount, :targetAccount]
+  (
+    @derive Jason.Encoder
+    defstruct [:behavior, :costAllocationAccount, :targetAccount]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

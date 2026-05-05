@@ -9,7 +9,10 @@ defmodule Adyen.Transfer.V4.ExternalReason do
           namespace: String.t() | nil
         }
 
-  defstruct [:code, :description, :namespace]
+  (
+    @derive Jason.Encoder
+    defstruct [:code, :description, :namespace]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

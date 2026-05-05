@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V46.CancelOrderResponse do
 
   @type t :: %__MODULE__{pspReference: String.t(), resultCode: String.t()}
 
-  defstruct [:pspReference, :resultCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:pspReference, :resultCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

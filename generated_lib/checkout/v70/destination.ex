@@ -9,7 +9,10 @@ defmodule Adyen.Checkout.V70.Destination do
           stateOrProvince: String.t() | nil
         }
 
-  defstruct [:countryCode, :postalCode, :stateOrProvince]
+  (
+    @derive Jason.Encoder
+    defstruct [:countryCode, :postalCode, :stateOrProvince]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

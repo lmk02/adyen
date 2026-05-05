@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.AuthorisedCardUsers do
 
   @type t :: %__MODULE__{legalEntityIds: [String.t()] | nil}
 
-  defstruct [:legalEntityIds]
+  (
+    @derive Jason.Encoder
+    defstruct [:legalEntityIds]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

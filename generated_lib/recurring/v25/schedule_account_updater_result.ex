@@ -5,7 +5,10 @@ defmodule Adyen.Recurring.V25.ScheduleAccountUpdaterResult do
 
   @type t :: %__MODULE__{pspReference: String.t(), result: String.t()}
 
-  defstruct [:pspReference, :result]
+  (
+    @derive Jason.Encoder
+    defstruct [:pspReference, :result]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

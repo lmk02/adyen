@@ -19,21 +19,24 @@ defmodule Adyen.Checkout.V71.Airline do
           travelAgency: Adyen.Checkout.V71.TravelAgency.t() | nil
         }
 
-  defstruct [
-    :agency,
-    :boardingFee,
-    :code,
-    :computerizedReservationSystem,
-    :customerReferenceNumber,
-    :designatorCode,
-    :documentType,
-    :flightDate,
-    :legs,
-    :passengerName,
-    :passengers,
-    :ticket,
-    :travelAgency
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :agency,
+      :boardingFee,
+      :code,
+      :computerizedReservationSystem,
+      :customerReferenceNumber,
+      :designatorCode,
+      :documentType,
+      :flightDate,
+      :legs,
+      :passengerName,
+      :passengers,
+      :ticket,
+      :travelAgency
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

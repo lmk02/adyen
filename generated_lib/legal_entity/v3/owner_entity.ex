@@ -5,7 +5,10 @@ defmodule Adyen.LegalEntity.V3.OwnerEntity do
 
   @type t :: %__MODULE__{id: String.t(), type: String.t()}
 
-  defstruct [:id, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:id, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -5,7 +5,10 @@ defmodule Adyen.TerminalAPI.V1.DisplayRequest do
 
   @type t :: %__MODULE__{DisplayOutput: [Adyen.TerminalAPI.V1.DisplayOutput.t()]}
 
-  defstruct [:DisplayOutput]
+  (
+    @derive Jason.Encoder
+    defstruct [:DisplayOutput]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

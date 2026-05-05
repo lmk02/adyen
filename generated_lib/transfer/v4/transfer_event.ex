@@ -34,26 +34,29 @@ defmodule Adyen.Transfer.V4.TransferEvent do
           valueDate: DateTime.t() | nil
         }
 
-  defstruct [
-    :amount,
-    :amountAdjustments,
-    :arn,
-    :bookingDate,
-    :estimatedArrivalTime,
-    :eventsData,
-    :externalReason,
-    :id,
-    :modification,
-    :mutations,
-    :originalAmount,
-    :reason,
-    :status,
-    :trackingData,
-    :transactionId,
-    :type,
-    :updateDate,
-    :valueDate
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :amount,
+      :amountAdjustments,
+      :arn,
+      :bookingDate,
+      :estimatedArrivalTime,
+      :eventsData,
+      :externalReason,
+      :id,
+      :modification,
+      :mutations,
+      :originalAmount,
+      :reason,
+      :status,
+      :trackingData,
+      :transactionId,
+      :type,
+      :updateDate,
+      :valueDate
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -222,7 +225,6 @@ defmodule Adyen.Transfer.V4.TransferEvent do
            "miscCostPending",
            "paymentCost",
            "paymentCostPending",
-           "pending",
            "pendingApproval",
            "pendingExecution",
            "received",
@@ -236,7 +238,6 @@ defmodule Adyen.Transfer.V4.TransferEvent do
            "reserveAdjustment",
            "reserveAdjustmentPending",
            "returned",
-           "reversed",
            "secondChargeback",
            "secondChargebackPending",
            "undefined"

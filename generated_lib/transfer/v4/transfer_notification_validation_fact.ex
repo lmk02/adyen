@@ -5,7 +5,10 @@ defmodule Adyen.Transfer.V4.TransferNotificationValidationFact do
 
   @type t :: %__MODULE__{result: String.t() | nil, type: String.t() | nil}
 
-  defstruct [:result, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:result, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

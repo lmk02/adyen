@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V68.PaymentMethodIssuer do
 
   @type t :: %__MODULE__{disabled: boolean | nil, id: String.t(), name: String.t()}
 
-  defstruct [:disabled, :id, :name]
+  (
+    @derive Jason.Encoder
+    defstruct [:disabled, :id, :name]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

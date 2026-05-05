@@ -10,7 +10,10 @@ defmodule Adyen.LegalEntity.V2.SourceOfFunds do
           type: String.t() | nil
         }
 
-  defstruct [:acquiringBusinessLineId, :adyenProcessedFunds, :description, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:acquiringBusinessLineId, :adyenProcessedFunds, :description, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

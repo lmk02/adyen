@@ -12,14 +12,17 @@ defmodule Adyen.Checkout.V70.StoredPaymentMethodRequest do
           shopperReference: String.t()
         }
 
-  defstruct [
-    :merchantAccount,
-    :paymentMethod,
-    :recurringProcessingModel,
-    :shopperEmail,
-    :shopperIP,
-    :shopperReference
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :merchantAccount,
+      :paymentMethod,
+      :recurringProcessingModel,
+      :shopperEmail,
+      :shopperIP,
+      :shopperReference
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

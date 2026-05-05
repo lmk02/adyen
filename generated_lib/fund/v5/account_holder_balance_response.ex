@@ -11,7 +11,10 @@ defmodule Adyen.Fund.V5.AccountHolderBalanceResponse do
           totalBalance: Adyen.Fund.V5.DetailBalance.t() | nil
         }
 
-  defstruct [:balancePerAccount, :invalidFields, :pspReference, :resultCode, :totalBalance]
+  (
+    @derive Jason.Encoder
+    defstruct [:balancePerAccount, :invalidFields, :pspReference, :resultCode, :totalBalance]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

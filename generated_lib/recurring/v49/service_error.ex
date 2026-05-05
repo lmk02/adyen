@@ -12,7 +12,10 @@ defmodule Adyen.Recurring.V49.ServiceError do
           status: integer | nil
         }
 
-  defstruct [:additionalData, :errorCode, :errorType, :message, :pspReference, :status]
+  (
+    @derive Jason.Encoder
+    defstruct [:additionalData, :errorCode, :errorType, :message, :pspReference, :status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

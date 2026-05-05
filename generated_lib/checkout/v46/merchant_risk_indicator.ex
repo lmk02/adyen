@@ -15,17 +15,20 @@ defmodule Adyen.Checkout.V46.MerchantRiskIndicator do
           reorderItems: boolean | nil
         }
 
-  defstruct [
-    :addressMatch,
-    :deliveryAddressIndicator,
-    :deliveryEmail,
-    :deliveryTimeframe,
-    :giftCardAmount,
-    :giftCardCount,
-    :preOrderDate,
-    :preOrderPurchase,
-    :reorderItems
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :addressMatch,
+      :deliveryAddressIndicator,
+      :deliveryEmail,
+      :deliveryTimeframe,
+      :giftCardAmount,
+      :giftCardCount,
+      :preOrderDate,
+      :preOrderPurchase,
+      :reorderItems
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -20,22 +20,25 @@ defmodule Adyen.Checkout.V41.ThreeDs2RequestFields do
           threeDSRequestorURL: String.t() | nil
         }
 
-  defstruct [
-    :authenticationOnly,
-    :challengeIndicator,
-    :deviceRenderOptions,
-    :messageVersion,
-    :notificationURL,
-    :sdkAppID,
-    :sdkEphemPubKey,
-    :sdkMaxTimeout,
-    :sdkReferenceNumber,
-    :sdkTransID,
-    :threeDSCompInd,
-    :threeDSRequestorID,
-    :threeDSRequestorName,
-    :threeDSRequestorURL
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :authenticationOnly,
+      :challengeIndicator,
+      :deviceRenderOptions,
+      :messageVersion,
+      :notificationURL,
+      :sdkAppID,
+      :sdkEphemPubKey,
+      :sdkMaxTimeout,
+      :sdkReferenceNumber,
+      :sdkTransID,
+      :threeDSCompInd,
+      :threeDSRequestorID,
+      :threeDSRequestorName,
+      :threeDSRequestorURL
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

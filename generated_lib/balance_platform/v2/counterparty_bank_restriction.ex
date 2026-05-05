@@ -8,7 +8,10 @@ defmodule Adyen.BalancePlatform.V2.CounterpartyBankRestriction do
           value: [Adyen.BalancePlatform.V2.BankIdentification.t()] | nil
         }
 
-  defstruct [:operation, :value]
+  (
+    @derive Jason.Encoder
+    defstruct [:operation, :value]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

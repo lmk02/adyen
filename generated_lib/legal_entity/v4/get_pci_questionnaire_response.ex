@@ -10,7 +10,10 @@ defmodule Adyen.LegalEntity.V4.GetPciQuestionnaireResponse do
           validUntil: DateTime.t() | nil
         }
 
-  defstruct [:content, :createdAt, :id, :validUntil]
+  (
+    @derive Jason.Encoder
+    defstruct [:content, :createdAt, :id, :validUntil]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

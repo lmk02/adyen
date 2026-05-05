@@ -10,7 +10,10 @@ defmodule Adyen.Account.V3.Account do
           payoutSchedule: Adyen.Account.V3.PayoutScheduleResponse.t() | nil
         }
 
-  defstruct [:accountCode, :beneficiaryAccount, :beneficiaryMerchantReference, :payoutSchedule]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountCode, :beneficiaryAccount, :beneficiaryMerchantReference, :payoutSchedule]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

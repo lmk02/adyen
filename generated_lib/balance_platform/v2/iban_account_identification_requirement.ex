@@ -9,7 +9,10 @@ defmodule Adyen.BalancePlatform.V2.IbanAccountIdentificationRequirement do
           type: String.t()
         }
 
-  defstruct [:description, :ibanPrefixes, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:description, :ibanPrefixes, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

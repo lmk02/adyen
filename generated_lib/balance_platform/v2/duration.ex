@@ -5,7 +5,10 @@ defmodule Adyen.BalancePlatform.V2.Duration do
 
   @type t :: %__MODULE__{unit: String.t() | nil, value: integer | nil}
 
-  defstruct [:unit, :value]
+  (
+    @derive Jason.Encoder
+    defstruct [:unit, :value]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

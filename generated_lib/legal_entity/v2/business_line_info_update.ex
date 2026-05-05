@@ -5,21 +5,16 @@ defmodule Adyen.LegalEntity.V2.BusinessLineInfoUpdate do
 
   @type t :: %__MODULE__{
           industryCode: String.t() | nil,
-          industryCodeDescription: String.t() | nil,
           salesChannels: [String.t()] | nil,
           sourceOfFunds: Adyen.LegalEntity.V2.SourceOfFunds.t() | nil,
           webData: [Adyen.LegalEntity.V2.WebData.t()] | nil,
           webDataExemption: Adyen.LegalEntity.V2.WebDataExemption.t() | nil
         }
 
-  defstruct [
-    :industryCode,
-    :industryCodeDescription,
-    :salesChannels,
-    :sourceOfFunds,
-    :webData,
-    :webDataExemption
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [:industryCode, :salesChannels, :sourceOfFunds, :webData, :webDataExemption]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -28,7 +23,6 @@ defmodule Adyen.LegalEntity.V2.BusinessLineInfoUpdate do
   def __fields__(:t) do
     [
       industryCode: :string,
-      industryCodeDescription: :string,
       salesChannels: [:string],
       sourceOfFunds: {Adyen.LegalEntity.V2.SourceOfFunds, :t},
       webData: [{Adyen.LegalEntity.V2.WebData, :t}],

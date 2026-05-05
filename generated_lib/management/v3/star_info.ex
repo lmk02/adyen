@@ -8,7 +8,10 @@ defmodule Adyen.Management.V3.StarInfo do
           transactionDescription: Adyen.Management.V3.TransactionDescriptionInfo.t() | nil
         }
 
-  defstruct [:processingType, :transactionDescription]
+  (
+    @derive Jason.Encoder
+    defstruct [:processingType, :transactionDescription]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

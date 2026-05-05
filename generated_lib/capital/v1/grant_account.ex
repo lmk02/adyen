@@ -10,7 +10,10 @@ defmodule Adyen.Capital.V1.GrantAccount do
           limits: [Adyen.Capital.V1.GrantLimit.t()] | nil
         }
 
-  defstruct [:balances, :fundingBalanceAccountId, :id, :limits]
+  (
+    @derive Jason.Encoder
+    defstruct [:balances, :fundingBalanceAccountId, :id, :limits]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

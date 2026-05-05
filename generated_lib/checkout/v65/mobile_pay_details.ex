@@ -5,7 +5,10 @@ defmodule Adyen.Checkout.V65.MobilePayDetails do
 
   @type t :: %__MODULE__{checkoutAttemptId: String.t() | nil, type: String.t() | nil}
 
-  defstruct [:checkoutAttemptId, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:checkoutAttemptId, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

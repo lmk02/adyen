@@ -41,42 +41,43 @@ defmodule Adyen.Transfer.V4.TransferData do
             | nil,
           transactionRulesResult: Adyen.Transfer.V4.TransactionRulesResult.t() | nil,
           type: String.t() | nil,
-          ultimateParty: Adyen.Transfer.V4.UltimatePartyIdentification.t() | nil,
           updatedAt: DateTime.t() | nil
         }
 
-  defstruct [
-    :accountHolder,
-    :amount,
-    :balanceAccount,
-    :balancePlatform,
-    :balances,
-    :category,
-    :categoryData,
-    :counterparty,
-    :createdAt,
-    :creationDate,
-    :description,
-    :directDebitInformation,
-    :direction,
-    :eventId,
-    :events,
-    :executionDate,
-    :externalReason,
-    :id,
-    :paymentInstrument,
-    :reason,
-    :reference,
-    :referenceForBeneficiary,
-    :review,
-    :sequenceNumber,
-    :status,
-    :tracking,
-    :transactionRulesResult,
-    :type,
-    :ultimateParty,
-    :updatedAt
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountHolder,
+      :amount,
+      :balanceAccount,
+      :balancePlatform,
+      :balances,
+      :category,
+      :categoryData,
+      :counterparty,
+      :createdAt,
+      :creationDate,
+      :description,
+      :directDebitInformation,
+      :direction,
+      :eventId,
+      :events,
+      :executionDate,
+      :externalReason,
+      :id,
+      :paymentInstrument,
+      :reason,
+      :reference,
+      :referenceForBeneficiary,
+      :review,
+      :sequenceNumber,
+      :status,
+      :tracking,
+      :transactionRulesResult,
+      :type,
+      :updatedAt
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -258,7 +259,6 @@ defmodule Adyen.Transfer.V4.TransferData do
            "miscCostPending",
            "paymentCost",
            "paymentCostPending",
-           "pending",
            "pendingApproval",
            "pendingExecution",
            "received",
@@ -272,7 +272,6 @@ defmodule Adyen.Transfer.V4.TransferData do
            "reserveAdjustment",
            "reserveAdjustmentPending",
            "returned",
-           "reversed",
            "secondChargeback",
            "secondChargebackPending",
            "undefined"
@@ -327,7 +326,6 @@ defmodule Adyen.Transfer.V4.TransferData do
            "balanceRollover",
            "balanceMigration"
          ]},
-      ultimateParty: {Adyen.Transfer.V4.UltimatePartyIdentification, :t},
       updatedAt: {:string, "date-time"}
     ]
   end

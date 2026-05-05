@@ -5,7 +5,10 @@ defmodule Adyen.PaymentsApp.V1.PaymentsAppResponse do
 
   @type t :: %__MODULE__{paymentsApps: [Adyen.PaymentsApp.V1.PaymentsAppDto.t()]}
 
-  defstruct [:paymentsApps]
+  (
+    @derive Jason.Encoder
+    defstruct [:paymentsApps]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

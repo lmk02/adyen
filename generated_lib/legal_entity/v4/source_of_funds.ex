@@ -19,21 +19,24 @@ defmodule Adyen.LegalEntity.V4.SourceOfFunds do
           website: String.t() | nil
         }
 
-  defstruct [
-    :adyenProcessedFunds,
-    :amount,
-    :assetMonthsHeld,
-    :cryptocurrencyExchange,
-    :dateOfFundsReceived,
-    :dateOfSourceEvent,
-    :description,
-    :financiers,
-    :originatorLegalEntityId,
-    :purpose,
-    :relationship,
-    :type,
-    :website
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :adyenProcessedFunds,
+      :amount,
+      :assetMonthsHeld,
+      :cryptocurrencyExchange,
+      :dateOfFundsReceived,
+      :dateOfSourceEvent,
+      :description,
+      :financiers,
+      :originatorLegalEntityId,
+      :purpose,
+      :relationship,
+      :type,
+      :website
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -9,7 +9,10 @@ defmodule Adyen.BinLookup.V50.CostEstimateResponse do
           resultCode: String.t() | nil
         }
 
-  defstruct [:cardBin, :costEstimateAmount, :resultCode]
+  (
+    @derive Jason.Encoder
+    defstruct [:cardBin, :costEstimateAmount, :resultCode]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

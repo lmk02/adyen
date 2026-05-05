@@ -9,7 +9,10 @@ defmodule Adyen.LegalEntity.V4.PhoneNumber do
           type: String.t() | nil
         }
 
-  defstruct [:number, :phoneCountryCode, :type]
+  (
+    @derive Jason.Encoder
+    defstruct [:number, :phoneCountryCode, :type]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

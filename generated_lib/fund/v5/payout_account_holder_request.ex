@@ -14,16 +14,19 @@ defmodule Adyen.Fund.V5.PayoutAccountHolderRequest do
           payoutSpeed: String.t() | nil
         }
 
-  defstruct [
-    :accountCode,
-    :accountHolderCode,
-    :amount,
-    :bankAccountUUID,
-    :description,
-    :merchantReference,
-    :payoutMethodCode,
-    :payoutSpeed
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :accountCode,
+      :accountHolderCode,
+      :amount,
+      :bankAccountUUID,
+      :description,
+      :merchantReference,
+      :payoutMethodCode,
+      :payoutSpeed
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

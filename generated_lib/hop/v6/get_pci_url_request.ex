@@ -5,7 +5,10 @@ defmodule Adyen.Hop.V6.GetPciUrlRequest do
 
   @type t :: %__MODULE__{accountHolderCode: String.t(), returnUrl: String.t() | nil}
 
-  defstruct [:accountHolderCode, :returnUrl]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountHolderCode, :returnUrl]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

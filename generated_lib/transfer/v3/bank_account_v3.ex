@@ -25,7 +25,10 @@ defmodule Adyen.Transfer.V3.BankAccountV3 do
           storedPaymentMethodId: String.t() | nil
         }
 
-  defstruct [:accountHolder, :accountIdentification, :storedPaymentMethodId]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountHolder, :accountIdentification, :storedPaymentMethodId]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

@@ -12,14 +12,17 @@ defmodule Adyen.TerminalAPI.V1.PaymentInstrumentData do
           StoredValueAccountID: Adyen.TerminalAPI.V1.StoredValueAccountID.t() | nil
         }
 
-  defstruct [
-    :CardData,
-    :CheckData,
-    :MobileData,
-    :PaymentInstrumentType,
-    :ProtectedCardData,
-    :StoredValueAccountID
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :CardData,
+      :CheckData,
+      :MobileData,
+      :PaymentInstrumentType,
+      :ProtectedCardData,
+      :StoredValueAccountID
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

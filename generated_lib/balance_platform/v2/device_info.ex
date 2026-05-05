@@ -9,7 +9,10 @@ defmodule Adyen.BalancePlatform.V2.DeviceInfo do
           phone: Adyen.BalancePlatform.V2.PhoneInfo.t() | nil
         }
 
-  defstruct [:formFactor, :osName, :phone]
+  (
+    @derive Jason.Encoder
+    defstruct [:formFactor, :osName, :phone]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

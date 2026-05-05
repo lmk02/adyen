@@ -13,7 +13,10 @@ defmodule Adyen.Checkout.V68.DonationPaymentResponse do
           status: String.t() | nil
         }
 
-  defstruct [:amount, :donationAccount, :id, :merchantAccount, :payment, :reference, :status]
+  (
+    @derive Jason.Encoder
+    defstruct [:amount, :donationAccount, :id, :merchantAccount, :payment, :reference, :status]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

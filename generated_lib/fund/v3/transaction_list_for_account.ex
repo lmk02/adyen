@@ -5,7 +5,10 @@ defmodule Adyen.Fund.V3.TransactionListForAccount do
 
   @type t :: %__MODULE__{accountCode: String.t(), page: integer}
 
-  defstruct [:accountCode, :page]
+  (
+    @derive Jason.Encoder
+    defstruct [:accountCode, :page]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

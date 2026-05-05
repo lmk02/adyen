@@ -5,7 +5,10 @@ defmodule Adyen.CloudDevice.V1.ConnectedDevicesResponse do
 
   @type t :: %__MODULE__{uniqueDeviceIds: [String.t()] | nil}
 
-  defstruct [:uniqueDeviceIds]
+  (
+    @derive Jason.Encoder
+    defstruct [:uniqueDeviceIds]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword

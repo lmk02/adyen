@@ -12,14 +12,17 @@ defmodule Adyen.TerminalAPI.V1.MobileData do
           SensitiveMobileData: Adyen.TerminalAPI.V1.SensitiveMobileData.t() | nil
         }
 
-  defstruct [
-    :Geolocation,
-    :MaskedMSISDN,
-    :MobileCountryCode,
-    :MobileNetworkCode,
-    :ProtectedMobileData,
-    :SensitiveMobileData
-  ]
+  (
+    @derive Jason.Encoder
+    defstruct [
+      :Geolocation,
+      :MaskedMSISDN,
+      :MobileCountryCode,
+      :MobileNetworkCode,
+      :ProtectedMobileData,
+      :SensitiveMobileData
+    ]
+  )
 
   @doc false
   @spec __fields__(atom) :: keyword
