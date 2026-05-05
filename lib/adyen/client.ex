@@ -119,9 +119,20 @@ defmodule Adyen.Client do
   defp add_body_opts(opts, nil), do: opts
 
   defp add_body_opts(opts, body) do
-    {:ok, json} = Poison.encode(body)
+    {:ok, json} = body |> drop_nils() |> Poison.encode()
     Keyword.put(opts, :body, json)
   end
+
+  defp drop_nils(%_{} = struct) do
+    struct
+    |> Map.from_struct()
+    |> Enum.reject(fn {_k, v} -> is_nil(v) end)
+    |> Map.new(fn {k, v} -> {k, drop_nils(v)} end)
+  end
+
+  defp drop_nils(list) when is_list(list), do: Enum.map(list, &drop_nils/1)
+  defp drop_nils(map) when is_map(map), do: Map.new(map, fn {k, v} -> {k, drop_nils(v)} end)
+  defp drop_nils(val), do: val
 
   defp maybe_add_query(opts, []), do: opts
   defp maybe_add_query(opts, query), do: Keyword.put(opts, :params, query)
