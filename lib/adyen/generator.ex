@@ -8,8 +8,8 @@ defmodule Adyen.Generator do
   """
   def generate_all(services \\ nil, output_path \\ nil) do
     specs_dir = get_specs_dir()
-    services = services || Application.get_env(:adyen, :services, [])
-    output_path = output_path || Application.get_env(:adyen, :output_path, "generated_lib")
+    services = services || Application.get_env(:adyen_ex, :services, [])
+    output_path = output_path || Application.get_env(:adyen_ex, :output_path, "generated_lib")
 
     with :ok <- validate_specs_dir(specs_dir),
          {:ok, false} <- check_services_empty(services) do

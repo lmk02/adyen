@@ -12,7 +12,7 @@ defmodule Mix.Tasks.Adyen.Clean do
 
   @impl Mix.Task
   def run(_args) do
-    output_path = Application.get_env(:adyen, :output_path, "lib/adyen")
+    output_path = Application.get_env(:adyen_ex, :output_path, "lib/adyen")
 
     if File.exists?(output_path) do
       Mix.shell().info("Cleaning generated code in #{output_path}...")

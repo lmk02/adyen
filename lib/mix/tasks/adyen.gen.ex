@@ -39,10 +39,10 @@ defmodule Mix.Tasks.Adyen.Gen do
       cond do
         opts[:all] -> Adyen.Generator.get_all_services()
         Enum.any?(extra) -> extra
-        true -> Application.get_env(:adyen, :services, [])
+        true -> Application.get_env(:adyen_ex, :services, [])
       end
 
-    output_path = Application.get_env(:adyen, :output_path, "generated_lib")
+    output_path = Application.get_env(:adyen_ex, :output_path, "generated_lib")
 
     if Enum.empty?(services) do
       display_available_services()

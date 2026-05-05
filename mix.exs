@@ -5,7 +5,7 @@ defmodule Adyen.MixProject do
 
   def project do
     [
-      app: :adyen,
+      app: :adyen_ex,
       version: @version,
       elixir: "~> 1.19",
       start_permanent: Mix.env() == :prod,
@@ -20,7 +20,7 @@ defmodule Adyen.MixProject do
 
     # Selectively include generated services based on configuration
     # We check both Application config and ADYEN_SERVICES env var
-    services_config = Application.get_env(:adyen, :services, [])
+    services_config = Application.get_env(:adyen_ex, :services, [])
 
     services_env =
       "ADYEN_SERVICES"

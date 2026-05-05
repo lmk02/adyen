@@ -125,7 +125,7 @@ defmodule Adyen.Config do
     key =
       Keyword.get(opts, :api_key) ||
         Keyword.get(service_config, :api_key) ||
-        Application.get_env(:adyen, :api_key)
+        Application.get_env(:adyen_ex, :api_key)
 
     case key do
       k when is_binary(k) ->
@@ -150,7 +150,7 @@ defmodule Adyen.Config do
     env =
       Keyword.get(opts, :environment) ||
         Keyword.get(service_config, :environment) ||
-        Application.get_env(:adyen, :environment)
+        Application.get_env(:adyen_ex, :environment)
 
     case env do
       :live -> :live
@@ -171,7 +171,7 @@ defmodule Adyen.Config do
     prefix =
       Keyword.get(opts, :live_prefix) ||
         Keyword.get(service_config, :live_prefix) ||
-        Application.get_env(:adyen, :live_prefix)
+        Application.get_env(:adyen_ex, :live_prefix)
 
     case {resolved_name, env, prefix} do
       {"CheckoutService", :live, nil} ->
@@ -199,7 +199,7 @@ defmodule Adyen.Config do
 
   defp config_for(service_name) do
     atom_name = String.to_existing_atom(service_name)
-    Application.get_env(:adyen, atom_name, [])
+    Application.get_env(:adyen_ex, atom_name, [])
   rescue
     ArgumentError -> []
   end
