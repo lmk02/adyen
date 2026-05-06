@@ -17,7 +17,7 @@ Add `adyen` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:adyen, "~> 0.1.0"}
+    {:adyen_ex, "~> 0.1.0"}
   ]
 end
 ```
@@ -30,7 +30,7 @@ end
 In your `config/config.exs` (or `runtime.exs`), specify the Adyen services and versions you want to include:
 
 ```elixir
-config :adyen,
+config :adyen_ex,
   # 1. Compile-time settings: Defines which services and exact versions to generate modules for
   services: [
     "CheckoutService:v71",

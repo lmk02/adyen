@@ -10,7 +10,7 @@ defmodule Adyen do
   Configure the services you want to use in your `config/config.exs`.
   Note that only services listed in `:services` will be compiled into your application.
 
-      config :adyen,
+      config :adyen_ex,
         services: ["CheckoutService:v71", "PayoutService:v68"],
         api_key: System.get_env("ADYEN_API_KEY")
 

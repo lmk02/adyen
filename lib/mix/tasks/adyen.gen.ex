@@ -4,7 +4,7 @@ defmodule Mix.Tasks.Adyen.Gen do
   @moduledoc """
   Generates Adyen API clients based on the configuration in your project.
 
-  This task looks for OpenAPI specifications in the `:adyen` library's `priv/specs` directory
+  This task looks for OpenAPI specifications in the `:adyen_ex` library's `priv/specs` directory
   and generates Elixir code for the requested services.
 
   ## Examples
@@ -19,11 +19,11 @@ defmodule Mix.Tasks.Adyen.Gen do
 
   In your `config/config.exs` (or `runtime.exs`):
 
-      config :adyen,
+      config :adyen_ex,
         services: ["CheckoutService:v71", "PayoutService:v68"],
         output_path: "lib/adyen" # Optional: default is lib/adyen
 
-  The code will be generated from the JSON specifications included in the `:adyen` library.
+  The code will be generated from the JSON specifications included in the `:adyen_ex` library.
   """
   use Mix.Task
 
@@ -48,7 +48,7 @@ defmodule Mix.Tasks.Adyen.Gen do
       display_available_services()
 
       Mix.shell().info(
-        "\nNo Adyen services configured. Add them to `config :adyen, services: [...]` or pass as arguments or use --all."
+        "\nNo Adyen services configured. Add them to `config :adyen_ex, services: [...]` or pass as arguments or use --all."
       )
     else
       case Adyen.Generator.generate_all(services, output_path) do

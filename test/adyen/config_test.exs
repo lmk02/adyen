@@ -6,11 +6,11 @@ defmodule Adyen.ConfigTest do
 
   setup do
     # Reset config
-    original_config = Application.get_all_env(:adyen)
+    original_config = Application.get_all_env(:adyen_ex)
 
     on_exit(fn ->
       # Clear existing env before reset
-      for {k, _} <- Application.get_all_env(:adyen), do: Application.delete_env(:adyen, k)
+      for {k, _} <- Application.get_all_env(:adyen_ex), do: Application.delete_env(:adyen_ex, k)
       Application.put_all_env(adyen: original_config)
     end)
 
@@ -23,15 +23,15 @@ defmodule Adyen.ConfigTest do
   end
 
   test "resolves service-specific api key from config" do
-    Application.put_env(:adyen, :CheckoutService, api_key: "CONFIG_CHECKOUT")
-    Application.put_env(:adyen, :api_key, "CONFIG_GENERIC")
+    Application.put_env(:adyen_ex, :CheckoutService, api_key: "CONFIG_CHECKOUT")
+    Application.put_env(:adyen_ex, :api_key, "CONFIG_GENERIC")
 
     assert Config.api_key("CheckoutService") == "CONFIG_CHECKOUT"
     assert Config.api_key("TransferService") == "CONFIG_GENERIC"
   end
 
   test "resolves generic api key as fallback" do
-    Application.put_env(:adyen, :api_key, "GENERIC_ONLY")
+    Application.put_env(:adyen_ex, :api_key, "GENERIC_ONLY")
     assert Config.api_key("BalancePlatformService") == "GENERIC_ONLY"
   end
 

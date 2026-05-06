@@ -1,7 +1,7 @@
 import Config
 
 if Mix.env() == :test do
-  config :adyen,
+  config :adyen_ex,
     services: ["AccountService:v6"],
     environment: :test
 end

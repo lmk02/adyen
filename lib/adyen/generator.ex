@@ -42,7 +42,7 @@ defmodule Adyen.Generator do
   defp check_services_empty(services), do: {:ok, Enum.empty?(services)}
 
   def get_specs_dir do
-    case :code.priv_dir(:adyen) do
+    case :code.priv_dir(:adyen_ex) do
       {:error, :bad_name} ->
         # Fallback if the app isn't loaded (e.g., during development)
         "priv/specs/json"
