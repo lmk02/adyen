@@ -6,6 +6,7 @@ defmodule Adyen.Checkout.V67.PayToDetails do
   @type t :: %__MODULE__{
           checkoutAttemptId: String.t() | nil,
           recurringDetailReference: String.t() | nil,
+          sdkData: String.t() | nil,
           shopperAccountIdentifier: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           type: String.t() | nil
@@ -14,6 +15,7 @@ defmodule Adyen.Checkout.V67.PayToDetails do
   defstruct [
     :checkoutAttemptId,
     :recurringDetailReference,
+    :sdkData,
     :shopperAccountIdentifier,
     :storedPaymentMethodId,
     :type
@@ -27,6 +29,7 @@ defmodule Adyen.Checkout.V67.PayToDetails do
     [
       checkoutAttemptId: :string,
       recurringDetailReference: :string,
+      sdkData: :string,
       shopperAccountIdentifier: :string,
       storedPaymentMethodId: :string,
       type: {:const, "payto"}
