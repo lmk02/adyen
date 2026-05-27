@@ -10,10 +10,13 @@ defmodule Adyen.BalancePlatform.V1.AccountHolder do
           description: String.t() | nil,
           id: String.t(),
           legalEntityId: String.t(),
+          metadata: map | nil,
+          migratedAccountHolderCode: String.t() | nil,
           primaryBalanceAccount: String.t() | nil,
           reference: String.t() | nil,
           status: String.t() | nil,
-          timeZone: String.t() | nil
+          timeZone: String.t() | nil,
+          verificationDeadlines: [Adyen.BalancePlatform.V1.VerificationDeadline.t()] | nil
         }
 
   defstruct [
@@ -23,10 +26,13 @@ defmodule Adyen.BalancePlatform.V1.AccountHolder do
     :description,
     :id,
     :legalEntityId,
+    :metadata,
+    :migratedAccountHolderCode,
     :primaryBalanceAccount,
     :reference,
     :status,
-    :timeZone
+    :timeZone,
+    :verificationDeadlines
   ]
 
   @doc false
@@ -41,10 +47,13 @@ defmodule Adyen.BalancePlatform.V1.AccountHolder do
       description: :string,
       id: :string,
       legalEntityId: :string,
+      metadata: :map,
+      migratedAccountHolderCode: :string,
       primaryBalanceAccount: :string,
       reference: :string,
       status: {:enum, ["Active", "Closed", "Inactive", "Suspended"]},
-      timeZone: :string
+      timeZone: :string,
+      verificationDeadlines: [{Adyen.BalancePlatform.V1.VerificationDeadline, :t}]
     ]
   end
 end
