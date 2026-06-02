@@ -7,10 +7,11 @@ defmodule Adyen.Checkout.V68.MasterpassDetails do
           checkoutAttemptId: String.t() | nil,
           fundingSource: String.t() | nil,
           masterpassTransactionId: String.t(),
+          sdkData: String.t() | nil,
           type: String.t() | nil
         }
 
-  defstruct [:checkoutAttemptId, :fundingSource, :masterpassTransactionId, :type]
+  defstruct [:checkoutAttemptId, :fundingSource, :masterpassTransactionId, :sdkData, :type]
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -21,6 +22,7 @@ defmodule Adyen.Checkout.V68.MasterpassDetails do
       checkoutAttemptId: :string,
       fundingSource: {:enum, ["credit", "debit", "prepaid"]},
       masterpassTransactionId: :string,
+      sdkData: :string,
       type: {:const, "masterpass"}
     ]
   end

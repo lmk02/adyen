@@ -8,10 +8,18 @@ defmodule Adyen.Checkout.V67.CheckoutForwardRequestOptions do
           dryRun: boolean | nil,
           networkToken: Adyen.Checkout.V67.CheckoutNetworkTokenOption.t() | nil,
           networkTxReferencePaths: [String.t()] | nil,
-          tokenize: boolean | nil
+          tokenize: boolean | nil,
+          transactionLinkIdPaths: [String.t()] | nil
         }
 
-  defstruct [:accountUpdate, :dryRun, :networkToken, :networkTxReferencePaths, :tokenize]
+  defstruct [
+    :accountUpdate,
+    :dryRun,
+    :networkToken,
+    :networkTxReferencePaths,
+    :tokenize,
+    :transactionLinkIdPaths
+  ]
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -23,7 +31,8 @@ defmodule Adyen.Checkout.V67.CheckoutForwardRequestOptions do
       dryRun: :boolean,
       networkToken: {Adyen.Checkout.V67.CheckoutNetworkTokenOption, :t},
       networkTxReferencePaths: [:string],
-      tokenize: :boolean
+      tokenize: :boolean,
+      transactionLinkIdPaths: [:string]
     ]
   end
 end
