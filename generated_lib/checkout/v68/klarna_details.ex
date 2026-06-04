@@ -9,6 +9,7 @@ defmodule Adyen.Checkout.V68.KlarnaDetails do
           deliveryAddress: String.t() | nil,
           personalDetails: String.t() | nil,
           recurringDetailReference: String.t() | nil,
+          sdkData: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           subtype: String.t() | nil,
           type: String.t()
@@ -20,6 +21,7 @@ defmodule Adyen.Checkout.V68.KlarnaDetails do
     :deliveryAddress,
     :personalDetails,
     :recurringDetailReference,
+    :sdkData,
     :storedPaymentMethodId,
     :subtype,
     :type
@@ -36,6 +38,7 @@ defmodule Adyen.Checkout.V68.KlarnaDetails do
       deliveryAddress: :string,
       personalDetails: :string,
       recurringDetailReference: :string,
+      sdkData: :string,
       storedPaymentMethodId: :string,
       subtype: :string,
       type:
