@@ -6,10 +6,11 @@ defmodule Adyen.Checkout.V67.BillDeskDetails do
   @type t :: %__MODULE__{
           checkoutAttemptId: String.t() | nil,
           issuer: String.t(),
+          sdkData: String.t() | nil,
           type: String.t()
         }
 
-  defstruct [:checkoutAttemptId, :issuer, :type]
+  defstruct [:checkoutAttemptId, :issuer, :sdkData, :type]
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -19,6 +20,7 @@ defmodule Adyen.Checkout.V67.BillDeskDetails do
     [
       checkoutAttemptId: :string,
       issuer: :string,
+      sdkData: :string,
       type: {:enum, ["billdesk_online", "billdesk_wallet"]}
     ]
   end
