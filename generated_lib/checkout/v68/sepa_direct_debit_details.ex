@@ -9,6 +9,7 @@ defmodule Adyen.Checkout.V68.SepaDirectDebitDetails do
           iban: String.t(),
           ownerName: String.t(),
           recurringDetailReference: String.t() | nil,
+          sdkData: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           transferInstrumentId: String.t() | nil,
           type: String.t() | nil
@@ -20,6 +21,7 @@ defmodule Adyen.Checkout.V68.SepaDirectDebitDetails do
     :iban,
     :ownerName,
     :recurringDetailReference,
+    :sdkData,
     :storedPaymentMethodId,
     :transferInstrumentId,
     :type
@@ -36,6 +38,7 @@ defmodule Adyen.Checkout.V68.SepaDirectDebitDetails do
       iban: :string,
       ownerName: :string,
       recurringDetailReference: :string,
+      sdkData: :string,
       storedPaymentMethodId: :string,
       transferInstrumentId: :string,
       type: {:enum, ["sepadirectdebit", "sepadirectdebit_amazonpay"]}
