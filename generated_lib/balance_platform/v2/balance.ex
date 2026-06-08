@@ -8,10 +8,11 @@ defmodule Adyen.BalancePlatform.V2.Balance do
           balance: integer,
           currency: String.t(),
           pending: integer | nil,
+          pendingAvailable: integer | nil,
           reserved: integer
         }
 
-  defstruct [:available, :balance, :currency, :pending, :reserved]
+  defstruct [:available, :balance, :currency, :pending, :pendingAvailable, :reserved]
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -23,6 +24,7 @@ defmodule Adyen.BalancePlatform.V2.Balance do
       balance: {:integer, "int64"},
       currency: :string,
       pending: {:integer, "int64"},
+      pendingAvailable: {:integer, "int64"},
       reserved: {:integer, "int64"}
     ]
   end
