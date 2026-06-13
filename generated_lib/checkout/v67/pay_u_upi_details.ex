@@ -6,6 +6,7 @@ defmodule Adyen.Checkout.V67.PayUUpiDetails do
   @type t :: %__MODULE__{
           checkoutAttemptId: String.t() | nil,
           recurringDetailReference: String.t() | nil,
+          sdkData: String.t() | nil,
           shopperNotificationReference: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           type: String.t(),
@@ -15,6 +16,7 @@ defmodule Adyen.Checkout.V67.PayUUpiDetails do
   defstruct [
     :checkoutAttemptId,
     :recurringDetailReference,
+    :sdkData,
     :shopperNotificationReference,
     :storedPaymentMethodId,
     :type,
@@ -29,6 +31,7 @@ defmodule Adyen.Checkout.V67.PayUUpiDetails do
     [
       checkoutAttemptId: :string,
       recurringDetailReference: :string,
+      sdkData: :string,
       shopperNotificationReference: :string,
       storedPaymentMethodId: :string,
       type: {:const, "payu_IN_upi"},
