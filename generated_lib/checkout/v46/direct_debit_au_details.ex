@@ -7,6 +7,7 @@ defmodule Adyen.Checkout.V46.DirectDebitAuDetails do
           bankAccountNumber: String.t() | nil,
           bankBranchCode: String.t() | nil,
           checkoutAttemptId: String.t() | nil,
+          holderName: String.t() | nil,
           recurringDetailReference: String.t() | nil,
           type: String.t() | nil
         }
@@ -15,6 +16,7 @@ defmodule Adyen.Checkout.V46.DirectDebitAuDetails do
     :bankAccountNumber,
     :bankBranchCode,
     :checkoutAttemptId,
+    :holderName,
     :recurringDetailReference,
     :type
   ]
@@ -28,6 +30,7 @@ defmodule Adyen.Checkout.V46.DirectDebitAuDetails do
       bankAccountNumber: :string,
       bankBranchCode: :string,
       checkoutAttemptId: :string,
+      holderName: :string,
       recurringDetailReference: :string,
       type: {:const, "directdebit_AU"}
     ]
