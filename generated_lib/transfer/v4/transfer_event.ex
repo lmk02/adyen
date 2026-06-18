@@ -170,6 +170,8 @@ defmodule Adyen.Transfer.V4.TransferEvent do
       status:
         {:enum,
          [
+           "adviceAuthorised",
+           "adviceRefused",
            "approvalPending",
            "atmWithdrawal",
            "atmWithdrawalReversalPending",
