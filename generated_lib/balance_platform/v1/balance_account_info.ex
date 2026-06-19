@@ -7,8 +7,11 @@ defmodule Adyen.BalancePlatform.V1.BalanceAccountInfo do
           accountHolderId: String.t(),
           defaultCurrencyCode: String.t() | nil,
           description: String.t() | nil,
+          metadata: map | nil,
+          migratedAccountCode: String.t() | nil,
+          platformPaymentConfiguration:
+            Adyen.BalancePlatform.V1.PlatformPaymentConfiguration.t() | nil,
           reference: String.t() | nil,
-          sweepConfigurations: map | nil,
           timeZone: String.t() | nil
         }
 
@@ -16,8 +19,10 @@ defmodule Adyen.BalancePlatform.V1.BalanceAccountInfo do
     :accountHolderId,
     :defaultCurrencyCode,
     :description,
+    :metadata,
+    :migratedAccountCode,
+    :platformPaymentConfiguration,
     :reference,
-    :sweepConfigurations,
     :timeZone
   ]
 
@@ -30,8 +35,10 @@ defmodule Adyen.BalancePlatform.V1.BalanceAccountInfo do
       accountHolderId: :string,
       defaultCurrencyCode: :string,
       description: :string,
+      metadata: :map,
+      migratedAccountCode: :string,
+      platformPaymentConfiguration: {Adyen.BalancePlatform.V1.PlatformPaymentConfiguration, :t},
       reference: :string,
-      sweepConfigurations: :map,
       timeZone: :string
     ]
   end
