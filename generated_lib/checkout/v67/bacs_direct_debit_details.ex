@@ -9,6 +9,7 @@ defmodule Adyen.Checkout.V67.BacsDirectDebitDetails do
           checkoutAttemptId: String.t() | nil,
           holderName: String.t() | nil,
           recurringDetailReference: String.t() | nil,
+          sdkData: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           transferInstrumentId: String.t() | nil,
           type: String.t() | nil
@@ -20,6 +21,7 @@ defmodule Adyen.Checkout.V67.BacsDirectDebitDetails do
     :checkoutAttemptId,
     :holderName,
     :recurringDetailReference,
+    :sdkData,
     :storedPaymentMethodId,
     :transferInstrumentId,
     :type
@@ -36,6 +38,7 @@ defmodule Adyen.Checkout.V67.BacsDirectDebitDetails do
       checkoutAttemptId: :string,
       holderName: :string,
       recurringDetailReference: :string,
+      sdkData: :string,
       storedPaymentMethodId: :string,
       transferInstrumentId: :string,
       type: {:const, "directdebit_GB"}
