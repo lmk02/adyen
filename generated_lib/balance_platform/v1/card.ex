@@ -15,7 +15,9 @@ defmodule Adyen.BalancePlatform.V1.Card do
           expiration: Adyen.BalancePlatform.V1.Expiry.t() | nil,
           formFactor: String.t(),
           lastFour: String.t() | nil,
-          number: String.t()
+          number: String.t() | nil,
+          threeDSecure: String.t() | nil,
+          usage: String.t() | nil
         }
 
   defstruct [
@@ -30,7 +32,9 @@ defmodule Adyen.BalancePlatform.V1.Card do
     :expiration,
     :formFactor,
     :lastFour,
-    :number
+    :number,
+    :threeDSecure,
+    :usage
   ]
 
   @doc false
@@ -50,7 +54,9 @@ defmodule Adyen.BalancePlatform.V1.Card do
       expiration: {Adyen.BalancePlatform.V1.Expiry, :t},
       formFactor: {:enum, ["physical", "unknown", "virtual"]},
       lastFour: :string,
-      number: :string
+      number: :string,
+      threeDSecure: :string,
+      usage: :string
     ]
   end
 end
