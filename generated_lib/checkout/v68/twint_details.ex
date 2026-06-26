@@ -6,6 +6,7 @@ defmodule Adyen.Checkout.V68.TwintDetails do
   @type t :: %__MODULE__{
           checkoutAttemptId: String.t() | nil,
           recurringDetailReference: String.t() | nil,
+          sdkData: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           subtype: String.t() | nil,
           type: String.t() | nil
@@ -14,6 +15,7 @@ defmodule Adyen.Checkout.V68.TwintDetails do
   defstruct [
     :checkoutAttemptId,
     :recurringDetailReference,
+    :sdkData,
     :storedPaymentMethodId,
     :subtype,
     :type
@@ -27,6 +29,7 @@ defmodule Adyen.Checkout.V68.TwintDetails do
     [
       checkoutAttemptId: :string,
       recurringDetailReference: :string,
+      sdkData: :string,
       storedPaymentMethodId: :string,
       subtype: :string,
       type: {:const, "twint"}
