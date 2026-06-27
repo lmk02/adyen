@@ -3,9 +3,13 @@ defmodule Adyen.Checkout.V68.PaymentDetails do
   Provides struct and type for a PaymentDetails
   """
 
-  @type t :: %__MODULE__{checkoutAttemptId: String.t() | nil, type: String.t() | nil}
+  @type t :: %__MODULE__{
+          checkoutAttemptId: String.t() | nil,
+          sdkData: String.t() | nil,
+          type: String.t() | nil
+        }
 
-  defstruct [:checkoutAttemptId, :type]
+  defstruct [:checkoutAttemptId, :sdkData, :type]
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -14,6 +18,7 @@ defmodule Adyen.Checkout.V68.PaymentDetails do
   def __fields__(:t) do
     [
       checkoutAttemptId: :string,
+      sdkData: :string,
       type:
         {:enum,
          [
