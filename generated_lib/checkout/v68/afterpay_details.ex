@@ -9,6 +9,7 @@ defmodule Adyen.Checkout.V68.AfterpayDetails do
           deliveryAddress: String.t() | nil,
           personalDetails: String.t() | nil,
           recurringDetailReference: String.t() | nil,
+          sdkData: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           type: String.t()
         }
@@ -19,6 +20,7 @@ defmodule Adyen.Checkout.V68.AfterpayDetails do
     :deliveryAddress,
     :personalDetails,
     :recurringDetailReference,
+    :sdkData,
     :storedPaymentMethodId,
     :type
   ]
@@ -34,6 +36,7 @@ defmodule Adyen.Checkout.V68.AfterpayDetails do
       deliveryAddress: :string,
       personalDetails: :string,
       recurringDetailReference: :string,
+      sdkData: :string,
       storedPaymentMethodId: :string,
       type: {:enum, ["afterpay_default", "afterpaytouch", "afterpay_b2b", "clearpay"]}
     ]

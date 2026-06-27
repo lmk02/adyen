@@ -25,6 +25,8 @@ defmodule Adyen.Transfer.V4.Modification do
       status:
         {:enum,
          [
+           "adviceAuthorised",
+           "adviceRefused",
            "approvalPending",
            "atmWithdrawal",
            "atmWithdrawalReversalPending",
