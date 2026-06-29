@@ -72,6 +72,34 @@ defmodule Adyen.BalancePlatform.V1.AccountHolders do
   end
 
   @doc """
+  Get all transaction rules for an account holder
+
+  Returns a list of transaction rules associated with an account holder.
+  """
+  @spec get_account_holders_id_transaction_rules(id :: String.t(), opts :: keyword) ::
+          {:ok, Adyen.BalancePlatform.V1.TransactionRulesResponse.t()}
+          | {:error, Adyen.BalancePlatform.V1.RestServiceError.t()}
+  def get_account_holders_id_transaction_rules(id, opts \\ []) do
+    client = opts[:client] || @default_client
+
+    client.request(%{
+      args: [id: id],
+      call: {Adyen.BalancePlatform.V1.AccountHolders, :get_account_holders_id_transaction_rules},
+      url: "/accountHolders/#{id}/transactionRules",
+      method: :get,
+      response: [
+        {200, {Adyen.BalancePlatform.V1.TransactionRulesResponse, :t}},
+        {400, {Adyen.BalancePlatform.V1.RestServiceError, :t}},
+        {401, {Adyen.BalancePlatform.V1.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.V1.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.V1.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.V1.RestServiceError, :t}}
+      ],
+      opts: opts
+    })
+  end
+
+  @doc """
   Update an account holder
 
   Updates an account holder. When updating an account holder resource, if a parameter is not provided in the request, it is left unchanged.
@@ -82,7 +110,7 @@ defmodule Adyen.BalancePlatform.V1.AccountHolders do
   """
   @spec patch_account_holders_id(
           id :: String.t(),
-          body :: Adyen.BalancePlatform.V1.AccountHolder.t(),
+          body :: Adyen.BalancePlatform.V1.AccountHolderUpdateRequest.t(),
           opts :: keyword
         ) ::
           {:ok, Adyen.BalancePlatform.V1.AccountHolder.t()}
@@ -96,7 +124,7 @@ defmodule Adyen.BalancePlatform.V1.AccountHolders do
       url: "/accountHolders/#{id}",
       body: body,
       method: :patch,
-      request: [{"application/json", {Adyen.BalancePlatform.V1.AccountHolder, :t}}],
+      request: [{"application/json", {Adyen.BalancePlatform.V1.AccountHolderUpdateRequest, :t}}],
       response: [
         {200, {Adyen.BalancePlatform.V1.AccountHolder, :t}},
         {400, {Adyen.BalancePlatform.V1.RestServiceError, :t}},
