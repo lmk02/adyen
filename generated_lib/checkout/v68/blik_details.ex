@@ -7,6 +7,7 @@ defmodule Adyen.Checkout.V68.BlikDetails do
           blikCode: String.t() | nil,
           checkoutAttemptId: String.t() | nil,
           recurringDetailReference: String.t() | nil,
+          sdkData: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           type: String.t() | nil
         }
@@ -15,6 +16,7 @@ defmodule Adyen.Checkout.V68.BlikDetails do
     :blikCode,
     :checkoutAttemptId,
     :recurringDetailReference,
+    :sdkData,
     :storedPaymentMethodId,
     :type
   ]
@@ -28,6 +30,7 @@ defmodule Adyen.Checkout.V68.BlikDetails do
       blikCode: :string,
       checkoutAttemptId: :string,
       recurringDetailReference: :string,
+      sdkData: :string,
       storedPaymentMethodId: :string,
       type: {:const, "blik"}
     ]
