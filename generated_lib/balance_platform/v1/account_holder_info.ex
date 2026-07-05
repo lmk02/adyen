@@ -9,6 +9,8 @@ defmodule Adyen.BalancePlatform.V1.AccountHolderInfo do
           contactDetails: Adyen.BalancePlatform.V1.ContactDetails.t() | nil,
           description: String.t() | nil,
           legalEntityId: String.t(),
+          metadata: map | nil,
+          migratedAccountHolderCode: String.t() | nil,
           reference: String.t() | nil,
           timeZone: String.t() | nil
         }
@@ -19,6 +21,8 @@ defmodule Adyen.BalancePlatform.V1.AccountHolderInfo do
     :contactDetails,
     :description,
     :legalEntityId,
+    :metadata,
+    :migratedAccountHolderCode,
     :reference,
     :timeZone
   ]
@@ -34,6 +38,8 @@ defmodule Adyen.BalancePlatform.V1.AccountHolderInfo do
       contactDetails: {Adyen.BalancePlatform.V1.ContactDetails, :t},
       description: :string,
       legalEntityId: :string,
+      metadata: :map,
+      migratedAccountHolderCode: :string,
       reference: :string,
       timeZone: :string
     ]
