@@ -12,6 +12,9 @@ defmodule Adyen.BalancePlatform.V1.AdditionalBankIdentification do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [code: :string, type: {:enum, ["gbSortCode", "usRoutingNumber"]}]
+    [
+      code: :string,
+      type: {:enum, ["auBsbCode", "caRoutingNumber", "gbSortCode", "usRoutingNumber"]}
+    ]
   end
 end
