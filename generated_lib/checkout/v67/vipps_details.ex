@@ -6,6 +6,7 @@ defmodule Adyen.Checkout.V67.VippsDetails do
   @type t :: %__MODULE__{
           checkoutAttemptId: String.t() | nil,
           recurringDetailReference: String.t() | nil,
+          sdkData: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           telephoneNumber: String.t(),
           type: String.t() | nil
@@ -14,6 +15,7 @@ defmodule Adyen.Checkout.V67.VippsDetails do
   defstruct [
     :checkoutAttemptId,
     :recurringDetailReference,
+    :sdkData,
     :storedPaymentMethodId,
     :telephoneNumber,
     :type
@@ -27,6 +29,7 @@ defmodule Adyen.Checkout.V67.VippsDetails do
     [
       checkoutAttemptId: :string,
       recurringDetailReference: :string,
+      sdkData: :string,
       storedPaymentMethodId: :string,
       telephoneNumber: :string,
       type: {:const, "vipps"}
