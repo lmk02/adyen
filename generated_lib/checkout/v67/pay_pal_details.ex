@@ -10,6 +10,7 @@ defmodule Adyen.Checkout.V67.PayPalDetails do
           payerID: String.t() | nil,
           payerSelected: String.t() | nil,
           recurringDetailReference: String.t() | nil,
+          sdkData: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           subtype: String.t() | nil,
           type: String.t()
@@ -22,6 +23,7 @@ defmodule Adyen.Checkout.V67.PayPalDetails do
     :payerID,
     :payerSelected,
     :recurringDetailReference,
+    :sdkData,
     :storedPaymentMethodId,
     :subtype,
     :type
@@ -39,6 +41,7 @@ defmodule Adyen.Checkout.V67.PayPalDetails do
       payerID: :string,
       payerSelected: :string,
       recurringDetailReference: :string,
+      sdkData: :string,
       storedPaymentMethodId: :string,
       subtype: {:enum, ["express", "redirect", "sdk"]},
       type: {:const, "paypal"}
