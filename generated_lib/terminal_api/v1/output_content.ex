@@ -20,7 +20,7 @@ defmodule Adyen.TerminalAPI.V1.OutputContent do
   def __fields__(:t) do
     [
       OutputBarcode: {Adyen.TerminalAPI.V1.OutputBarcode, :t},
-      OutputFormat: {:enum, ["BarCode", "MessageRef", "Text", "XHTML"]},
+      OutputFormat: {:enum, ["MessageRef", "Text", "XHTML", "BarCode"]},
       OutputText: [{Adyen.TerminalAPI.V1.OutputText, :t}],
       OutputXHTML: {:string, "byte"},
       PredefinedContent: {Adyen.TerminalAPI.V1.PredefinedContent, :t}

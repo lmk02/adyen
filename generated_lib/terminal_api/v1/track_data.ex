@@ -16,6 +16,10 @@ defmodule Adyen.TerminalAPI.V1.TrackData do
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [TrackFormat: {:enum, ["AAMVA", "ISO"]}, TrackNumb: :integer, TrackValue: :string]
+    [
+      TrackFormat: {:enum, ["ISO", "JIS-I", "JIS-II", "AAMVA", "CMC-7", "E-13B"]},
+      TrackNumb: :integer,
+      TrackValue: :string
+    ]
   end
 end
