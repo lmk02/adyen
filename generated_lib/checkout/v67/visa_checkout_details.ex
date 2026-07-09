@@ -6,11 +6,12 @@ defmodule Adyen.Checkout.V67.VisaCheckoutDetails do
   @type t :: %__MODULE__{
           checkoutAttemptId: String.t() | nil,
           fundingSource: String.t() | nil,
+          sdkData: String.t() | nil,
           type: String.t() | nil,
           visaCheckoutCallId: String.t()
         }
 
-  defstruct [:checkoutAttemptId, :fundingSource, :type, :visaCheckoutCallId]
+  defstruct [:checkoutAttemptId, :fundingSource, :sdkData, :type, :visaCheckoutCallId]
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -20,6 +21,7 @@ defmodule Adyen.Checkout.V67.VisaCheckoutDetails do
     [
       checkoutAttemptId: :string,
       fundingSource: {:enum, ["credit", "debit", "prepaid"]},
+      sdkData: :string,
       type: {:const, "visacheckout"},
       visaCheckoutCallId: :string
     ]
