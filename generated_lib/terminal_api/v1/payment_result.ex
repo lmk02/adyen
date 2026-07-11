@@ -50,9 +50,9 @@ defmodule Adyen.TerminalAPI.V1.PaymentResult do
           "OfflinePIN",
           "OnlinePIN",
           "PaperSignature",
+          "SecuredChannel",
           "SecureCertificate",
           "SecureNoCertificate",
-          "SecuredChannel",
           "SignatureCapture",
           "UnknownMethod"
         ]
@@ -68,18 +68,18 @@ defmodule Adyen.TerminalAPI.V1.PaymentResult do
       PaymentType:
         {:enum,
          [
+           "Normal",
+           "Refund",
+           "OneTimeReservation",
+           "FirstReservation",
+           "UpdateReservation",
+           "Completion",
            "CashAdvance",
            "CashDeposit",
-           "Completion",
-           "FirstReservation",
+           "Recurring",
            "Instalment",
            "IssuerInstalment",
-           "Normal",
-           "OneTimeReservation",
-           "PaidOut",
-           "Recurring",
-           "Refund",
-           "UpdateReservation"
+           "PaidOut"
          ]},
       ProtectedSignature: :string,
       ValidityDate: {:string, "date"}

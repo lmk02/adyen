@@ -36,7 +36,7 @@ defmodule Adyen.TerminalAPI.V1.StoredValueResult do
       ProductCode: :integer,
       StoredValueAccountStatus: {Adyen.TerminalAPI.V1.StoredValueAccountStatus, :t},
       StoredValueTransactionType:
-        {:enum, ["Activate", "Duplicate", "Load", "Reserve", "Reverse", "Unload"]}
+        {:enum, ["Reserve", "Activate", "Load", "Unload", "Reverse", "Duplicate"]}
     ]
   end
 end
