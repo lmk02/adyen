@@ -27,6 +27,7 @@ defmodule Adyen.Transfer.V4.TransferData do
           executionDate: Adyen.Transfer.V4.ExecutionDate.t() | nil,
           externalReason: Adyen.Transfer.V4.ExternalReason.t() | nil,
           id: String.t() | nil,
+          networkReason: Adyen.Transfer.V4.NetworkReason.t() | nil,
           paymentInstrument: Adyen.Transfer.V4.PaymentInstrument.t() | nil,
           reason: String.t() | nil,
           reference: String.t() | nil,
@@ -34,6 +35,8 @@ defmodule Adyen.Transfer.V4.TransferData do
           review: Adyen.Transfer.V4.TransferReview.t() | nil,
           sequenceNumber: integer | nil,
           status: String.t(),
+          tracing:
+            Adyen.Transfer.V4.UKFpsTracingData.t() | Adyen.Transfer.V4.USAchTracingData.t() | nil,
           tracking:
             Adyen.Transfer.V4.ConfirmationTrackingData.t()
             | Adyen.Transfer.V4.EstimationTrackingData.t()
@@ -64,6 +67,7 @@ defmodule Adyen.Transfer.V4.TransferData do
     :executionDate,
     :externalReason,
     :id,
+    :networkReason,
     :paymentInstrument,
     :reason,
     :reference,
@@ -71,6 +75,7 @@ defmodule Adyen.Transfer.V4.TransferData do
     :review,
     :sequenceNumber,
     :status,
+    :tracing,
     :tracking,
     :transactionRulesResult,
     :type,
@@ -109,6 +114,7 @@ defmodule Adyen.Transfer.V4.TransferData do
       executionDate: {Adyen.Transfer.V4.ExecutionDate, :t},
       externalReason: {Adyen.Transfer.V4.ExternalReason, :t},
       id: :string,
+      networkReason: {Adyen.Transfer.V4.NetworkReason, :t},
       paymentInstrument: {Adyen.Transfer.V4.PaymentInstrument, :t},
       reason:
         {:enum,
@@ -277,6 +283,9 @@ defmodule Adyen.Transfer.V4.TransferData do
            "secondChargebackPending",
            "undefined"
          ]},
+      tracing:
+        {:union,
+         [{Adyen.Transfer.V4.UKFpsTracingData, :t}, {Adyen.Transfer.V4.USAchTracingData, :t}]},
       tracking:
         {:union,
          [

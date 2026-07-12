@@ -33,11 +33,11 @@ defmodule Adyen.TerminalAPI.V1.OutputText do
 
   def __fields__(:t) do
     [
-      Alignment: {:enum, ["Centred", "Justified", "Left", "Right"]},
-      CharacterHeight: {:enum, ["DoubleHeight", "HalfHeight", "SingleHeight"]},
+      Alignment: {:enum, ["Left", "Right", "Centred", "Justified"]},
+      CharacterHeight: {:enum, ["SingleHeight", "DoubleHeight", "HalfHeight"]},
       CharacterSet: :integer,
-      CharacterStyle: {:enum, ["Bold", "Italic", "Normal", "Underline"]},
-      CharacterWidth: {:enum, ["DoubleWidth", "SingleWidth"]},
+      CharacterStyle: {:enum, ["Normal", "Bold", "Italic", "Underline"]},
+      CharacterWidth: {:enum, ["SingleWidth", "DoubleWidth"]},
       EndOfLineFlag: :boolean,
       StartColumn: :integer,
       StartRow: :integer,
