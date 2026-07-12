@@ -37,13 +37,13 @@ defmodule Adyen.TerminalAPI.V1.MessageReference do
            "Login",
            "Logout",
            "Loyalty",
-           "None",
            "Payment",
            "Print",
            "Reconciliation",
            "Reversal",
            "StoredValue",
-           "TransactionStatus"
+           "TransactionStatus",
+           "None"
          ]},
       POIID: :string,
       SaleID: :string,
