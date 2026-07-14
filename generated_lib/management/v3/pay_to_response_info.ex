@@ -3,7 +3,7 @@ defmodule Adyen.Management.V3.PayToResponseInfo do
   Provides struct and type for a PayToResponseInfo
   """
 
-  @type t :: %__MODULE__{merchantName: String.t(), payToPurpose: String.t()}
+  @type t :: %__MODULE__{merchantName: String.t() | nil, payToPurpose: String.t() | nil}
 
   defstruct [:merchantName, :payToPurpose]
 
