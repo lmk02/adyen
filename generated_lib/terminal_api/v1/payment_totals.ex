@@ -22,25 +22,25 @@ defmodule Adyen.TerminalAPI.V1.PaymentTotals do
       TransactionType:
         {:enum,
          [
-           "Award",
-           "CashAdvance",
-           "CompletedDeffered",
-           "CompletedReservation",
-           "Credit",
            "Debit",
+           "Credit",
+           "ReverseDebit",
+           "ReverseCredit",
+           "OneTimeReservation",
+           "CompletedDeffered",
+           "FirstReservation",
+           "UpdateReservation",
+           "CompletedReservation",
+           "CashAdvance",
+           "IssuerInstalment",
            "Declined",
            "Failed",
-           "FirstReservation",
-           "IssuerInstalment",
-           "OneTimeReservation",
-           "Rebate",
-           "Redemption",
+           "Award",
            "ReverseAward",
-           "ReverseCredit",
-           "ReverseDebit",
-           "ReverseRebate",
+           "Redemption",
            "ReverseRedemption",
-           "UpdateReservation"
+           "Rebate",
+           "ReverseRebate"
          ]}
     ]
   end
