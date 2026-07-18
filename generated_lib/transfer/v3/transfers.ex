@@ -11,8 +11,8 @@ defmodule Adyen.Transfer.V3.Transfers do
   >Versions 1 and 2 of the Transfers API are deprecated. If you are just starting your implementation, use the latest version.
 
   Starts a request to transfer funds to:
-  - [Balance accounts](https://docs.adyen.com/api-explorer/#/balanceplatform/latest/post/balanceAccounts)
-  - [Transfer instruments](https://docs.adyen.com/api-explorer/#/legalentity/latest/post/transferInstruments)
+  - [Balance accounts](https://docs.adyen.com/api-explorer/balanceplatform/latest/post/balanceAccounts)
+  - [Transfer instruments](https://docs.adyen.com/api-explorer/legalentity/latest/post/transferInstruments)
   - [Third-party bank accounts](https://docs.adyen.com/payouts/payout-service/pay-out-to-bank-accounts)
   - [Third-party cards](https://docs.adyen.com/payouts/payout-service/pay-out-to-cards)
 
