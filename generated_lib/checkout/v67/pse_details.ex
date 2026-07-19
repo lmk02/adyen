@@ -9,10 +9,19 @@ defmodule Adyen.Checkout.V67.PseDetails do
           clientType: String.t(),
           identification: String.t(),
           identificationType: String.t(),
+          sdkData: String.t() | nil,
           type: String.t() | nil
         }
 
-  defstruct [:bank, :checkoutAttemptId, :clientType, :identification, :identificationType, :type]
+  defstruct [
+    :bank,
+    :checkoutAttemptId,
+    :clientType,
+    :identification,
+    :identificationType,
+    :sdkData,
+    :type
+  ]
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -25,6 +34,7 @@ defmodule Adyen.Checkout.V67.PseDetails do
       clientType: :string,
       identification: :string,
       identificationType: :string,
+      sdkData: :string,
       type: {:const, "pse_payulatam"}
     ]
   end
