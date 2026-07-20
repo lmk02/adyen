@@ -4,7 +4,7 @@ defmodule Adyen.Management.V1.PulseResponseInfo do
   """
 
   @type t :: %__MODULE__{
-          processingType: String.t(),
+          processingType: String.t() | nil,
           transactionDescription: Adyen.Management.V1.TransactionDescriptionResponseInfo.t() | nil
         }
 
