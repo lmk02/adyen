@@ -10,6 +10,7 @@ defmodule Adyen.Checkout.V68.EftDetails do
           checkoutAttemptId: String.t() | nil,
           ownerName: String.t() | nil,
           recurringDetailReference: String.t() | nil,
+          sdkData: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           type: String.t() | nil
         }
@@ -21,6 +22,7 @@ defmodule Adyen.Checkout.V68.EftDetails do
     :checkoutAttemptId,
     :ownerName,
     :recurringDetailReference,
+    :sdkData,
     :storedPaymentMethodId,
     :type
   ]
@@ -37,6 +39,7 @@ defmodule Adyen.Checkout.V68.EftDetails do
       checkoutAttemptId: :string,
       ownerName: :string,
       recurringDetailReference: :string,
+      sdkData: :string,
       storedPaymentMethodId: :string,
       type: {:const, "eft_directdebit_CA"}
     ]
