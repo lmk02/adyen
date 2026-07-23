@@ -9,6 +9,7 @@ defmodule Adyen.Checkout.V67.GooglePayDetails do
           googlePayCardNetwork: String.t() | nil,
           googlePayToken: String.t(),
           recurringDetailReference: String.t() | nil,
+          sdkData: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           threeDS2SdkVersion: String.t() | nil,
           type: String.t() | nil
@@ -20,6 +21,7 @@ defmodule Adyen.Checkout.V67.GooglePayDetails do
     :googlePayCardNetwork,
     :googlePayToken,
     :recurringDetailReference,
+    :sdkData,
     :storedPaymentMethodId,
     :threeDS2SdkVersion,
     :type
@@ -36,6 +38,7 @@ defmodule Adyen.Checkout.V67.GooglePayDetails do
       googlePayCardNetwork: :string,
       googlePayToken: :string,
       recurringDetailReference: :string,
+      sdkData: :string,
       storedPaymentMethodId: :string,
       threeDS2SdkVersion: :string,
       type: {:const, "googlepay"}

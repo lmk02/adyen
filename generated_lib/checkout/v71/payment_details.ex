@@ -26,7 +26,6 @@ defmodule Adyen.Checkout.V71.PaymentDetails do
            "multibanco",
            "bankTransfer",
            "bankTransfer_IBAN",
-           "paybright",
            "paynow",
            "affirm_pos",
            "iris",
