@@ -33,18 +33,18 @@ defmodule Adyen.TerminalAPI.V1.PaymentData do
       PaymentType:
         {:enum,
          [
+           "Normal",
+           "Refund",
+           "OneTimeReservation",
+           "FirstReservation",
+           "UpdateReservation",
+           "Completion",
            "CashAdvance",
            "CashDeposit",
-           "Completion",
-           "FirstReservation",
+           "Recurring",
            "Instalment",
            "IssuerInstalment",
-           "Normal",
-           "OneTimeReservation",
-           "PaidOut",
-           "Recurring",
-           "Refund",
-           "UpdateReservation"
+           "PaidOut"
          ]},
       RequestedValidityDate: {:string, "date"},
       SplitPaymentFlag: :boolean
