@@ -35,15 +35,15 @@ defmodule Adyen.TerminalAPI.V1.Input do
       InputCommand:
         {:enum,
          [
-           "DecimalString",
-           "DigitString",
            "GetAnyKey",
            "GetConfirmation",
+           "SiteManager",
+           "TextString",
+           "DigitString",
+           "DecimalString",
            "GetFunctionKey",
            "GetMenuEntry",
-           "Password",
-           "SiteManager",
-           "TextString"
+           "Password"
          ]},
       MenuEntryNumber: [:integer],
       Password: :string,
