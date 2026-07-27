@@ -31,24 +31,24 @@ defmodule Adyen.TerminalAPI.V1.StoredValueAccountID do
     [
       EntryMode: [
         enum: [
-          "Contactless",
-          "File",
-          "ICC",
-          "Keyed",
-          "MagStripe",
-          "Manual",
-          "Mobile",
           "RFID",
+          "Keyed",
+          "Manual",
+          "File",
           "Scanned",
+          "MagStripe",
+          "ICC",
           "SynchronousICC",
-          "Tapped"
+          "Tapped",
+          "Contactless",
+          "Mobile"
         ]
       ],
       ExpiryDate: :integer,
       IdentificationType:
-        {:enum, ["AccountNumber", "BarCode", "ISOTrack2", "PAN", "PhoneNumber"]},
+        {:enum, ["PAN", "ISOTrack2", "BarCode", "AccountNumber", "PhoneNumber"]},
       OwnerName: :string,
-      StoredValueAccountType: {:enum, ["GiftCard", "Other", "PhoneCard"]},
+      StoredValueAccountType: {:enum, ["GiftCard", "PhoneCard", "Other"]},
       StoredValueID: :string,
       StoredValueProvider: :string
     ]

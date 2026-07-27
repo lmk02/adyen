@@ -3,7 +3,7 @@ defmodule Adyen.Management.V3.VippsResponseInfo do
   Provides struct and type for a VippsResponseInfo
   """
 
-  @type t :: %__MODULE__{logo: String.t(), subscriptionCancelUrl: String.t() | nil}
+  @type t :: %__MODULE__{logo: String.t() | nil, subscriptionCancelUrl: String.t() | nil}
 
   defstruct [:logo, :subscriptionCancelUrl]
 
