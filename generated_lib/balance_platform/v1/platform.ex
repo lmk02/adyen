@@ -70,4 +70,32 @@ defmodule Adyen.BalancePlatform.V1.Platform do
       opts: opts
     })
   end
+
+  @doc """
+  Get all transaction rules for a balance platform
+
+  Returns a list of transaction rules associated with a balance platform.
+  """
+  @spec get_balance_platforms_id_transaction_rules(id :: String.t(), opts :: keyword) ::
+          {:ok, Adyen.BalancePlatform.V1.TransactionRulesResponse.t()}
+          | {:error, Adyen.BalancePlatform.V1.RestServiceError.t()}
+  def get_balance_platforms_id_transaction_rules(id, opts \\ []) do
+    client = opts[:client] || @default_client
+
+    client.request(%{
+      args: [id: id],
+      call: {Adyen.BalancePlatform.V1.Platform, :get_balance_platforms_id_transaction_rules},
+      url: "/balancePlatforms/#{id}/transactionRules",
+      method: :get,
+      response: [
+        {200, {Adyen.BalancePlatform.V1.TransactionRulesResponse, :t}},
+        {400, {Adyen.BalancePlatform.V1.RestServiceError, :t}},
+        {401, {Adyen.BalancePlatform.V1.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.V1.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.V1.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.V1.RestServiceError, :t}}
+      ],
+      opts: opts
+    })
+  end
 end

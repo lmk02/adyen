@@ -6,10 +6,11 @@ defmodule Adyen.Checkout.V67.AlmaDetails do
   @type t :: %__MODULE__{
           checkoutAttemptId: String.t() | nil,
           feeType: String.t() | nil,
+          sdkData: String.t() | nil,
           type: String.t() | nil
         }
 
-  defstruct [:checkoutAttemptId, :feeType, :type]
+  defstruct [:checkoutAttemptId, :feeType, :sdkData, :type]
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -19,6 +20,7 @@ defmodule Adyen.Checkout.V67.AlmaDetails do
     [
       checkoutAttemptId: :string,
       feeType: {:enum, ["merchantPays", "shopperPays"]},
+      sdkData: :string,
       type: {:const, "alma"}
     ]
   end
