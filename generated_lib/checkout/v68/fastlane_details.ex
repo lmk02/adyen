@@ -7,6 +7,7 @@ defmodule Adyen.Checkout.V68.FastlaneDetails do
           checkoutAttemptId: String.t() | nil,
           fastlaneData: String.t(),
           recurringDetailReference: String.t() | nil,
+          sdkData: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           type: String.t()
         }
@@ -15,6 +16,7 @@ defmodule Adyen.Checkout.V68.FastlaneDetails do
     :checkoutAttemptId,
     :fastlaneData,
     :recurringDetailReference,
+    :sdkData,
     :storedPaymentMethodId,
     :type
   ]
@@ -28,6 +30,7 @@ defmodule Adyen.Checkout.V68.FastlaneDetails do
       checkoutAttemptId: :string,
       fastlaneData: :string,
       recurringDetailReference: :string,
+      sdkData: :string,
       storedPaymentMethodId: :string,
       type: {:const, "fastlane"}
     ]
