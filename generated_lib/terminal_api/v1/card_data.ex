@@ -34,17 +34,17 @@ defmodule Adyen.TerminalAPI.V1.CardData do
       CardCountryCode: :integer,
       EntryMode: [
         enum: [
-          "Contactless",
-          "File",
-          "ICC",
-          "Keyed",
-          "MagStripe",
-          "Manual",
-          "Mobile",
           "RFID",
+          "Keyed",
+          "Manual",
+          "File",
           "Scanned",
+          "MagStripe",
+          "ICC",
           "SynchronousICC",
-          "Tapped"
+          "Tapped",
+          "Contactless",
+          "Mobile"
         ]
       ],
       MaskedPan: :string,
