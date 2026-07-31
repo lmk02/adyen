@@ -56,12 +56,14 @@ defmodule Adyen.Checkout.V71.PaymentRequest do
             | Adyen.Checkout.V71.AncvDetails.t()
             | Adyen.Checkout.V71.AndroidPayDetails.t()
             | Adyen.Checkout.V71.ApplePayDetails.t()
+            | Adyen.Checkout.V71.AuPayDetails.t()
             | Adyen.Checkout.V71.BacsDirectDebitDetails.t()
             | Adyen.Checkout.V71.BillDeskDetails.t()
             | Adyen.Checkout.V71.BlikDetails.t()
             | Adyen.Checkout.V71.CardDetails.t()
             | Adyen.Checkout.V71.CashAppDetails.t()
             | Adyen.Checkout.V71.CellulantDetails.t()
+            | Adyen.Checkout.V71.DBaraiDetails.t()
             | Adyen.Checkout.V71.DirectDebitAuDetails.t()
             | Adyen.Checkout.V71.DokuDetails.t()
             | Adyen.Checkout.V71.DragonpayDetails.t()
@@ -133,6 +135,8 @@ defmodule Adyen.Checkout.V71.PaymentRequest do
           subMerchants: [Adyen.Checkout.V71.SubMerchantInfo.t()] | nil,
           surcharge: Adyen.Checkout.V71.Surcharge.t() | nil,
           telephoneNumber: String.t() | nil,
+          thirdPartyTokenRedundancyInfo:
+            Adyen.Checkout.V71.ThirdPartyTokenRedundancyInfo.t() | nil,
           threeDS2RequestData: Adyen.Checkout.V71.ThreeDs2RequestFields.t() | nil,
           threeDSAuthenticationOnly: boolean | nil,
           trustedShopper: boolean | nil
@@ -210,6 +214,7 @@ defmodule Adyen.Checkout.V71.PaymentRequest do
     :subMerchants,
     :surcharge,
     :telephoneNumber,
+    :thirdPartyTokenRedundancyInfo,
     :threeDS2RequestData,
     :threeDSAuthenticationOnly,
     :trustedShopper
@@ -275,12 +280,14 @@ defmodule Adyen.Checkout.V71.PaymentRequest do
            {Adyen.Checkout.V71.AncvDetails, :t},
            {Adyen.Checkout.V71.AndroidPayDetails, :t},
            {Adyen.Checkout.V71.ApplePayDetails, :t},
+           {Adyen.Checkout.V71.AuPayDetails, :t},
            {Adyen.Checkout.V71.BacsDirectDebitDetails, :t},
            {Adyen.Checkout.V71.BillDeskDetails, :t},
            {Adyen.Checkout.V71.BlikDetails, :t},
            {Adyen.Checkout.V71.CardDetails, :t},
            {Adyen.Checkout.V71.CashAppDetails, :t},
            {Adyen.Checkout.V71.CellulantDetails, :t},
+           {Adyen.Checkout.V71.DBaraiDetails, :t},
            {Adyen.Checkout.V71.DirectDebitAuDetails, :t},
            {Adyen.Checkout.V71.DokuDetails, :t},
            {Adyen.Checkout.V71.DragonpayDetails, :t},
@@ -353,6 +360,7 @@ defmodule Adyen.Checkout.V71.PaymentRequest do
       subMerchants: [{Adyen.Checkout.V71.SubMerchantInfo, :t}],
       surcharge: {Adyen.Checkout.V71.Surcharge, :t},
       telephoneNumber: :string,
+      thirdPartyTokenRedundancyInfo: {Adyen.Checkout.V71.ThirdPartyTokenRedundancyInfo, :t},
       threeDS2RequestData: {Adyen.Checkout.V71.ThreeDs2RequestFields, :t},
       threeDSAuthenticationOnly: :boolean,
       trustedShopper: :boolean
