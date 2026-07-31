@@ -17,10 +17,17 @@ defmodule Adyen.Checkout.V72.LineItem do
           productUrl: String.t() | nil,
           quantity: integer | nil,
           receiverEmail: String.t() | nil,
+          returnShippingCompany: String.t() | nil,
+          returnTrackingNumber: String.t() | nil,
+          returnTrackingUri: String.t() | nil,
+          shippingCompany: String.t() | nil,
+          shippingMethod: String.t() | nil,
           size: String.t() | nil,
           sku: String.t() | nil,
           taxAmount: integer | nil,
           taxPercentage: integer | nil,
+          trackingNumber: String.t() | nil,
+          trackingUri: String.t() | nil,
           upc: String.t() | nil
         }
 
@@ -38,10 +45,17 @@ defmodule Adyen.Checkout.V72.LineItem do
     :productUrl,
     :quantity,
     :receiverEmail,
+    :returnShippingCompany,
+    :returnTrackingNumber,
+    :returnTrackingUri,
+    :shippingCompany,
+    :shippingMethod,
     :size,
     :sku,
     :taxAmount,
     :taxPercentage,
+    :trackingNumber,
+    :trackingUri,
     :upc
   ]
 
@@ -64,10 +78,17 @@ defmodule Adyen.Checkout.V72.LineItem do
       productUrl: :string,
       quantity: {:integer, "int64"},
       receiverEmail: :string,
+      returnShippingCompany: :string,
+      returnTrackingNumber: :string,
+      returnTrackingUri: :string,
+      shippingCompany: :string,
+      shippingMethod: :string,
       size: :string,
       sku: :string,
       taxAmount: {:integer, "int64"},
       taxPercentage: {:integer, "int64"},
+      trackingNumber: :string,
+      trackingUri: :string,
       upc: :string
     ]
   end
