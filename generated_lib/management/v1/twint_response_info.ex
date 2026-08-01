@@ -3,7 +3,7 @@ defmodule Adyen.Management.V1.TwintResponseInfo do
   Provides struct and type for a TwintResponseInfo
   """
 
-  @type t :: %__MODULE__{logo: String.t()}
+  @type t :: %__MODULE__{logo: String.t() | nil}
 
   defstruct [:logo]
 
