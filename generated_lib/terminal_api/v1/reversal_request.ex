@@ -19,7 +19,7 @@ defmodule Adyen.TerminalAPI.V1.ReversalRequest do
   def __fields__(:t) do
     [
       OriginalPOITransaction: {Adyen.TerminalAPI.V1.OriginalPOITransaction, :t},
-      ReversalReason: {:enum, ["CustCancel", "Malfunction", "MerchantCancel", "Unable2Compl"]},
+      ReversalReason: {:enum, ["CustCancel", "MerchantCancel", "Malfunction", "Unable2Compl"]},
       ReversedAmount: :number,
       SaleData: {Adyen.TerminalAPI.V1.SaleData, :t}
     ]
