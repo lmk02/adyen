@@ -18,8 +18,8 @@ defmodule Adyen.TerminalAPI.V1.EnableServiceRequest do
   def __fields__(:t) do
     [
       DisplayOutput: {Adyen.TerminalAPI.V1.DisplayOutput, :t},
-      ServicesEnabled: [enum: ["CardAcquisition", "Loyalty", "Payment"]],
-      TransactionAction: {:enum, ["AbortTransaction", "StartTransaction"]}
+      ServicesEnabled: [enum: ["CardAcquisition", "Payment", "Loyalty"]],
+      TransactionAction: {:enum, ["StartTransaction", "AbortTransaction"]}
     ]
   end
 end

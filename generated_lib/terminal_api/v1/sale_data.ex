@@ -40,7 +40,7 @@ defmodule Adyen.TerminalAPI.V1.SaleData do
   def __fields__(:t) do
     [
       CustomerOrderID: :string,
-      CustomerOrderReq: [enum: ["Both", "Closed", "Open"]],
+      CustomerOrderReq: [enum: ["Open", "Closed", "Both"]],
       OperatorID: :string,
       OperatorLanguage: :string,
       SaleReferenceID: :string,
@@ -50,7 +50,7 @@ defmodule Adyen.TerminalAPI.V1.SaleData do
       SaleToPOIData: :string,
       SaleTransactionID: {Adyen.TerminalAPI.V1.TransactionIDType, :t},
       ShiftNumber: :string,
-      TokenRequestedType: {:enum, ["Customer", "Transaction"]}
+      TokenRequestedType: {:enum, ["Transaction", "Customer"]}
     ]
   end
 end

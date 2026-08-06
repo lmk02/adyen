@@ -35,7 +35,7 @@ defmodule Adyen.TerminalAPI.V1.LoginRequest do
 
   def __fields__(:t) do
     [
-      CustomerOrderReq: [enum: ["Both", "Closed", "Open"]],
+      CustomerOrderReq: [enum: ["Open", "Closed", "Both"]],
       DateTime: {:string, "date-time"},
       OperatorID: :string,
       OperatorLanguage: :string,
@@ -43,7 +43,7 @@ defmodule Adyen.TerminalAPI.V1.LoginRequest do
       SaleSoftware: {Adyen.TerminalAPI.V1.SaleSoftware, :t},
       SaleTerminalData: {Adyen.TerminalAPI.V1.SaleTerminalData, :t},
       ShiftNumber: :string,
-      TokenRequestedType: {:enum, ["Customer", "Transaction"]},
+      TokenRequestedType: {:enum, ["Transaction", "Customer"]},
       TrainingModeFlag: :boolean
     ]
   end
