@@ -40,35 +40,35 @@ defmodule Adyen.TerminalAPI.V1.CardAcquisitionTransaction do
       ForceCustomerSelectionFlag: :boolean,
       ForceEntryMode: [
         enum: [
-          "CheckReader",
-          "Contactless",
-          "File",
-          "ICC",
-          "Keyed",
-          "MagStripe",
-          "Manual",
           "RFID",
+          "Keyed",
+          "Manual",
+          "File",
           "Scanned",
+          "MagStripe",
+          "ICC",
           "SynchronousICC",
-          "Tapped"
+          "Tapped",
+          "Contactless",
+          "CheckReader"
         ]
       ],
-      LoyaltyHandling: {:enum, ["Allowed", "Forbidden", "Processed", "Proposed", "Required"]},
+      LoyaltyHandling: {:enum, ["Forbidden", "Processed", "Allowed", "Proposed", "Required"]},
       PaymentType:
         {:enum,
          [
+           "Normal",
+           "Refund",
+           "OneTimeReservation",
+           "FirstReservation",
+           "UpdateReservation",
+           "Completion",
            "CashAdvance",
            "CashDeposit",
-           "Completion",
-           "FirstReservation",
+           "Recurring",
            "Instalment",
            "IssuerInstalment",
-           "Normal",
-           "OneTimeReservation",
-           "PaidOut",
-           "Recurring",
-           "Refund",
-           "UpdateReservation"
+           "PaidOut"
          ]},
       TotalAmount: :number
     ]
