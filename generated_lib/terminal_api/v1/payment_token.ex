@@ -18,7 +18,7 @@ defmodule Adyen.TerminalAPI.V1.PaymentToken do
   def __fields__(:t) do
     [
       ExpiryDateTime: {:string, "date-time"},
-      TokenRequestedType: {:enum, ["Customer", "Transaction"]},
+      TokenRequestedType: {:enum, ["Transaction", "Customer"]},
       TokenValue: :string
     ]
   end

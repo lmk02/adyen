@@ -6,8 +6,8 @@ defmodule Adyen.Checkout.V41.SepaDirectDebitDetails do
   @type t :: %__MODULE__{
           checkoutAttemptId: String.t() | nil,
           dueDate: String.t() | nil,
-          iban: String.t(),
-          ownerName: String.t(),
+          iban: String.t() | nil,
+          ownerName: String.t() | nil,
           recurringDetailReference: String.t() | nil,
           transferInstrumentId: String.t() | nil,
           type: String.t() | nil
