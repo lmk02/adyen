@@ -8,6 +8,7 @@ defmodule Adyen.Checkout.V68.PayWithGoogleDonations do
           fundingSource: String.t() | nil,
           googlePayToken: String.t(),
           recurringDetailReference: String.t() | nil,
+          sdkData: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           threeDS2SdkVersion: String.t() | nil,
           type: String.t() | nil
@@ -18,6 +19,7 @@ defmodule Adyen.Checkout.V68.PayWithGoogleDonations do
     :fundingSource,
     :googlePayToken,
     :recurringDetailReference,
+    :sdkData,
     :storedPaymentMethodId,
     :threeDS2SdkVersion,
     :type
@@ -33,6 +35,7 @@ defmodule Adyen.Checkout.V68.PayWithGoogleDonations do
       fundingSource: {:enum, ["credit", "debit", "prepaid"]},
       googlePayToken: :string,
       recurringDetailReference: :string,
+      sdkData: :string,
       storedPaymentMethodId: :string,
       threeDS2SdkVersion: :string,
       type: {:const, "paywithgoogle"}
