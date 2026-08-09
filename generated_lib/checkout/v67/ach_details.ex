@@ -13,6 +13,7 @@ defmodule Adyen.Checkout.V67.AchDetails do
           encryptedBankLocationId: String.t() | nil,
           ownerName: String.t() | nil,
           recurringDetailReference: String.t() | nil,
+          sdkData: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           transferInstrumentId: String.t() | nil,
           type: String.t() | nil
@@ -28,6 +29,7 @@ defmodule Adyen.Checkout.V67.AchDetails do
     :encryptedBankLocationId,
     :ownerName,
     :recurringDetailReference,
+    :sdkData,
     :storedPaymentMethodId,
     :transferInstrumentId,
     :type
@@ -49,6 +51,7 @@ defmodule Adyen.Checkout.V67.AchDetails do
       encryptedBankLocationId: :string,
       ownerName: :string,
       recurringDetailReference: :string,
+      sdkData: :string,
       storedPaymentMethodId: :string,
       transferInstrumentId: :string,
       type: {:enum, ["ach", "ach_plaid"]}
