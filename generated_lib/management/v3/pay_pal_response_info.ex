@@ -3,7 +3,11 @@ defmodule Adyen.Management.V3.PayPalResponseInfo do
   Provides struct and type for a PayPalResponseInfo
   """
 
-  @type t :: %__MODULE__{directCapture: boolean | nil, payerId: String.t(), subject: String.t()}
+  @type t :: %__MODULE__{
+          directCapture: boolean | nil,
+          payerId: String.t() | nil,
+          subject: String.t() | nil
+        }
 
   defstruct [:directCapture, :payerId, :subject]
 

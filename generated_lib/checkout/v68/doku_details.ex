@@ -7,11 +7,12 @@ defmodule Adyen.Checkout.V68.DokuDetails do
           checkoutAttemptId: String.t() | nil,
           firstName: String.t(),
           lastName: String.t(),
+          sdkData: String.t() | nil,
           shopperEmail: String.t(),
           type: String.t()
         }
 
-  defstruct [:checkoutAttemptId, :firstName, :lastName, :shopperEmail, :type]
+  defstruct [:checkoutAttemptId, :firstName, :lastName, :sdkData, :shopperEmail, :type]
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -22,6 +23,7 @@ defmodule Adyen.Checkout.V68.DokuDetails do
       checkoutAttemptId: :string,
       firstName: :string,
       lastName: :string,
+      sdkData: :string,
       shopperEmail: :string,
       type:
         {:enum,
