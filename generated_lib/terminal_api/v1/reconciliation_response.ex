@@ -22,10 +22,10 @@ defmodule Adyen.TerminalAPI.V1.ReconciliationResponse do
       ReconciliationType:
         {:enum,
          [
-           "AcquirerReconciliation",
+           "SaleReconciliation",
            "AcquirerSynchronisation",
-           "PreviousReconciliation",
-           "SaleReconciliation"
+           "AcquirerReconciliation",
+           "PreviousReconciliation"
          ]},
       Response: {Adyen.TerminalAPI.V1.Response, :t},
       TransactionTotals: [{Adyen.TerminalAPI.V1.TransactionTotals, :t}]
