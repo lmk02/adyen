@@ -54,6 +54,7 @@ defmodule Adyen.Checkout.V53.DonationPaymentRequest do
             | Adyen.Checkout.V53.GooglePayDonations.t()
             | Adyen.Checkout.V53.IdealDonations.t()
             | Adyen.Checkout.V53.PayWithGoogleDonations.t()
+            | Adyen.Checkout.V53.SepaDirectDebitDonations.t()
             | nil,
           recurringExpiry: String.t() | nil,
           recurringFrequency: String.t() | nil,
@@ -212,7 +213,8 @@ defmodule Adyen.Checkout.V53.DonationPaymentRequest do
            {Adyen.Checkout.V53.CardDonations, :t},
            {Adyen.Checkout.V53.GooglePayDonations, :t},
            {Adyen.Checkout.V53.IdealDonations, :t},
-           {Adyen.Checkout.V53.PayWithGoogleDonations, :t}
+           {Adyen.Checkout.V53.PayWithGoogleDonations, :t},
+           {Adyen.Checkout.V53.SepaDirectDebitDonations, :t}
          ]},
       recurringExpiry: :string,
       recurringFrequency: :string,
