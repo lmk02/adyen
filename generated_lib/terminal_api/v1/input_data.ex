@@ -60,7 +60,7 @@ defmodule Adyen.TerminalAPI.V1.InputData do
       BeepKeyFlag: :boolean,
       DefaultInputString: :string,
       DefaultLayoutString: :string,
-      Device: {:enum, ["CashierDisplay", "CashierInput", "CustomerDisplay", "CustomerInput"]},
+      Device: {:enum, ["CashierDisplay", "CustomerDisplay", "CashierInput", "CustomerInput"]},
       DisableCancelFlag: :boolean,
       DisableCorrectFlag: :boolean,
       DisableValidFlag: :boolean,
@@ -70,29 +70,29 @@ defmodule Adyen.TerminalAPI.V1.InputData do
       InfoQualify:
         {:enum,
          [
-           "CustomerAssistance",
-           "Display",
-           "Document",
+           "Status",
            "Error",
+           "Display",
+           "Sound",
            "Input",
            "POIReplication",
+           "CustomerAssistance",
            "Receipt",
-           "Sound",
-           "Status",
+           "Document",
            "Voucher"
          ]},
       InputCommand:
         {:enum,
          [
-           "DecimalString",
-           "DigitString",
            "GetAnyKey",
            "GetConfirmation",
+           "SiteManager",
+           "TextString",
+           "DigitString",
+           "DecimalString",
            "GetFunctionKey",
            "GetMenuEntry",
-           "Password",
-           "SiteManager",
-           "TextString"
+           "Password"
          ]},
       MaskCharactersFlag: :boolean,
       MaxDecimalLength: :integer,

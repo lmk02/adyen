@@ -27,11 +27,11 @@ defmodule Adyen.TerminalAPI.V1.PrintOutput do
     [
       DocumentQualifier:
         {:enum,
-         ["CashierReceipt", "CustomerReceipt", "Document", "Journal", "SaleReceipt", "Voucher"]},
+         ["SaleReceipt", "CashierReceipt", "CustomerReceipt", "Document", "Voucher", "Journal"]},
       IntegratedPrintFlag: :boolean,
       OutputContent: {Adyen.TerminalAPI.V1.OutputContent, :t},
       RequiredSignatureFlag: :boolean,
-      ResponseMode: {:enum, ["Immediate", "NotRequired", "PrintEnd", "SoundEnd"]}
+      ResponseMode: {:enum, ["NotRequired", "Immediate", "PrintEnd", "SoundEnd"]}
     ]
   end
 end
