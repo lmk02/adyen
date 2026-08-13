@@ -33,6 +33,37 @@ defmodule Adyen.Checkout.V72.Payments do
   end
 
   @doc """
+  Update a payment session
+
+  Updates an existing payment session with the `sessionId` specified in the path.
+
+  You can update the session's `amount` and `payable` fields. The session can only be updated if it is not yet payable.
+
+  ## Request Body
+
+  **Content Types**: `application/json`
+  """
+  @spec patch_sessions_session_id(
+          sessionId :: String.t(),
+          body :: Adyen.Checkout.V72.CheckoutSessionPatchSessionRequest.t(),
+          opts :: keyword
+        ) :: {:ok, Adyen.Checkout.V72.CheckoutSessionPatchSessionResponse.t()} | :error
+  def patch_sessions_session_id(sessionId, body, opts \\ []) do
+    client = opts[:client] || @default_client
+
+    client.request(%{
+      args: [sessionId: sessionId, body: body],
+      call: {Adyen.Checkout.V72.Payments, :patch_sessions_session_id},
+      url: "/sessions/#{sessionId}",
+      body: body,
+      method: :patch,
+      request: [{"application/json", {Adyen.Checkout.V72.CheckoutSessionPatchSessionRequest, :t}}],
+      response: [{200, {Adyen.Checkout.V72.CheckoutSessionPatchSessionResponse, :t}}],
+      opts: opts
+    })
+  end
+
+  @doc """
   Get the brands and other details of a card
 
   Use this endpoint to get information about the card or network token that enables you to decide on the routing of the transaction and the eligibility of the card for the type of transaction.
