@@ -34,16 +34,17 @@ defmodule Adyen.BalancePlatform.V1.BalanceAccounts do
   end
 
   @doc """
-  Get all payment instruments for a balance account
+  Get payment instruments linked to a balance account
 
   Returns a paginated list of the payment instruments associated with a balance account. 
 
-  To fetch multiple pages, use the query parameters.For example, to limit the page to 3 payment instruments and to skip the first 6, use `/balanceAccounts/{id}/paymentInstruments?limit=3&offset=6`.
+  To fetch multiple pages, use the query parameters.For example, to limit the page to 3 payment instruments which are in active status and to skip the first 6, use `/balanceAccounts/{id}/paymentInstruments?limit=3&offset=6&status=active`.
 
   ## Options
 
     * `offset`: The number of items that you want to skip.
     * `limit`: The number of items returned per page, maximum 100 items. By default, the response returns 10 items per page.
+    * `status`: The status of the payment instruments that you want to get. By default, the response includes payment instruments with any status.
 
   """
   @spec get_balance_accounts_id_payment_instruments(id :: String.t(), opts :: keyword) ::
@@ -51,7 +52,7 @@ defmodule Adyen.BalancePlatform.V1.BalanceAccounts do
           | {:error, Adyen.BalancePlatform.V1.RestServiceError.t()}
   def get_balance_accounts_id_payment_instruments(id, opts \\ []) do
     client = opts[:client] || @default_client
-    query = Keyword.take(opts, [:limit, :offset])
+    query = Keyword.take(opts, [:limit, :offset, :status])
 
     client.request(%{
       args: [id: id],
@@ -62,6 +63,35 @@ defmodule Adyen.BalancePlatform.V1.BalanceAccounts do
       query: query,
       response: [
         {200, {Adyen.BalancePlatform.V1.PaginatedPaymentInstrumentsResponse, :t}},
+        {400, {Adyen.BalancePlatform.V1.RestServiceError, :t}},
+        {401, {Adyen.BalancePlatform.V1.RestServiceError, :t}},
+        {403, {Adyen.BalancePlatform.V1.RestServiceError, :t}},
+        {422, {Adyen.BalancePlatform.V1.RestServiceError, :t}},
+        {500, {Adyen.BalancePlatform.V1.RestServiceError, :t}}
+      ],
+      opts: opts
+    })
+  end
+
+  @doc """
+  Get all transaction rules for a balance account
+
+  Returns a list of transaction rules associated with a balance account.
+  """
+  @spec get_balance_accounts_id_transaction_rules(id :: String.t(), opts :: keyword) ::
+          {:ok, Adyen.BalancePlatform.V1.TransactionRulesResponse.t()}
+          | {:error, Adyen.BalancePlatform.V1.RestServiceError.t()}
+  def get_balance_accounts_id_transaction_rules(id, opts \\ []) do
+    client = opts[:client] || @default_client
+
+    client.request(%{
+      args: [id: id],
+      call:
+        {Adyen.BalancePlatform.V1.BalanceAccounts, :get_balance_accounts_id_transaction_rules},
+      url: "/balanceAccounts/#{id}/transactionRules",
+      method: :get,
+      response: [
+        {200, {Adyen.BalancePlatform.V1.TransactionRulesResponse, :t}},
         {400, {Adyen.BalancePlatform.V1.RestServiceError, :t}},
         {401, {Adyen.BalancePlatform.V1.RestServiceError, :t}},
         {403, {Adyen.BalancePlatform.V1.RestServiceError, :t}},
