@@ -5,14 +5,27 @@ defmodule Adyen.Checkout.V65.PaypalUpdateOrderRequest do
 
   @type t :: %__MODULE__{
           amount: Adyen.Checkout.V65.Amount.t() | nil,
+          deliveryAddress: Adyen.Checkout.V65.DeliveryAddress.t() | nil,
           deliveryMethods: [Adyen.Checkout.V65.DeliveryMethod.t()] | nil,
+          discountAmount: Adyen.Checkout.V65.Amount.t() | nil,
           paymentData: String.t() | nil,
           pspReference: String.t() | nil,
           sessionId: String.t() | nil,
+          shippingAmount: Adyen.Checkout.V65.Amount.t() | nil,
           taxTotal: Adyen.Checkout.V65.TaxTotal.t() | nil
         }
 
-  defstruct [:amount, :deliveryMethods, :paymentData, :pspReference, :sessionId, :taxTotal]
+  defstruct [
+    :amount,
+    :deliveryAddress,
+    :deliveryMethods,
+    :discountAmount,
+    :paymentData,
+    :pspReference,
+    :sessionId,
+    :shippingAmount,
+    :taxTotal
+  ]
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -21,10 +34,13 @@ defmodule Adyen.Checkout.V65.PaypalUpdateOrderRequest do
   def __fields__(:t) do
     [
       amount: {Adyen.Checkout.V65.Amount, :t},
+      deliveryAddress: {Adyen.Checkout.V65.DeliveryAddress, :t},
       deliveryMethods: [{Adyen.Checkout.V65.DeliveryMethod, :t}],
+      discountAmount: {Adyen.Checkout.V65.Amount, :t},
       paymentData: :string,
       pspReference: :string,
       sessionId: :string,
+      shippingAmount: {Adyen.Checkout.V65.Amount, :t},
       taxTotal: {Adyen.Checkout.V65.TaxTotal, :t}
     ]
   end

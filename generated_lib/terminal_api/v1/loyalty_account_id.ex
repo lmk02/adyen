@@ -20,22 +20,22 @@ defmodule Adyen.TerminalAPI.V1.LoyaltyAccountID do
     [
       EntryMode: [
         enum: [
-          "Contactless",
-          "File",
-          "ICC",
-          "Keyed",
-          "MagStripe",
-          "Manual",
-          "Mobile",
           "RFID",
+          "Keyed",
+          "Manual",
+          "File",
           "Scanned",
+          "MagStripe",
+          "ICC",
           "SynchronousICC",
-          "Tapped"
+          "Tapped",
+          "Contactless",
+          "Mobile"
         ]
       ],
-      IdentificationSupport: {:enum, ["HybridCard", "LinkedCard", "LoyaltyCard", "NoCard"]},
+      IdentificationSupport: {:enum, ["NoCard", "LoyaltyCard", "HybridCard", "LinkedCard"]},
       IdentificationType:
-        {:enum, ["AccountNumber", "BarCode", "ISOTrack2", "PAN", "PhoneNumber"]},
+        {:enum, ["PAN", "ISOTrack2", "BarCode", "AccountNumber", "PhoneNumber"]},
       LoyaltyID: :string
     ]
   end
