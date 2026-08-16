@@ -6,11 +6,12 @@ defmodule Adyen.Checkout.V68.DragonpayDetails do
   @type t :: %__MODULE__{
           checkoutAttemptId: String.t() | nil,
           issuer: String.t(),
+          sdkData: String.t() | nil,
           shopperEmail: String.t() | nil,
           type: String.t()
         }
 
-  defstruct [:checkoutAttemptId, :issuer, :shopperEmail, :type]
+  defstruct [:checkoutAttemptId, :issuer, :sdkData, :shopperEmail, :type]
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -20,6 +21,7 @@ defmodule Adyen.Checkout.V68.DragonpayDetails do
     [
       checkoutAttemptId: :string,
       issuer: :string,
+      sdkData: :string,
       shopperEmail: :string,
       type:
         {:enum,

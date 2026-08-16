@@ -32,9 +32,9 @@ defmodule Adyen.TerminalAPI.V1.POIStatus do
       CardReaderOKFlag: :boolean,
       CommunicationOKFlag: :boolean,
       FraudPreventionFlag: :boolean,
-      GlobalStatus: {:enum, ["Busy", "Maintenance", "OK", "Unreachable"]},
+      GlobalStatus: {:enum, ["OK", "Busy", "Maintenance", "Unreachable"]},
       PEDOKFlag: :boolean,
-      PrinterStatus: {:enum, ["NoPaper", "OK", "OutOfOrder", "PaperJam", "PaperLow"]},
+      PrinterStatus: {:enum, ["OK", "PaperLow", "NoPaper", "PaperJam", "OutOfOrder"]},
       SecurityOKFlag: :boolean
     ]
   end
