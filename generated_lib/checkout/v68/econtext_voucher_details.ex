@@ -7,12 +7,21 @@ defmodule Adyen.Checkout.V68.EcontextVoucherDetails do
           checkoutAttemptId: String.t() | nil,
           firstName: String.t(),
           lastName: String.t(),
+          sdkData: String.t() | nil,
           shopperEmail: String.t(),
           telephoneNumber: String.t(),
           type: String.t()
         }
 
-  defstruct [:checkoutAttemptId, :firstName, :lastName, :shopperEmail, :telephoneNumber, :type]
+  defstruct [
+    :checkoutAttemptId,
+    :firstName,
+    :lastName,
+    :sdkData,
+    :shopperEmail,
+    :telephoneNumber,
+    :type
+  ]
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -23,6 +32,7 @@ defmodule Adyen.Checkout.V68.EcontextVoucherDetails do
       checkoutAttemptId: :string,
       firstName: :string,
       lastName: :string,
+      sdkData: :string,
       shopperEmail: :string,
       telephoneNumber: :string,
       type:
