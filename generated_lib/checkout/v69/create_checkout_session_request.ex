@@ -43,6 +43,7 @@ defmodule Adyen.Checkout.V69.CreateCheckoutSessionRequest do
           reference: String.t(),
           returnUrl: String.t(),
           riskData: Adyen.Checkout.V69.RiskData.t() | nil,
+          shopperConversionId: String.t() | nil,
           shopperEmail: String.t() | nil,
           shopperIP: String.t() | nil,
           shopperInteraction: String.t() | nil,
@@ -60,6 +61,8 @@ defmodule Adyen.Checkout.V69.CreateCheckoutSessionRequest do
           storePaymentMethod: boolean | nil,
           telephoneNumber: String.t() | nil,
           themeId: String.t() | nil,
+          thirdPartyTokenRedundancyInfo:
+            Adyen.Checkout.V69.ThirdPartyTokenRedundancyInfo.t() | nil,
           threeDS2RequestData: Adyen.Checkout.V69.CheckoutSessionThreeDs2RequestData.t() | nil,
           threeDSAuthenticationOnly: boolean | nil,
           trustedShopper: boolean | nil
@@ -105,6 +108,7 @@ defmodule Adyen.Checkout.V69.CreateCheckoutSessionRequest do
     :reference,
     :returnUrl,
     :riskData,
+    :shopperConversionId,
     :shopperEmail,
     :shopperIP,
     :shopperInteraction,
@@ -122,6 +126,7 @@ defmodule Adyen.Checkout.V69.CreateCheckoutSessionRequest do
     :storePaymentMethod,
     :telephoneNumber,
     :themeId,
+    :thirdPartyTokenRedundancyInfo,
     :threeDS2RequestData,
     :threeDSAuthenticationOnly,
     :trustedShopper
@@ -172,6 +177,7 @@ defmodule Adyen.Checkout.V69.CreateCheckoutSessionRequest do
       reference: :string,
       returnUrl: :string,
       riskData: {Adyen.Checkout.V69.RiskData, :t},
+      shopperConversionId: :string,
       shopperEmail: :string,
       shopperIP: :string,
       shopperInteraction: {:enum, ["Ecommerce", "ContAuth", "Moto", "POS"]},
@@ -189,6 +195,7 @@ defmodule Adyen.Checkout.V69.CreateCheckoutSessionRequest do
       storePaymentMethod: :boolean,
       telephoneNumber: :string,
       themeId: :string,
+      thirdPartyTokenRedundancyInfo: {Adyen.Checkout.V69.ThirdPartyTokenRedundancyInfo, :t},
       threeDS2RequestData: {Adyen.Checkout.V69.CheckoutSessionThreeDs2RequestData, :t},
       threeDSAuthenticationOnly: :boolean,
       trustedShopper: :boolean
