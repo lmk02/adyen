@@ -4,8 +4,8 @@ defmodule Adyen.Management.V3.ValuelinkResponseInfo do
   """
 
   @type t :: %__MODULE__{
-          authorisationMid: String.t(),
-          pinSupport: String.t(),
+          authorisationMid: String.t() | nil,
+          pinSupport: String.t() | nil,
           submitterId: String.t() | nil,
           terminalId: String.t() | nil
         }
