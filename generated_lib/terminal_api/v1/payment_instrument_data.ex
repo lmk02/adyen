@@ -30,7 +30,7 @@ defmodule Adyen.TerminalAPI.V1.PaymentInstrumentData do
       CardData: {Adyen.TerminalAPI.V1.CardData, :t},
       CheckData: {Adyen.TerminalAPI.V1.CheckData, :t},
       MobileData: {Adyen.TerminalAPI.V1.MobileData, :t},
-      PaymentInstrumentType: {:enum, ["Card", "Cash", "Check", "Mobile", "StoredValue"]},
+      PaymentInstrumentType: {:enum, ["Card", "Check", "Mobile", "StoredValue", "Cash"]},
       ProtectedCardData: :string,
       StoredValueAccountID: {Adyen.TerminalAPI.V1.StoredValueAccountID, :t}
     ]

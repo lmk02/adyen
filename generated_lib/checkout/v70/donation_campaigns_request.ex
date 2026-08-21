@@ -5,18 +5,19 @@ defmodule Adyen.Checkout.V70.DonationCampaignsRequest do
 
   @type t :: %__MODULE__{
           currency: String.t(),
+          label: String.t() | nil,
           locale: String.t() | nil,
           merchantAccount: String.t(),
           store: String.t() | nil
         }
 
-  defstruct [:currency, :locale, :merchantAccount, :store]
+  defstruct [:currency, :label, :locale, :merchantAccount, :store]
 
   @doc false
   @spec __fields__(atom) :: keyword
   def __fields__(type \\ :t)
 
   def __fields__(:t) do
-    [currency: :string, locale: :string, merchantAccount: :string, store: :string]
+    [currency: :string, label: :string, locale: :string, merchantAccount: :string, store: :string]
   end
 end
