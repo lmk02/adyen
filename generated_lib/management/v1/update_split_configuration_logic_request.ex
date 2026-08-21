@@ -12,6 +12,7 @@ defmodule Adyen.Management.V1.UpdateSplitConfigurationLogicRequest do
           chargeback: String.t() | nil,
           chargebackCostAllocation: String.t() | nil,
           commission: Adyen.Management.V1.Commission.t(),
+          dcc: Adyen.Management.V1.SplitDcc.t() | nil,
           interchange: String.t() | nil,
           paymentFee: String.t() | nil,
           refund: String.t() | nil,
@@ -32,6 +33,7 @@ defmodule Adyen.Management.V1.UpdateSplitConfigurationLogicRequest do
     :chargeback,
     :chargebackCostAllocation,
     :commission,
+    :dcc,
     :interchange,
     :paymentFee,
     :refund,
@@ -60,6 +62,7 @@ defmodule Adyen.Management.V1.UpdateSplitConfigurationLogicRequest do
       chargebackCostAllocation:
         {:enum, ["deductFromLiableAccount", "deductFromOneBalanceAccount"]},
       commission: {Adyen.Management.V1.Commission, :t},
+      dcc: {Adyen.Management.V1.SplitDcc, :t},
       interchange: {:enum, ["deductFromLiableAccount", "deductFromOneBalanceAccount"]},
       paymentFee: {:enum, ["deductFromLiableAccount", "deductFromOneBalanceAccount"]},
       refund:
