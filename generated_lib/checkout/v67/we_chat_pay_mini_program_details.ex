@@ -8,6 +8,7 @@ defmodule Adyen.Checkout.V67.WeChatPayMiniProgramDetails do
           checkoutAttemptId: String.t() | nil,
           openid: String.t() | nil,
           recurringDetailReference: String.t() | nil,
+          sdkData: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           type: String.t() | nil
         }
@@ -17,6 +18,7 @@ defmodule Adyen.Checkout.V67.WeChatPayMiniProgramDetails do
     :checkoutAttemptId,
     :openid,
     :recurringDetailReference,
+    :sdkData,
     :storedPaymentMethodId,
     :type
   ]
@@ -31,6 +33,7 @@ defmodule Adyen.Checkout.V67.WeChatPayMiniProgramDetails do
       checkoutAttemptId: :string,
       openid: :string,
       recurringDetailReference: :string,
+      sdkData: :string,
       storedPaymentMethodId: :string,
       type: {:const, "wechatpayMiniProgram"}
     ]
