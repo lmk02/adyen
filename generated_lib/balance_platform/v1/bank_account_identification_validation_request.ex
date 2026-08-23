@@ -6,11 +6,15 @@ defmodule Adyen.BalancePlatform.V1.BankAccountIdentificationValidationRequest do
   @type t :: %__MODULE__{
           accountIdentification:
             Adyen.BalancePlatform.V1.AULocalAccountIdentification.t()
+            | Adyen.BalancePlatform.V1.BRLocalAccountIdentification.t()
             | Adyen.BalancePlatform.V1.CALocalAccountIdentification.t()
             | Adyen.BalancePlatform.V1.CZLocalAccountIdentification.t()
+            | Adyen.BalancePlatform.V1.DKLocalAccountIdentification.t()
+            | Adyen.BalancePlatform.V1.HKLocalAccountIdentification.t()
             | Adyen.BalancePlatform.V1.HULocalAccountIdentification.t()
             | Adyen.BalancePlatform.V1.IbanAccountIdentification.t()
             | Adyen.BalancePlatform.V1.NOLocalAccountIdentification.t()
+            | Adyen.BalancePlatform.V1.NZLocalAccountIdentification.t()
             | Adyen.BalancePlatform.V1.NumberAndBicAccountIdentification.t()
             | Adyen.BalancePlatform.V1.PLLocalAccountIdentification.t()
             | Adyen.BalancePlatform.V1.SELocalAccountIdentification.t()
@@ -31,11 +35,15 @@ defmodule Adyen.BalancePlatform.V1.BankAccountIdentificationValidationRequest do
         {:union,
          [
            {Adyen.BalancePlatform.V1.AULocalAccountIdentification, :t},
+           {Adyen.BalancePlatform.V1.BRLocalAccountIdentification, :t},
            {Adyen.BalancePlatform.V1.CALocalAccountIdentification, :t},
            {Adyen.BalancePlatform.V1.CZLocalAccountIdentification, :t},
+           {Adyen.BalancePlatform.V1.DKLocalAccountIdentification, :t},
+           {Adyen.BalancePlatform.V1.HKLocalAccountIdentification, :t},
            {Adyen.BalancePlatform.V1.HULocalAccountIdentification, :t},
            {Adyen.BalancePlatform.V1.IbanAccountIdentification, :t},
            {Adyen.BalancePlatform.V1.NOLocalAccountIdentification, :t},
+           {Adyen.BalancePlatform.V1.NZLocalAccountIdentification, :t},
            {Adyen.BalancePlatform.V1.NumberAndBicAccountIdentification, :t},
            {Adyen.BalancePlatform.V1.PLLocalAccountIdentification, :t},
            {Adyen.BalancePlatform.V1.SELocalAccountIdentification, :t},
