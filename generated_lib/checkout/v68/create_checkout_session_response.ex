@@ -59,6 +59,8 @@ defmodule Adyen.Checkout.V68.CreateCheckoutSessionResponse do
           storeFiltrationMode: String.t() | nil,
           storePaymentMethod: boolean | nil,
           telephoneNumber: String.t() | nil,
+          thirdPartyTokenRedundancyInfo:
+            Adyen.Checkout.V68.ThirdPartyTokenRedundancyInfo.t() | nil,
           threeDS2RequestData: Adyen.Checkout.V68.CheckoutSessionThreeDs2RequestData.t() | nil,
           threeDSAuthenticationOnly: boolean | nil,
           trustedShopper: boolean | nil
@@ -120,6 +122,7 @@ defmodule Adyen.Checkout.V68.CreateCheckoutSessionResponse do
     :storeFiltrationMode,
     :storePaymentMethod,
     :telephoneNumber,
+    :thirdPartyTokenRedundancyInfo,
     :threeDS2RequestData,
     :threeDSAuthenticationOnly,
     :trustedShopper
@@ -186,6 +189,7 @@ defmodule Adyen.Checkout.V68.CreateCheckoutSessionResponse do
       storeFiltrationMode: {:enum, ["exclusive", "inclusive", "skipFilter"]},
       storePaymentMethod: :boolean,
       telephoneNumber: :string,
+      thirdPartyTokenRedundancyInfo: {Adyen.Checkout.V68.ThirdPartyTokenRedundancyInfo, :t},
       threeDS2RequestData: {Adyen.Checkout.V68.CheckoutSessionThreeDs2RequestData, :t},
       threeDSAuthenticationOnly: :boolean,
       trustedShopper: :boolean
