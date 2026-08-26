@@ -25,9 +25,8 @@ defmodule Adyen.TerminalAPI.V1.Response do
            "Busy",
            "Cancel",
            "DeviceOut",
-           "InProgress",
            "InsertedCard",
-           "InvalidCard",
+           "InProgress",
            "LoggedOut",
            "MessageFormat",
            "NotAllowed",
@@ -36,10 +35,11 @@ defmodule Adyen.TerminalAPI.V1.Response do
            "Refusal",
            "UnavailableDevice",
            "UnavailableService",
+           "InvalidCard",
            "UnreachableHost",
            "WrongPIN"
          ]},
-      Result: {:enum, ["Failure", "Partial", "Success"]}
+      Result: {:enum, ["Success", "Failure", "Partial"]}
     ]
   end
 end
