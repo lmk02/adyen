@@ -3,7 +3,7 @@ defmodule Adyen.Management.V3.ApplePayResponseInfo do
   Provides struct and type for a ApplePayResponseInfo
   """
 
-  @type t :: %__MODULE__{domains: [String.t()]}
+  @type t :: %__MODULE__{domains: [String.t()] | nil}
 
   defstruct [:domains]
 
