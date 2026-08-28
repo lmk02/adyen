@@ -35,6 +35,7 @@ defmodule Adyen.Checkout.V71.DonationPaymentRequest do
             | Adyen.Checkout.V71.GooglePayDonations.t()
             | Adyen.Checkout.V71.IdealDonations.t()
             | Adyen.Checkout.V71.PayWithGoogleDonations.t()
+            | Adyen.Checkout.V71.SepaDirectDebitDonations.t()
             | nil,
           recurringProcessingModel: String.t() | nil,
           redirectFromIssuerMethod: String.t() | nil,
@@ -139,7 +140,8 @@ defmodule Adyen.Checkout.V71.DonationPaymentRequest do
            {Adyen.Checkout.V71.CardDonations, :t},
            {Adyen.Checkout.V71.GooglePayDonations, :t},
            {Adyen.Checkout.V71.IdealDonations, :t},
-           {Adyen.Checkout.V71.PayWithGoogleDonations, :t}
+           {Adyen.Checkout.V71.PayWithGoogleDonations, :t},
+           {Adyen.Checkout.V71.SepaDirectDebitDonations, :t}
          ]},
       recurringProcessingModel: {:enum, ["CardOnFile", "Subscription", "UnscheduledCardOnFile"]},
       redirectFromIssuerMethod: :string,

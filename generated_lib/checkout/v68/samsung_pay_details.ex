@@ -8,6 +8,7 @@ defmodule Adyen.Checkout.V68.SamsungPayDetails do
           fundingSource: String.t() | nil,
           recurringDetailReference: String.t() | nil,
           samsungPayToken: String.t(),
+          sdkData: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           type: String.t() | nil
         }
@@ -17,6 +18,7 @@ defmodule Adyen.Checkout.V68.SamsungPayDetails do
     :fundingSource,
     :recurringDetailReference,
     :samsungPayToken,
+    :sdkData,
     :storedPaymentMethodId,
     :type
   ]
@@ -31,6 +33,7 @@ defmodule Adyen.Checkout.V68.SamsungPayDetails do
       fundingSource: {:enum, ["credit", "debit", "prepaid"]},
       recurringDetailReference: :string,
       samsungPayToken: :string,
+      sdkData: :string,
       storedPaymentMethodId: :string,
       type: {:const, "samsungpay"}
     ]
