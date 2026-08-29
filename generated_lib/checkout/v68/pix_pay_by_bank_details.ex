@@ -9,6 +9,7 @@ defmodule Adyen.Checkout.V68.PixPayByBankDetails do
           issuer: String.t() | nil,
           recurringDetailReference: String.t() | nil,
           riskSignals: Adyen.Checkout.V68.PixPayByBankRiskSignals.t() | nil,
+          sdkData: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           type: String.t() | nil
         }
@@ -19,6 +20,7 @@ defmodule Adyen.Checkout.V68.PixPayByBankDetails do
     :issuer,
     :recurringDetailReference,
     :riskSignals,
+    :sdkData,
     :storedPaymentMethodId,
     :type
   ]
@@ -34,6 +36,7 @@ defmodule Adyen.Checkout.V68.PixPayByBankDetails do
       issuer: :string,
       recurringDetailReference: :string,
       riskSignals: {Adyen.Checkout.V68.PixPayByBankRiskSignals, :t},
+      sdkData: :string,
       storedPaymentMethodId: :string,
       type: {:const, "paybybank_pix"}
     ]
