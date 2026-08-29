@@ -5,6 +5,7 @@ defmodule Adyen.BalancePlatform.V1.PaymentInstrumentInfo do
 
   @type t :: %__MODULE__{
           balanceAccountId: String.t(),
+          bankAccount: Adyen.BalancePlatform.V1.BankAccountModel.t() | nil,
           card: Adyen.BalancePlatform.V1.CardInfo.t() | nil,
           description: String.t() | nil,
           issuingCountryCode: String.t(),
@@ -16,6 +17,7 @@ defmodule Adyen.BalancePlatform.V1.PaymentInstrumentInfo do
 
   defstruct [
     :balanceAccountId,
+    :bankAccount,
     :card,
     :description,
     :issuingCountryCode,
@@ -32,6 +34,7 @@ defmodule Adyen.BalancePlatform.V1.PaymentInstrumentInfo do
   def __fields__(:t) do
     [
       balanceAccountId: :string,
+      bankAccount: {Adyen.BalancePlatform.V1.BankAccountModel, :t},
       card: {Adyen.BalancePlatform.V1.CardInfo, :t},
       description: :string,
       issuingCountryCode: :string,
