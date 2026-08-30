@@ -7,6 +7,7 @@ defmodule Adyen.Checkout.V68.UpiQrDetails do
           billingSequenceNumber: String.t() | nil,
           checkoutAttemptId: String.t() | nil,
           recurringDetailReference: String.t() | nil,
+          sdkData: String.t() | nil,
           shopperNotificationReference: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           type: String.t()
@@ -16,6 +17,7 @@ defmodule Adyen.Checkout.V68.UpiQrDetails do
     :billingSequenceNumber,
     :checkoutAttemptId,
     :recurringDetailReference,
+    :sdkData,
     :shopperNotificationReference,
     :storedPaymentMethodId,
     :type
@@ -30,6 +32,7 @@ defmodule Adyen.Checkout.V68.UpiQrDetails do
       billingSequenceNumber: :string,
       checkoutAttemptId: :string,
       recurringDetailReference: :string,
+      sdkData: :string,
       shopperNotificationReference: :string,
       storedPaymentMethodId: :string,
       type: {:const, "upi_qr"}
