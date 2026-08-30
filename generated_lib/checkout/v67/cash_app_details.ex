@@ -11,6 +11,7 @@ defmodule Adyen.Checkout.V67.CashAppDetails do
           onFileGrantId: String.t() | nil,
           recurringDetailReference: String.t() | nil,
           requestId: String.t() | nil,
+          sdkData: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           subtype: String.t() | nil,
           type: String.t() | nil
@@ -24,6 +25,7 @@ defmodule Adyen.Checkout.V67.CashAppDetails do
     :onFileGrantId,
     :recurringDetailReference,
     :requestId,
+    :sdkData,
     :storedPaymentMethodId,
     :subtype,
     :type
@@ -42,6 +44,7 @@ defmodule Adyen.Checkout.V67.CashAppDetails do
       onFileGrantId: :string,
       recurringDetailReference: :string,
       requestId: :string,
+      sdkData: :string,
       storedPaymentMethodId: :string,
       subtype: :string,
       type: {:const, "cashapp"}

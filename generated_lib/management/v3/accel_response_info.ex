@@ -4,7 +4,7 @@ defmodule Adyen.Management.V3.AccelResponseInfo do
   """
 
   @type t :: %__MODULE__{
-          processingType: String.t(),
+          processingType: String.t() | nil,
           transactionDescription: Adyen.Management.V3.TransactionDescriptionResponseInfo.t() | nil
         }
 
