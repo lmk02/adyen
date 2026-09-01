@@ -58,6 +58,7 @@ defmodule Adyen.Checkout.V70.DonationPaymentRequest do
             | Adyen.Checkout.V70.GooglePayDonations.t()
             | Adyen.Checkout.V70.IdealDonations.t()
             | Adyen.Checkout.V70.PayWithGoogleDonations.t()
+            | Adyen.Checkout.V70.SepaDirectDebitDonations.t()
             | nil,
           platformChargebackLogic: Adyen.Checkout.V70.PlatformChargebackLogic.t() | nil,
           recurringExpiry: String.t() | nil,
@@ -226,7 +227,8 @@ defmodule Adyen.Checkout.V70.DonationPaymentRequest do
            {Adyen.Checkout.V70.CardDonations, :t},
            {Adyen.Checkout.V70.GooglePayDonations, :t},
            {Adyen.Checkout.V70.IdealDonations, :t},
-           {Adyen.Checkout.V70.PayWithGoogleDonations, :t}
+           {Adyen.Checkout.V70.PayWithGoogleDonations, :t},
+           {Adyen.Checkout.V70.SepaDirectDebitDonations, :t}
          ]},
       platformChargebackLogic: {Adyen.Checkout.V70.PlatformChargebackLogic, :t},
       recurringExpiry: :string,
