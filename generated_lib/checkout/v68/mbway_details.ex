@@ -5,12 +5,13 @@ defmodule Adyen.Checkout.V68.MbwayDetails do
 
   @type t :: %__MODULE__{
           checkoutAttemptId: String.t() | nil,
+          sdkData: String.t() | nil,
           shopperEmail: String.t(),
           telephoneNumber: String.t(),
           type: String.t() | nil
         }
 
-  defstruct [:checkoutAttemptId, :shopperEmail, :telephoneNumber, :type]
+  defstruct [:checkoutAttemptId, :sdkData, :shopperEmail, :telephoneNumber, :type]
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -19,6 +20,7 @@ defmodule Adyen.Checkout.V68.MbwayDetails do
   def __fields__(:t) do
     [
       checkoutAttemptId: :string,
+      sdkData: :string,
       shopperEmail: :string,
       telephoneNumber: :string,
       type: {:const, "mbway"}

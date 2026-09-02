@@ -3,7 +3,7 @@ defmodule Adyen.Management.V3.SvsResponseInfo do
   Provides struct and type for a SvsResponseInfo
   """
 
-  @type t :: %__MODULE__{authorisationMid: String.t(), currencyCode: String.t()}
+  @type t :: %__MODULE__{authorisationMid: String.t() | nil, currencyCode: String.t() | nil}
 
   defstruct [:authorisationMid, :currencyCode]
 
