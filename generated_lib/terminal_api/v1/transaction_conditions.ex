@@ -40,21 +40,21 @@ defmodule Adyen.TerminalAPI.V1.TransactionConditions do
       DebitPreferredFlag: :boolean,
       ForceEntryMode: [
         enum: [
-          "CheckReader",
-          "Contactless",
-          "File",
-          "ICC",
-          "Keyed",
-          "MagStripe",
-          "Manual",
           "RFID",
+          "Keyed",
+          "Manual",
+          "File",
           "Scanned",
+          "MagStripe",
+          "ICC",
           "SynchronousICC",
-          "Tapped"
+          "Tapped",
+          "Contactless",
+          "CheckReader"
         ]
       ],
       ForceOnlineFlag: :boolean,
-      LoyaltyHandling: {:enum, ["Allowed", "Forbidden", "Processed", "Proposed", "Required"]},
+      LoyaltyHandling: {:enum, ["Forbidden", "Processed", "Allowed", "Proposed", "Required"]},
       MerchantCategoryCode: :string
     ]
   end
