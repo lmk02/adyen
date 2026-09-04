@@ -7,6 +7,7 @@ defmodule Adyen.Checkout.V67.ZipDetails do
           checkoutAttemptId: String.t() | nil,
           clickAndCollect: String.t() | nil,
           recurringDetailReference: String.t() | nil,
+          sdkData: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           type: String.t() | nil
         }
@@ -15,6 +16,7 @@ defmodule Adyen.Checkout.V67.ZipDetails do
     :checkoutAttemptId,
     :clickAndCollect,
     :recurringDetailReference,
+    :sdkData,
     :storedPaymentMethodId,
     :type
   ]
@@ -28,6 +30,7 @@ defmodule Adyen.Checkout.V67.ZipDetails do
       checkoutAttemptId: :string,
       clickAndCollect: :string,
       recurringDetailReference: :string,
+      sdkData: :string,
       storedPaymentMethodId: :string,
       type: {:enum, ["zip", "zip_pos"]}
     ]

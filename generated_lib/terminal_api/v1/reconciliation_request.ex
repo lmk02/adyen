@@ -22,10 +22,10 @@ defmodule Adyen.TerminalAPI.V1.ReconciliationRequest do
       ReconciliationType:
         {:enum,
          [
-           "AcquirerReconciliation",
+           "SaleReconciliation",
            "AcquirerSynchronisation",
-           "PreviousReconciliation",
-           "SaleReconciliation"
+           "AcquirerReconciliation",
+           "PreviousReconciliation"
          ]}
     ]
   end
