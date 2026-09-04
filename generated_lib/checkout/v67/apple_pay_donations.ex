@@ -8,6 +8,7 @@ defmodule Adyen.Checkout.V67.ApplePayDonations do
           checkoutAttemptId: String.t() | nil,
           fundingSource: String.t() | nil,
           recurringDetailReference: String.t() | nil,
+          sdkData: String.t() | nil,
           storedPaymentMethodId: String.t() | nil,
           type: String.t() | nil
         }
@@ -17,6 +18,7 @@ defmodule Adyen.Checkout.V67.ApplePayDonations do
     :checkoutAttemptId,
     :fundingSource,
     :recurringDetailReference,
+    :sdkData,
     :storedPaymentMethodId,
     :type
   ]
@@ -31,6 +33,7 @@ defmodule Adyen.Checkout.V67.ApplePayDonations do
       checkoutAttemptId: :string,
       fundingSource: {:enum, ["credit", "debit", "prepaid"]},
       recurringDetailReference: :string,
+      sdkData: :string,
       storedPaymentMethodId: :string,
       type: {:const, "applepay"}
     ]
