@@ -1,7 +1,7 @@
 defmodule Adyen.MixProject do
   use Mix.Project
 
-  @version "0.7.0"
+  @version "0.129.0"
 
   def project do
     [
