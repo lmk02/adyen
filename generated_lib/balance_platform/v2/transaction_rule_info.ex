@@ -10,6 +10,7 @@ defmodule Adyen.BalancePlatform.V2.TransactionRuleInfo do
           entityKey: Adyen.BalancePlatform.V2.TransactionRuleEntityKey.t(),
           interval: Adyen.BalancePlatform.V2.TransactionRuleInterval.t(),
           outcomeType: String.t() | nil,
+          overridesRule: String.t() | nil,
           purpose: String.t() | nil,
           reference: String.t(),
           requestType: String.t() | nil,
@@ -27,6 +28,7 @@ defmodule Adyen.BalancePlatform.V2.TransactionRuleInfo do
     :entityKey,
     :interval,
     :outcomeType,
+    :overridesRule,
     :purpose,
     :reference,
     :requestType,
@@ -49,6 +51,7 @@ defmodule Adyen.BalancePlatform.V2.TransactionRuleInfo do
       entityKey: {Adyen.BalancePlatform.V2.TransactionRuleEntityKey, :t},
       interval: {Adyen.BalancePlatform.V2.TransactionRuleInterval, :t},
       outcomeType: {:enum, ["enforceSCA", "hardBlock", "scoreBased", "timedBlock"]},
+      overridesRule: :string,
       purpose: {:enum, ["compliance", "fraud", "internalPolicy", "policy", "system"]},
       reference: :string,
       requestType: {:enum, ["authentication", "authorization", "bankTransfer", "tokenization"]},
@@ -56,7 +59,7 @@ defmodule Adyen.BalancePlatform.V2.TransactionRuleInfo do
       score: {:integer, "int32"},
       startDate: :string,
       status: {:enum, ["active", "inactive"]},
-      type: {:enum, ["allowList", "blockList", "maxUsage", "velocity"]}
+      type: {:enum, ["allowList", "blockList", "bypass", "maxUsage", "velocity"]}
     ]
   end
 end

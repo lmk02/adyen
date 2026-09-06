@@ -23,6 +23,8 @@ defmodule Adyen.Transfer.V4.TransferEvent do
           originalAmount: Adyen.Transfer.V4.Amount.t() | nil,
           reason: String.t() | nil,
           status: String.t() | nil,
+          tracingData:
+            Adyen.Transfer.V4.UKFpsTracingData.t() | Adyen.Transfer.V4.USAchTracingData.t() | nil,
           trackingData:
             Adyen.Transfer.V4.ConfirmationTrackingData.t()
             | Adyen.Transfer.V4.EstimationTrackingData.t()
@@ -48,6 +50,7 @@ defmodule Adyen.Transfer.V4.TransferEvent do
     :originalAmount,
     :reason,
     :status,
+    :tracingData,
     :trackingData,
     :transactionId,
     :type,
@@ -241,6 +244,9 @@ defmodule Adyen.Transfer.V4.TransferEvent do
            "secondChargebackPending",
            "undefined"
          ]},
+      tracingData:
+        {:union,
+         [{Adyen.Transfer.V4.UKFpsTracingData, :t}, {Adyen.Transfer.V4.USAchTracingData, :t}]},
       trackingData:
         {:union,
          [
