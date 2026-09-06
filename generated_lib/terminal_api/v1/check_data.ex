@@ -35,7 +35,7 @@ defmodule Adyen.TerminalAPI.V1.CheckData do
       CheckNumber: :string,
       Country: :string,
       TrackData: {Adyen.TerminalAPI.V1.TrackData, :t},
-      TypeCode: {:enum, ["Company", "Personal"]}
+      TypeCode: {:enum, ["Personal", "Company"]}
     ]
   end
 end
