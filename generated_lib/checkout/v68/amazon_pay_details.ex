@@ -7,10 +7,11 @@ defmodule Adyen.Checkout.V68.AmazonPayDetails do
           amazonPayToken: String.t() | nil,
           checkoutAttemptId: String.t() | nil,
           checkoutSessionId: String.t() | nil,
+          sdkData: String.t() | nil,
           type: String.t() | nil
         }
 
-  defstruct [:amazonPayToken, :checkoutAttemptId, :checkoutSessionId, :type]
+  defstruct [:amazonPayToken, :checkoutAttemptId, :checkoutSessionId, :sdkData, :type]
 
   @doc false
   @spec __fields__(atom) :: keyword
@@ -21,6 +22,7 @@ defmodule Adyen.Checkout.V68.AmazonPayDetails do
       amazonPayToken: :string,
       checkoutAttemptId: :string,
       checkoutSessionId: :string,
+      sdkData: :string,
       type: {:const, "amazonpay"}
     ]
   end

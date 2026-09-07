@@ -3,7 +3,11 @@ defmodule Adyen.Management.V1.PayMeResponseInfo do
   Provides struct and type for a PayMeResponseInfo
   """
 
-  @type t :: %__MODULE__{displayName: String.t(), logo: String.t(), supportEmail: String.t()}
+  @type t :: %__MODULE__{
+          displayName: String.t() | nil,
+          logo: String.t() | nil,
+          supportEmail: String.t() | nil
+        }
 
   defstruct [:displayName, :logo, :supportEmail]
 
