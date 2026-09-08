@@ -11,6 +11,7 @@ defmodule Adyen.BalancePlatform.V2.TransactionRule do
           id: String.t() | nil,
           interval: Adyen.BalancePlatform.V2.TransactionRuleInterval.t(),
           outcomeType: String.t() | nil,
+          overridesRule: String.t() | nil,
           purpose: String.t() | nil,
           reference: String.t(),
           requestType: String.t() | nil,
@@ -29,6 +30,7 @@ defmodule Adyen.BalancePlatform.V2.TransactionRule do
     :id,
     :interval,
     :outcomeType,
+    :overridesRule,
     :purpose,
     :reference,
     :requestType,
@@ -52,6 +54,7 @@ defmodule Adyen.BalancePlatform.V2.TransactionRule do
       id: :string,
       interval: {Adyen.BalancePlatform.V2.TransactionRuleInterval, :t},
       outcomeType: {:enum, ["enforceSCA", "hardBlock", "scoreBased", "timedBlock"]},
+      overridesRule: :string,
       purpose: {:enum, ["compliance", "fraud", "internalPolicy", "policy", "system"]},
       reference: :string,
       requestType: {:enum, ["authentication", "authorization", "bankTransfer", "tokenization"]},
@@ -59,7 +62,7 @@ defmodule Adyen.BalancePlatform.V2.TransactionRule do
       score: {:integer, "int32"},
       startDate: :string,
       status: {:enum, ["active", "inactive"]},
-      type: {:enum, ["allowList", "blockList", "maxUsage", "velocity"]}
+      type: {:enum, ["allowList", "blockList", "bypass", "maxUsage", "velocity"]}
     ]
   end
 end
